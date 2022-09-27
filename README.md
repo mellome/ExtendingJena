@@ -1,1 +1,3 @@
 # ExtendingJena
+
+Connection test
