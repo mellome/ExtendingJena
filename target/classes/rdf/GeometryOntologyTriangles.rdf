@@ -1,0 +1,52 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:ogc="http://www.opengis.net/"
+    xmlns:my="https://www.inf.bi.ruhr-uni-bochum.de/jena/#"
+    xmlns:gml="http://www.opengis.net/ont/gml#"
+    xmlns:geo="http://www.opengis.net/ont/geosparql#"
+    xmlns:geof="http://www.opengis.net/def/function/geosparql/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:uom="http://www.opengis.net/def/uom/OGC/1.0/"
+    xmlns:sf="http://www.opengis.net/ont/sf#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:geor="http://www.opengis.net/def/rule/geosparql/">
+  <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#RootModel">
+    <sf:MultiPolygon>
+      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#TriangleA">
+        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
+        >MULTIPOLYGON Z(((2 3 5, 4 6 7, 5 7 4, 2 3 5)))</geo:asWKT>
+      </rdf:Description>
+    </sf:MultiPolygon>
+    <sf:MultiPolygon>
+      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#TriangleB">
+        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
+        >MULTIPOLYGON Z(((1 6 5, 6 4 7, 7 5 4, 1 6 5)))</geo:asWKT>
+      </rdf:Description>
+    </sf:MultiPolygon>
+    <sf:MultiPolygon>
+      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#TriangleC">
+        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
+        >MULTIPOLYGON Z(((11 6 5, 16 4 7, 17 5 4, 11 6 5)))</geo:asWKT>
+      </rdf:Description>
+    </sf:MultiPolygon>
+    <sf:MultiPolygon>
+      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#TriangleD">
+        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
+        >MULTIPOLYGON Z(((11 7 5, 16 4 7, 17 3 4, 11 7 5)))</geo:asWKT>
+      </rdf:Description>
+    </sf:MultiPolygon>
+    <sf:MultiPolygon>
+      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#LineA">
+        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
+        >LINESTRING Z(6 1 5, 6 7 7)</geo:asWKT>
+      </rdf:Description>
+    </sf:MultiPolygon>
+    <sf:MultiPolygon>
+      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#PointA">
+        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
+        >POINT Z(6 4.362 6.121)</geo:asWKT>
+      </rdf:Description>
+    </sf:MultiPolygon>
+  </rdf:Description> 
+</rdf:RDF>

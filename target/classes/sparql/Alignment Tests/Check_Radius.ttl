@@ -1,0 +1,7 @@
+SELECT ?gID ?aRadius
+WHERE { 
+	?segment ifc:id ?gID .
+	?segment ifc:type ?aType .
+	?segment ifc:Radius ?aRadius .
+	Filter(my:IFC_AlignmentSegmentHasRadius(?aRadius, 120.0) && sameTerm(?aType, "IfcCircularArcSegment2D"))
+}

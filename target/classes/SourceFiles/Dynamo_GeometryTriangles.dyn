@@ -1,0 +1,734 @@
+{
+  "Uuid": "8b1e7f7f-7304-4d5e-a570-fd8ce7ff620e",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Dynamo_GeometryTriangles",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "p1 = Point.ByCoordinates(1,6,5);\np2 = Point.ByCoordinates(6,4,7);\np3 = Point.ByCoordinates(7,5,4);\np = [p1,p2,p3];",
+      "Id": "1ef2422be99547d18a495b16c872bbe6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bf7c6a5cd7b447b78985e809ff919d6d",
+          "Name": "",
+          "Description": "p1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "820eb6ef508d496db734beba1e3583ea",
+          "Name": "",
+          "Description": "p2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d1bae8f3f6ab4e77b2a93171b6a7fc54",
+          "Name": "",
+          "Description": "p3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f42798efb6644c9b95b435a325cfc16a",
+          "Name": "",
+          "Description": "p",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "p1 = Point.ByCoordinates(2,3,5);\np2 = Point.ByCoordinates(4,6,7);\np3 = Point.ByCoordinates(5,7,4);\np = [p1,p2,p3];",
+      "Id": "735b913f806740f8ace857f9c3ded3cf",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bce1f5ddf1494da4b53084c57d203366",
+          "Name": "",
+          "Description": "p1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "690c2865488f4e8999a9aafccee1558b",
+          "Name": "",
+          "Description": "p2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d827c80b97e7498d91d3cc324739fe99",
+          "Name": "",
+          "Description": "p3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "121da55fb18348819bb2c736fb989227",
+          "Name": "",
+          "Description": "p",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Geometry.Intersect@Autodesk.DesignScript.Geometry.Geometry",
+      "Id": "bb7c297977d4474fbd7ba0cb1516f31c",
+      "Inputs": [
+        {
+          "Id": "1bde8280b5ab42af827fb2fdb6758a5f",
+          "Name": "geometry",
+          "Description": "Autodesk.DesignScript.Geometry.Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "041fc936d2d640459bcfc50a54a37843",
+          "Name": "other",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "11f76aef592d49248363253478150dbf",
+          "Name": "Geometry[]",
+          "Description": "Geometry[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Ruft die Geometrie der Überschneidung dieses Objekts mit einem anderen ab.\n\nGeometry.Intersect (other: Geometry): Geometry[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.ByPerimeterPoints@Autodesk.DesignScript.Geometry.Point[]",
+      "Id": "16eb4b38d61840fc8f754f92c76352c1",
+      "Inputs": [
+        {
+          "Id": "bdd5e816a7434812b36a5a115bc58ca8",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d19b7681bef3428a8ff32a03f0754b11",
+          "Name": "Surface",
+          "Description": "Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine Polygonoberfläche durch Verbinden der eingegebenen Punkte zu einem geschlossenen Polygon und Auffüllen des Polygons.\n\nSurface.ByPerimeterPoints (points: Point[]): Surface"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.ByPerimeterPoints@Autodesk.DesignScript.Geometry.Point[]",
+      "Id": "ea60cf38757545f0b1a484aa8c195e38",
+      "Inputs": [
+        {
+          "Id": "22bfd314db26456a83ff9432c7dc14cb",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b9f0c875a1b5449e8252d5d76de5a940",
+          "Name": "Surface",
+          "Description": "Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine Polygonoberfläche durch Verbinden der eingegebenen Punkte zu einem geschlossenen Polygon und Auffüllen des Polygons.\n\nSurface.ByPerimeterPoints (points: Point[]): Surface"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.ByPerimeterPoints@Autodesk.DesignScript.Geometry.Point[]",
+      "Id": "e5deb816a4f447c5a0cc571784be974b",
+      "Inputs": [
+        {
+          "Id": "9d55fa51488f4b3f8d1c75f825612b65",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2d06a3be9fa947d795ad7326401506ca",
+          "Name": "Surface",
+          "Description": "Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine Polygonoberfläche durch Verbinden der eingegebenen Punkte zu einem geschlossenen Polygon und Auffüllen des Polygons.\n\nSurface.ByPerimeterPoints (points: Point[]): Surface"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "p1 = Point.ByCoordinates(11,6,5);\np2 = Point.ByCoordinates(16,4,7);\np3 = Point.ByCoordinates(17,5,4);\np = [p1,p2,p3];",
+      "Id": "1580e229c18742baad891a05e85a7b6d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "fe967bd5b6024634b749e0c46565700c",
+          "Name": "",
+          "Description": "p1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2e7ebb4d8cc94fd8a2a957158a953ecd",
+          "Name": "",
+          "Description": "p2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "37c759a1c6914fe8acb7643c2e849ef8",
+          "Name": "",
+          "Description": "p3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "43634ee4d84046fc8063750237411f35",
+          "Name": "",
+          "Description": "p",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "p1 = Point.ByCoordinates(11,7,5);\np2 = Point.ByCoordinates(16,4,7);\np3 = Point.ByCoordinates(17,3,4);\np = [p1,p2,p3];",
+      "Id": "d7b531397f544ba5a97ecaa47d61e163",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bf8023b2fa63441e918e069b08a3e425",
+          "Name": "",
+          "Description": "p1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e48bb211988b43299e301e62df24eb78",
+          "Name": "",
+          "Description": "p2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ecd51b27bb824cc78b5ea911bdff0892",
+          "Name": "",
+          "Description": "p3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cac97963f82e4ebe8b795b12a26aae67",
+          "Name": "",
+          "Description": "p",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.ByPerimeterPoints@Autodesk.DesignScript.Geometry.Point[]",
+      "Id": "a2eda01fc3364d5b935791681fe1b0d7",
+      "Inputs": [
+        {
+          "Id": "d21445d708794712992cf837eae4dd72",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f7172dd7145b4d20b10d2b6edf5c692f",
+          "Name": "Surface",
+          "Description": "Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine Polygonoberfläche durch Verbinden der eingegebenen Punkte zu einem geschlossenen Polygon und Auffüllen des Polygons.\n\nSurface.ByPerimeterPoints (points: Point[]): Surface"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Geometry.Intersect@Autodesk.DesignScript.Geometry.Geometry",
+      "Id": "8c68d620eab34ef5ae07d28e01263f64",
+      "Inputs": [
+        {
+          "Id": "aace9a3f9de64d0aa0dd93ec3f568c2b",
+          "Name": "geometry",
+          "Description": "Autodesk.DesignScript.Geometry.Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c50d96e82c644da6bfc31f81311b2b6d",
+          "Name": "other",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7a4c3df7f5a148639bddcdbac0ccf292",
+          "Name": "Geometry[]",
+          "Description": "Geometry[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Ruft die Geometrie der Überschneidung dieses Objekts mit einem anderen ab.\n\nGeometry.Intersect (other: Geometry): Geometry[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "p1 = Point.ByCoordinates(6,1,5);\np2 = Point.ByCoordinates(6,7,7);",
+      "Id": "5e8a4372d27242aa9513051fc79c3582",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ea4c713ac4be4a348ad545111a333d8b",
+          "Name": "",
+          "Description": "p1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b38177ed7439426e8aa6ef2612da2a40",
+          "Name": "",
+          "Description": "p2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Line.ByStartPointEndPoint@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Point",
+      "Id": "b3a7f0a51d524eb9a87a855f22164b1c",
+      "Inputs": [
+        {
+          "Id": "ba3f118fba2a4fd9b1ac72c2f976314d",
+          "Name": "startPoint",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "45237b6a392d49f59ea3bc20e32ffde3",
+          "Name": "endPoint",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b123285bfd1b4df3b2a8210bc2f73255",
+          "Name": "Line",
+          "Description": "Line",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine gerade Linie zwischen zwei eingegebenen Punkten.\n\nLine.ByStartPointEndPoint (startPoint: Point, endPoint: Point): Line"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Geometry.Intersect@Autodesk.DesignScript.Geometry.Geometry",
+      "Id": "f5443f5d562c487584f20c2113e59ac2",
+      "Inputs": [
+        {
+          "Id": "423950de2fac4ce5b9f8a9e1f7c6b8c4",
+          "Name": "geometry",
+          "Description": "Autodesk.DesignScript.Geometry.Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6c43dfa6a9464902bc903558971fb652",
+          "Name": "other",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f6e5861ee88443958dd247d20c3c1ace",
+          "Name": "Geometry[]",
+          "Description": "Geometry[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Ruft die Geometrie der Überschneidung dieses Objekts mit einem anderen ab.\n\nGeometry.Intersect (other: Geometry): Geometry[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "f42798efb6644c9b95b435a325cfc16a",
+      "End": "bdd5e816a7434812b36a5a115bc58ca8",
+      "Id": "68b4b4716bf94e049cf75940a44894e2"
+    },
+    {
+      "Start": "121da55fb18348819bb2c736fb989227",
+      "End": "22bfd314db26456a83ff9432c7dc14cb",
+      "Id": "a8a1b06773594ee0861c0d7522439fa1"
+    },
+    {
+      "Start": "d19b7681bef3428a8ff32a03f0754b11",
+      "End": "041fc936d2d640459bcfc50a54a37843",
+      "Id": "6c776cbe9a94467e9285acca462b0cf9"
+    },
+    {
+      "Start": "d19b7681bef3428a8ff32a03f0754b11",
+      "End": "6c43dfa6a9464902bc903558971fb652",
+      "Id": "76eb935a3b924626b78a28b9a2541ebb"
+    },
+    {
+      "Start": "b9f0c875a1b5449e8252d5d76de5a940",
+      "End": "1bde8280b5ab42af827fb2fdb6758a5f",
+      "Id": "acf79207bd33403e87bc843a983f0bb5"
+    },
+    {
+      "Start": "2d06a3be9fa947d795ad7326401506ca",
+      "End": "aace9a3f9de64d0aa0dd93ec3f568c2b",
+      "Id": "f5aea19ae34d4081aadc3a2b4fc0953e"
+    },
+    {
+      "Start": "43634ee4d84046fc8063750237411f35",
+      "End": "9d55fa51488f4b3f8d1c75f825612b65",
+      "Id": "f2c36b990d194ffeb3d80ab023095b0f"
+    },
+    {
+      "Start": "cac97963f82e4ebe8b795b12a26aae67",
+      "End": "d21445d708794712992cf837eae4dd72",
+      "Id": "c0ed1a8e57e44f9e870149a3b1745067"
+    },
+    {
+      "Start": "f7172dd7145b4d20b10d2b6edf5c692f",
+      "End": "c50d96e82c644da6bfc31f81311b2b6d",
+      "Id": "4276860804a742d2863222a98e26eb72"
+    },
+    {
+      "Start": "ea4c713ac4be4a348ad545111a333d8b",
+      "End": "ba3f118fba2a4fd9b1ac72c2f976314d",
+      "Id": "3496e6d9af974540837fe39d76b0afd7"
+    },
+    {
+      "Start": "b38177ed7439426e8aa6ef2612da2a40",
+      "End": "45237b6a392d49f59ea3bc20e32ffde3",
+      "Id": "ec7a91969dfa450992efc851c5495ed7"
+    },
+    {
+      "Start": "b123285bfd1b4df3b2a8210bc2f73255",
+      "End": "423950de2fac4ce5b9f8a9e1f7c6b8c4",
+      "Id": "a8e2c8a0c49b4ab28edecdd450ba5b33"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.8.0.2471",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": 8.0231523513793945,
+      "EyeY": 8.8577117919921875,
+      "EyeZ": 0.48476696014404297,
+      "LookX": -1.7886991500854492,
+      "LookY": -2.4402055740356445,
+      "LookZ": -4.4696149826049805,
+      "UpX": -0.093028336763381958,
+      "UpY": 0.968147337436676,
+      "UpZ": -0.23245750367641449
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "1ef2422be99547d18a495b16c872bbe6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 897.06123554620808,
+        "Y": 1041.1121484771688
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "735b913f806740f8ace857f9c3ded3cf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 895.89167619799628,
+        "Y": 892.6212795542973
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geometry.Intersect",
+        "Id": "bb7c297977d4474fbd7ba0cb1516f31c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1956.4312085389533,
+        "Y": 984.11196371819642
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surface.ByPerimeterPoints",
+        "Id": "16eb4b38d61840fc8f754f92c76352c1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1393.7996610307337,
+        "Y": 1075.5454753945698
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surface.ByPerimeterPoints",
+        "Id": "ea60cf38757545f0b1a484aa8c195e38",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1396.139255716354,
+        "Y": 928.76013843518706
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surface.ByPerimeterPoints",
+        "Id": "e5deb816a4f447c5a0cc571784be974b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1391.4455228972017,
+        "Y": 1269.2727835751793
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "1580e229c18742baad891a05e85a7b6d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 892.513359156072,
+        "Y": 1232.2308546683382
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "d7b531397f544ba5a97ecaa47d61e163",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 890.71609625716,
+        "Y": 1391.6566603430347
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surface.ByPerimeterPoints",
+        "Id": "a2eda01fc3364d5b935791681fe1b0d7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1398.4070154383658,
+        "Y": 1428.6985892498715
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geometry.Intersect",
+        "Id": "8c68d620eab34ef5ae07d28e01263f64",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1956.5661861611397,
+        "Y": 1326.8715195670213
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "5e8a4372d27242aa9513051fc79c3582",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 887.143675094051,
+        "Y": 669.14112357112731
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Line.ByStartPointEndPoint",
+        "Id": "b3a7f0a51d524eb9a87a855f22164b1c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1765.9911611584394,
+        "Y": 672.37119732994313
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geometry.Intersect",
+        "Id": "f5443f5d562c487584f20c2113e59ac2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2065.1093335379724,
+        "Y": 702.03182186995855
+      }
+    ],
+    "Annotations": [],
+    "X": -2553.8625084245,
+    "Y": -762.11268023716434,
+    "Zoom": 1.3869684526458876
+  }
+}

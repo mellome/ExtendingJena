@@ -1,0 +1,5 @@
+SELECT ?box
+WHERE { my:BoxE geo:asWKT ?aWKT .
+	?box geo:asWKT ?fWKT .
+	FILTER (my:SimpleMPIntersection3D(?aWKT, ?fWKT) && !sameTerm(my:BoxE, ?box))  
+}

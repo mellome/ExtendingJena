@@ -1,0 +1,9 @@
+SELECT ?alignment ?coords
+WHERE { 
+	?alignment ifc:GlobalId ?gID .
+	?alignment ifc:Axis ?axis .
+	?axis ifc:Points ?pointsList .
+	?pointsList ifc:CartesianPoint ?pointObjs.
+	?pointObjs ifc:Coordinates ?coords.
+	Filter(sameTerm(?gID, "15b1d5a6-66bd-c645-0d6e-9bc6350bf2b9_poly"))
+}

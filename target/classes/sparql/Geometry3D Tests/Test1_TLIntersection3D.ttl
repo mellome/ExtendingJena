@@ -1,0 +1,5 @@
+SELECT ?triangle
+WHERE { ?triangle geo:asWKT ?aWKT .
+	?line geo:asWKT ?fWKT .
+	FILTER (my:TLIntersection3D(?aWKT, ?fWKT) && sameTerm(?line, my:LineA))  
+}

@@ -1,0 +1,5 @@
+SELECT ?line
+WHERE { my:PlaneA geo:asWKT ?aWKT .
+	?line geo:asWKT ?fWKT .
+	FILTER (my:PLIntersection3D(?aWKT, ?fWKT) && !sameTerm(my:PlaneA, ?line))  
+}

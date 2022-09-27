@@ -1,0 +1,5 @@
+SELECT ?line my:PLIntersection3DGeometry(?aWKT, ?fWKT)
+WHERE { ?plane geo:asWKT ?aWKT .
+	?line geo:asWKT ?fWKT .
+	FILTER (my:PLIntersection3D(?aWKT, ?fWKT) && sameTerm(?plane, my:PlaneA))  
+}
