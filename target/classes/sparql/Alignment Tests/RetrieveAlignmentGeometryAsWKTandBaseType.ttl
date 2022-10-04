@@ -1,7 +1,0 @@
-SELECT ?alignment ?type ?wktGeo
-WHERE{
-	?alignment rdf:type "IfcAlignment" .
-	?alignment ifc:Axis ?axis .
-	?axis rdf:type ?type .
-	?alignment my:ConvertAlignmentToWKT ?wktGeo .
-}

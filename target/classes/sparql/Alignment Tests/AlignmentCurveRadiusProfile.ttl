@@ -1,5 +1,0 @@
-SELECT ?alignment (my:AlignmentCurveRadiusProfile(?wktGeo) as ?profile)
-WHERE{
-	?alignment rdf:type "IfcAlignment" .
-	?alignment my:ConvertAlignmentToWKT ?wktGeo .
-}

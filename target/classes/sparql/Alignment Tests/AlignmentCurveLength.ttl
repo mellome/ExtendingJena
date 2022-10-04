@@ -1,5 +1,0 @@
-SELECT ?alignment (my:AlignmentCurveLength(?wktGeo) as ?length)
-WHERE{
-	?alignment rdf:type "IfcAlignment" .
-	?alignment my:ConvertAlignmentToWKT ?wktGeo .
-}

@@ -1,5 +1,0 @@
-SELECT ?plane
-WHERE { my:PlaneA geo:asWKT ?aWKT .
-	?plane geo:asWKT ?fWKT .
-	FILTER (my:PPIntersection3D(?aWKT, ?fWKT) && !sameTerm(my:PlaneA, ?plane))  
-}

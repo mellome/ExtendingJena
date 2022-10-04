@@ -1,5 +1,0 @@
-SELECT ?x ?y
-WHERE{
-	?x rdf:type ifc:IfcShapeRepresentation .
-	?x my:IFC_FindPropertySet ?y .
-}

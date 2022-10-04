@@ -1,5 +1,0 @@
-SELECT ?triangle
-WHERE { my:TriangleC geo:asWKT ?aWKT .
-	?triangle geo:asWKT ?fWKT .
-	FILTER (my:TTIntersection3D(?aWKT, ?fWKT))  
-}

@@ -1,7 +1,0 @@
-SELECT ?x ?y ?CheckPropertySetNameResult
-WHERE{
-	?x rdf:type ifc:IfcWallStandardCase .
-	?x my:IFC_FindPropertySet ?y .
-	?y my:IFC_CheckPropertySetName "Pset_WallCommon" . 
-	Filter(?CheckPropertySetNameResult = true)
-}

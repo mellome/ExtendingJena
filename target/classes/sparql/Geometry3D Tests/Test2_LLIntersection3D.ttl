@@ -1,5 +1,0 @@
-SELECT ?lineA ?lineB
-WHERE { ?lineA geo:asWKT ?aWKT .
-	?lineB geo:asWKT ?fWKT .
-	FILTER (my:LLIntersection3D(?aWKT, ?fWKT) && sameTerm(?lineA, my:LineA) && !sameTerm(?lineA, ?lineB))  
-}

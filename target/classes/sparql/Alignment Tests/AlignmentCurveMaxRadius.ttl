@@ -1,5 +1,0 @@
-SELECT ?alignment (my:AlignmentCurveMaxRadius(?wktGeo) as ?maxRadius)
-WHERE{
-	?alignment rdf:type "IfcAlignment" .
-	?alignment my:ConvertAlignmentToWKT ?wktGeo .
-}
