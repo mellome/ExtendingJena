@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import org.apache.jena.geosparql.configuration.GeoSPARQLConfig;
@@ -20,6 +21,8 @@ import org.apache.jena.rdf.model.impl.ResourceImpl;
 import org.apache.jena.rdf.model.impl.StatementImpl;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Polygon;
+
+import com.github.andrewoma.dexx.collection.List;
 
 
 public class RDFConverter {
@@ -43,7 +46,9 @@ public class RDFConverter {
 		prefixes.put("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
 		prefixes.put("rdfs", "http://www.w3.org/2000/01/rdf-schema#");
 		prefixes.put("owl", "http://www.w3.org/2002/07/owl#");
-		prefixes.put("my", "http://example.org/ApplicationSchema#");
+		//TODO: Why should be here the link 'example.org' but not 'www.inf.bi.ruhr-uni-bochum.de' ?
+		// prefixes.put("my", "http://example.org/ApplicationSchema#");
+		prefixes.put("my", "https://www.inf.bi.ruhr-uni-bochum.de/jena/#");
 		prefixes.put("uom", "http://www.opengis.net/def/uom/OGC/1.0/");
 		prefixes.put("spatial", "http://jena.apache.org/spatial#");
 		prefixes.put("spatialF", "http://jena.apache.org/function/spatial#");
@@ -314,11 +319,119 @@ public class RDFConverter {
 		
 		save(filepath);
 	}
-	
+
 	public void save(String filepath) throws IOException {
 	    OutputStream out = new FileOutputStream(filepath);
 	    model.write(out); //RDFFormat.RDFXML.toString()
 		out.close();
+	}
+
+	// Test generating new geometrics
+	public void constructCuboidsExample(String filepath) throws IOException {
+		
+		model = (OntModelImpl)ModelFactory.createOntologyModel();
+
+		model.setNsPrefixes(prefixes);
+		
+		StatementImpl statementRootA = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "MultiPolygon"), 
+				new ResourceImpl(prefixes.get("my"), "A")
+		);
+		model.add(statementRootA);
+
+		StatementImpl statementRootB = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "MultiPolygon"), 
+				new ResourceImpl(prefixes.get("my"), "B")
+		);
+		model.add(statementRootB);
+		
+		//===================================================================
+		//ADD GEOMETRY TO RDF!
+		
+		GeometryWrapper cubeA = this.createCube(4.0, new Coordinate(0.0, 0.0, 0.0));
+		model.add(new ResourceImpl(prefixes.get("my"),"A"), 
+			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+			  cubeA.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+		
+		GeometryWrapper cubeB = this.createCube(2.0, new Coordinate(0.0, 0.0, 0.0));
+		model.add(new ResourceImpl(prefixes.get("my"),"B"), 
+			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+			  cubeB.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+
+		save(filepath);
+	}
+
+	// Test generating new geometrics
+	public void constructFacesContaining(String filepath) throws IOException {
+		
+		model = (OntModelImpl)ModelFactory.createOntologyModel();
+
+		model.setNsPrefixes(prefixes);
+		
+		StatementImpl statementRootA = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "Polygon"), 
+				new ResourceImpl(prefixes.get("my"), "Face1")
+		);
+		model.add(statementRootA);
+
+		StatementImpl statementRootB = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "Polygon"),
+				new ResourceImpl(prefixes.get("my"), "Face2")
+		);
+		model.add(statementRootB);
+		
+		//===================================================================
+		//ADD GEOMETRY TO RDF!
+		ArrayList<Coordinate> coordList = new ArrayList<Coordinate>();
+		coordList.add(new Coordinate(2.0, 0.0, 0.0));
+		coordList.add(new Coordinate(2.0, 2.0, 0.0));
+		coordList.add(new Coordinate(0.0, 2.0, 0.0));
+		coordList.add(new Coordinate(0.0, 0.0, 0.0));
+		coordList.add(new Coordinate(2.0, 0.0, 0.0)); // the last point should be the same to the first one
+
+		GeometryWrapper wrapper = GeometryWrapperFactory.createPolygon(coordList, prefixes.get("geo") + "wktLiteral");
+
+		model.add(new ResourceImpl(prefixes.get("my"),"Face1"), 
+			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+			  wrapper.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+		//===================================================================
+		
+		//===================================================================
+		//ADD GEOMETRY TO RDF!
+		ArrayList<Coordinate> coordList2 = new ArrayList<Coordinate>();
+		coordList2.add(new Coordinate(4.0, 0.0, 0.0));
+		coordList2.add(new Coordinate(4.0, 4.0, 0.0));
+		coordList2.add(new Coordinate(0.0, 4.0, 0.0));
+		coordList2.add(new Coordinate(0.0, 0.0, 0.0));
+		coordList2.add(new Coordinate(4.0, 0.0, 0.0)); // the last point should be the same to the first one
+
+		GeometryWrapper wrapper2 = GeometryWrapperFactory.createPolygon(coordList2, prefixes.get("geo") + "wktLiteral");
+
+		model.add(new ResourceImpl(prefixes.get("my"),"Face2"), 
+			  new PropertyImpl(prefixes.get("geo") + "asWKT"), 
+			  wrapper2.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+
+		save(filepath);
+	}
+
+	public static void main(String[] args) {
+		try {
+			new RDFConverter().constructFacesContaining("src/main/resources/rdf/3DFacesContainingTest.rdf");
+		} catch (IOException io) {
+			System.err.println("Something wrong by the IO!!!");
+		}
 	}
 	
 }

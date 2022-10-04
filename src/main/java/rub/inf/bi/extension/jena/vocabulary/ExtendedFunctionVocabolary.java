@@ -27,13 +27,17 @@ public class ExtendedFunctionVocabolary {
     public static final Property plIntersection3DGeometry = property("PLIntersection3DGeometry"); //Geometry of Plane and Line
     public static final Property lpContains3D = property("LPContains3D"); //Line contains Point
     public static final Property ppContains3D = property("LPContains3D"); //Plane contains Point
+    
+    // TODO: yifeng add new property for 'containing relationship of polygons'
+    public static final Property ppoContains3D = property("PPoContains3D"); //Plane contains plane
+
     public static final Property ppIntersection3D = property("PPIntersection3D"); //Plane and plane
     public static final Property ppIntersection3DGeometry = property("PPIntersection3DGeometry"); //Geometry of Plane and plane
     public static final Property ttIntersection3D = property("TTIntersection3D"); //Triangle and Triangle (as MultiPolygon)
     public static final Property ttIntersection3DGeometry = property("TTIntersection3DGeometry"); //Geometry of Triangle and Triangle (as MultiPolygon)
     public static final Property tlIntersection3D = property("TLIntersection3D"); //Triangle and Line (as MultiPolygon and LineString)
     public static final Property tlIntersection3DGeometry = property("TLIntersection3DGeometry"); //Geometry of Triangle and Line (as MultiPolygon and LineString)
-    
+     
     //Tunneling
     public static final Property alignmentCurveMaxRadius = property("AlignmentCurveMaxRadius");
     public static final Property alignmentCurveRadiusProfile = property("AlignmentCurveRadiusProfile"); 

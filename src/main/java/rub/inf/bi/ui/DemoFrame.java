@@ -134,7 +134,7 @@ public class DemoFrame extends JFrame {
 				@Override
 				public void handle(ActionEvent event) {
 					FileChooser fileChooser = new FileChooser();
-					fileChooser.setInitialDirectory(new File("./src/main/resources/"));
+					fileChooser.setInitialDirectory(new File("./src/main/resources/rdf/"));
 					fileChooser.setTitle("Open RDF File");
 					fileChooser.getExtensionFilters().add(
 							new ExtensionFilter("Resource Description Framework", "*.rdf", "*.ttl"));
@@ -168,7 +168,7 @@ public class DemoFrame extends JFrame {
 				@Override
 				public void handle(ActionEvent event) {
 					FileChooser fileChooser = new FileChooser();
-					fileChooser.setInitialDirectory(new File("./src/main/resources/"));
+					fileChooser.setInitialDirectory(new File("./src/main/resources/sparql/Geometry3D Tests/"));
 					fileChooser.setTitle("Open RDF File");
 					fileChooser.getExtensionFilters().add(
 							new ExtensionFilter("SPARQL or SHACL File", "*.ttl"));

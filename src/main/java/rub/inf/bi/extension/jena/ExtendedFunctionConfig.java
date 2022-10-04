@@ -11,6 +11,7 @@ import rub.inf.bi.extension.jena.sparql.geometry3D.PLIntersection3DGeometry;
 import rub.inf.bi.extension.jena.sparql.geometry3D.PPContains3D;
 import rub.inf.bi.extension.jena.sparql.geometry3D.PPIntersection3D;
 import rub.inf.bi.extension.jena.sparql.geometry3D.PPIntersection3DGeometry;
+import rub.inf.bi.extension.jena.sparql.geometry3D.PPoContains3D;
 import rub.inf.bi.extension.jena.sparql.geometry3D.TLIntersection3D;
 import rub.inf.bi.extension.jena.sparql.geometry3D.TLIntersection3DGeometry;
 import rub.inf.bi.extension.jena.sparql.geometry3D.TTIntersection3D;
@@ -42,6 +43,9 @@ public class ExtendedFunctionConfig {
             functionRegistry.put(ExtendedFunctionVocabolary.plIntersection3DGeometry.getURI(), PLIntersection3DGeometry.class);
             functionRegistry.put(ExtendedFunctionVocabolary.lpContains3D.getURI(), LPContains3D.class);
             functionRegistry.put(ExtendedFunctionVocabolary.ppContains3D.getURI(), PPContains3D.class);
+            // TODO: yifeng add new property for 'containing relationship of polygons'
+            functionRegistry.put(ExtendedFunctionVocabolary.ppoContains3D.getURI(), PPoContains3D.class);
+
             functionRegistry.put(ExtendedFunctionVocabolary.ppIntersection3D.getURI(), PPIntersection3D.class);
             functionRegistry.put(ExtendedFunctionVocabolary.ppIntersection3DGeometry.getURI(), PPIntersection3DGeometry.class);
             functionRegistry.put(ExtendedFunctionVocabolary.ttIntersection3D.getURI(), TTIntersection3D.class);

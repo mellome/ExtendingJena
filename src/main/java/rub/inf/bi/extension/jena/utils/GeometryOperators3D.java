@@ -1,10 +1,13 @@
 package rub.inf.bi.extension.jena.utils;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.math3.geometry.euclidean.threed.Line;
 import org.apache.commons.math3.geometry.euclidean.threed.Plane;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Polygon;
@@ -21,6 +24,53 @@ public class GeometryOperators3D {
 		return line.contains(point);
 	}
 	
+	// Yifeng
+	public static boolean contains3D(Geometry geom1, Geometry geom2) {
+		return geom1.contains(geom2);
+	}
+	
+	// Yifeng
+	public static boolean contains3D(Polygon mesh1, Polygon mesh2) {
+		//TODO: all edges of one plane must be contained in the other.
+		Coordinate[] fPoints2 = mesh2.getCoordinates();
+		ArrayList<Vector3D> tempList = new ArrayList<Vector3D>();
+		boolean result = true;
+		
+		if(fPoints2.length - 1 >= 3) {
+			Vector3D tempA = new Vector3D(
+				fPoints2[0].getX(), 
+				fPoints2[0].getY(), 
+				fPoints2[0].getZ()
+    		);
+    		Vector3D tempB = new Vector3D(
+				fPoints2[1].getX(), 
+				fPoints2[1].getY(), 
+				fPoints2[1].getZ()
+    		);
+    		Vector3D tempC = new Vector3D(
+				fPoints2[2].getX(), 
+				fPoints2[2].getY(), 
+				fPoints2[2].getZ()
+    		);
+			Vector3D tempD = new Vector3D(
+				fPoints2[3].getX(), 
+				fPoints2[3].getY(), 
+				fPoints2[3].getZ()
+    		);
+			tempList.add(tempA);
+			tempList.add(tempB);
+			tempList.add(tempC);
+			tempList.add(tempD);
+		}
+		for (Vector3D temp: tempList){
+			if (!contains3D(mesh1, temp)) {
+				result = false;
+				break;
+			}
+		}
+		return result;
+	}
+
 	public static Vector3D intersection3D(Line line, Vector3D start, Vector3D end) {
 		Line checkLine = new Line(start, end, GeometryOperators3D.TOLERANCE);
 	    return intersection3D(line, checkLine);

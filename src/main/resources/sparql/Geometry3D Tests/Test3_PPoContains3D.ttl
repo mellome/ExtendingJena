@@ -1,0 +1,8 @@
+SELECT ?polygon
+WHERE { 
+	my:Face2 geo:asWKT ?aWKT .
+	?polygon geo:asWKT ?bWKT .
+
+	FILTER (my:PPoContains3D(?aWKT, ?bWKT) 
+	&& !sameTerm(my:Face2, ?polygon))
+}
