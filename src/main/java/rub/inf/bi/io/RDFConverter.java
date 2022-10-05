@@ -426,9 +426,252 @@ public class RDFConverter {
 		save(filepath);
 	}
 
+	public void constructFacesOverlapping(String filepath) throws IOException {
+		
+		model = (OntModelImpl)ModelFactory.createOntologyModel();
+
+		model.setNsPrefixes(prefixes);
+		
+		StatementImpl statementRootA = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "Polygon"), 
+				new ResourceImpl(prefixes.get("my"), "Face1")
+		);
+		model.add(statementRootA);
+
+		StatementImpl statementRootB = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "Polygon"),
+				new ResourceImpl(prefixes.get("my"), "Face2")
+		);
+		model.add(statementRootB);
+		
+		//===================================================================
+		//ADD GEOMETRY TO RDF!
+		ArrayList<Coordinate> coordList = new ArrayList<Coordinate>();
+		coordList.add(new Coordinate(2.0, -1.0, 0.0));
+		coordList.add(new Coordinate(2.0, 1.0, 0.0));
+		coordList.add(new Coordinate(0.0, 1.0, 0.0));
+		coordList.add(new Coordinate(0.0, -1.0, 0.0));
+		coordList.add(new Coordinate(2.0, -1.0, 0.0)); // the last point should be the same to the first one
+
+		GeometryWrapper wrapper = GeometryWrapperFactory.createPolygon(coordList, prefixes.get("geo") + "wktLiteral");
+
+		model.add(new ResourceImpl(prefixes.get("my"),"Face1"), 
+			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+			  wrapper.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+		//===================================================================
+		
+		//===================================================================
+		//ADD GEOMETRY TO RDF!
+		ArrayList<Coordinate> coordList2 = new ArrayList<Coordinate>();
+		coordList2.add(new Coordinate(4.0, 0.0, 0.0));
+		coordList2.add(new Coordinate(4.0, 4.0, 0.0));
+		coordList2.add(new Coordinate(0.0, 4.0, 0.0));
+		coordList2.add(new Coordinate(0.0, 0.0, 0.0));
+		coordList2.add(new Coordinate(4.0, 0.0, 0.0)); // the last point should be the same to the first one
+
+		GeometryWrapper wrapper2 = GeometryWrapperFactory.createPolygon(coordList2, prefixes.get("geo") + "wktLiteral");
+
+		model.add(new ResourceImpl(prefixes.get("my"),"Face2"), 
+			  new PropertyImpl(prefixes.get("geo") + "asWKT"), 
+			  wrapper2.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+
+		save(filepath);
+	}
+
+	// This scenario contains POLYGONS, LINES and CUBES
+	public void constructScenario(String filepath) throws IOException {
+		
+		model = (OntModelImpl)ModelFactory.createOntologyModel();
+
+		model.setNsPrefixes(prefixes);
+		
+		// *************************
+		// *** Declare statements **
+		// *************************
+		//================Statements of Polygons=============================
+
+		StatementImpl statementRootPolygon1 = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "Polygon"), 
+				new ResourceImpl(prefixes.get("my"), "Polygon1")
+		);
+		model.add(statementRootPolygon1);
+
+		StatementImpl statementRootPolygonB = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "Polygon"),
+				new ResourceImpl(prefixes.get("my"), "Polygon2")
+		);
+		model.add(statementRootPolygonB);
+
+		StatementImpl statementRootPolygonC = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "Polygon"),
+				new ResourceImpl(prefixes.get("my"), "Polygon3")
+		);
+		model.add(statementRootPolygonC);
+		//===================================================================
+
+		//================Statements of Lines=============================
+		StatementImpl statementRootLine1 = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "LineString"), 
+				new ResourceImpl(prefixes.get("my"), "Line1")
+		);
+		model.add(statementRootLine1);
+
+		StatementImpl statementRootLine2 = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "LineString"),
+				new ResourceImpl(prefixes.get("my"), "Line2")
+		);
+		model.add(statementRootLine2);
+
+		StatementImpl statementRootLine3 = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "LineString"),
+				new ResourceImpl(prefixes.get("my"), "Line3")
+		);
+		model.add(statementRootLine3);
+
+		StatementImpl statementRootLine4 = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "LineString"),
+				new ResourceImpl(prefixes.get("my"), "Line4")
+		);
+		model.add(statementRootLine4);
+		//===================================================================
+
+		//================Statements of Cubes=============================
+		StatementImpl statementRootCubeA = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "MultiPolygon"), 
+				new ResourceImpl(prefixes.get("my"), "CubeA")
+		);
+		model.add(statementRootCubeA);
+
+		StatementImpl statementRootCubeB = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "MultiPolygon"), 
+				new ResourceImpl(prefixes.get("my"), "CubeB")
+		);
+		model.add(statementRootCubeB);
+		
+		StatementImpl statementRootCubeC = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "MultiPolygon"), 
+				new ResourceImpl(prefixes.get("my"), "CubeC")
+		);
+		model.add(statementRootCubeC);
+
+		//===================================================================
+		
+		
+		// *************************
+		// ** Add Geometry to RDF **
+		// *************************
+		//======================= Add Polygons ==============================
+		
+		// Polygon1
+		ArrayList<Coordinate> polygonCoordList1 = new ArrayList<Coordinate>();
+		polygonCoordList1.add(new Coordinate(2.0, -1.0, 0.0));
+		polygonCoordList1.add(new Coordinate(2.0, 1.0, 0.0));
+		polygonCoordList1.add(new Coordinate(0.0, 1.0, 0.0));
+		polygonCoordList1.add(new Coordinate(0.0, -1.0, 0.0));
+		polygonCoordList1.add(new Coordinate(2.0, -1.0, 0.0)); // the last point should be the same to the first one
+
+		// Polygon2
+		ArrayList<Coordinate> polygonCoordList2 = new ArrayList<Coordinate>();
+		polygonCoordList2.add(new Coordinate(4.0, 0.0, 0.0));
+		polygonCoordList2.add(new Coordinate(4.0, 4.0, 0.0));
+		polygonCoordList2.add(new Coordinate(0.0, 4.0, 0.0));
+		polygonCoordList2.add(new Coordinate(0.0, 0.0, 0.0));
+		polygonCoordList2.add(new Coordinate(4.0, 0.0, 0.0)); // the last point should be the same to the first one
+
+		// Polygon3
+		ArrayList<Coordinate> polygonCoordList3 = new ArrayList<Coordinate>();
+		polygonCoordList3.add(new Coordinate(4.0, 0.0, 0.0));
+		polygonCoordList3.add(new Coordinate(4.0, 4.0, 0.0));
+		polygonCoordList3.add(new Coordinate(0.0, 4.0, 0.0));
+		polygonCoordList3.add(new Coordinate(0.0, 0.0, 0.0));
+		polygonCoordList3.add(new Coordinate(4.0, 0.0, 0.0)); // the last point should be the same to the first one
+
+		//===================================================================
+		
+		//======================= Add Lines ==============================
+
+		// Line1
+		Coordinate[] lineCoordList1 = new Coordinate[2];
+		lineCoordList1[0] = new Coordinate(2.5, 0.0, 1.0);
+		lineCoordList1[1] = new Coordinate(2.5, 6.0, 2.0);
+		
+		// Line2
+		Coordinate[] lineCoordList2 = new Coordinate[2];
+		lineCoordList2[0] = new Coordinate(0.0, 4.0, 1.0);
+		lineCoordList2[1] = new Coordinate(4.0, 4.0, 2.0);
+		
+		//===================================================================	
+		
+		GeometryWrapper polygonWrapper1 = GeometryWrapperFactory.createPolygon(polygonCoordList1, prefixes.get("geo") + "wktLiteral");
+		GeometryWrapper polygonWrapper2 = GeometryWrapperFactory.createPolygon(polygonCoordList2, prefixes.get("geo") + "wktLiteral");
+		GeometryWrapper polygonWrapper3 = GeometryWrapperFactory.createPolygon(polygonCoordList3, prefixes.get("geo") + "wktLiteral");
+		
+		GeometryWrapper lineWrapper1 = GeometryWrapperFactory.createLineString(lineCoordList1, prefixes.get("geo") + "wktLiteral");
+		GeometryWrapper lineWrapper2 = GeometryWrapperFactory.createLineString(lineCoordList2, prefixes.get("geo") + "wktLiteral");
+		
+		// Add cubes
+		GeometryWrapper cubeA = this.createCube(4.0, new Coordinate(4.0, 4.0, 0.0));
+		GeometryWrapper cubeB = this.createCube(2.0, new Coordinate(2.0, 2.0, 0.0));
+
+
+		model.add(new ResourceImpl(prefixes.get("my"),"Polygon1"), 
+			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+			  polygonWrapper1.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+		model.add(new ResourceImpl(prefixes.get("my"),"Polygon2"), 
+			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+			  polygonWrapper2.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+		model.add(new ResourceImpl(prefixes.get("my"),"Polygon3"), 
+			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+			  polygonWrapper3.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+		model.add(new ResourceImpl(prefixes.get("my"),"Line1"), 
+				new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+				lineWrapper1.getLexicalForm(), 
+				WKTDatatype.INSTANCE
+		);
+		model.add(new ResourceImpl(prefixes.get("my"),"Line2"), 
+				new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+				lineWrapper2.getLexicalForm(), 
+				WKTDatatype.INSTANCE
+		);
+		model.add(new ResourceImpl(prefixes.get("my"),"CubeA"), 
+			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+			  cubeA.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+		model.add(new ResourceImpl(prefixes.get("my"),"CubeB"), 
+			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+			  cubeB.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+
+		save(filepath);
+	}
+
 	public static void main(String[] args) {
 		try {
-			new RDFConverter().constructFacesContaining("src/main/resources/rdf/3DFacesContainingTest.rdf");
+			new RDFConverter().constructScenario("src/main/resources/rdf/3DScenario.rdf");
 		} catch (IOException io) {
 			System.err.println("Something wrong by the IO!!!");
 		}
