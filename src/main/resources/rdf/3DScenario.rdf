@@ -15,24 +15,23 @@
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
   <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#RootModel">
     <sf:MultiPolygon>
+      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#CubeB">
+        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
+        >MULTIPOLYGON Z(((2 2 0, 2 4 0, 4 4 0, 4 2 0, 2 2 0)), ((2 2 2, 4 2 2, 4 4 2, 2 4 2, 2 2 2)), ((2 2 0, 2 4 0, 2 4 2, 2 2 2, 2 2 0)), ((4 2 0, 4 4 0, 4 4 2, 4 2 2, 4 2 0)), ((2 2 0, 4 2 0, 4 2 2, 2 2 2, 2 2 0)), ((2 4 0, 4 4 0, 4 4 2, 2 4 2, 2 4 0)))</geo:asWKT>
+      </rdf:Description>
+    </sf:MultiPolygon>
+    <sf:MultiPolygon>
       <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#CubeA">
         <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
         >MULTIPOLYGON Z(((4 4 0, 4 8 0, 8 8 0, 8 4 0, 4 4 0)), ((4 4 4, 8 4 4, 8 8 4, 4 8 4, 4 4 4)), ((4 4 0, 4 8 0, 4 8 4, 4 4 4, 4 4 0)), ((8 4 0, 8 8 0, 8 8 4, 8 4 4, 8 4 0)), ((4 4 0, 8 4 0, 8 4 4, 4 4 4, 4 4 0)), ((4 8 0, 8 8 0, 8 8 4, 4 8 4, 4 8 0)))</geo:asWKT>
       </rdf:Description>
     </sf:MultiPolygon>
-    <sf:Polygon>
-      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#Polygon1">
+    <sf:LineString>
+      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#Line2">
         <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
-        >POLYGON Z((2 -1 0, 2 1 0, 0 1 0, 0 -1 0, 2 -1 0))</geo:asWKT>
+        >LINESTRING Z(0 4 1, 4 4 2)</geo:asWKT>
       </rdf:Description>
-    </sf:Polygon>
-    <sf:LineString rdf:resource="https://www.inf.bi.ruhr-uni-bochum.de/jena/#Line3"/>
-    <sf:Polygon>
-      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#Polygon3">
-        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
-        >POLYGON Z((4 0 0, 4 4 0, 0 4 0, 0 0 0, 4 0 0))</geo:asWKT>
-      </rdf:Description>
-    </sf:Polygon>
+    </sf:LineString>
     <sf:LineString>
       <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#Line1">
         <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
@@ -45,19 +44,23 @@
         >POLYGON Z((4 0 0, 4 4 0, 0 4 0, 0 0 0, 4 0 0))</geo:asWKT>
       </rdf:Description>
     </sf:Polygon>
-    <sf:LineString rdf:resource="https://www.inf.bi.ruhr-uni-bochum.de/jena/#Line4"/>
-    <sf:MultiPolygon>
-      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#CubeB">
+    <sf:Polygon>
+      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#Polygon1">
         <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
-        >MULTIPOLYGON Z(((2 2 0, 2 4 0, 4 4 0, 4 2 0, 2 2 0)), ((2 2 2, 4 2 2, 4 4 2, 2 4 2, 2 2 2)), ((2 2 0, 2 4 0, 2 4 2, 2 2 2, 2 2 0)), ((4 2 0, 4 4 0, 4 4 2, 4 2 2, 4 2 0)), ((2 2 0, 4 2 0, 4 2 2, 2 2 2, 2 2 0)), ((2 4 0, 4 4 0, 4 4 2, 2 4 2, 2 4 0)))</geo:asWKT>
+        >POLYGON Z((2 -1 0, 2 1 0, 0 1 0, 0 -1 0, 2 -1 0))</geo:asWKT>
       </rdf:Description>
-    </sf:MultiPolygon>
-    <sf:LineString>
-      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#Line2">
+    </sf:Polygon>
+    <sf:Point>
+      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#Point2">
         <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
-        >LINESTRING Z(0 4 1, 4 4 2)</geo:asWKT>
+        >POINT(5 0)</geo:asWKT>
       </rdf:Description>
-    </sf:LineString>
-    <sf:MultiPolygon rdf:resource="https://www.inf.bi.ruhr-uni-bochum.de/jena/#CubeC"/>
+    </sf:Point>
+    <sf:Point>
+      <rdf:Description rdf:about="https://www.inf.bi.ruhr-uni-bochum.de/jena/#Point1">
+        <geo:asWKT rdf:datatype="http://www.opengis.net/ont/geosparql#wktLiteral"
+        >POINT(2.5 3)</geo:asWKT>
+      </rdf:Description>
+    </sf:Point>
   </rdf:Description>
 </rdf:RDF>

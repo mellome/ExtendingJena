@@ -484,7 +484,7 @@ public class RDFConverter {
 		save(filepath);
 	}
 
-	// This scenario contains POLYGONS, LINES and CUBES
+	// This scenario contains POINTS, POLYGONS, LINES and CUBES
 	public void constructScenario(String filepath) throws IOException {
 		
 		model = (OntModelImpl)ModelFactory.createOntologyModel();
@@ -494,6 +494,23 @@ public class RDFConverter {
 		// *************************
 		// *** Declare statements **
 		// *************************
+		//================Statements of POINTS=============================
+
+		StatementImpl statementRootPoint1 = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "Point"), 
+				new ResourceImpl(prefixes.get("my"), "Point1")
+		);
+		model.add(statementRootPoint1);
+
+		StatementImpl statementRootPoint2 = new StatementImpl(
+				new ResourceImpl(prefixes.get("my"),"RootModel"), 
+				new PropertyImpl(prefixes.get("sf") + "Point"),
+				new ResourceImpl(prefixes.get("my"), "Point2")
+		);
+		model.add(statementRootPoint2);
+
+		//===================================================================
 		//================Statements of Polygons=============================
 
 		StatementImpl statementRootPolygon1 = new StatementImpl(
@@ -503,19 +520,13 @@ public class RDFConverter {
 		);
 		model.add(statementRootPolygon1);
 
-		StatementImpl statementRootPolygonB = new StatementImpl(
+		StatementImpl statementRootPolygon2 = new StatementImpl(
 				new ResourceImpl(prefixes.get("my"),"RootModel"), 
 				new PropertyImpl(prefixes.get("sf") + "Polygon"),
 				new ResourceImpl(prefixes.get("my"), "Polygon2")
 		);
-		model.add(statementRootPolygonB);
+		model.add(statementRootPolygon2);
 
-		StatementImpl statementRootPolygonC = new StatementImpl(
-				new ResourceImpl(prefixes.get("my"),"RootModel"), 
-				new PropertyImpl(prefixes.get("sf") + "Polygon"),
-				new ResourceImpl(prefixes.get("my"), "Polygon3")
-		);
-		model.add(statementRootPolygonC);
 		//===================================================================
 
 		//================Statements of Lines=============================
@@ -533,19 +544,6 @@ public class RDFConverter {
 		);
 		model.add(statementRootLine2);
 
-		StatementImpl statementRootLine3 = new StatementImpl(
-				new ResourceImpl(prefixes.get("my"),"RootModel"), 
-				new PropertyImpl(prefixes.get("sf") + "LineString"),
-				new ResourceImpl(prefixes.get("my"), "Line3")
-		);
-		model.add(statementRootLine3);
-
-		StatementImpl statementRootLine4 = new StatementImpl(
-				new ResourceImpl(prefixes.get("my"),"RootModel"), 
-				new PropertyImpl(prefixes.get("sf") + "LineString"),
-				new ResourceImpl(prefixes.get("my"), "Line4")
-		);
-		model.add(statementRootLine4);
 		//===================================================================
 
 		//================Statements of Cubes=============================
@@ -563,19 +561,18 @@ public class RDFConverter {
 		);
 		model.add(statementRootCubeB);
 		
-		StatementImpl statementRootCubeC = new StatementImpl(
-				new ResourceImpl(prefixes.get("my"),"RootModel"), 
-				new PropertyImpl(prefixes.get("sf") + "MultiPolygon"), 
-				new ResourceImpl(prefixes.get("my"), "CubeC")
-		);
-		model.add(statementRootCubeC);
-
 		//===================================================================
 		
 		
 		// *************************
 		// ** Add Geometry to RDF **
 		// *************************
+		//======================= Add Points ==============================
+		Coordinate pointCoord1 = new Coordinate(2.5, 3);
+		Coordinate pointCoord2 = new Coordinate(5.0, 0);
+
+		//===================================================================		
+
 		//======================= Add Polygons ==============================
 		
 		// Polygon1
@@ -594,14 +591,6 @@ public class RDFConverter {
 		polygonCoordList2.add(new Coordinate(0.0, 0.0, 0.0));
 		polygonCoordList2.add(new Coordinate(4.0, 0.0, 0.0)); // the last point should be the same to the first one
 
-		// Polygon3
-		ArrayList<Coordinate> polygonCoordList3 = new ArrayList<Coordinate>();
-		polygonCoordList3.add(new Coordinate(4.0, 0.0, 0.0));
-		polygonCoordList3.add(new Coordinate(4.0, 4.0, 0.0));
-		polygonCoordList3.add(new Coordinate(0.0, 4.0, 0.0));
-		polygonCoordList3.add(new Coordinate(0.0, 0.0, 0.0));
-		polygonCoordList3.add(new Coordinate(4.0, 0.0, 0.0)); // the last point should be the same to the first one
-
 		//===================================================================
 		
 		//======================= Add Lines ==============================
@@ -618,9 +607,11 @@ public class RDFConverter {
 		
 		//===================================================================	
 		
+		GeometryWrapper pointWrapper1 = GeometryWrapperFactory.createPoint(pointCoord1, prefixes.get("geo") + "wktLiteral");
+		GeometryWrapper pointWrapper2 = GeometryWrapperFactory.createPoint(pointCoord2, prefixes.get("geo") + "wktLiteral");
+
 		GeometryWrapper polygonWrapper1 = GeometryWrapperFactory.createPolygon(polygonCoordList1, prefixes.get("geo") + "wktLiteral");
 		GeometryWrapper polygonWrapper2 = GeometryWrapperFactory.createPolygon(polygonCoordList2, prefixes.get("geo") + "wktLiteral");
-		GeometryWrapper polygonWrapper3 = GeometryWrapperFactory.createPolygon(polygonCoordList3, prefixes.get("geo") + "wktLiteral");
 		
 		GeometryWrapper lineWrapper1 = GeometryWrapperFactory.createLineString(lineCoordList1, prefixes.get("geo") + "wktLiteral");
 		GeometryWrapper lineWrapper2 = GeometryWrapperFactory.createLineString(lineCoordList2, prefixes.get("geo") + "wktLiteral");
@@ -629,7 +620,16 @@ public class RDFConverter {
 		GeometryWrapper cubeA = this.createCube(4.0, new Coordinate(4.0, 4.0, 0.0));
 		GeometryWrapper cubeB = this.createCube(2.0, new Coordinate(2.0, 2.0, 0.0));
 
-
+		model.add(new ResourceImpl(prefixes.get("my"),"Point1"), 
+			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+			  pointWrapper1.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
+		model.add(new ResourceImpl(prefixes.get("my"),"Point2"), 
+			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
+			  pointWrapper2.getLexicalForm(), 
+			  WKTDatatype.INSTANCE
+		);
 		model.add(new ResourceImpl(prefixes.get("my"),"Polygon1"), 
 			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
 			  polygonWrapper1.getLexicalForm(), 
@@ -638,11 +638,6 @@ public class RDFConverter {
 		model.add(new ResourceImpl(prefixes.get("my"),"Polygon2"), 
 			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
 			  polygonWrapper2.getLexicalForm(), 
-			  WKTDatatype.INSTANCE
-		);
-		model.add(new ResourceImpl(prefixes.get("my"),"Polygon3"), 
-			  new PropertyImpl(prefixes.get("geo"), "asWKT"), 
-			  polygonWrapper3.getLexicalForm(), 
 			  WKTDatatype.INSTANCE
 		);
 		model.add(new ResourceImpl(prefixes.get("my"),"Line1"), 

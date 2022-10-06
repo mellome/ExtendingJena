@@ -28,8 +28,8 @@ public class ExtendedFunctionVocabolary {
     public static final Property lpContains3D = property("LPContains3D"); //Line contains Point
     public static final Property ppContains3D = property("LPContains3D"); //Plane contains Point
     
-    // TODO: yifeng add new property for 'containing relationship of polygons'
-    public static final Property ppoContains3D = property("PPoContains3D"); //Plane contains plane
+    // TODO: yifeng 
+    public static final Property topologicalWithin = property("TopologicalWithin"); // Everything in 3D
 
     public static final Property ppIntersection3D = property("PPIntersection3D"); //Plane and plane
     public static final Property ppIntersection3DGeometry = property("PPIntersection3DGeometry"); //Geometry of Plane and plane
