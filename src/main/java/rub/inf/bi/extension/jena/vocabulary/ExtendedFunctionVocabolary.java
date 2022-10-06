@@ -30,6 +30,7 @@ public class ExtendedFunctionVocabolary {
     
     // TODO: yifeng 
     public static final Property topologicalWithin = property("TopologicalWithin"); // Everything in 3D
+    public static final Property topologicalDisjoint = property("TopologicalDisjoint"); // Everything in 3D
 
     public static final Property ppIntersection3D = property("PPIntersection3D"); //Plane and plane
     public static final Property ppIntersection3DGeometry = property("PPIntersection3DGeometry"); //Geometry of Plane and plane
