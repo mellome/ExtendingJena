@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><sparql xmlns="http://www.w3.org/2005/sparql-results#">
+  <head>
+    <variable name="GeometryA"/>
+    <variable name="GeometryB"/>
+  </head>
+  <results>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Point1</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Polygon2</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Point1</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Line1</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Point1</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#CubeB</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#CubeB</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Polygon2</uri>
+      </binding>
+    </result>
+  </results>
+</sparql>
