@@ -62,11 +62,11 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "inserts = [a, b, c, d];",
+      "Code": "inserts = [a, b, c, d, e];",
       "Id": "61e44d5eee674f26b9e8103bb75c7aa8",
       "Inputs": [
         {
-          "Id": "2ced0f56f25741a595285410acbe3040",
+          "Id": "d3551965b503411abbba0a1647d7b49a",
           "Name": "a",
           "Description": "a",
           "UsingDefaultValue": false,
@@ -75,7 +75,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "16ca1b3d904c4791870af6616e7716bc",
+          "Id": "b95a2b21c1ed497da8c4c3f024ac8ab5",
           "Name": "b",
           "Description": "b",
           "UsingDefaultValue": false,
@@ -84,7 +84,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "c377ee8e73814e758ed0864015ddf2ec",
+          "Id": "8e5eae95129d422f948db85d48507278",
           "Name": "c",
           "Description": "c",
           "UsingDefaultValue": false,
@@ -93,9 +93,18 @@
           "KeepListStructure": false
         },
         {
-          "Id": "6e2979a4e0c14417ac441b442841cef9",
+          "Id": "06d975fdefc9464ea6d49179708c0492",
           "Name": "d",
           "Description": "d",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "38eec808056246a787a962ed8eb59029",
+          "Name": "e",
+          "Description": "e",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -104,7 +113,7 @@
       ],
       "Outputs": [
         {
-          "Id": "9927f4b8ea064de09457227f5e636a0f",
+          "Id": "3eef55d4f45e4c86a90e79d1496d6144",
           "Name": "",
           "Description": "inserts",
           "UsingDefaultValue": false,
@@ -269,12 +278,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "// Geometry Types\n\"POINT\";\n\"MULTIPOINT\";\n\"LINESTRING\";\n\"LINEARRING\";\n\"MULTILINESTRING\";\n\"POLYGON\";\n\"MULTIPOLYGON\";\n\"GEOMETRYCOLLECTION\";\n// Geometry List\n[\"POINT\",\"MULTIPOINT\"];\n\"POLYGON1\";\n\"POLYGON2\";\n\"LINE1\";\n\"LINE2\";",
+      "Code": "// Geometry Types\n\"POINT\";\n\"MULTIPOINT\";\n\"LINESTRING\";\n\"LINEARRING\";\n\"MULTILINESTRING\";\n\"POLYGON\";\n\"MULTIPOLYGON\";\n\"GEOMETRYCOLLECTION\";\n// Geometry List\n[\"POINT\",\"MULTIPOINT\"];\n\"POLYGON1\";\n\"POLYGON2\";\n\"LINE1\";\n\"LINE2\";\n\"POINT1\";",
       "Id": "97a460bf0a4c4dc4b8db487e25973aa9",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "aca16476632a4cc8b57135daa9752c3e",
+          "Id": "69ea7291dd9e4eb182daf0a0ea27a04d",
           "Name": "",
           "Description": "Value of expression at line 2",
           "UsingDefaultValue": false,
@@ -283,7 +292,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "f226bc2fe18244c2bed810d184b3fb39",
+          "Id": "6135a4d04ee748e49c2b008a278d77b0",
           "Name": "",
           "Description": "Value of expression at line 3",
           "UsingDefaultValue": false,
@@ -292,7 +301,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "032c5a08f5944b83b37f59570bffd973",
+          "Id": "970aaa20b44549a1aa4dd0a7d8c6fa08",
           "Name": "",
           "Description": "Value of expression at line 4",
           "UsingDefaultValue": false,
@@ -301,7 +310,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "e60c25b3b28b42b790a294e81c3a27cf",
+          "Id": "9732f8fd46124f30b331764ff40700d0",
           "Name": "",
           "Description": "Value of expression at line 5",
           "UsingDefaultValue": false,
@@ -310,7 +319,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "9271826643c94c22b41bb91372321024",
+          "Id": "f86e7caaf88049aba88632869783b879",
           "Name": "",
           "Description": "Value of expression at line 6",
           "UsingDefaultValue": false,
@@ -319,7 +328,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "41d34920d0194050b370a87fb812acf0",
+          "Id": "7e94ae436d3b4dfdbbcee1dc8f6826e9",
           "Name": "",
           "Description": "Value of expression at line 7",
           "UsingDefaultValue": false,
@@ -328,7 +337,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "11a068ceebb04b3f9817d9fd0c22f290",
+          "Id": "eae307cd3f0143ccae23be2d18bc9edb",
           "Name": "",
           "Description": "Value of expression at line 8",
           "UsingDefaultValue": false,
@@ -337,7 +346,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "693449140c234306b48c2748ce269bd5",
+          "Id": "717004191cac4dcb8413c416cce4e743",
           "Name": "",
           "Description": "Value of expression at line 9",
           "UsingDefaultValue": false,
@@ -346,7 +355,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "7853121237bd43a7b06e5b4dc07c043a",
+          "Id": "70b49bdc5c3f48779ff400784d8534d1",
           "Name": "",
           "Description": "Value of expression at line 11",
           "UsingDefaultValue": false,
@@ -355,7 +364,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "c01520d3a93c49b397bc92f9f685d61c",
+          "Id": "04589f6bdd2a4649a67e71b084f553ec",
           "Name": "",
           "Description": "Value of expression at line 12",
           "UsingDefaultValue": false,
@@ -364,7 +373,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "83f02d8250904cd29fa1f3e0c72642bf",
+          "Id": "a7e842c6988f44deafee4a988e1ce0bd",
           "Name": "",
           "Description": "Value of expression at line 13",
           "UsingDefaultValue": false,
@@ -373,7 +382,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "da301dc14ac84be696669bec627cce66",
+          "Id": "e77110324a7c4ccf97cc003c84e66e0c",
           "Name": "",
           "Description": "Value of expression at line 14",
           "UsingDefaultValue": false,
@@ -382,9 +391,18 @@
           "KeepListStructure": false
         },
         {
-          "Id": "642713220d884e7c84796b928f0046ef",
+          "Id": "8257c4f80096491099a95bb3c89b2b7b",
           "Name": "",
           "Description": "Value of expression at line 15",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4908cbd9c12746be8484646fe4defe88",
+          "Name": "",
+          "Description": "Value of expression at line 16",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -464,7 +482,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\nINDEX_EN = ['A','B','C','D'];\r\nINDEX_NUM = ['1','2','3','4'];\r\nINDEX = [];\r\n\r\nif IN[2] == \"EN\":\r\n    INDEX = INDEX_EN\r\nif IN[2] == \"NUM\":\r\n    INDEX = INDEX_NUM\r\n\r\n# Place your code below this line\r\ndef name_concatenation(geo_name:str, geo_number:int, index = INDEX):\r\n    if geo_number > len(index):\r\n        raise ValueError(\"No more indexes available!\")\r\n \r\n    geo_concat = [geo_name + index[i] for i in range(geo_number)]\r\n    return geo_concat\r\n\r\ndef name_lst_concatenation(geo_name_lst:list, geo_number:int, index = INDEX):\r\n    if geo_number > len(index):\r\n        raise ValueError(\"No more indexes available!\")\r\n    \r\n    geo_concat = [[geo_name + index[i] for i in range(geo_number)] for geo_name in geo_name_lst]\r\n    return geo_concat\r\n\r\n\t\r\n# Assign your output to the OUT variable.\r\nif isinstance(IN[0], str):\r\n    OUT = name_concatenation(IN[0], IN[1])\r\nelse:\r\n    OUT = name_lst_concatenation(IN[0], IN[1])\r\n#OUT = concatenation(IN[0], IN[1])",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\nINDEX_EN = ['A','B','C','D'];\r\nINDEX_NUM = ['1','2','3','4'];\r\nINDEX = [];\r\n\r\nif IN[2] == \"EN\":\r\n    INDEX = INDEX_EN\r\nif IN[2] == \"NUM\":\r\n    INDEX = INDEX_NUM\r\n\"\"\"\r\n# Place your code below this line\r\ndef name_concatenation(geo_name:str, geo_number:int, index = INDEX):\r\n    if geo_number > len(index):\r\n        raise ValueError(\"No more indexes available!\")\r\n \r\n    geo_concat = [geo_name + index[i] for i in range(geo_number)]\r\n    return geo_concat\r\n\r\ndef name_lst_concatenation(geo_name_lst:list, geo_number:int, index = INDEX):\r\n    if geo_number > len(index):\r\n        raise ValueError(\"No more indexes available!\")\r\n    \r\n    geo_concat = [[geo_name + index[i] for i in range(geo_number)] for geo_name in geo_name_lst]\r\n    return geo_concat\r\n\r\n\r\n# Assign your output to the OUT variable.\r\nif isinstance(IN[0], str):\r\n    OUT = name_concatenation(IN[0], IN[1])\r\nelse:\r\n    OUT = name_lst_concatenation(IN[0], IN[1])\r\n\"\"\"\r\nOUT = \"\"",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "c5ca528b4d9f4975bf11edd564038195",
@@ -1126,15 +1144,15 @@
       "WasExecuted": true,
       "Camera": {
         "Name": "8e0e97ac-4563-4934-8ae8-f407ab7fb7ce Preview",
-        "EyeX": -17.73106575012207,
-        "EyeY": 17.473297119140625,
-        "EyeZ": -0.33863449096679688,
-        "LookX": 12.73106575012207,
-        "LookY": -6.473297119140625,
-        "LookZ": -7.6613655090332031,
-        "UpX": 0.16585694253444672,
-        "UpY": 0.98108589649200439,
-        "UpZ": -0.099810212850570679
+        "EyeX": -17.0,
+        "EyeY": 24.0,
+        "EyeZ": 50.0,
+        "LookX": 12.0,
+        "LookY": -13.0,
+        "LookZ": -58.0,
+        "UpX": 0.0,
+        "UpY": 1.0,
+        "UpZ": 0.0
       },
       "NodeType": "ExtensionNode",
       "Id": "8e0e97ac456349348ae8f407ab7fb7ce",
@@ -1369,8 +1387,8 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "C:\\Users\\nobita_yhe\\Desktop\\example.rdf",
-      "InputValue": ".\\example.rdf",
+      "HintPath": "C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\example.rdf",
+      "InputValue": "..\\..\\..\\..\\..\\..\\..\\resources\\rdf\\example.rdf",
       "NodeType": "ExtensionNode",
       "Id": "c35aef94b79f494486311eadd2b8352d",
       "Inputs": [],
@@ -1426,6 +1444,74 @@
       ],
       "Replication": "Auto",
       "Description": "Write the text content to a file specified by the path\n\nFileSystem.WriteText (filePath: string, text: string): void"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Phython-Standard- und DesignScript-Bibliotheken laden\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Die Eingaben für diesen Block werden in Form einer Liste in den IN-Variablen gespeichert.\r\ndataEnteringNode = IN\r\n\r\ngeometry = dataEnteringNode[0];\r\nname = dataEnteringNode[1];\r\nif isinstance(dataEnteringNode[1], list):\r\n    name = dataEnteringNode[1][0]\r\ngeometryType = dataEnteringNode[2];\r\nexampleInstanceNamespace = dataEnteringNode[3];\r\ngeoSparqlNamespace = dataEnteringNode[4];\r\n\r\n# Code unterhalb dieser Linie platzieren\r\n\r\ndef multipolygon2WKT():\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n      \r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:MultiPolygon>\";\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\ndef linestring2WKT():\r\n    wktLiteral = \"<sf:LINESTRING>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"LINESTRING Z(\";\r\n    \r\n    originP = geometry[0];\r\n    endP = geometry[1]\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    wktLiteral += \", \" + str(endP.X) + \" \" +  str(endP.Y) + \" \" +  str(endP.Z); # end point\r\n    wktLiteral += \")\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:LINESTRING>\";\r\n    return wktLiteral\r\n\r\ndef point2WKT():\r\n    wktLiteral = \"<sf:POINT>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POINT (\";\r\n  \r\n    wktLiteral += str(geometry.X) + \" \" +  str(geometry.Y) + \" \" +  str(geometry.Z)\r\n\r\n    wktLiteral += \")\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POINT>\";\r\n    return wktLiteral\r\n\r\nres = \"\"\r\n# Weisen Sie Ihre Ausgabe der OUT-Variablen zu.\r\nif(geometryType.upper() == \"MULTIPOLYGON\"):\r\n    res = multipolygon2WKT()\r\n    \r\nif(geometryType.upper() == \"POLYGON\"):\r\n    res = polygon2WKT()\r\n    \r\nif(geometryType.upper() == \"LINESTRING\"):\r\n    res = linestring2WKT()\r\n\r\nif(geometryType.upper() == \"POINT\"):\r\n    res = point2WKT()\r\n\r\nOUT = res\r\n\r\n",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "bfdc4615c6274338b4d5becf5c10fbc6",
+      "Inputs": [
+        {
+          "Id": "01668464677e4cd68af8a7c380068582",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "98612626b2e94ab695ad772fb33a34b3",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "73a256007fda473898f79397d214ff2e",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6825a25d266c49d3ad2faba7bfb8bd0e",
+          "Name": "IN[3]",
+          "Description": "Input #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5f64c2e998a8416f83301a499c489d25",
+          "Name": "IN[4]",
+          "Description": "Input #4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "84313ef731d34cd1bf1d4c3052f26af8",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
     }
   ],
   "Connectors": [
@@ -1435,9 +1521,9 @@
       "Id": "be50583b1b1942ff9629a13d99be1aca"
     },
     {
-      "Start": "9927f4b8ea064de09457227f5e636a0f",
+      "Start": "3eef55d4f45e4c86a90e79d1496d6144",
       "End": "1bf83e6357a44ed88c6b44b3703edca8",
-      "Id": "96fa87ce9e774ca3b68e06e5b66b8ef2"
+      "Id": "2622abeab2604903b768fa0619144415"
     },
     {
       "Start": "c6f0f1e62fef44aeb70b601c869d460c",
@@ -1470,49 +1556,59 @@
       "Id": "c62a284517704c08a9cd07adf48a8f2b"
     },
     {
-      "Start": "032c5a08f5944b83b37f59570bffd973",
+      "Start": "69ea7291dd9e4eb182daf0a0ea27a04d",
+      "End": "73a256007fda473898f79397d214ff2e",
+      "Id": "a56960f70a3a47efbdd2d2b803f09c50"
+    },
+    {
+      "Start": "970aaa20b44549a1aa4dd0a7d8c6fa08",
       "End": "c5ac601e9ca34ffa8fcb6fa084987d9a",
-      "Id": "ff1a124cca7b48f6bd930c45bbb9ce74"
+      "Id": "30855468229c4e2fa8a41e4402510193"
     },
     {
-      "Start": "032c5a08f5944b83b37f59570bffd973",
+      "Start": "970aaa20b44549a1aa4dd0a7d8c6fa08",
       "End": "451563da36884068a2161f8d73f96be5",
-      "Id": "bc9b60d26eeb46909ae0b045c1bb2e59"
+      "Id": "68ff9b6717f44ed58bc0a94136a70ae0"
     },
     {
-      "Start": "41d34920d0194050b370a87fb812acf0",
+      "Start": "7e94ae436d3b4dfdbbcee1dc8f6826e9",
       "End": "f7020ecec52646d583974d7d53d5b9e3",
-      "Id": "f977afe4648d4300a2c117a6f7f42e03"
+      "Id": "4e7cab38c12c42f1ab5001c525f8b7c8"
     },
     {
-      "Start": "41d34920d0194050b370a87fb812acf0",
+      "Start": "7e94ae436d3b4dfdbbcee1dc8f6826e9",
       "End": "6564501c55b5436a9428bddbc438bf0e",
-      "Id": "f583fa55c50b4afb9e39fd8a407c6df2"
+      "Id": "fd63d89bde3c4eba9260475b24cde9b0"
     },
     {
-      "Start": "693449140c234306b48c2748ce269bd5",
+      "Start": "717004191cac4dcb8413c416cce4e743",
       "End": "63b9c0a1d2804d13b9be76cf536d3e70",
-      "Id": "9d9c298af9f8488c9bf8650ad0c348b4"
+      "Id": "bcc8eeaefe42440d8bcc447c0a73c38f"
     },
     {
-      "Start": "c01520d3a93c49b397bc92f9f685d61c",
+      "Start": "04589f6bdd2a4649a67e71b084f553ec",
       "End": "1ac867b5ef354a4580f06cb8f30d8672",
-      "Id": "e7393bfb7189455faa741e388344749a"
+      "Id": "eb6072c557ed408c8f6cf845888200cb"
     },
     {
-      "Start": "83f02d8250904cd29fa1f3e0c72642bf",
+      "Start": "a7e842c6988f44deafee4a988e1ce0bd",
       "End": "0429bbf0f2e64054ad269493cec091d4",
-      "Id": "5911ce7ed3de408b8a99ee8b1c2a7ee0"
+      "Id": "720f6ae00a4a45ef9dac6d98394c17b0"
     },
     {
-      "Start": "da301dc14ac84be696669bec627cce66",
+      "Start": "e77110324a7c4ccf97cc003c84e66e0c",
       "End": "b01bfb6ac3944b059e6318204366b8e2",
-      "Id": "fb3db7ccbad64d8787fc93690806afc6"
+      "Id": "24c31ef57471440689a03a3b51751dd4"
     },
     {
-      "Start": "642713220d884e7c84796b928f0046ef",
+      "Start": "8257c4f80096491099a95bb3c89b2b7b",
       "End": "8538d760b6b244408cc3ad59ab11a570",
-      "Id": "82416b40cce74a96b5196d0d445cc1db"
+      "Id": "90e5cf30cee54be7b786148cd9bf01f0"
+    },
+    {
+      "Start": "4908cbd9c12746be8484646fe4defe88",
+      "End": "98612626b2e94ab695ad772fb33a34b3",
+      "Id": "f3c3f930d38d4b528db37dcda9a3cb51"
     },
     {
       "Start": "2769ba043845426fba267cb4438486f4",
@@ -1523,6 +1619,11 @@
       "Start": "b821814cbd0544419658bed9b8d02067",
       "End": "f5faa7e0a5d149f982cbe4a98df55591",
       "Id": "9e178f9398954aee82363d2b127a5c84"
+    },
+    {
+      "Start": "ebd52d91722c4b258923a0f21bfbeef8",
+      "End": "01668464677e4cd68af8a7c380068582",
+      "Id": "927f99ba328f4d0f9d14f4618b945542"
     },
     {
       "Start": "2e91accce2ac448ea9ab10f548b5434f",
@@ -1576,43 +1677,53 @@
     },
     {
       "Start": "a5640c36aa874fb99957c7fbfc97bd6e",
+      "End": "6825a25d266c49d3ad2faba7bfb8bd0e",
+      "Id": "3d55e24a2b6244f9b687a2848e0b7799"
+    },
+    {
+      "Start": "a5640c36aa874fb99957c7fbfc97bd6e",
       "End": "fb980cc6f8a042408eb5b8d26562ee55",
-      "Id": "50c6936ac52641aa9d3fc889b5d18aa4"
+      "Id": "2ee7ef1728274f4eaa49421c64b7e1a9"
     },
     {
       "Start": "a5640c36aa874fb99957c7fbfc97bd6e",
-      "End": "6cf66f51b5f24eeb9d982ea822d70ec8",
-      "Id": "c0fdda36cd064c0d96cb29fe21eea6b7"
+      "End": "0bc34479b73640a38dd011ce9beeb2a9",
+      "Id": "bc513fc9f00744399deffdd9ff2a107f"
     },
     {
       "Start": "a5640c36aa874fb99957c7fbfc97bd6e",
-      "End": "60db302f0f6948cd854d044875800a1a",
-      "Id": "0b748b6a743e437c80ea5d81580df168"
+      "End": "00a383edfa12485381a6a9fd958a9586",
+      "Id": "5c87ce9238c44dcfadf5952d1671e76f"
     },
     {
       "Start": "a5640c36aa874fb99957c7fbfc97bd6e",
-      "End": "1dbea3b831fe43118547e35ee00834b4",
-      "Id": "653f2af0b0454d088dac68c56d50e36e"
+      "End": "7892e7485e9a49949993db776c79e1f2",
+      "Id": "c09afae269444490b790fa51aebc2913"
+    },
+    {
+      "Start": "b8fce02e7523459b989de8e70c67fbe7",
+      "End": "5f64c2e998a8416f83301a499c489d25",
+      "Id": "63b046ec6bdf4eafb0cfe526bd2a855f"
     },
     {
       "Start": "b8fce02e7523459b989de8e70c67fbe7",
       "End": "017679051d804efcbff1ab5769d8a3d6",
-      "Id": "b534943c764f4b00b16b4052607bd78a"
+      "Id": "7b33fbbcbc7947c39ca51c59d37516b6"
     },
     {
       "Start": "b8fce02e7523459b989de8e70c67fbe7",
-      "End": "0bc34479b73640a38dd011ce9beeb2a9",
-      "Id": "fcfaedd80cf341c38782ea2b6c6acbd0"
+      "End": "6cf66f51b5f24eeb9d982ea822d70ec8",
+      "Id": "5f6e3dabfe5a4df5b58c97b47acd2ee9"
     },
     {
       "Start": "b8fce02e7523459b989de8e70c67fbe7",
-      "End": "7892e7485e9a49949993db776c79e1f2",
-      "Id": "0bd1f60925c34d719655b8918ffd4a12"
+      "End": "1dbea3b831fe43118547e35ee00834b4",
+      "Id": "c1f7baf575884338af91636ed0a60d81"
     },
     {
       "Start": "b8fce02e7523459b989de8e70c67fbe7",
-      "End": "00a383edfa12485381a6a9fd958a9586",
-      "Id": "9cf45985859747168529e8482ca4f032"
+      "End": "60db302f0f6948cd854d044875800a1a",
+      "Id": "ab805e4bc8664a20907ec9923316916b"
     },
     {
       "Start": "3079abf98a7148b6962e2e0267973632",
@@ -1621,8 +1732,8 @@
     },
     {
       "Start": "8d85d5be604b4ffbb2ea2e258879ca0e",
-      "End": "6e2979a4e0c14417ac441b442841cef9",
-      "Id": "7b1a0a7598f642e5bc9226752e0f2a67"
+      "End": "06d975fdefc9464ea6d49179708c0492",
+      "Id": "65468bbaca8248068962e717094a68f3"
     },
     {
       "Start": "01a275aae7ce4701aa1851e0754bebc7",
@@ -1631,23 +1742,28 @@
     },
     {
       "Start": "c0a56a570c384cceb599462670e5af91",
-      "End": "c377ee8e73814e758ed0864015ddf2ec",
-      "Id": "6b3cc5ea6d9343f58c99ec38c23b2d87"
+      "End": "8e5eae95129d422f948db85d48507278",
+      "Id": "6089214b3e5b4df5bc8bb0d321ffc0f0"
     },
     {
       "Start": "5acabe01a1144de29664ede0b9606ac5",
-      "End": "2ced0f56f25741a595285410acbe3040",
-      "Id": "d23d5f5b5b2c423d9eff248067c7d30a"
+      "End": "d3551965b503411abbba0a1647d7b49a",
+      "Id": "49fe57def8994cb39cbede37bc56e11a"
     },
     {
       "Start": "74ff5a89849449d7b55049d0992dfd3c",
-      "End": "16ca1b3d904c4791870af6616e7716bc",
-      "Id": "e7c599b0818c42a08f83c4f7b7a0d62c"
+      "End": "b95a2b21c1ed497da8c4c3f024ac8ab5",
+      "Id": "fb157c2845a54ce9af89be93379253e0"
     },
     {
       "Start": "bd06b513d42a4ec5a2267a0de6b95808",
       "End": "e0b36f25ff0a43feab340b908c2720e4",
       "Id": "21b076eb864340f3a6a2203b6fec7a6d"
+    },
+    {
+      "Start": "84313ef731d34cd1bf1d4c3052f26af8",
+      "End": "38eec808056246a787a962ed8eb59029",
+      "Id": "77b390c8c14c4dc0affc159573ef9ebc"
     }
   ],
   "Dependencies": [],
@@ -1664,15 +1780,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 6.5493607521057129,
-      "EyeY": 6.5719966888427734,
-      "EyeZ": -4.8814549446105957,
-      "LookX": 0.268857479095459,
-      "LookY": -0.059267997741699219,
-      "LookZ": -0.20862913131713867,
-      "UpX": -0.034459959715604782,
-      "UpY": 0.99904835224151611,
-      "UpZ": 0.0267392136156559
+      "EyeX": -0.16467070579528809,
+      "EyeY": 3.8338582515716553,
+      "EyeZ": -12.519330978393555,
+      "LookX": 3.8214430809020996,
+      "LookY": -2.7687938213348389,
+      "LookZ": 9.3125677108764648,
+      "UpX": 0.019870111718773842,
+      "UpY": 0.99862939119338989,
+      "UpZ": 0.048419501632452011
     },
     "NodeViews": [
       {
@@ -1752,8 +1868,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 80.695080618984548,
-        "Y": -204.45804887938726
+        "X": 35.8147665641153,
+        "Y": -249.33836293425674
       },
       {
         "ShowGeometry": true,
@@ -1762,8 +1878,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 80.8742888900864,
-        "Y": 112.08076658712912
+        "X": 48.374751126215642,
+        "Y": 127.55673695087705
       },
       {
         "ShowGeometry": true,
@@ -1772,8 +1888,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1487.1447368082195,
-        "Y": 151.33302999700447
+        "X": 1689.3570070007586,
+        "Y": 256.44336846342333
       },
       {
         "ShowGeometry": true,
@@ -1782,8 +1898,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1234.560797756106,
-        "Y": 148.52509771802266
+        "X": 1191.5156115270011,
+        "Y": 87.460996323245951
       },
       {
         "ShowGeometry": true,
@@ -1872,8 +1988,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2069.8905192951347,
-        "Y": 1083.6165877451294
+        "X": 2067.4009136742179,
+        "Y": 1342.5355723204771
       },
       {
         "ShowGeometry": true,
@@ -1902,8 +2018,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 858.11829588912,
-        "Y": 1143.4087533145912
+        "X": 912.39344537558964,
+        "Y": 987.45838872142065
       },
       {
         "ShowGeometry": true,
@@ -1912,8 +2028,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2073.0169383143866,
-        "Y": 829.85159921054719
+        "X": 2070.52733269347,
+        "Y": 1088.7705837858948
       },
       {
         "ShowGeometry": true,
@@ -1922,8 +2038,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2068.5016124768204,
-        "Y": 328.242691535438
+        "X": 2066.0120068559036,
+        "Y": 587.16167611078561
       },
       {
         "ShowGeometry": true,
@@ -1932,8 +2048,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2072.0811386133919,
-        "Y": 588.059081253297
+        "X": 2069.5915329924751,
+        "Y": 846.97806582864462
       },
       {
         "ShowGeometry": true,
@@ -1954,6 +2070,16 @@
         "Excluded": false,
         "X": 3418.0338113808912,
         "Y": 461.56839675487106
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WKT Converter (Python Script)",
+        "Id": "bfdc4615c6274338b4d5becf5c10fbc6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2066.6242054178056,
+        "Y": 328.32584656810366
       }
     ],
     "Annotations": [
@@ -1973,7 +2099,7 @@
         "Height": 363.0,
         "FontSize": 36.0,
         "InitialTop": -288.20622375559572,
-        "InitialHeight": 339.99999999999994,
+        "InitialHeight": 251.10183433627452,
         "TextblockHeight": 43.0,
         "Background": "#FF71C6A8"
       },
@@ -1984,13 +2110,13 @@
           "97a460bf0a4c4dc4b8db487e25973aa9",
           "ae8694a67be34db0b7c6da183bae8d1a"
         ],
-        "Left": 70.695080618984548,
-        "Top": -300.45804887938726,
+        "Left": 25.814766564115303,
+        "Top": -345.33836293425674,
         "Width": 261.0,
-        "Height": 567.53881546651633,
+        "Height": 627.89509988513373,
         "FontSize": 36.0,
-        "InitialTop": -204.45804887938726,
-        "InitialHeight": 457.76247398537009,
+        "InitialTop": -249.33836293425674,
+        "InitialHeight": 461.53881546651638,
         "TextblockHeight": 86.0,
         "Background": "#FFC1D676"
       },
@@ -2008,30 +2134,8 @@
         "Height": 698.9581154213,
         "FontSize": 36.0,
         "InitialTop": 474.12396274721243,
-        "InitialHeight": 632.95811542130014,
+        "InitialHeight": 572.9581154213,
         "TextblockHeight": 86.0,
-        "Background": "#FFC1D676"
-      },
-      {
-        "Id": "a5cbf77810db43bb9826053adc1809f6",
-        "Title": "WKT Converter",
-        "Nodes": [
-          "e00054a13da24212ab4540997633798f",
-          "61e44d5eee674f26b9e8103bb75c7aa8",
-          "94e1fb21689642b9b5fa86b874146ae5",
-          "5176eda205e34de7a665e804a6aae486",
-          "b7f93905b81c487c99a0bb121432d94b",
-          "10afdaeff2a642dba625b86ba323d6fe",
-          "013e8a67712b4ae39da0ed75f65594d5"
-        ],
-        "Left": 2027.5483938395246,
-        "Top": -350.22775009164985,
-        "Width": 1072.5271626265235,
-        "Height": 1641.8443378367792,
-        "FontSize": 36.0,
-        "InitialTop": -297.22775009164985,
-        "InitialHeight": 1618.8443378367795,
-        "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
       {
@@ -2047,13 +2151,13 @@
         "Height": 340.89683990641913,
         "FontSize": 36.0,
         "InitialTop": 292.67155684845193,
-        "InitialHeight": 317.89683990641913,
+        "InitialHeight": 313.89683990641913,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 276.19889035501706,
-    "Y": 344.45062556606524,
-    "Zoom": 0.20145529694228817
+    "X": -1048.9260500730079,
+    "Y": 348.7811910154395,
+    "Zoom": 0.964550894108988
   }
 }
