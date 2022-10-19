@@ -49,11 +49,14 @@ import rub.inf.bi.extension.jena.ExtendedFunctionConfig;
 import rub.inf.bi.extension.jena.NamespaceManager;
 
 public class RunTopologicalValidationExample {
-
-    // define directories
-    private static String ontologiePath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/3DScenario.rdf";
-    private static String originalQueryPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/sparql/Geometry3D Tests/Test3_TopologicalWithin.ttl";
-    private static String queryResultPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/query_result.xml";
+    // Directories for win
+    private static String ontologiePath ="C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\3DScenario.rdf"; // "example", "3DScenario"
+    private static String originalQueryPath = "C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test3_TopologicalWithin.ttl";
+    private static String queryResultPath = "C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml";
+    // Directories for mac
+    //private static String ontologiePath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/3DScenario.rdf";
+    //private static String originalQueryPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/sparql/Geometry3D Tests/Test3_TopologicalWithin.ttl";
+    //private static String queryResultPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/query_result.xml";
 
     public static void main(String[] args) {
         //Definition of all namespaces in use
@@ -111,8 +114,8 @@ public class RunTopologicalValidationExample {
         System.out.println("\n==================Result===================");
 		try(QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
 	        ResultSet results = qexec.execSelect() ;
-            Boolean isColumnNameStored = false;
-            List<String> columnNames = new ArrayList<>();
+            //Boolean isColumnNameStored = false;
+            //List<String> columnNames = new ArrayList<>();
 
             //save query results to a .xml file
             String xmlString = ResultSetFormatter.asXMLString(results);

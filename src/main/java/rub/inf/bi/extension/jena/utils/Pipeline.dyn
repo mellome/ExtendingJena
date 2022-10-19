@@ -1957,7 +1957,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n\tflat_lst = flatten(res_lst)\r\n\tres = False\r\n\t\r\n\tfor e in flat_lst:\r\n\t\tif geo.upper() == e.upper():\r\n\t\t\tres = True\r\n\t\t\tbreak\r\n\treturn res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "fa87b26c82a8488b888bd68e66796f2a",
@@ -1998,7 +1998,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n\tflat_lst = flatten(res_lst)\r\n\tres = False\r\n\t\r\n\tfor e in flat_lst:\r\n\t\tif geo.upper() == e.upper():\r\n\t\t\tres = True\r\n\t\t\tbreak\r\n\treturn res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "e9ad885b7e2845d3b44873e888a7be38",
@@ -2039,7 +2039,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n\tflat_lst = flatten(res_lst)\r\n\tres = False\r\n\t\r\n\tfor e in flat_lst:\r\n\t\tif geo.upper() == e.upper():\r\n\t\t\tres = True\r\n\t\t\tbreak\r\n\treturn res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "fe9f9b9d604e448bb929e13a8b6eac0f",
@@ -2080,7 +2080,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n\tflat_lst = flatten(res_lst)\r\n\tres = False\r\n\t\r\n\tfor e in flat_lst:\r\n\t\tif geo.upper() == e.upper():\r\n\t\t\tres = True\r\n\t\t\tbreak\r\n\treturn res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "1df51be173274ce583cf70b7987b356d",
@@ -2121,7 +2121,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n\tflat_lst = flatten(res_lst)\r\n\tres = False\r\n\t\r\n\tfor e in flat_lst:\r\n\t\tif geo.upper() == e.upper():\r\n\t\t\tres = True\r\n\t\t\tbreak\r\n\treturn res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "e7c2b58156c0432f8ebc24618c2f8e0e",
@@ -2436,55 +2436,6 @@
       "Description": "Allows for DesignScript code to be authored directly"
     },
     {
-      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
-      "FunctionSignature": "f9f20dfc-e4e3-4bc9-a208-df2f9bea161a",
-      "FunctionType": "Graph",
-      "NodeType": "FunctionNode",
-      "Id": "b5b311a55e0a47cb92a451bf6f85d746",
-      "Inputs": [
-        {
-          "Id": "4a7e8ca672f24cbf8615d45b69b1dc62",
-          "Name": "title",
-          "Description": "string\nDefault value : \"Title\"",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "58aade6cc7034ba5a1bff57c4b68f20c",
-          "Name": "message",
-          "Description": "string\nDefault value : \"Message\"",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "2796187432544d5cb469b398bfe82fc7",
-          "Name": "runMe",
-          "Description": "bool\nDefault value : true",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "fabafc0461f14f1189d46672c6d2c1ee",
-          "Name": "OUT",
-          "Description": "return value",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Displays an alert box in Revit"
-    },
-    {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
       "NodeType": "ExtensionNode",
       "Id": "53b66a95df584de1bbabfe444f3b3828",
@@ -2512,13 +2463,178 @@
       ],
       "Replication": "Disabled",
       "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "SW == \"True\"? data : null;",
+      "Id": "15a7732f6cb04dd091354990f47294cf",
+      "Inputs": [
+        {
+          "Id": "f92d4d948b40403391a7a0c1b07ba273",
+          "Name": "SW",
+          "Description": "SW",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0212e2a0b0ed4b5380c68c447d397ffa",
+          "Name": "data",
+          "Description": "data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fde71122b42f433eac50a7bc95aabbd6",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "on = \"True\";\noff = \"False\";",
+      "Id": "70b067b7f0c84ddd8035428cbbe9ceb2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "def23654a8114e1fb124e2d101395960",
+          "Name": "",
+          "Description": "on",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "60263fcc5b714349bf0429994fd70cd1",
+          "Name": "",
+          "Description": "off",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "6a6b21fb028f4604bb96288628d53ad4",
+      "Inputs": [
+        {
+          "Id": "484d2768b2d0421fb401750cf2bdfaa2",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c9de4ac4aa7645d791ba8d9f8a1bd097",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "on = \"True\";\noff = \"False\";",
+      "Id": "37cf9a8c6a3d4d4b9de365af70357bf0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "54feb83379234a9e812020a3b386bb6e",
+          "Name": "",
+          "Description": "on",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "15250b1521d641b38a74154ae4e2340e",
+          "Name": "",
+          "Description": "off",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "SW == \"True\"? data : null;",
+      "Id": "707d96c4b0c447fab11fd20d86754199",
+      "Inputs": [
+        {
+          "Id": "fe5985acf0cd4a6aafecc026805c66ea",
+          "Name": "SW",
+          "Description": "SW",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b1c734acd6cd42a8a12c95047633db6a",
+          "Name": "data",
+          "Description": "data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e353654a2d624523b843b76fc1b26eac",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
     }
   ],
   "Connectors": [
     {
       "Start": "f4c68ed56fdd401c858255578208df3b",
-      "End": "6f433e359e584c96b5cd746da1837256",
-      "Id": "be50583b1b1942ff9629a13d99be1aca"
+      "End": "0212e2a0b0ed4b5380c68c447d397ffa",
+      "Id": "00f35e42b59949a3950f0065315f77d9"
     },
     {
       "Start": "3eef55d4f45e4c86a90e79d1496d6144",
@@ -2572,8 +2688,8 @@
     },
     {
       "Start": "8bbd33f439eb4c1ea76d5b4863a65de8",
-      "End": "3dd15c6a7ab447d2bb0a1ceb5546319b",
-      "Id": "9ce7451035514334b374a38cd26c1901"
+      "End": "b1c734acd6cd42a8a12c95047633db6a",
+      "Id": "c5723a7376674a2585a10265df162304"
     },
     {
       "Start": "69ea7291dd9e4eb182daf0a0ea27a04d",
@@ -2976,11 +3092,6 @@
       "Id": "7f0486ea8129482e9cba86ece3f70141"
     },
     {
-      "Start": "25db36f9776f4d489bb96cc62118bbfc",
-      "End": "228888bd05a248b99b139629841fbd97",
-      "Id": "8bea03b2fe524e8db8e8df0934d6fccf"
-    },
-    {
       "Start": "2db22f83dbe143569e2457d82993c7da",
       "End": "13ebefd1b3c244cab6db4dfd4996bcea",
       "Id": "b28b0c00eb4342f0a8807878175e3b64"
@@ -2992,23 +3103,42 @@
     },
     {
       "Start": "e9116484351f45579a2f99d2bfd526f2",
-      "End": "59cd2113c3a84201972447f762f4d06f",
-      "Id": "47005e8d42fd4cef9dd8c5e49a7485a6"
-    }
-  ],
-  "Dependencies": [
-    "f9f20dfc-e4e3-4bc9-a208-df2f9bea161a"
-  ],
-  "NodeLibraryDependencies": [
+      "End": "228888bd05a248b99b139629841fbd97",
+      "Id": "00d4fc67ff6446929aa4137525e7f9b0"
+    },
     {
-      "Name": "Dialog",
-      "Version": "0.0.2",
-      "ReferenceType": "Package",
-      "Nodes": [
-        "b5b311a55e0a47cb92a451bf6f85d746"
-      ]
+      "Start": "e695d0772cef4b3c837549eebeddf357",
+      "End": "59cd2113c3a84201972447f762f4d06f",
+      "Id": "bd49b9ab98ee4fc9a51ee004f82c0674"
+    },
+    {
+      "Start": "fde71122b42f433eac50a7bc95aabbd6",
+      "End": "6f433e359e584c96b5cd746da1837256",
+      "Id": "08762a13ef63445a8d86b5c309e05251"
+    },
+    {
+      "Start": "fde71122b42f433eac50a7bc95aabbd6",
+      "End": "484d2768b2d0421fb401750cf2bdfaa2",
+      "Id": "c04eef08ef9d4c87b72efc48a07fe126"
+    },
+    {
+      "Start": "60263fcc5b714349bf0429994fd70cd1",
+      "End": "f92d4d948b40403391a7a0c1b07ba273",
+      "Id": "da51dcad8b6e415c987381745c55129c"
+    },
+    {
+      "Start": "54feb83379234a9e812020a3b386bb6e",
+      "End": "fe5985acf0cd4a6aafecc026805c66ea",
+      "Id": "82505ae244314f46b744cfb01f59b5d5"
+    },
+    {
+      "Start": "e353654a2d624523b843b76fc1b26eac",
+      "End": "3dd15c6a7ab447d2bb0a1ceb5546319b",
+      "Id": "6f9aa88d214647b99820690fc2caa518"
     }
   ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
   "Bindings": [],
   "View": {
     "Dynamo": {
@@ -3021,15 +3151,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 7.2576961517333984,
-      "EyeY": 5.6879546642303467,
-      "EyeZ": -1.7397475242614746,
-      "LookX": -2.9731245040893555,
-      "LookY": -3.1359596252441406,
-      "LookZ": 0.3025662899017334,
-      "UpX": -0.556324303150177,
-      "UpY": 0.82903420925140381,
-      "UpZ": 0.05661802738904953
+      "EyeX": 6.179408073425293,
+      "EyeY": 5.7955365180969238,
+      "EyeZ": 0.12009972333908081,
+      "LookX": -2.5588998794555664,
+      "LookY": -2.3209455013275146,
+      "LookZ": -0.39106988906860352,
+      "UpX": -0.48677721619606018,
+      "UpY": 0.87035274505615234,
+      "UpZ": -0.074390523135662079
     },
     "NodeViews": [
       {
@@ -3059,8 +3189,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 879.80042938324823,
-        "Y": -75.639388628191739
+        "X": 876.23891539276974,
+        "Y": -85.456998474131638
       },
       {
         "ShowGeometry": true,
@@ -3069,8 +3199,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 868.06998141571876,
-        "Y": -178.609119917312
+        "X": 864.50846742524027,
+        "Y": -188.4267297632519
       },
       {
         "ShowGeometry": true,
@@ -3079,8 +3209,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 551.74991213645592,
-        "Y": -175.66496488113359
+        "X": 599.56775557253548,
+        "Y": -184.16515530587969
       },
       {
         "ShowGeometry": true,
@@ -3089,8 +3219,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1327.0666557845425,
-        "Y": -181.74122296446626
+        "X": 1390.7185432221877,
+        "Y": -79.4008401448724
       },
       {
         "ShowGeometry": true,
@@ -3099,8 +3229,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1128.350572697399,
-        "Y": -180.31839461890883
+        "X": 1094.922414687501,
+        "Y": -192.50624161209112
       },
       {
         "ShowGeometry": true,
@@ -3129,8 +3259,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2477.4312821961225,
-        "Y": -57.765074124770592
+        "X": 1830.2369308632037,
+        "Y": 10.963529556601486
       },
       {
         "ShowGeometry": true,
@@ -3229,8 +3359,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1493.2602084033467,
-        "Y": 2136.229621908748
+        "X": 1167.5571721710794,
+        "Y": 2288.4302088384884
       },
       {
         "ShowGeometry": true,
@@ -3269,8 +3399,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3000.9853404962009,
-        "Y": 1254.7851566907066
+        "X": 3401.9521292983736,
+        "Y": 967.541229345149
       },
       {
         "ShowGeometry": true,
@@ -3279,8 +3409,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3162.2563790977065,
-        "Y": 1423.6819965971256
+        "X": 3400.33703872241,
+        "Y": 1101.1740619038685
       },
       {
         "ShowGeometry": true,
@@ -3454,7 +3584,7 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "View List",
+        "Name": "Geo List",
         "Id": "4aa5aca4c9d245ce95df137be708a5e7",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -3474,46 +3604,66 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Dialog",
-        "Id": "b5b311a55e0a47cb92a451bf6f85d746",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1423.4446344213072,
-        "Y": 1833.1662813219832
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Watch",
+        "Name": "List Viewer",
         "Id": "53b66a95df584de1bbabfe444f3b3828",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1478.98341111306,
-        "Y": 1735.242648733893
+        "X": 824.30290510598434,
+        "Y": 2286.9965803429491
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Switcher",
+        "Id": "15a7732f6cb04dd091354990f47294cf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3039.8582851258411,
+        "Y": 1104.3741329106101
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "On/Off",
+        "Id": "70b067b7f0c84ddd8035428cbbe9ceb2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3039.1563354696568,
+        "Y": 959.28893851760427
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "6a6b21fb028f4604bb96288628d53ad4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3297.6814557471225,
+        "Y": 1249.2061121982861
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "On/Off",
+        "Id": "37cf9a8c6a3d4d4b9de365af70357bf0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1089.7449262982682,
+        "Y": -35.38381344077402
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Switcher",
+        "Id": "707d96c4b0c447fab11fd20d86754199",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1273.954858953952,
+        "Y": -194.021722053166
       }
     ],
     "Annotations": [
-      {
-        "Id": "41b31b7f2b6c4b9298f7c5c10de7f6ea",
-        "Title": "XML File Parser",
-        "Nodes": [
-          "55e5541613984633bd3985a301a6f2f0",
-          "9c3c9a9cb6f048cf9f7f1435208d010b",
-          "963c470715ed4f5b815704780b1b964a",
-          "aef00e0d9cbc4c89bc624f16784d0389",
-          "3caf2c5d39a14bb8a8d117a845916766"
-        ],
-        "Left": 541.74991213645592,
-        "Top": -234.74122296446626,
-        "Width": 979.31674364808657,
-        "Height": 363.0,
-        "FontSize": 36.0,
-        "InitialTop": -181.74122296446626,
-        "InitialHeight": 251.10183433627452,
-        "TextblockHeight": 43.0,
-        "Background": "#FF71C6A8"
-      },
       {
         "Id": "d5755094afb44c55bdf21b6c7a525b2d",
         "Title": "Geometry Name+ Index",
@@ -3533,7 +3683,7 @@
       },
       {
         "Id": "23fd0eb5566041e59353ff762a20a4c2",
-        "Title": "Points\r\n ",
+        "Title": "Coordinates\r\n ",
         "Nodes": [
           "8cc6c1fb61484b86bab82908655d3df0",
           "ff616aa35b194fbfa265d2a312b357bd",
@@ -3547,23 +3697,6 @@
         "InitialTop": 557.29974461528229,
         "InitialHeight": 572.9581154213,
         "TextblockHeight": 86.0,
-        "Background": "#FFC1D676"
-      },
-      {
-        "Id": "4720a45c0c79407b8979792f3382c666",
-        "Title": ".rdf File Export",
-        "Nodes": [
-          "c35aef94b79f494486311eadd2b8352d",
-          "bc6e3de400aa462da2f128593313d246"
-        ],
-        "Left": 2990.9853404962009,
-        "Top": 1201.7851566907066,
-        "Width": 372.27103860150555,
-        "Height": 340.896839906419,
-        "FontSize": 36.0,
-        "InitialTop": 1254.7851566907066,
-        "InitialHeight": 313.896839906419,
-        "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
       {
@@ -3639,10 +3772,52 @@
         "InitialHeight": 1014.5131867551386,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
+      },
+      {
+        "Id": "5c0afc45a1c048e1a54d2a4955e0da61",
+        "Title": "RDF Export",
+        "Nodes": [
+          "15a7732f6cb04dd091354990f47294cf",
+          "70b067b7f0c84ddd8035428cbbe9ceb2",
+          "6a6b21fb028f4604bb96288628d53ad4",
+          "c35aef94b79f494486311eadd2b8352d",
+          "bc6e3de400aa462da2f128593313d246"
+        ],
+        "Left": 3029.1563354696568,
+        "Top": 906.28893851760427,
+        "Width": 572.7957938287168,
+        "Height": 451.9171736806818,
+        "FontSize": 36.0,
+        "InitialTop": 959.28893851760427,
+        "InitialHeight": 434.9171736806818,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "3b23e7e8a50c49f58eeca893711b4716",
+        "Title": "XML(query result) Import and Parsing",
+        "Nodes": [
+          "55e5541613984633bd3985a301a6f2f0",
+          "9c3c9a9cb6f048cf9f7f1435208d010b",
+          "963c470715ed4f5b815704780b1b964a",
+          "aef00e0d9cbc4c89bc624f16784d0389",
+          "3caf2c5d39a14bb8a8d117a845916766",
+          "37cf9a8c6a3d4d4b9de365af70357bf0",
+          "707d96c4b0c447fab11fd20d86754199"
+        ],
+        "Left": 589.56775557253548,
+        "Top": -247.021722053166,
+        "Width": 998.38710338141652,
+        "Height": 477.6208819082936,
+        "FontSize": 36.0,
+        "InitialTop": -194.021722053166,
+        "InitialHeight": 303.637908612392,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
       }
     ],
-    "X": 151.7511181577604,
-    "Y": 38.941802071250095,
-    "Zoom": 0.39311785234982555
+    "X": -147.11959003201173,
+    "Y": 488.14004526343217,
+    "Zoom": 0.5926554959860173
   }
 }
