@@ -62,11 +62,11 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "inserts = [a, b, c, d, e];",
+      "Code": "inserts = [a, b, c, d, e, f, g];",
       "Id": "61e44d5eee674f26b9e8103bb75c7aa8",
       "Inputs": [
         {
-          "Id": "d3551965b503411abbba0a1647d7b49a",
+          "Id": "67efea98248b4d3f8c33d3dff1e108ac",
           "Name": "a",
           "Description": "a",
           "UsingDefaultValue": false,
@@ -75,7 +75,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "b95a2b21c1ed497da8c4c3f024ac8ab5",
+          "Id": "47b0d05012a248e1b0022f3e579d4986",
           "Name": "b",
           "Description": "b",
           "UsingDefaultValue": false,
@@ -84,7 +84,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "8e5eae95129d422f948db85d48507278",
+          "Id": "1e2571cd104d452cadc729fcf6dac5c0",
           "Name": "c",
           "Description": "c",
           "UsingDefaultValue": false,
@@ -93,7 +93,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "06d975fdefc9464ea6d49179708c0492",
+          "Id": "499d8247b0db436a98f7f908da93e5d5",
           "Name": "d",
           "Description": "d",
           "UsingDefaultValue": false,
@@ -102,9 +102,27 @@
           "KeepListStructure": false
         },
         {
-          "Id": "38eec808056246a787a962ed8eb59029",
+          "Id": "ae92e191bb9f45e18119f94b648c9f99",
           "Name": "e",
           "Description": "e",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c7af7651287f4a1a9ec8c440e49cbaf3",
+          "Name": "f",
+          "Description": "f",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c4515bb66cbd4b8b857d3bfe8ff11580",
+          "Name": "g",
+          "Description": "g",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -113,7 +131,7 @@
       ],
       "Outputs": [
         {
-          "Id": "3eef55d4f45e4c86a90e79d1496d6144",
+          "Id": "93cd21f1577c4819b50305eb0dea5c37",
           "Name": "",
           "Description": "inserts",
           "UsingDefaultValue": false,
@@ -278,12 +296,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "// Geometry Types\n\"POINT\";\n\"MULTIPOINT\";\n\"LINESTRING\";\n\"LINEARRING\";\n\"MULTILINESTRING\";\n\"POLYGON\";\n\"MULTIPOLYGON\";\n\"GEOMETRYCOLLECTION\";\n// Geometry List\n[\"POINT\",\"MULTIPOINT\"];\n\"POLYGON1\";\n\"POLYGON2\";\n\"LINE1\";\n\"LINE2\";\n\"POINT1\";",
+      "Code": "// Geometry Types\n\"POINT\";\n\"MULTIPOINT\";\n\"LINESTRING\";\n\"LINEARRING\";\n\"MULTILINESTRING\";\n\"POLYGON\";\n\"MULTIPOLYGON\";\n\"GEOMETRYCOLLECTION\";\n// Geometry List\n[\"POINT\",\"MULTIPOINT\"];\n\"POLYGON1\";\n\"POLYGON2\";\n\"LINE1\";\n\"LINE2\";\n\"POINT1\";\n\"MULTIPOLYGON1\";\n\"MULTIPOLYGON2\";",
       "Id": "97a460bf0a4c4dc4b8db487e25973aa9",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "69ea7291dd9e4eb182daf0a0ea27a04d",
+          "Id": "73623bc763c5457eae42a2d72ceebc8e",
           "Name": "",
           "Description": "Value of expression at line 2",
           "UsingDefaultValue": false,
@@ -292,7 +310,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "6135a4d04ee748e49c2b008a278d77b0",
+          "Id": "9b53c77c65d74558b5813a09a9f5b16d",
           "Name": "",
           "Description": "Value of expression at line 3",
           "UsingDefaultValue": false,
@@ -301,7 +319,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "970aaa20b44549a1aa4dd0a7d8c6fa08",
+          "Id": "e5719a3b70bf42d58dfbde93b9b79119",
           "Name": "",
           "Description": "Value of expression at line 4",
           "UsingDefaultValue": false,
@@ -310,7 +328,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "9732f8fd46124f30b331764ff40700d0",
+          "Id": "18a03f6573df4556bcbb08d1fbe6df55",
           "Name": "",
           "Description": "Value of expression at line 5",
           "UsingDefaultValue": false,
@@ -319,7 +337,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "f86e7caaf88049aba88632869783b879",
+          "Id": "6c91a2fc836a4439a840c34df84b7c3f",
           "Name": "",
           "Description": "Value of expression at line 6",
           "UsingDefaultValue": false,
@@ -328,7 +346,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "7e94ae436d3b4dfdbbcee1dc8f6826e9",
+          "Id": "38899dffcb5d4c5dbf9295db664a304f",
           "Name": "",
           "Description": "Value of expression at line 7",
           "UsingDefaultValue": false,
@@ -337,7 +355,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "eae307cd3f0143ccae23be2d18bc9edb",
+          "Id": "31a33c97c7b140b695c30055755bae80",
           "Name": "",
           "Description": "Value of expression at line 8",
           "UsingDefaultValue": false,
@@ -346,7 +364,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "717004191cac4dcb8413c416cce4e743",
+          "Id": "168005965af342a7a6634fb5d4f61a00",
           "Name": "",
           "Description": "Value of expression at line 9",
           "UsingDefaultValue": false,
@@ -355,7 +373,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "70b49bdc5c3f48779ff400784d8534d1",
+          "Id": "a698b3bafcba4188948cf4ce3dd281ac",
           "Name": "",
           "Description": "Value of expression at line 11",
           "UsingDefaultValue": false,
@@ -364,7 +382,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "04589f6bdd2a4649a67e71b084f553ec",
+          "Id": "9610b4ca25ab4696ad1cf5b3a07e5444",
           "Name": "",
           "Description": "Value of expression at line 12",
           "UsingDefaultValue": false,
@@ -373,7 +391,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "a7e842c6988f44deafee4a988e1ce0bd",
+          "Id": "b6322a1e9b154119a1740cb5240bcbf8",
           "Name": "",
           "Description": "Value of expression at line 13",
           "UsingDefaultValue": false,
@@ -382,7 +400,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "e77110324a7c4ccf97cc003c84e66e0c",
+          "Id": "2f06b3a1dc42491c9d3d73339b256941",
           "Name": "",
           "Description": "Value of expression at line 14",
           "UsingDefaultValue": false,
@@ -391,7 +409,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "8257c4f80096491099a95bb3c89b2b7b",
+          "Id": "87295e117d6143f3a0ca49ebf8ea8605",
           "Name": "",
           "Description": "Value of expression at line 15",
           "UsingDefaultValue": false,
@@ -400,9 +418,27 @@
           "KeepListStructure": false
         },
         {
-          "Id": "4908cbd9c12746be8484646fe4defe88",
+          "Id": "e431f7fede0f48bbaa1a5a0038b8a00e",
           "Name": "",
           "Description": "Value of expression at line 16",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "27f76adae7424e2199c6faa5ce9e20b3",
+          "Name": "",
+          "Description": "Value of expression at line 17",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a3fbae279a534ce681a6c5d521ceb4a2",
+          "Name": "",
+          "Description": "Value of expression at line 18",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1349,7 +1385,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Phython-Standard- und DesignScript-Bibliotheken laden\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Die Eingaben für diesen Block werden in Form einer Liste in den IN-Variablen gespeichert.\r\ndataEnteringNode = IN\r\n\r\ngeometry = dataEnteringNode[0];\r\nname = dataEnteringNode[1];\r\nif isinstance(dataEnteringNode[1], list):\r\n    name = dataEnteringNode[1][0]\r\ngeometryType = dataEnteringNode[2];\r\nexampleInstanceNamespace = dataEnteringNode[3];\r\ngeoSparqlNamespace = dataEnteringNode[4];\r\n\r\n# Code unterhalb dieser Linie platzieren\r\n\r\ndef multipolygon2WKT():\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n      \r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:MultiPolygon>\";\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\ndef linestring2WKT():\r\n    wktLiteral = \"<sf:LINESTRING>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"LINESTRING Z(\";\r\n    \r\n    originP = geometry[0];\r\n    endP = geometry[1]\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    wktLiteral += \", \" + str(endP.X) + \" \" +  str(endP.Y) + \" \" +  str(endP.Z); # end point\r\n    wktLiteral += \")\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:LINESTRING>\";\r\n    return wktLiteral\r\n\r\ndef point2WKT():\r\n    wktLiteral = \"<sf:POINT>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POINT (\";\r\n  \r\n    wktLiteral += str(geometry.X) + \" \" +  str(geometry.Y) + \" \" +  str(geometry.Z)\r\n\r\n    wktLiteral += \")\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POINT>\";\r\n    return wktLiteral\r\n\r\nres = \"\"\r\n# Weisen Sie Ihre Ausgabe der OUT-Variablen zu.\r\nif(geometryType.upper() == \"MULTIPOLYGON\"):\r\n    res = multipolygon2WKT()\r\n    \r\nif(geometryType.upper() == \"POLYGON\"):\r\n    res = polygon2WKT()\r\n    \r\nif(geometryType.upper() == \"LINESTRING\"):\r\n    res = linestring2WKT()\r\n\r\nif(geometryType.upper() == \"POINT\"):\r\n    res = point2WKT()\r\n\r\nOUT = res\r\n\r\n",
+      "Code": "# Phython-Standard- und DesignScript-Bibliotheken laden\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Die Eingaben für diesen Block werden in Form einer Liste in den IN-Variablen gespeichert.\r\ndataEnteringNode = IN\r\n\r\ngeometry = dataEnteringNode[0];\r\nname = dataEnteringNode[1];\r\nif isinstance(dataEnteringNode[1], list):\r\n    name = dataEnteringNode[1][0]\r\ngeometryType = dataEnteringNode[2];\r\nexampleInstanceNamespace = dataEnteringNode[3];\r\ngeoSparqlNamespace = dataEnteringNode[4];\r\n\r\n# Code unterhalb dieser Linie platzieren\r\n\r\ndef multipolygon2WKT():\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    \r\n    # for curves/surfaces\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n        \r\n    wktLiteral += \")))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:MultiPolygon>\";\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\ndef linestring2WKT():\r\n    wktLiteral = \"<sf:LINESTRING>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"LINESTRING Z(\";\r\n    \r\n    originP = geometry[0];\r\n    endP = geometry[1]\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    wktLiteral += \", \" + str(endP.X) + \" \" +  str(endP.Y) + \" \" +  str(endP.Z); # end point\r\n    wktLiteral += \")\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:LINESTRING>\";\r\n    return wktLiteral\r\n\r\ndef point2WKT():\r\n    wktLiteral = \"<sf:POINT>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POINT (\";\r\n  \r\n    wktLiteral += str(geometry.X) + \" \" +  str(geometry.Y) + \" \" +  str(geometry.Z)\r\n\r\n    wktLiteral += \")\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POINT>\";\r\n    return wktLiteral\r\n\r\nres = \"\"\r\n# Weisen Sie Ihre Ausgabe der OUT-Variablen zu.\r\nif(geometryType.upper() == \"MULTIPOLYGON\"):\r\n    res = multipolygon2WKT()\r\n    \r\nif(geometryType.upper() == \"POLYGON\"):\r\n    res = polygon2WKT()\r\n    \r\nif(geometryType.upper() == \"LINESTRING\"):\r\n    res = linestring2WKT()\r\n\r\nif(geometryType.upper() == \"POINT\"):\r\n    res = point2WKT()\r\n\r\nOUT = res\r\n\r\n",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "bfdc4615c6274338b4d5becf5c10fbc6",
@@ -2504,35 +2540,6 @@
       "Description": "Allows for DesignScript code to be authored directly"
     },
     {
-      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
-      "NodeType": "CodeBlockNode",
-      "Code": "on = \"True\";\noff = \"False\";",
-      "Id": "70b067b7f0c84ddd8035428cbbe9ceb2",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "def23654a8114e1fb124e2d101395960",
-          "Name": "",
-          "Description": "on",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "60263fcc5b714349bf0429994fd70cd1",
-          "Name": "",
-          "Description": "off",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
-    },
-    {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
       "NodeType": "ExtensionNode",
       "Id": "6a6b21fb028f4604bb96288628d53ad4",
@@ -2560,35 +2567,6 @@
       ],
       "Replication": "Disabled",
       "Description": "Visualize the output of node."
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
-      "NodeType": "CodeBlockNode",
-      "Code": "on = \"True\";\noff = \"False\";",
-      "Id": "37cf9a8c6a3d4d4b9de365af70357bf0",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "54feb83379234a9e812020a3b386bb6e",
-          "Name": "",
-          "Description": "on",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "15250b1521d641b38a74154ae4e2340e",
-          "Name": "",
-          "Description": "off",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -2628,6 +2606,667 @@
       ],
       "Replication": "Disabled",
       "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "cub_coord1 = Point.ByCoordinates(0,0,2);\ncub_coord2 = Point.ByCoordinates(2,2,2);\nlen1 = 4;\nlen2 = 2;",
+      "Id": "26b91f1a142e42539c8751f65ccacf8b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "267a4da548ad4f2eb251c96859b81b93",
+          "Name": "",
+          "Description": "cub_coord1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c47bf91a29b242bc85dafd9860340c5b",
+          "Name": "",
+          "Description": "cub_coord2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1f7d6d0d598a4cdfbd7b7372d917c509",
+          "Name": "",
+          "Description": "len1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "afd102f21e2a42ce9ace59e784d52456",
+          "Name": "",
+          "Description": "len2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Cuboid.ByLengths@Autodesk.DesignScript.Geometry.CoordinateSystem,double,double,double",
+      "Id": "4af187e559c648cc8e8f4b850a65f5dd",
+      "Inputs": [
+        {
+          "Id": "d096c172f2e1475c899305e93bda104d",
+          "Name": "cs",
+          "Description": "CoordinateSystem\nDefault value : Autodesk.DesignScript.Geometry.CoordinateSystem.ByOrigin(0, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "07b6872bfc7e406ab172b90914c3fe0a",
+          "Name": "width",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "35844cf20df743bdbe3e7f47db50d608",
+          "Name": "length",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "12e84a66934245b68f8705fede6c82d7",
+          "Name": "height",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f9acde4b8ddc4bbbbbe3eff77274c786",
+          "Name": "Cuboid",
+          "Description": "Cuboid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a Cuboid centered and oriented to input CoordinateSystem, with specified width, length, and height.\n\nCuboid.ByLengths (cs: CoordinateSystem = Autodesk.DesignScript.Geometry.CoordinateSystem.ByOrigin(0, 0, 0), width: double = 1, length: double = 1, height: double = 1): Cuboid"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "3f57e74dd731444791e46505ab0dfb81",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3aea9da347654932aa87ba43fe0a3f42",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "4e3575612a134261972d058ad1f6bbdb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "abc883ea418c4c88a5dd5e0788732297",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Cuboid.ByLengths@Autodesk.DesignScript.Geometry.CoordinateSystem,double,double,double",
+      "Id": "bcf4ca6143d3499eb8becca4eef436c8",
+      "Inputs": [
+        {
+          "Id": "2080a3bf483046a28135e46768033bb2",
+          "Name": "cs",
+          "Description": "CoordinateSystem\nDefault value : Autodesk.DesignScript.Geometry.CoordinateSystem.ByOrigin(0, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b27b801fd6af4c5196156897639b344d",
+          "Name": "width",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "74679466176f4c91aea18d7bcf1670cc",
+          "Name": "length",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0fc938a787394253ad5cab94eca2710f",
+          "Name": "height",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1c4d68259aa6408c9d11e9f9e404538b",
+          "Name": "Cuboid",
+          "Description": "Cuboid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a Cuboid centered and oriented to input CoordinateSystem, with specified width, length, and height.\n\nCuboid.ByLengths (cs: CoordinateSystem = Autodesk.DesignScript.Geometry.CoordinateSystem.ByOrigin(0, 0, 0), width: double = 1, length: double = 1, height: double = 1): Cuboid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "geo_obj = [geo_data, geo_name, geo_type, geometry];\ngeo_obj[0];\ngeo_obj[1];\ngeo_obj[2];\ngeo_obj[3];",
+      "Id": "9c9993db47df42cbb01f8dc59d85d42b",
+      "Inputs": [
+        {
+          "Id": "92e752bbf57045c2bdf87e9555fa76e8",
+          "Name": "geo_data",
+          "Description": "geo_data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "305a0f6200ea40f793166b38591480e5",
+          "Name": "geo_name",
+          "Description": "geo_name",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1ec17454e97b4996847e00e361c52858",
+          "Name": "geo_type",
+          "Description": "geo_type",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2a6cbce1f89949dd91322b231f2db8cb",
+          "Name": "geometry",
+          "Description": "geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3644e213433644e09f2f849c8523146c",
+          "Name": "",
+          "Description": "geo_obj",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2361f1e0d10a4663972a9832721a97f9",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2cd1708b323e4bdfa1aa5713a4de4294",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0d5d7bea50e54ece862193ae42e20735",
+          "Name": "",
+          "Description": "Value of expression at line 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8b13340ca7394e998ccb46dfd676c7b4",
+          "Name": "",
+          "Description": "Value of expression at line 5",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "geo_data = [centroid, length];",
+      "Id": "9d4f3ac7e86c4eed9551601d7a456da1",
+      "Inputs": [
+        {
+          "Id": "a202442a79f0489d83f26411f0b04c26",
+          "Name": "centroid",
+          "Description": "centroid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f091ba28f1bf4ceab2a4a7a77794666a",
+          "Name": "length",
+          "Description": "length",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "795248b99ecd458f81104f2d2e8b0d54",
+          "Name": "",
+          "Description": "geo_data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.Centroid",
+      "Id": "99071d55456f4470a9b60e93674bc3ad",
+      "Inputs": [
+        {
+          "Id": "e96a987091b84adca3705aa9482018fe",
+          "Name": "solid",
+          "Description": "Autodesk.DesignScript.Geometry.Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c101a8c5cbc84f46915b39ddeb32b7e3",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The centroid of the Solid\n\nSolid.Centroid ( ): Point"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Phython-Standard- und DesignScript-Bibliotheken laden\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Die Eingaben für diesen Block werden in Form einer Liste in den IN-Variablen gespeichert.\r\ndataEnteringNode = IN\r\n\r\ngeometry = dataEnteringNode[0];\r\nname = dataEnteringNode[1];\r\nif isinstance(dataEnteringNode[1], list):\r\n    name = dataEnteringNode[1][0]\r\ngeometryType = dataEnteringNode[2];\r\nexampleInstanceNamespace = dataEnteringNode[3];\r\ngeoSparqlNamespace = dataEnteringNode[4];\r\n\r\n# Code unterhalb dieser Linie platzieren\r\n\r\ndef multipolygon2WKT():\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    \"\"\"\r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \"\"\"\r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = geometry[0]\r\n    length = geometry[1]\r\n    offset = geometry[1]/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)  \r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)  \r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)  \r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)  \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)         \r\n    right_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"   \r\n    cuboid_face = bottom_face + top_face + front_face + back_face + left_face + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral = wktLiteral + cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\nres = \"\"\r\n# Weisen Sie Ihre Ausgabe der OUT-Variablen zu.\r\nif(geometryType.upper() == \"MULTIPOLYGON\"):\r\n    res = multipolygon2WKT()\r\n    \r\nif(geometryType.upper() == \"POLYGON\"):\r\n    res = polygon2WKT()\r\n\r\nOUT = res\r\n\r\n",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "66b36e8a68fc47fd9676c33a9e6a2914",
+      "Inputs": [
+        {
+          "Id": "6735e731349a4498af5bb53fc8fedd7d",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "264c5cf049af4dfcb838d7d04b92ed48",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5cc94ac643b04dd891423907a405ad91",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8d1a6a663a874ab5ada707bc8a99e920",
+          "Name": "IN[3]",
+          "Description": "Input #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "38c5487eadf947a1a250cb14dcc780e5",
+          "Name": "IN[4]",
+          "Description": "Input #4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "97bfd7ef2179445fb9a429903a42c3ff",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.Centroid",
+      "Id": "7613c44469dc4898a47b8fbc413da509",
+      "Inputs": [
+        {
+          "Id": "1c14fa4067ef4d36bc7bc5b1c484f9fc",
+          "Name": "solid",
+          "Description": "Autodesk.DesignScript.Geometry.Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6d96539532204441aa29769abe0ff383",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The centroid of the Solid\n\nSolid.Centroid ( ): Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "geo_data = [centroid, length];",
+      "Id": "55438b6afc574fa0894c6645a8fc0906",
+      "Inputs": [
+        {
+          "Id": "ed3d42b034cf4e83b96f811e75f59ecf",
+          "Name": "centroid",
+          "Description": "centroid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "13ddfe38377e45a4907498b2ec1a59c7",
+          "Name": "length",
+          "Description": "length",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "43ce538de3e64be887c6520ae04916da",
+          "Name": "",
+          "Description": "geo_data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "geo_obj = [geo_data, geo_name, geo_type, geometry];\ngeo_obj[0];\ngeo_obj[1];\ngeo_obj[2];\ngeo_obj[3];",
+      "Id": "a83e7d84eb16436d99c9d93164e6cd1e",
+      "Inputs": [
+        {
+          "Id": "c98d3af91b1640cf8ef705ec35d1ed80",
+          "Name": "geo_data",
+          "Description": "geo_data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3971ab0e785b4b4cba1c953a7ea34008",
+          "Name": "geo_name",
+          "Description": "geo_name",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4bee90a8323845bfb9c010402033cb2c",
+          "Name": "geo_type",
+          "Description": "geo_type",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "316b00814b244ebf8252035cbe46ce6c",
+          "Name": "geometry",
+          "Description": "geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f5628994a94e4d2180338456b4fabf30",
+          "Name": "",
+          "Description": "geo_obj",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "22e2ba7813ad45df89ef9104e793b859",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2df4d80d93ee49c3890985de8dad0b84",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f503dbe3f1c144c7a159cd1523b68937",
+          "Name": "",
+          "Description": "Value of expression at line 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "82e48562c05c4ed689ecabf0cbac8da6",
+          "Name": "",
+          "Description": "Value of expression at line 5",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Phython-Standard- und DesignScript-Bibliotheken laden\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Die Eingaben für diesen Block werden in Form einer Liste in den IN-Variablen gespeichert.\r\ndataEnteringNode = IN\r\n\r\ngeometry = dataEnteringNode[0];\r\nname = dataEnteringNode[1];\r\nif isinstance(dataEnteringNode[1], list):\r\n    name = dataEnteringNode[1][0]\r\ngeometryType = dataEnteringNode[2];\r\nexampleInstanceNamespace = dataEnteringNode[3];\r\ngeoSparqlNamespace = dataEnteringNode[4];\r\n\r\n# Code unterhalb dieser Linie platzieren\r\n\r\ndef multipolygon2WKT():\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    \"\"\"\r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \"\"\"\r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = geometry[0]\r\n    length = geometry[1]\r\n    offset = geometry[1]/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)  \r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)  \r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)  \r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)  \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)         \r\n    right_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"   \r\n    cuboid_face = bottom_face + top_face + front_face + back_face + left_face + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral = wktLiteral + cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\nres = \"\"\r\n# Weisen Sie Ihre Ausgabe der OUT-Variablen zu.\r\nif(geometryType.upper() == \"MULTIPOLYGON\"):\r\n    res = multipolygon2WKT()\r\n    \r\nif(geometryType.upper() == \"POLYGON\"):\r\n    res = polygon2WKT()\r\n\r\nOUT = res\r\n\r\n",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "d4c09c32a6e947509b1d3203858097a2",
+      "Inputs": [
+        {
+          "Id": "c8550e2235ff4fee914c5d79e8e67204",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "14e56e349de54163a5b7f239f777db2d",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bca7453bf4d043798675ece20c37795f",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bac2317c9c6f4db2bc567e49d469ca09",
+          "Name": "IN[3]",
+          "Description": "Input #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8aece168d9a44b8eba896d40d5a1820e",
+          "Name": "IN[4]",
+          "Description": "Input #4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "66fce0a8ecbf4c799f977ea49fcaf5b6",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
     }
   ],
   "Connectors": [
@@ -2637,9 +3276,9 @@
       "Id": "00f35e42b59949a3950f0065315f77d9"
     },
     {
-      "Start": "3eef55d4f45e4c86a90e79d1496d6144",
+      "Start": "93cd21f1577c4819b50305eb0dea5c37",
       "End": "1bf83e6357a44ed88c6b44b3703edca8",
-      "Id": "2622abeab2604903b768fa0619144415"
+      "Id": "f4a6e669508f4025bf8fd3133e9f520b"
     },
     {
       "Start": "c6f0f1e62fef44aeb70b601c869d460c",
@@ -2692,54 +3331,74 @@
       "Id": "c5723a7376674a2585a10265df162304"
     },
     {
-      "Start": "69ea7291dd9e4eb182daf0a0ea27a04d",
+      "Start": "73623bc763c5457eae42a2d72ceebc8e",
       "End": "a0d064e528614f2abc9800ee829d9f33",
-      "Id": "2970354160b54d1f821ac1798a5b3741"
+      "Id": "ada63ace27b1494aa2ef1fbb7d9d12a9"
     },
     {
-      "Start": "970aaa20b44549a1aa4dd0a7d8c6fa08",
+      "Start": "e5719a3b70bf42d58dfbde93b9b79119",
       "End": "ae5de0a712124ed2aff5773890f3538a",
-      "Id": "1a9bf4fa9225426b92c5c55557506527"
+      "Id": "0bd08915a06c482ab8783bde0920927d"
     },
     {
-      "Start": "970aaa20b44549a1aa4dd0a7d8c6fa08",
+      "Start": "e5719a3b70bf42d58dfbde93b9b79119",
       "End": "8c9acdcfe2174ee6845ae78b0d0b25af",
-      "Id": "c507155e4a6f4e77848c1742ea77b320"
+      "Id": "4aa5dd1f049449f09efe8d729c3986a1"
     },
     {
-      "Start": "7e94ae436d3b4dfdbbcee1dc8f6826e9",
+      "Start": "38899dffcb5d4c5dbf9295db664a304f",
       "End": "c55a5d32a3614675a2de070f76e2362c",
-      "Id": "9a600e184cc740feba578d583948ee90"
+      "Id": "d3cee8fad5d644e89d9ea37661cd9bb5"
     },
     {
-      "Start": "7e94ae436d3b4dfdbbcee1dc8f6826e9",
+      "Start": "38899dffcb5d4c5dbf9295db664a304f",
       "End": "8560d8ba3ff04b7495b0a4dd36b775b6",
-      "Id": "662fa9bfff6b455495c3c8033d610b72"
+      "Id": "26fd9f51388c4639a13a6e54f2253fcd"
     },
     {
-      "Start": "04589f6bdd2a4649a67e71b084f553ec",
+      "Start": "31a33c97c7b140b695c30055755bae80",
+      "End": "1ec17454e97b4996847e00e361c52858",
+      "Id": "6a04af8118f64215a8cb9f1687d67352"
+    },
+    {
+      "Start": "31a33c97c7b140b695c30055755bae80",
+      "End": "4bee90a8323845bfb9c010402033cb2c",
+      "Id": "78a5946835974b27a92e73f2c6bc8777"
+    },
+    {
+      "Start": "9610b4ca25ab4696ad1cf5b3a07e5444",
       "End": "5ec6f21671ba4f90afd4b65002863435",
-      "Id": "1b78101d48fc42449c1d8cc7f10a8948"
+      "Id": "2f159d7e13f049999ed70feabe8d9b90"
     },
     {
-      "Start": "04589f6bdd2a4649a67e71b084f553ec",
+      "Start": "9610b4ca25ab4696ad1cf5b3a07e5444",
       "End": "7371f31c34294280b0be928656a2d888",
-      "Id": "9a94a978c23c4e8483c5ce99b7e812a3"
+      "Id": "0e436cc991674e0780cd7a92790b0ff6"
     },
     {
-      "Start": "e77110324a7c4ccf97cc003c84e66e0c",
+      "Start": "2f06b3a1dc42491c9d3d73339b256941",
       "End": "5219b9f65c034fbaa5929d7bdb9a1aa1",
-      "Id": "34709182af2a487897ff46fe674157c5"
+      "Id": "e3d90f2db4474c0d92b4dc5931fbd362"
     },
     {
-      "Start": "8257c4f80096491099a95bb3c89b2b7b",
+      "Start": "87295e117d6143f3a0ca49ebf8ea8605",
       "End": "1f08da93aa304f2da40c14b3277e85ae",
-      "Id": "734d4fabeb6b4ae6a97ec5a5187e3857"
+      "Id": "9fedcd0e689c4139a275ffff30b87f9b"
     },
     {
-      "Start": "4908cbd9c12746be8484646fe4defe88",
+      "Start": "e431f7fede0f48bbaa1a5a0038b8a00e",
       "End": "44876683f7e04f6db2fe453ea57afd1b",
-      "Id": "ed596e94bfb642e28bc5bbcfec2141ea"
+      "Id": "9c5262c564f744709ac6f43941c67886"
+    },
+    {
+      "Start": "27f76adae7424e2199c6faa5ce9e20b3",
+      "End": "305a0f6200ea40f793166b38591480e5",
+      "Id": "a5a2489777b3407b971245c57708de24"
+    },
+    {
+      "Start": "a3fbae279a534ce681a6c5d521ceb4a2",
+      "End": "3971ab0e785b4b4cba1c953a7ea34008",
+      "Id": "77d9e839e5c54b6489dcf503512edbea"
     },
     {
       "Start": "ebd52d91722c4b258923a0f21bfbeef8",
@@ -2832,6 +3491,16 @@
       "Id": "c09afae269444490b790fa51aebc2913"
     },
     {
+      "Start": "a5640c36aa874fb99957c7fbfc97bd6e",
+      "End": "8d1a6a663a874ab5ada707bc8a99e920",
+      "Id": "7e643a78a16641009e03333142802a2d"
+    },
+    {
+      "Start": "a5640c36aa874fb99957c7fbfc97bd6e",
+      "End": "bac2317c9c6f4db2bc567e49d469ca09",
+      "Id": "4f6bdef25c9448858eb077ce0e9e8877"
+    },
+    {
       "Start": "b8fce02e7523459b989de8e70c67fbe7",
       "End": "5f64c2e998a8416f83301a499c489d25",
       "Id": "63b046ec6bdf4eafb0cfe526bd2a855f"
@@ -2857,14 +3526,24 @@
       "Id": "ab805e4bc8664a20907ec9923316916b"
     },
     {
+      "Start": "b8fce02e7523459b989de8e70c67fbe7",
+      "End": "38c5487eadf947a1a250cb14dcc780e5",
+      "Id": "5d075361873d4849b2b58baf1db65a07"
+    },
+    {
+      "Start": "b8fce02e7523459b989de8e70c67fbe7",
+      "End": "8aece168d9a44b8eba896d40d5a1820e",
+      "Id": "31490732576b4c1ea5ce72b57dc954fe"
+    },
+    {
       "Start": "3079abf98a7148b6962e2e0267973632",
       "End": "4662dbdc67f64d9eaa25bb84b6cf3169",
       "Id": "a9e306de17cb4f5293d201edc3a532fd"
     },
     {
       "Start": "8d85d5be604b4ffbb2ea2e258879ca0e",
-      "End": "06d975fdefc9464ea6d49179708c0492",
-      "Id": "65468bbaca8248068962e717094a68f3"
+      "End": "499d8247b0db436a98f7f908da93e5d5",
+      "Id": "e0c4ed7c1083437f9d3892f9a62065c3"
     },
     {
       "Start": "d42ddc6904e14f649ece951c41654d93",
@@ -2878,18 +3557,18 @@
     },
     {
       "Start": "c0a56a570c384cceb599462670e5af91",
-      "End": "8e5eae95129d422f948db85d48507278",
-      "Id": "6089214b3e5b4df5bc8bb0d321ffc0f0"
+      "End": "1e2571cd104d452cadc729fcf6dac5c0",
+      "Id": "0670682a36a64e809a4c431df5045f91"
     },
     {
       "Start": "5acabe01a1144de29664ede0b9606ac5",
-      "End": "d3551965b503411abbba0a1647d7b49a",
-      "Id": "49fe57def8994cb39cbede37bc56e11a"
+      "End": "67efea98248b4d3f8c33d3dff1e108ac",
+      "Id": "b7ca3c357f024fa783f4efd58347554d"
     },
     {
       "Start": "74ff5a89849449d7b55049d0992dfd3c",
-      "End": "b95a2b21c1ed497da8c4c3f024ac8ab5",
-      "Id": "fb157c2845a54ce9af89be93379253e0"
+      "End": "47b0d05012a248e1b0022f3e579d4986",
+      "Id": "0be557c4d8104165823e6080c5e92161"
     },
     {
       "Start": "bd06b513d42a4ec5a2267a0de6b95808",
@@ -2898,8 +3577,8 @@
     },
     {
       "Start": "84313ef731d34cd1bf1d4c3052f26af8",
-      "End": "38eec808056246a787a962ed8eb59029",
-      "Id": "77b390c8c14c4dc0affc159573ef9ebc"
+      "End": "ae92e191bb9f45e18119f94b648c9f99",
+      "Id": "83601ebbbfd948aca06061a866b8dfb2"
     },
     {
       "Start": "ee765cd3c18344a3aca7874845aee6b1",
@@ -3122,19 +3801,149 @@
       "Id": "c04eef08ef9d4c87b72efc48a07fe126"
     },
     {
-      "Start": "60263fcc5b714349bf0429994fd70cd1",
-      "End": "f92d4d948b40403391a7a0c1b07ba273",
-      "Id": "da51dcad8b6e415c987381745c55129c"
-    },
-    {
-      "Start": "54feb83379234a9e812020a3b386bb6e",
-      "End": "fe5985acf0cd4a6aafecc026805c66ea",
-      "Id": "82505ae244314f46b744cfb01f59b5d5"
-    },
-    {
       "Start": "e353654a2d624523b843b76fc1b26eac",
       "End": "3dd15c6a7ab447d2bb0a1ceb5546319b",
       "Id": "6f9aa88d214647b99820690fc2caa518"
+    },
+    {
+      "Start": "267a4da548ad4f2eb251c96859b81b93",
+      "End": "d096c172f2e1475c899305e93bda104d",
+      "Id": "b81b88787348490a8af334df7378b2bc"
+    },
+    {
+      "Start": "c47bf91a29b242bc85dafd9860340c5b",
+      "End": "2080a3bf483046a28135e46768033bb2",
+      "Id": "a43655fa02404ef4b519f1134f22e227"
+    },
+    {
+      "Start": "1f7d6d0d598a4cdfbd7b7372d917c509",
+      "End": "b27b801fd6af4c5196156897639b344d",
+      "Id": "bb95d1ec11954a4b8335bbe0a6215ce7"
+    },
+    {
+      "Start": "1f7d6d0d598a4cdfbd7b7372d917c509",
+      "End": "74679466176f4c91aea18d7bcf1670cc",
+      "Id": "40cf37a5dc874a4498daa48052ec1272"
+    },
+    {
+      "Start": "1f7d6d0d598a4cdfbd7b7372d917c509",
+      "End": "0fc938a787394253ad5cab94eca2710f",
+      "Id": "6a9cbac20d9346a6b0bd33ba47df5e0b"
+    },
+    {
+      "Start": "afd102f21e2a42ce9ace59e784d52456",
+      "End": "35844cf20df743bdbe3e7f47db50d608",
+      "Id": "a2fbac0e0d93432bb409df643ce63206"
+    },
+    {
+      "Start": "afd102f21e2a42ce9ace59e784d52456",
+      "End": "12e84a66934245b68f8705fede6c82d7",
+      "Id": "a1323c5d92a44247a0d2ed0cf1b2a5ee"
+    },
+    {
+      "Start": "afd102f21e2a42ce9ace59e784d52456",
+      "End": "07b6872bfc7e406ab172b90914c3fe0a",
+      "Id": "7fb857b580a143c8aafdc982ad86ad0c"
+    },
+    {
+      "Start": "afd102f21e2a42ce9ace59e784d52456",
+      "End": "f091ba28f1bf4ceab2a4a7a77794666a",
+      "Id": "b0bb670586c248c3bc7be12114e5f389"
+    },
+    {
+      "Start": "afd102f21e2a42ce9ace59e784d52456",
+      "End": "13ddfe38377e45a4907498b2ec1a59c7",
+      "Id": "7bccc6f9cbc44a06a18561f21d7d38fa"
+    },
+    {
+      "Start": "f9acde4b8ddc4bbbbbe3eff77274c786",
+      "End": "2a6cbce1f89949dd91322b231f2db8cb",
+      "Id": "be437440b86a4222a2edad1862747dee"
+    },
+    {
+      "Start": "f9acde4b8ddc4bbbbbe3eff77274c786",
+      "End": "e96a987091b84adca3705aa9482018fe",
+      "Id": "b5ede426045a4551a16f4faf2752f465"
+    },
+    {
+      "Start": "3aea9da347654932aa87ba43fe0a3f42",
+      "End": "fe5985acf0cd4a6aafecc026805c66ea",
+      "Id": "220f7f728ba74abebec777ccb6c7433c"
+    },
+    {
+      "Start": "abc883ea418c4c88a5dd5e0788732297",
+      "End": "f92d4d948b40403391a7a0c1b07ba273",
+      "Id": "a65221a53beb43f7b14065fb0112ca62"
+    },
+    {
+      "Start": "1c4d68259aa6408c9d11e9f9e404538b",
+      "End": "1c14fa4067ef4d36bc7bc5b1c484f9fc",
+      "Id": "0bf78e4f45f949a28f2bb03fce85ceec"
+    },
+    {
+      "Start": "1c4d68259aa6408c9d11e9f9e404538b",
+      "End": "316b00814b244ebf8252035cbe46ce6c",
+      "Id": "c7b52e65feb440e199685c417b2a512a"
+    },
+    {
+      "Start": "2361f1e0d10a4663972a9832721a97f9",
+      "End": "6735e731349a4498af5bb53fc8fedd7d",
+      "Id": "c7b6119e5cd74981bcd8009d376d5720"
+    },
+    {
+      "Start": "2cd1708b323e4bdfa1aa5713a4de4294",
+      "End": "264c5cf049af4dfcb838d7d04b92ed48",
+      "Id": "30be0f555c9b499c890215c4408a6e72"
+    },
+    {
+      "Start": "0d5d7bea50e54ece862193ae42e20735",
+      "End": "5cc94ac643b04dd891423907a405ad91",
+      "Id": "905f8cf03fca40818865731514252ae4"
+    },
+    {
+      "Start": "795248b99ecd458f81104f2d2e8b0d54",
+      "End": "92e752bbf57045c2bdf87e9555fa76e8",
+      "Id": "3757803be90b431facab0e4e25a4650d"
+    },
+    {
+      "Start": "c101a8c5cbc84f46915b39ddeb32b7e3",
+      "End": "a202442a79f0489d83f26411f0b04c26",
+      "Id": "0de9a5bc33cb4fff9bf7910160e91658"
+    },
+    {
+      "Start": "97bfd7ef2179445fb9a429903a42c3ff",
+      "End": "c7af7651287f4a1a9ec8c440e49cbaf3",
+      "Id": "20f29565790f47f0870537e29195a59a"
+    },
+    {
+      "Start": "6d96539532204441aa29769abe0ff383",
+      "End": "ed3d42b034cf4e83b96f811e75f59ecf",
+      "Id": "14710786a88b4ff38a5b96ae59137c32"
+    },
+    {
+      "Start": "43ce538de3e64be887c6520ae04916da",
+      "End": "c98d3af91b1640cf8ef705ec35d1ed80",
+      "Id": "c5792390164d43f683e33d47be89e1c1"
+    },
+    {
+      "Start": "22e2ba7813ad45df89ef9104e793b859",
+      "End": "c8550e2235ff4fee914c5d79e8e67204",
+      "Id": "cb02394c9789406bbaddd84d16b8af85"
+    },
+    {
+      "Start": "2df4d80d93ee49c3890985de8dad0b84",
+      "End": "14e56e349de54163a5b7f239f777db2d",
+      "Id": "4a7d75cd1f7f47959610bfbe6ea7d5fc"
+    },
+    {
+      "Start": "f503dbe3f1c144c7a159cd1523b68937",
+      "End": "bca7453bf4d043798675ece20c37795f",
+      "Id": "15abf9c5e47d4b4c8249199d9b77537d"
+    },
+    {
+      "Start": "66fce0a8ecbf4c799f977ea49fcaf5b6",
+      "End": "c4515bb66cbd4b8b857d3bfe8ff11580",
+      "Id": "5d368c4b3b7649f1993ce9078a5cb0ce"
     }
   ],
   "Dependencies": [],
@@ -3151,15 +3960,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 6.179408073425293,
-      "EyeY": 5.7955365180969238,
-      "EyeZ": 0.12009972333908081,
-      "LookX": -2.5588998794555664,
-      "LookY": -2.3209455013275146,
-      "LookZ": -0.39106988906860352,
-      "UpX": -0.48677721619606018,
-      "UpY": 0.87035274505615234,
-      "UpZ": -0.074390523135662079
+      "EyeX": 12.357692718505859,
+      "EyeY": 4.8944854736328125,
+      "EyeZ": 3.6047816276550293,
+      "LookX": -5.1868076324462891,
+      "LookY": -1.6989436149597168,
+      "LookZ": -2.5509977340698242,
+      "UpX": -0.0626017302274704,
+      "UpY": 0.99756366014480591,
+      "UpZ": -0.030787006020545959
     },
     "NodeViews": [
       {
@@ -3169,18 +3978,18 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2575.5885333853043,
-        "Y": 1083.0025666019137
+        "X": 2525.0401305062205,
+        "Y": 832.90906694939054
       },
       {
         "ShowGeometry": true,
-        "Name": "Code Block",
+        "Name": "Geo List",
         "Id": "61e44d5eee674f26b9e8103bb75c7aa8",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2235.0876579435385,
-        "Y": 1272.3193256310615
+        "X": 2182.681684547149,
+        "Y": 1027.7985375304561
       },
       {
         "ShowGeometry": true,
@@ -3190,7 +3999,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 876.23891539276974,
-        "Y": -85.456998474131638
+        "Y": -84.507238226551749
       },
       {
         "ShowGeometry": true,
@@ -3200,7 +4009,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 864.50846742524027,
-        "Y": -188.4267297632519
+        "Y": -187.476969515672
       },
       {
         "ShowGeometry": true,
@@ -3210,7 +4019,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 599.56775557253548,
-        "Y": -184.16515530587969
+        "Y": -183.2153950582998
       },
       {
         "ShowGeometry": true,
@@ -3220,7 +4029,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 1390.7185432221877,
-        "Y": -79.4008401448724
+        "Y": -78.451079897292516
       },
       {
         "ShowGeometry": true,
@@ -3230,7 +4039,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 1094.922414687501,
-        "Y": -192.50624161209112
+        "Y": -191.55648136451123
       },
       {
         "ShowGeometry": true,
@@ -3259,8 +4068,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1830.2369308632037,
-        "Y": 10.963529556601486
+        "X": 1029.2036635657842,
+        "Y": -448.98460456901364
       },
       {
         "ShowGeometry": true,
@@ -3299,8 +4108,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 623.35207097167006,
-        "Y": 555.03406330779353
+        "X": 626.67511768957831,
+        "Y": 589.16139269415339
       },
       {
         "ShowGeometry": true,
@@ -3309,8 +4118,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 623.2291304813059,
-        "Y": 704.053550049491
+        "X": 630.01471414985986,
+        "Y": 845.88110631972063
       },
       {
         "ShowGeometry": true,
@@ -3319,8 +4128,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1758.0613707587809,
-        "Y": 328.85162589367178
+        "X": 1703.7978268450852,
+        "Y": -218.95176980649921
       },
       {
         "ShowGeometry": true,
@@ -3329,8 +4138,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1787.9138905934742,
-        "Y": 1968.6149483057989
+        "X": 1733.6503466797785,
+        "Y": 1343.2922041574907
       },
       {
         "ShowGeometry": true,
@@ -3339,8 +4148,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 618.83455233859036,
-        "Y": 984.72458309062813
+        "X": 635.07749046452136,
+        "Y": 1345.7770141578756
       },
       {
         "ShowGeometry": true,
@@ -3349,8 +4158,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 619.47134015376628,
-        "Y": 859.65956904969494
+        "X": 633.13029999809282,
+        "Y": 1086.3708270038744
       },
       {
         "ShowGeometry": true,
@@ -3359,8 +4168,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1167.5571721710794,
-        "Y": 2288.4302088384884
+        "X": 59.615097869279,
+        "Y": 1904.1284811543383
       },
       {
         "ShowGeometry": true,
@@ -3369,8 +4178,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1792.9294886470584,
-        "Y": 1714.8499597712166
+        "X": 1738.6659447333627,
+        "Y": 1089.5272156229084
       },
       {
         "ShowGeometry": true,
@@ -3379,8 +4188,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1786.5249837751599,
-        "Y": 1213.2410520961073
+        "X": 1732.2614398614642,
+        "Y": 587.91830794779912
       },
       {
         "ShowGeometry": true,
@@ -3389,8 +4198,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1790.1045099117314,
-        "Y": 1473.0574418139663
+        "X": 1735.8409659980357,
+        "Y": 847.73469766565825
       },
       {
         "ShowGeometry": true,
@@ -3419,8 +4228,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1787.1371823370619,
-        "Y": 954.40522255342512
+        "X": 1735.2898393947255,
+        "Y": 343.57968423327225
       },
       {
         "ShowGeometry": true,
@@ -3429,8 +4238,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 856.44107828632286,
-        "Y": 1283.0161121085903
+        "X": -720.45957697023846,
+        "Y": 1478.0052624604677
       },
       {
         "ShowGeometry": true,
@@ -3439,8 +4248,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 641.225507439334,
-        "Y": 2152.5292988637289
+        "X": -935.67514781722753,
+        "Y": 2347.5184492156063
       },
       {
         "ShowGeometry": true,
@@ -3449,8 +4258,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 969.36294981663673,
-        "Y": 495.125437779667
+        "X": 969.66273891841979,
+        "Y": 583.6714042562794
       },
       {
         "ShowGeometry": true,
@@ -3459,8 +4268,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 968.95214764985042,
-        "Y": 327.3157440030887
+        "X": 969.25193675163348,
+        "Y": 322.83849234193622
       },
       {
         "ShowGeometry": true,
@@ -3469,8 +4278,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 969.50625247818857,
-        "Y": 662.254537908284
+        "X": 967.222063298367,
+        "Y": 846.40770080426569
       },
       {
         "ShowGeometry": true,
@@ -3479,8 +4288,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 970.20365996807755,
-        "Y": 833.71610093390336
+        "X": 980.8393621962789,
+        "Y": 1087.6366774332091
       },
       {
         "ShowGeometry": true,
@@ -3489,8 +4298,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 970.0197223506118,
-        "Y": 1013.7422140238311
+        "X": 988.84663875814749,
+        "Y": 1341.5388113137019
       },
       {
         "ShowGeometry": true,
@@ -3499,8 +4308,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 630.858202300738,
-        "Y": 1286.3539749587735
+        "X": -946.04245295582336,
+        "Y": 1481.343125310651
       },
       {
         "ShowGeometry": true,
@@ -3509,8 +4318,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 630.011597676134,
-        "Y": 1454.1308751365709
+        "X": -946.88905758042733,
+        "Y": 1649.1200254884484
       },
       {
         "ShowGeometry": true,
@@ -3519,8 +4328,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 630.25748084938687,
-        "Y": 1621.4160089678617
+        "X": -946.64317440717446,
+        "Y": 1816.4051593197391
       },
       {
         "ShowGeometry": true,
@@ -3529,8 +4338,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 634.16115783267014,
-        "Y": 1796.0167304192128
+        "X": -942.73949742389118,
+        "Y": 1991.0058807710902
       },
       {
         "ShowGeometry": true,
@@ -3539,8 +4348,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 636.84557021261026,
-        "Y": 1976.7137748872801
+        "X": -940.05508504395107,
+        "Y": 2171.7029252391576
       },
       {
         "ShowGeometry": true,
@@ -3549,8 +4358,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 857.04315413132827,
-        "Y": 1452.7397751465678
+        "X": -719.857501125233,
+        "Y": 1647.7289254984453
       },
       {
         "ShowGeometry": true,
@@ -3559,8 +4368,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 856.56219084947361,
-        "Y": 1624.6596852395296
+        "X": -720.33846440708771,
+        "Y": 1819.6488355914071
       },
       {
         "ShowGeometry": true,
@@ -3569,8 +4378,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 855.96433098660918,
-        "Y": 1795.3018824386436
+        "X": -720.93632426995214,
+        "Y": 1990.2910327905211
       },
       {
         "ShowGeometry": true,
@@ -3579,8 +4388,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 859.76341523124074,
-        "Y": 1977.5365161447921
+        "X": -717.13724002532058,
+        "Y": 2172.5256664966696
       },
       {
         "ShowGeometry": true,
@@ -3589,8 +4398,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1245.6271092966219,
-        "Y": 1471.4813381737431
+        "X": -331.2735459599395,
+        "Y": 1666.4704885256206
       },
       {
         "ShowGeometry": true,
@@ -3599,8 +4408,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1816.5503352439887,
-        "Y": -223.22490978640167
+        "X": 589.1606514818136,
+        "Y": -466.11886825723212
       },
       {
         "ShowGeometry": true,
@@ -3609,8 +4418,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 824.30290510598434,
-        "Y": 2286.9965803429491
+        "X": -334.57134547230339,
+        "Y": 1904.2661525360572
       },
       {
         "ShowGeometry": true,
@@ -3624,16 +4433,6 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "On/Off",
-        "Id": "70b067b7f0c84ddd8035428cbbe9ceb2",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 3039.1563354696568,
-        "Y": 959.28893851760427
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Watch",
         "Id": "6a6b21fb028f4604bb96288628d53ad4",
         "IsSetAsInput": false,
@@ -3644,23 +4443,143 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "On/Off",
-        "Id": "37cf9a8c6a3d4d4b9de365af70357bf0",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1089.7449262982682,
-        "Y": -35.38381344077402
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Switcher",
         "Id": "707d96c4b0c447fab11fd20d86754199",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 1273.954858953952,
-        "Y": -194.021722053166
+        "Y": -193.07196180558611
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CubeCoord + Length",
+        "Id": "26b91f1a142e42539c8751f65ccacf8b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -44.134984523624951,
+        "Y": 1178.3973806721567
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Cuboid.ByLengths",
+        "Id": "4af187e559c648cc8e8f4b850a65f5dd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 636.27415313860979,
+        "Y": 1570.3695034194345
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "On/Off",
+        "Id": "3f57e74dd731444791e46505ab0dfb81",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1098.6579941145469,
+        "Y": 44.147982433983685
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "On/Off",
+        "Id": "4e3575612a134261972d058ad1f6bbdb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3041.3952952989489,
+        "Y": 997.84550766476946
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Cuboid.ByLengths",
+        "Id": "bcf4ca6143d3499eb8becca4eef436c8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 634.85402690943351,
+        "Y": 1882.714243425009
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geometry Object - MultiPolygon1",
+        "Id": "9c9993db47df42cbb01f8dc59d85d42b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 980.88891088542107,
+        "Y": 1683.5733750093557
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geodata Collector",
+        "Id": "9d4f3ac7e86c4eed9551601d7a456da1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1166.4862582681872,
+        "Y": 1586.1691520350944
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Solid.Centroid",
+        "Id": "99071d55456f4470a9b60e93674bc3ad",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 965.33626343221363,
+        "Y": 1584.7486937184804
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WKT Converter (Python Script)",
+        "Id": "66b36e8a68fc47fd9676c33a9e6a2914",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1736.7254038354913,
+        "Y": 1596.91859969175
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Solid.Centroid",
+        "Id": "7613c44469dc4898a47b8fbc413da509",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 969.66277616090133,
+        "Y": 1878.2430991470392
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geodata Collector",
+        "Id": "55438b6afc574fa0894c6645a8fc0906",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1170.8127709968774,
+        "Y": 1879.6635574636493
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geometry Object - MultiPolygon1",
+        "Id": "a83e7d84eb16436d99c9d93164e6cd1e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 985.21542361410843,
+        "Y": 1977.0677804379193
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WKT Converter (Python Script)",
+        "Id": "d4c09c32a6e947509b1d3203858097a2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1740.961414663798,
+        "Y": 1885.3265894333538
       }
     ],
     "Annotations": [
@@ -3687,15 +4606,16 @@
         "Nodes": [
           "8cc6c1fb61484b86bab82908655d3df0",
           "ff616aa35b194fbfa265d2a312b357bd",
-          "20f595b21050444cad303c1015c8207f"
+          "20f595b21050444cad303c1015c8207f",
+          "26b91f1a142e42539c8751f65ccacf8b"
         ],
-        "Left": -52.847123295459596,
+        "Left": -54.134984523624951,
         "Top": 461.29974461528229,
-        "Width": 384.0,
-        "Height": 698.9581154213,
+        "Width": 401.0,
+        "Height": 856.09763605687442,
         "FontSize": 36.0,
         "InitialTop": 557.29974461528229,
-        "InitialHeight": 572.9581154213,
+        "InitialHeight": 766.09763605687442,
         "TextblockHeight": 86.0,
         "Background": "#FFC1D676"
       },
@@ -3710,15 +4630,17 @@
           "b7f93905b81c487c99a0bb121432d94b",
           "10afdaeff2a642dba625b86ba323d6fe",
           "013e8a67712b4ae39da0ed75f65594d5",
-          "bfdc4615c6274338b4d5becf5c10fbc6"
+          "bfdc4615c6274338b4d5becf5c10fbc6",
+          "66b36e8a68fc47fd9676c33a9e6a2914",
+          "d4c09c32a6e947509b1d3203858097a2"
         ],
-        "Left": 1748.0613707587809,
-        "Top": 275.85162589367178,
-        "Width": 1072.5271626265235,
-        "Height": 1900.7633224121271,
+        "Left": 1693.7978268450852,
+        "Top": -271.95176980649921,
+        "Width": 1076.2423036611353,
+        "Height": 2365.2783592398528,
         "FontSize": 36.0,
-        "InitialTop": 328.85162589367178,
-        "InitialHeight": 1784.7633224121271,
+        "InitialTop": -218.95176980649921,
+        "InitialHeight": 1707.2439739639897,
         "TextblockHeight": 43.0,
         "Background": "#FFFFAA45"
       },
@@ -3734,15 +4656,20 @@
           "d2b62629a0554201bd1a5a39be2d7d7b",
           "32e8539b08034a57a003e887d6011f13",
           "5bcfa659ed5849c2ba551bd23c2a9d5e",
-          "9d2e9a1bc56b4de792b3b7e923a76afd"
+          "9d2e9a1bc56b4de792b3b7e923a76afd",
+          "4af187e559c648cc8e8f4b850a65f5dd",
+          "bcf4ca6143d3499eb8becca4eef436c8",
+          "7613c44469dc4898a47b8fbc413da509",
+          "55438b6afc574fa0894c6645a8fc0906",
+          "a83e7d84eb16436d99c9d93164e6cd1e"
         ],
-        "Left": 608.83455233859036,
-        "Top": 274.3157440030887,
-        "Width": 918.36910762948719,
-        "Height": 896.4264700207425,
+        "Left": 616.67511768957831,
+        "Top": 269.83849234193622,
+        "Width": 929.17152106856918,
+        "Height": 1864.2292880959831,
         "FontSize": 36.0,
-        "InitialTop": 327.3157440030887,
-        "InitialHeight": 831.4264700207425,
+        "InitialTop": 322.83849234193622,
+        "InitialHeight": 1700.4837272455973,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
@@ -3761,14 +4688,16 @@
           "43c394e8ed6a49e08743c025d5fde3fc",
           "ad18b37dc3c14625bbfacef86803868b",
           "41f46af230dc407c854a0bb264db0f58",
-          "4aa5aca4c9d245ce95df137be708a5e7"
+          "4aa5aca4c9d245ce95df137be708a5e7",
+          "53b66a95df584de1bbabfe444f3b3828",
+          "8e0e97ac456349348ae8f407ab7fb7ce"
         ],
-        "Left": 620.011597676134,
-        "Top": 1230.0161121085903,
-        "Width": 755.615511620488,
+        "Left": -956.88905758042733,
+        "Top": 1425.0052624604677,
+        "Width": 1236.5041554497063,
         "Height": 1015.5131867551386,
         "FontSize": 36.0,
-        "InitialTop": 1283.0161121085903,
+        "InitialTop": 1478.0052624604677,
         "InitialHeight": 1014.5131867551386,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
@@ -3778,18 +4707,18 @@
         "Title": "RDF Export",
         "Nodes": [
           "15a7732f6cb04dd091354990f47294cf",
-          "70b067b7f0c84ddd8035428cbbe9ceb2",
           "6a6b21fb028f4604bb96288628d53ad4",
           "c35aef94b79f494486311eadd2b8352d",
-          "bc6e3de400aa462da2f128593313d246"
+          "bc6e3de400aa462da2f128593313d246",
+          "4e3575612a134261972d058ad1f6bbdb"
         ],
-        "Left": 3029.1563354696568,
-        "Top": 906.28893851760427,
-        "Width": 572.7957938287168,
-        "Height": 451.9171736806818,
+        "Left": 3029.8582851258411,
+        "Top": 914.541229345149,
+        "Width": 572.0938441725325,
+        "Height": 443.6648828531371,
         "FontSize": 36.0,
-        "InitialTop": 959.28893851760427,
-        "InitialHeight": 434.9171736806818,
+        "InitialTop": 967.541229345149,
+        "InitialHeight": 426.6648828531371,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
@@ -3802,22 +4731,22 @@
           "963c470715ed4f5b815704780b1b964a",
           "aef00e0d9cbc4c89bc624f16784d0389",
           "3caf2c5d39a14bb8a8d117a845916766",
-          "37cf9a8c6a3d4d4b9de365af70357bf0",
-          "707d96c4b0c447fab11fd20d86754199"
+          "707d96c4b0c447fab11fd20d86754199",
+          "3f57e74dd731444791e46505ab0dfb81"
         ],
         "Left": 589.56775557253548,
-        "Top": -247.021722053166,
+        "Top": -246.07196180558611,
         "Width": 998.38710338141652,
         "Height": 477.6208819082936,
         "FontSize": 36.0,
-        "InitialTop": -194.021722053166,
-        "InitialHeight": 303.637908612392,
+        "InitialTop": -193.07196180558611,
+        "InitialHeight": 382.21994423956983,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": -147.11959003201173,
-    "Y": 488.14004526343217,
-    "Zoom": 0.5926554959860173
+    "X": -2045.5363307801501,
+    "Y": -454.92511761081687,
+    "Zoom": 0.87369176403869364
   }
 }
