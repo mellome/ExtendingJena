@@ -50,7 +50,7 @@ import rub.inf.bi.extension.jena.NamespaceManager;
 
 public class RunTopologicalValidationExample {
     // Directories for win
-    private static String ontologiePath ="C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\3DScenario.rdf"; // "example", "3DScenario"
+    private static String ontologiePath ="C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\example.rdf"; // "example", "3DScenario"
     private static String originalQueryPath = "C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test3_TopologicalWithin.ttl";
     private static String queryResultPath = "C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml";
     // Directories for mac
@@ -116,9 +116,9 @@ public class RunTopologicalValidationExample {
 	        ResultSet results = qexec.execSelect() ;
             //Boolean isColumnNameStored = false;
             //List<String> columnNames = new ArrayList<>();
-
             //save query results to a .xml file
             String xmlString = ResultSetFormatter.asXMLString(results);
+            System.out.println(originalQueryPath);
             System.out.println(xmlString);
             try {
                 stringToDom(xmlString, queryResultPath);
