@@ -1081,15 +1081,15 @@
       "WasExecuted": true,
       "Camera": {
         "Name": "8e0e97ac-4563-4934-8ae8-f407ab7fb7ce Preview",
-        "EyeX": -6.1210451126098633,
-        "EyeY": 25.875194549560547,
-        "EyeZ": 12.261739730834961,
-        "LookX": 1.1210451126098633,
-        "LookY": -14.875194549560547,
-        "LookZ": -20.261739730834961,
-        "UpX": 0.022348947823047638,
-        "UpY": 0.91451495885849,
-        "UpZ": -0.40393424034118652
+        "EyeX": -17.0,
+        "EyeY": 24.0,
+        "EyeZ": 50.0,
+        "LookX": 12.0,
+        "LookY": -13.0,
+        "LookZ": -58.0,
+        "UpX": 0.0,
+        "UpY": 1.0,
+        "UpZ": 0.0
       },
       "NodeType": "ExtensionNode",
       "Id": "8e0e97ac456349348ae8f407ab7fb7ce",
@@ -2877,7 +2877,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Phython-Standard- und DesignScript-Bibliotheken laden\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Die Eingaben für diesen Block werden in Form einer Liste in den IN-Variablen gespeichert.\r\ndataEnteringNode = IN\r\n\r\ngeometry = dataEnteringNode[0];\r\nname = dataEnteringNode[1];\r\nif isinstance(dataEnteringNode[1], list):\r\n    name = dataEnteringNode[1][0]\r\ngeometryType = dataEnteringNode[2];\r\nexampleInstanceNamespace = dataEnteringNode[3];\r\ngeoSparqlNamespace = dataEnteringNode[4];\r\n\r\n# Code unterhalb dieser Linie platzieren\r\n\r\ndef multipolygon2WKT():\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    \"\"\"\r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \"\"\"\r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = geometry[0]\r\n    length = geometry[1]\r\n    offset = geometry[1]/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"   \r\n    \r\n    cuboid_face = bottom_face + \", \" + top_face + \", \" + front_face + \", \" + back_face + \", \" + left_face + \", \" + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral += cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\nres = \"\"\r\n# Weisen Sie Ihre Ausgabe der OUT-Variablen zu.\r\nif(geometryType.upper() == \"MULTIPOLYGON\"):\r\n    res = multipolygon2WKT()\r\n    \r\nif(geometryType.upper() == \"POLYGON\"):\r\n    res = polygon2WKT()\r\n\r\nOUT = res\r\n\r\n",
+      "Code": "# Phython-Standard- und DesignScript-Bibliotheken laden\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Die Eingaben für diesen Block werden in Form einer Liste in den IN-Variablen gespeichert.\r\ndataEnteringNode = IN\r\n\r\ngeometry = dataEnteringNode[0];\r\nname = dataEnteringNode[1];\r\nif isinstance(dataEnteringNode[1], list):\r\n    name = dataEnteringNode[1][0]\r\ngeometryType = dataEnteringNode[2];\r\nexampleInstanceNamespace = dataEnteringNode[3];\r\ngeoSparqlNamespace = dataEnteringNode[4];\r\n\r\n# Code unterhalb dieser Linie platzieren\r\n\r\ndef multipolygon2WKT():\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    \"\"\"\r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \"\"\"\r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = geometry[0]\r\n    offset = geometry[1]/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"   \r\n    \r\n    cuboid_face = bottom_face + \", \" + top_face + \", \" + front_face + \", \" + back_face + \", \" + left_face + \", \" + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral += cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\nres = \"\"\r\n# Weisen Sie Ihre Ausgabe der OUT-Variablen zu.\r\nif(geometryType.upper() == \"MULTIPOLYGON\"):\r\n    res = multipolygon2WKT()\r\n    \r\nif(geometryType.upper() == \"POLYGON\"):\r\n    res = polygon2WKT()\r\n\r\nOUT = res\r\n\r\n",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "66b36e8a68fc47fd9676c33a9e6a2914",
@@ -3107,7 +3107,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Phython-Standard- und DesignScript-Bibliotheken laden\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Die Eingaben für diesen Block werden in Form einer Liste in den IN-Variablen gespeichert.\r\ndataEnteringNode = IN\r\n\r\ngeometry = dataEnteringNode[0];\r\nname = dataEnteringNode[1];\r\nif isinstance(dataEnteringNode[1], list):\r\n    name = dataEnteringNode[1][0]\r\ngeometryType = dataEnteringNode[2];\r\nexampleInstanceNamespace = dataEnteringNode[3];\r\ngeoSparqlNamespace = dataEnteringNode[4];\r\n\r\n# Code unterhalb dieser Linie platzieren\r\n\r\ndef multipolygon2WKT():\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    \"\"\"\r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \"\"\"\r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = geometry[0]\r\n    length = geometry[1]\r\n    offset = geometry[1]/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"\r\n    \r\n    cuboid_face = bottom_face + \", \" + top_face + \", \" + front_face + \", \" + back_face + \", \" + left_face + \", \" + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral += cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\nres = \"\"\r\n# Weisen Sie Ihre Ausgabe der OUT-Variablen zu.\r\nif(geometryType.upper() == \"MULTIPOLYGON\"):\r\n    res = multipolygon2WKT()\r\n    \r\nif(geometryType.upper() == \"POLYGON\"):\r\n    res = polygon2WKT()\r\n\r\nOUT = res\r\n\r\n",
+      "Code": "# Phython-Standard- und DesignScript-Bibliotheken laden\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Die Eingaben für diesen Block werden in Form einer Liste in den IN-Variablen gespeichert.\r\ndataEnteringNode = IN\r\n\r\ngeometry = dataEnteringNode[0];\r\nname = dataEnteringNode[1];\r\nif isinstance(dataEnteringNode[1], list):\r\n    name = dataEnteringNode[1][0]\r\ngeometryType = dataEnteringNode[2];\r\nexampleInstanceNamespace = dataEnteringNode[3];\r\ngeoSparqlNamespace = dataEnteringNode[4];\r\n\r\n# Code unterhalb dieser Linie platzieren\r\n\r\ndef multipolygon2WKT():\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    \"\"\"\r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \"\"\"\r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = geometry[0]\r\n    offset = geometry[1]/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"\r\n    \r\n    cuboid_face = bottom_face + \", \" + top_face + \", \" + front_face + \", \" + back_face + \", \" + left_face + \", \" + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral += cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\nres = \"\"\r\n# Weisen Sie Ihre Ausgabe der OUT-Variablen zu.\r\nif(geometryType.upper() == \"MULTIPOLYGON\"):\r\n    res = multipolygon2WKT()\r\n    \r\nif(geometryType.upper() == \"POLYGON\"):\r\n    res = polygon2WKT()\r\n\r\nOUT = res\r\n\r\n",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "d4c09c32a6e947509b1d3203858097a2",
@@ -3568,6 +3568,35 @@
       ],
       "Replication": "Disabled",
       "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "d3370dcde96e46b2a81c6bf3f45b32bc",
+      "Inputs": [
+        {
+          "Id": "848c9fd29b7f4fdba6ae3d731413fbae",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "99a98a715117409091e6429d8fd32513",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
     }
   ],
   "Connectors": [
@@ -4148,11 +4177,6 @@
     },
     {
       "Start": "d5bef693442f4c63bf933e0c859fe5c7",
-      "End": "febe97914bf34c2f852a4d6444dbe36f",
-      "Id": "18c3a15a0f114024a81ebde281b84f40"
-    },
-    {
-      "Start": "d5bef693442f4c63bf933e0c859fe5c7",
       "End": "513b5ad910c143d2920b4968272806fe",
       "Id": "776d1a238fba4e5d91091b5b2ec713a3"
     },
@@ -4162,14 +4186,14 @@
       "Id": "161ee7ac252d4df881c78dc606733428"
     },
     {
-      "Start": "efe37e49a2424a62b3aab1319f715d39",
-      "End": "f091ba28f1bf4ceab2a4a7a77794666a",
-      "Id": "c9462ddffdb84717b975da2ca8e3ad92"
+      "Start": "d5bef693442f4c63bf933e0c859fe5c7",
+      "End": "febe97914bf34c2f852a4d6444dbe36f",
+      "Id": "8136321eeed142ef9b37613c45fce30f"
     },
     {
-      "Start": "efe37e49a2424a62b3aab1319f715d39",
+      "Start": "d5bef693442f4c63bf933e0c859fe5c7",
       "End": "13ddfe38377e45a4907498b2ec1a59c7",
-      "Id": "2295ef1f57274d0bae407f44ec7c98d0"
+      "Id": "487a4078dc494bc88e8a3898262e7ffe"
     },
     {
       "Start": "efe37e49a2424a62b3aab1319f715d39",
@@ -4185,6 +4209,11 @@
       "Start": "efe37e49a2424a62b3aab1319f715d39",
       "End": "c7be278f2f6b43fabff326ff7185f438",
       "Id": "3101e9edbff24bbb92c392c60bae8e35"
+    },
+    {
+      "Start": "efe37e49a2424a62b3aab1319f715d39",
+      "End": "f091ba28f1bf4ceab2a4a7a77794666a",
+      "Id": "0e1929ca3dd54137990247875396fed9"
     },
     {
       "Start": "3aea9da347654932aa87ba43fe0a3f42",
@@ -4222,6 +4251,11 @@
       "Id": "56866b1f3965412ebb61c5af99313bba"
     },
     {
+      "Start": "795248b99ecd458f81104f2d2e8b0d54",
+      "End": "848c9fd29b7f4fdba6ae3d731413fbae",
+      "Id": "e5a214db42994047bdd12fba159278c1"
+    },
+    {
       "Start": "c101a8c5cbc84f46915b39ddeb32b7e3",
       "End": "a202442a79f0489d83f26411f0b04c26",
       "Id": "0de9a5bc33cb4fff9bf7910160e91658"
@@ -4234,7 +4268,7 @@
     {
       "Start": "6d96539532204441aa29769abe0ff383",
       "End": "ed3d42b034cf4e83b96f811e75f59ecf",
-      "Id": "14710786a88b4ff38a5b96ae59137c32"
+      "Id": "fd5c0b491ad640699965c4fc5812dc8f"
     },
     {
       "Start": "43ce538de3e64be887c6520ae04916da",
@@ -4321,15 +4355,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 1.5466006994247437,
-      "EyeY": 7.7249794006347656,
-      "EyeZ": 9.1497440338134766,
-      "LookX": -2.0692570209503174,
-      "LookY": -5.0262508392333984,
-      "LookZ": -9.4819869995117188,
-      "UpX": -0.055186837911605835,
-      "UpY": 0.96592414379119873,
-      "UpZ": -0.25287353992462158
+      "EyeX": 2.1534881591796875,
+      "EyeY": 12.67391300201416,
+      "EyeZ": 3.2436630725860596,
+      "LookX": -2.6761445999145508,
+      "LookY": -9.975184440612793,
+      "LookZ": -3.5759060382843018,
+      "UpX": -0.48165357112884521,
+      "UpY": 0.5948176383972168,
+      "UpZ": -0.643585205078125
     },
     "NodeViews": [
       {
@@ -4991,6 +5025,16 @@
         "Excluded": false,
         "X": -770.30474170955824,
         "Y": 2495.5383169687411
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "d3370dcde96e46b2a81c6bf3f45b32bc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1706.8524491428088,
+        "Y": 2075.7701625813106
       }
     ],
     "Annotations": [
@@ -5163,8 +5207,8 @@
         "Background": "#FF48B9FF"
       }
     ],
-    "X": 275.41959018000261,
-    "Y": 27.048540935400638,
-    "Zoom": 0.30305718667640391
+    "X": 211.63086066614244,
+    "Y": -330.78456591448287,
+    "Zoom": 0.5210495319279862
   }
 }
