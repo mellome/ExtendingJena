@@ -16,6 +16,7 @@ import rub.inf.bi.extension.jena.sparql.geometry3D.TLIntersection3DGeometry;
 import rub.inf.bi.extension.jena.sparql.geometry3D.TTIntersection3D;
 import rub.inf.bi.extension.jena.sparql.geometry3D.TTIntersection3DGeometry;
 import rub.inf.bi.extension.jena.sparql.geometry3D.TopologicalDisjoint;
+import rub.inf.bi.extension.jena.sparql.geometry3D.TopologicalTouch;
 import rub.inf.bi.extension.jena.sparql.geometry3D.TopologicalWithin;
 import rub.inf.bi.extension.jena.sparql.ifc.PerformStringDecode;
 import rub.inf.bi.extension.jena.sparql.tunneling.AlignmentSegmentHasRadius;
@@ -45,9 +46,10 @@ public class ExtendedFunctionConfig {
             functionRegistry.put(ExtendedFunctionVocabolary.lpContains3D.getURI(), LPContains3D.class);
             functionRegistry.put(ExtendedFunctionVocabolary.ppContains3D.getURI(), PPContains3D.class);
 
-            // TODO: yifeng
+            // TODO: yifeng's playground
             functionRegistry.put(ExtendedFunctionVocabolary.topologicalWithin.getURI(), TopologicalWithin.class);
             functionRegistry.put(ExtendedFunctionVocabolary.topologicalDisjoint.getURI(), TopologicalDisjoint.class);
+            functionRegistry.put(ExtendedFunctionVocabolary.topologicalTouch.getURI(), TopologicalTouch.class);
 
             functionRegistry.put(ExtendedFunctionVocabolary.ppIntersection3D.getURI(), PPIntersection3D.class);
             functionRegistry.put(ExtendedFunctionVocabolary.ppIntersection3DGeometry.getURI(), PPIntersection3DGeometry.class);

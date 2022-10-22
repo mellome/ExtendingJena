@@ -28,9 +28,10 @@ public class ExtendedFunctionVocabolary {
     public static final Property lpContains3D = property("LPContains3D"); //Line contains Point
     public static final Property ppContains3D = property("LPContains3D"); //Plane contains Point
     
-    // TODO: yifeng 
-    public static final Property topologicalWithin = property("TopologicalWithin"); // Everything in 3D
-    public static final Property topologicalDisjoint = property("TopologicalDisjoint"); // Everything in 3D
+    // TODO: yifeng's playground
+    public static final Property topologicalWithin = property("TopologicalWithin"); // All geometries in 3D
+    public static final Property topologicalDisjoint = property("TopologicalDisjoint"); // All geometries in 3D
+    public static final Property topologicalTouch = property("TopologicalTouch"); // All geometries in 3D
 
     public static final Property ppIntersection3D = property("PPIntersection3D"); //Plane and plane
     public static final Property ppIntersection3DGeometry = property("PPIntersection3DGeometry"); //Geometry of Plane and plane

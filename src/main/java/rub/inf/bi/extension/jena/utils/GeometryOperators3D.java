@@ -16,6 +16,7 @@ public class GeometryOperators3D {
 
 	public static final double TOLERANCE = 0.1;
 
+	// TODO: why should we create different functions in case of different geometries but not use the general function directely?
 	public static boolean contains3D(Plane plane, Vector3D point) {
 		return plane.contains(point);
 	}
@@ -36,6 +37,10 @@ public class GeometryOperators3D {
 
 	public static boolean disjoint3D(Geometry geom1, Geometry geom2) {
 		return geom1.disjoint(geom2);
+	}
+
+	public static boolean touch3D(Geometry geom1, Geometry geom2) {
+		return geom1.touches(geom2);
 	}
 
 	// =================================================================
