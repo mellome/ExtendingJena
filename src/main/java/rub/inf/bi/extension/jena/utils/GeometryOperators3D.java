@@ -10,6 +10,7 @@ import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.MultiPolygon;
+import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 
 public class GeometryOperators3D {
@@ -39,10 +40,97 @@ public class GeometryOperators3D {
 		return geom1.disjoint(geom2);
 	}
 
-	public static boolean touch3D(Geometry geom1, Geometry geom2) {
-		return geom1.touches(geom2);
+	public static boolean intersect3D(Geometry geom1, Geometry geom2) {
+		return geom1.intersects(geom2);
+	}
+	
+	// =================================================================
+	// TOUCH
+	// =================================================================
+	public static boolean touch3D(Line geom1, Point geom2) {
+		Vector3D vGeom2 = new Vector3D( 
+			geom2.getCoordinate().getX(), 
+			geom2.getCoordinate().getY(), 
+			geom2.getCoordinate().getZ());
+		return geom1.contains(vGeom2)? true : false;
 	}
 
+	public static boolean touch3D(Polygon geom1, Point geom2) {
+		Vector3D vGeom2 = new Vector3D( geom2.getCoordinate().getX(), 
+										geom2.getCoordinate().getY(), 
+										geom2.getCoordinate().getZ());
+
+		for (int cIt1 = 1; cIt1 < geom1.getCoordinates().length; cIt1++) {
+			Vector3D tempA = new Vector3D(
+				geom1.getCoordinates()[cIt1 - 1].getX(),
+				geom1.getCoordinates()[cIt1 - 1].getY(),
+				geom1.getCoordinates()[cIt1 - 1].getZ());
+			Vector3D tempB = new Vector3D(
+				geom1.getCoordinates()[cIt1].getX(),
+				geom1.getCoordinates()[cIt1].getY(),
+				geom1.getCoordinates()[cIt1].getZ());
+
+			if (contains3D(tempA, tempB, vGeom2)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static boolean touch3D(MultiPolygon geom1, Point geom2) {
+
+		for (int i = 0; i < geom1.getNumGeometries(); i++) {
+			if (geom1.getGeometryN(i) instanceof Polygon) {
+				Polygon tempFace = (Polygon) geom1.getGeometryN(i);
+				if (touch3D(tempFace, geom2)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public static boolean touch3D(Line geom1, Line geom2) {
+		// TODO: find a way to extract start- and end-point of a Line object
+		return false;
+	}
+
+	public static boolean touch3D(Polygon geom1, Line geom2) {
+		int intersectedPointsNum = 0;
+
+		for (int cIt1 = 1; cIt1 < geom1.getCoordinates().length; cIt1++) {
+			Vector3D tempA = new Vector3D(
+				geom1.getCoordinates()[cIt1 - 1].getX(),
+				geom1.getCoordinates()[cIt1 - 1].getY(),
+				geom1.getCoordinates()[cIt1 - 1].getZ());
+			Vector3D tempB = new Vector3D(
+				geom1.getCoordinates()[cIt1].getX(),
+				geom1.getCoordinates()[cIt1].getY(),
+				geom1.getCoordinates()[cIt1].getZ());
+			Line tempLine = new Line(tempA, tempB, TOLERANCE);
+
+			if (touch3D(tempLine, geom2)) {
+				// TODO: determine the case where a line lays down in the polygon/surface
+			}
+		}
+		return false;
+	}
+
+	public static boolean touch3D(MultiPolygon geom1, Line geom2) {
+		return false;
+	}
+
+	public static boolean touch3D(Polygon geom1, Polygon geom2) {
+		return false;
+	}
+
+	public static boolean touch3D(MultiPolygon geom1, Polygon geom2) {
+		return false;
+	}
+
+	public static boolean touch3D(MultiPolygon geom1, MultiPolygon geom2) {
+		return false;
+	}
 	// =================================================================
 
 	public static Vector3D intersection3D(Line line, Vector3D start, Vector3D end) {
@@ -332,7 +420,7 @@ public class GeometryOperators3D {
 	 * @return ArrayList containing all intersecting points as Vector3D. Result is
 	 *         an empty List if no intersection exists.
 	 */
-	private static ArrayList<Vector3D> intersection3D(Line source, Polygon mesh) {
+	public static ArrayList<Vector3D> intersection3D(Line source, Polygon mesh) {
 		ArrayList<Vector3D> intersectionPoints = new ArrayList<Vector3D>();
 
 		for (int cIt1 = 1; cIt1 < mesh.getCoordinates().length; cIt1++) {

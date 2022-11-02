@@ -6,34 +6,10 @@
   <results>
     <result>
       <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Point1</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#LINE2</uri>
       </binding>
       <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Polygon2</uri>
-      </binding>
-    </result>
-    <result>
-      <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Point1</uri>
-      </binding>
-      <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Line1</uri>
-      </binding>
-    </result>
-    <result>
-      <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Point1</uri>
-      </binding>
-      <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#CubeB</uri>
-      </binding>
-    </result>
-    <result>
-      <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#CubeB</uri>
-      </binding>
-      <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#Polygon2</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON1</uri>
       </binding>
     </result>
   </results>

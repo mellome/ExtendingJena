@@ -130,6 +130,33 @@
 	    <version>3.6.1</version>
 	</dependency>
 	
+	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-geometry-euclidean -->
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-geometry-euclidean</artifactId>
+		<version>1.0</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-numbers-core -->
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-numbers-core</artifactId>
+		<version>1.0</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+	<dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-geometry-io-euclidean</artifactId>
+		<version>1.0</version>
+	</dependency>
+	
+	<!-- https://github.com/javagl/Obj -->
+	<dependency>
+		<groupId>de.javagl</groupId>
+		<artifactId>obj</artifactId>
+		<version>0.3.0</version>
+	</dependency>
 	<!--     
 	<dependency>
 	    <groupId>javax.vecmath</groupId>

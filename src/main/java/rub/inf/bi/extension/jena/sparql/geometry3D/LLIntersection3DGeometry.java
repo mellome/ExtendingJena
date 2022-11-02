@@ -17,7 +17,7 @@ import rub.inf.bi.extension.jena.utils.GeometryOperators3D;
 import rub.inf.bi.extension.jena.vocabulary.ExtendedFunctionVocabolary;
 
 public class LLIntersection3DGeometry extends FunctionBase2 {
-
+	
 	@Override
 	public NodeValue exec(NodeValue v1, NodeValue v2) {
 		

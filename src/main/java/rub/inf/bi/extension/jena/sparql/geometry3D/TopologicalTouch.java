@@ -1,6 +1,7 @@
 package rub.inf.bi.extension.jena.sparql.geometry3D;
 import java.util.ArrayList;
 
+import org.apache.commons.math3.geometry.euclidean.threed.Line;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import org.apache.jena.geosparql.implementation.GeometryWrapper;
 import org.apache.jena.geosparql.implementation.GeometryWrapperFactory;
@@ -28,10 +29,19 @@ public class TopologicalTouch extends FunctionBase2{
 		GeometryWrapper geometry2 = GeometryWrapper.extract(v2);
 	    Geometry geom2 = geometry2.getParsingGeometry();
 
-        if (geom1 instanceof LineString && geom2 instanceof Point) {
-            return GeometryOperators3D.touch3D(geom1, geom2)? NodeValue.TRUE : NodeValue.FALSE;
+        // return GeometryOperators3D.touch3D(geom1, geom2)? NodeValue.TRUE : NodeValue.FALSE;
+        if (geom1 instanceof LineString && geom2 instanceof Polygon) {
+            Coordinate sp = geom1.getCoordinates()[0];
+            Coordinate ep = geom1.getCoordinates()[1];
+            Vector3D spv  =new Vector3D(sp.getX(), sp.getY(), sp.getZ());
+            Vector3D epv  =new Vector3D(ep.getX(), ep.getY(), ep.getZ());
+
+            Line line = new Line(spv, epv, GeometryOperators3D.TOLERANCE);
+            ArrayList<Vector3D> iPoints = GeometryOperators3D.intersection3D(line, (Polygon)geom2);
+            return iPoints.size() > 0? NodeValue.TRUE:NodeValue.FALSE;
         }
         return NodeValue.FALSE;
+        // return GeometryOperators3D.intersection3D(geom1, geom2)? NodeValue.TRUE : NodeValue.FALSE;
         /* 
          * Ref.: Borrmann-"Topological analysis of 3D building models using a spatial query language" 
          * 
