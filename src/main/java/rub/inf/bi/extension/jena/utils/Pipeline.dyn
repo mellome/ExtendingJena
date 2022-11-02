@@ -2695,7 +2695,7 @@
     {
       "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
       "NodeType": "BooleanInputNode",
-      "InputValue": true,
+      "InputValue": false,
       "Id": "4e3575612a134261972d058ad1f6bbdb",
       "Inputs": [],
       "Outputs": [
@@ -3956,11 +3956,6 @@
       "Id": "be5fd610ce0b4a5cafbdf76734dd12d4"
     },
     {
-      "Start": "4978c6c037cc47f18f293d2e287a9fc9",
-      "End": "c43d8cef92f44774a4a4f08b55d98728",
-      "Id": "57f05c11aeca44caa8d094b7a34ffc47"
-    },
-    {
       "Start": "3adc36e0679f479e89ca4c5691f82ef6",
       "End": "88e97bfc5e4d42a9a651a587c7fca052",
       "Id": "04c4b8c1d31440188a0a0d21dee7e289"
@@ -4058,7 +4053,7 @@
     {
       "Start": "800b33b7c5f44dcabd35aa961dd22cb8",
       "End": "d58a465620f14ccebf2f1db08763f2ab",
-      "Id": "043294a4b55f42d0bbc8dfc914ac1cce"
+      "Id": "0e4dadac48ba4047b7637e7966b65ab7"
     },
     {
       "Start": "fc87377bcb8642b3a93bc937157bba67",
@@ -4087,28 +4082,13 @@
     },
     {
       "Start": "4ef20f12a3e84a1ba41f1a346b2a1d16",
-      "End": "95a75c96b8a54f65a788c59cc5e3c6f9",
-      "Id": "56ce75c81470429dae48f6ea5c01f005"
-    },
-    {
-      "Start": "4ef20f12a3e84a1ba41f1a346b2a1d16",
       "End": "71e557c3927646778b6c4cfc2e1523e4",
       "Id": "5c3e82da9bbb49a09da63d828d22cafe"
     },
     {
       "Start": "4ef20f12a3e84a1ba41f1a346b2a1d16",
-      "End": "d6c7a8703503455da3547336e6a3e8bf",
-      "Id": "32b1729c5e6241599f90dc173a5b322d"
-    },
-    {
-      "Start": "4ef20f12a3e84a1ba41f1a346b2a1d16",
-      "End": "afab1f145ef74d4dbd1326fe822b8c6c",
-      "Id": "9154c9344b7c4018aad74efce3addd29"
-    },
-    {
-      "Start": "4ef20f12a3e84a1ba41f1a346b2a1d16",
-      "End": "ff0c731c52e24a3eaf466b56a262480c",
-      "Id": "821084e363ae4acfbeb4f326ee00f38b"
+      "End": "c43d8cef92f44774a4a4f08b55d98728",
+      "Id": "de85295d81bf4a68b2350a8554babe90"
     },
     {
       "Start": "058e873801cb4821b061b4b2fed0f5b7",
@@ -4119,6 +4099,16 @@
       "Start": "8789f690d0fb4d4ea09962f50d1af2d8",
       "End": "7ebe7601e0d64625a1e74a83c5e10bb2",
       "Id": "498c39b96db94bb7becd5d5d10ea3ed6"
+    },
+    {
+      "Start": "d9e178ae93e64c0a8da12b138d79da37",
+      "End": "d6c7a8703503455da3547336e6a3e8bf",
+      "Id": "c7a2efbf8cc24edb9bde75280a2a03a9"
+    },
+    {
+      "Start": "06eee4082ef1498b9077ab77abefe8a1",
+      "End": "95a75c96b8a54f65a788c59cc5e3c6f9",
+      "Id": "e99abcff08154ceda9bf89d31c371665"
     },
     {
       "Start": "eb07da86db734600be0f078466535df2",
@@ -4331,6 +4321,11 @@
       "Id": "5e14339ab81c4e37a592fc9e7eb5dea4"
     },
     {
+      "Start": "3aec7d6bdb5a470db329586e32021ee7",
+      "End": "afab1f145ef74d4dbd1326fe822b8c6c",
+      "Id": "d02deeadc7bd40a5a2ae8ef722ce1da8"
+    },
+    {
       "Start": "0a346983fa83446884094efb2d68b0f1",
       "End": "4e0e8ab901624d46907eeb882ebab300",
       "Id": "7cc215a045614d69abc8db5ce82eb4a2"
@@ -4339,6 +4334,11 @@
       "Start": "a5d83bca509a4083bc6e0a6f6a0905c4",
       "End": "88eb910c87b448f69f1194d97f49e372",
       "Id": "8a2ccd5c00414f20accb3af35749a2c4"
+    },
+    {
+      "Start": "16a164f83a2141f3ad75400049caf566",
+      "End": "ff0c731c52e24a3eaf466b56a262480c",
+      "Id": "6a325b4434c44ce096b20d9b679ce9a8"
     }
   ],
   "Dependencies": [],
@@ -4355,15 +4355,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 13.415631294250488,
-      "EyeY": 8.442657470703125,
-      "EyeZ": 8.9100456237792969,
-      "LookX": -3.6341953277587891,
-      "LookY": -5.8556647300720215,
-      "LookZ": -5.4264640808105469,
-      "UpX": -0.27401575446128845,
-      "UpY": 0.87034958600997925,
-      "UpZ": -0.40915408730506897
+      "EyeX": 12.662245750427246,
+      "EyeY": 6.6887288093566895,
+      "EyeZ": 10.682157516479492,
+      "LookX": -2.8808097839355469,
+      "LookY": -4.1017360687255859,
+      "LookZ": -7.1985759735107422,
+      "UpX": -0.099294155836105347,
+      "UpY": 0.9636271595954895,
+      "UpZ": -0.24811984598636627
     },
     "NodeViews": [
       {
@@ -5070,7 +5070,7 @@
         "Height": 856.09763605687476,
         "FontSize": 36.0,
         "InitialTop": 557.299744615282,
-        "InitialHeight": 766.09763605687442,
+        "InitialHeight": 766.09763605687476,
         "TextblockHeight": 86.0,
         "Background": "#FFC1D676"
       },
@@ -5127,7 +5127,7 @@
         "Height": 1864.2292880959842,
         "FontSize": 36.0,
         "InitialTop": 312.785554448126,
-        "InitialHeight": 1799.22928809598,
+        "InitialHeight": 1799.2292880959842,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
@@ -5198,8 +5198,8 @@
         ],
         "Left": 589.56775557253548,
         "Top": -246.07196180558611,
-        "Width": 1010.1507876496522,
-        "Height": 545.62088190829354,
+        "Width": 998.38710338141652,
+        "Height": 358.21994423956977,
         "FontSize": 36.0,
         "InitialTop": -193.07196180558611,
         "InitialHeight": 382.21994423956977,
@@ -5207,8 +5207,8 @@
         "Background": "#FF48B9FF"
       }
     ],
-    "X": 183.18022432080318,
-    "Y": -402.05188276535921,
-    "Zoom": 0.80785229236082345
+    "X": -37.314695723432521,
+    "Y": 710.750510978309,
+    "Zoom": 0.83352873245948544
   }
 }
