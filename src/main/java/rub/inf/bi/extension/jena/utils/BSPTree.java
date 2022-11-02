@@ -40,9 +40,12 @@ public class BSPTree implements Serializable{
 
     // TODO: Do not need to consider BoundingBox situation in java. He will be implemented in Dynamo.
     
+    // Plane partition;
+    // BSPNode treeNode; // divider <--> partition
+    BSPTree parent, frontTree, backTree;
+    List<BSPTree> children = new ArrayList<>();
     Plane partition;
-    BSPNode divider; // divider <--> partition
-    BSPTree tree, frontTree, backTree;
+    Polygon divider;
     List<Polygon> polygonList = new ArrayList<>(), // all the polygons are in the same plane
                   frontList = new ArrayList<>(),
                   backList = new ArrayList<>();
@@ -50,49 +53,60 @@ public class BSPTree implements Serializable{
     final String PATH = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/geoOBJ/bspTree.obj";
 
     public BSPTree() {
-        tree = null;
         frontTree = null;
         backTree = null;
-        divider = null;
+    }
+
+    public BSPTree(BSPTree parentTree) {
+        frontTree = null;
+        backTree = null;
+        setParentTree(parentTree);
+    }
+
+    public void setParentTree(BSPTree parentTree){
+        // parentTree.addChild(this);
+        this.parent = parentTree;
+    }
+
+    public void addChild(BSPTree child){
+        child.setParentTree(this);
+        this.children.add(child);
     }
 
     public void buildBSPTree(List<Polygon> polygons){
         // select the divider/node polygon
-        Polygon rootPolygon = getPolygon(polygons);
-        divider = new BSPNode(rootPolygon);
-        tree = new BSPTree();
+        Polygon polygonPartition = getPolygon(polygons);
+        divider = polygonPartition;
+        partition = getPlane(polygonPartition);
+        polygonList.add(polygonPartition);
 
-        tree.partition = getPlane(rootPolygon);
-        tree.polygonList.add(rootPolygon);
-        
         while(!polygons.isEmpty()){
             Polygon tempPolygon = getPolygon(polygons);
-            int res = classifyPolygon(tree.partition, tempPolygon);
+            int res = classifyPolygon(partition, tempPolygon);
             switch (res){
                 case 0: // COINCIDENT   
-                    tree.polygonList.add(tempPolygon);
+                    polygonList.add(tempPolygon);
                     break;
                 case 1: // FRONT
-                    tree.frontList.add(tempPolygon);
+                    frontList.add(tempPolygon);
                     break;
                 case -1: // BACK
-                    tree.backList.add(tempPolygon);
+                    backList.add(tempPolygon);
                     break;
                 default: // SPANNING
-                    Polygon[] splitPolygons = splitPolygon(tempPolygon, tree.partition);
-                    tree.frontList.add(splitPolygons[0]);
-                    tree.backList.add(splitPolygons[1]);
+                    Polygon[] splitPolygons = splitPolygon(tempPolygon, partition);
+                    frontList.add(splitPolygons[0]);
+                    backList.add(splitPolygons[1]);
                     break;
             }
         }
-
-        if (!tree.frontList.isEmpty()){
-            tree.frontTree = new BSPTree();
-            tree.frontTree.buildBSPTree(tree.frontList);
+        if (!frontList.isEmpty()){
+            this.frontTree = new BSPTree(this);
+            this.frontTree.buildBSPTree(frontList);
         }
-        if (!tree.backList.isEmpty()){
-            tree.backTree = new BSPTree();
-            tree.backTree.buildBSPTree(tree.backList);
+        if (!backList.isEmpty()){
+            this.backTree = new BSPTree(this);
+            this.backTree.buildBSPTree(backList);
         }
     } 
 
@@ -166,7 +180,7 @@ public class BSPTree implements Serializable{
     }
 
     public boolean isLeaf(){
-        if (tree.frontList.isEmpty() && tree.backList.isEmpty()){
+        if (frontTree == null && backTree == null){
             return true;
         }
         return false;
@@ -278,32 +292,58 @@ public class BSPTree implements Serializable{
     }
 
 
-    public void drawBSPTree(Vector3D viewPoint) throws IOException{
+    public void drawBSPTree(BSPTree tree, Vector3D viewPoint) throws IOException{
         
-        if (tree.isLeaf()){
-            drawTreeContent(tree.divider.node.getCoordinates());
+        if (tree == null){
+            return;
+        }
+        if (isLeaf()){
+            drawTreeContent(polygonList);
+            return;
         }
 
-        double side = classifyPoint(tree.partition, viewPoint);
-        if(side >= 0.0){ // INFRONT/CONINCIDING 
-            tree.frontTree.drawBSPTree(viewPoint);
-            drawTreeContent(tree.divider.node.getCoordinates());
-            tree.backTree.drawBSPTree(viewPoint);
+        double side = classifyPoint(partition, viewPoint);
+        if(side > 0.0){ // INFRONT 
+            drawBSPTree(frontTree, viewPoint);
+            drawTreeContent(polygonList);
+            drawBSPTree(backTree, viewPoint);
         }
-        else{ // BEHIND/BACK
-            tree.backTree.drawBSPTree(viewPoint);
-            drawTreeContent(tree.divider.node.getCoordinates());
-            tree.frontTree.drawBSPTree(viewPoint);
+        else if (side < 0.0){ // BEHIND
+            drawBSPTree(backTree, viewPoint);
+            drawTreeContent(polygonList);
+            drawBSPTree(frontTree, viewPoint);
+        }else{ // CONINCIDING
+            drawBSPTree(frontTree, viewPoint);
+            drawBSPTree(backTree, viewPoint);
         }
     }
 
-    private void drawTreeContent(Coordinate[] coordinates) throws IOException{
+    public void drawBSPTree(BSPTree tree) throws IOException{
+        
+        if (tree == null){
+            return;
+        }
+        if (isLeaf()){
+            drawTreeContent(polygonList);
+            // System.out.println("leaf");
+            return;
+        }
+        drawBSPTree(tree.frontTree);
+        drawTreeContent(tree.polygonList);
+        // System.out.println("leaf");
+        drawBSPTree(tree.backTree);
+    }
+
+    private void drawTreeContent(List<Polygon> polygons) throws IOException{
         InputStream input = new FileInputStream(new File(PATH));
         OutputStream optStream = new FileOutputStream(new File(PATH));
         Obj obj = ObjUtils.convertToRenderable(ObjReader.read(input));;
         
-        for (Coordinate c: coordinates){
-            obj.addVertex((float)c.getX(), (float)c.getY(), (float)c.getZ());
+        for (Polygon p : polygons){
+            Coordinate[] coordinates = p.getCoordinates();
+            for (Coordinate c: coordinates){
+                obj.addVertex((float)c.getX(), (float)c.getY(), (float)c.getZ());
+            }
         }
         ObjWriter.write(obj, optStream);
     }

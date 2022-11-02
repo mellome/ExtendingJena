@@ -109,9 +109,17 @@ public class BSPTree3DGeometry extends FunctionBase2{
             new Coordinate(4, -2, 2)
         };
 
+        Coordinate[] coordinates3 = new Coordinate[]{
+            new Coordinate(5, -1, 2),
+            new Coordinate(5, 3, 2),
+            new Coordinate(1, 3, 2),
+            new Coordinate(1, -1, 2),
+            new Coordinate(5, -1, 2)
+        };
+
         polygons.add(gFactory.createPolygon(coordinates1));
         polygons.add(gFactory.createPolygon(coordinates2));
-
+        polygons.add(gFactory.createPolygon(coordinates3));
 
         // for (int l=0; l<3; l++){
         //     for (int i=0; i<4; i++){
@@ -127,6 +135,7 @@ public class BSPTree3DGeometry extends FunctionBase2{
         BSPTree tree = new BSPTree();
         List<Polygon> polygons = polygonGen();
         tree.buildBSPTree(polygons);
-        tree.drawBSPTree(new Vector3D(0, 0, 0));
+        // tree.drawBSPTree(tree, new Vector3D(0, 0, 0));
+        tree.drawBSPTree(tree);
     }
 }
