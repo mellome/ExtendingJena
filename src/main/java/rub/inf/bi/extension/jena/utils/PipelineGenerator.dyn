@@ -2,7 +2,7 @@
   "Uuid": "8b1e7f7f-7304-4d5e-a570-fd8ce7ff620e",
   "IsCustomNode": false,
   "Description": null,
-  "Name": "Pipeline",
+  "Name": "PipelineGenerator",
   "ElementResolver": {
     "ResolutionMap": {
       "Point": {
@@ -2663,11 +2663,11 @@
         ],
         "Left": 1080.0545039103124,
         "Top": 153.39593903341176,
-        "Width": 1120.8057604650596,
+        "Width": 1069.6485781613512,
         "Height": 938.66139287015164,
         "FontSize": 36.0,
         "InitialTop": 206.39593903341176,
-        "InitialHeight": 2236.2801689735684,
+        "InitialHeight": 880.15236408133921,
         "TextblockHeight": 43.0,
         "Background": "#FFFFAA45"
       },
@@ -2717,10 +2717,10 @@
         "Left": 2265.4545423196755,
         "Top": 745.592925874691,
         "Width": 572.0938441725325,
-        "Height": 443.664882853137,
+        "Height": 428.664882853137,
         "FontSize": 36.0,
         "InitialTop": 798.592925874691,
-        "InitialHeight": 426.6648828531371,
+        "InitialHeight": 426.664882853137,
         "TextblockHeight": 43.0,
         "Background": "#FFFFAA45"
       },
@@ -2747,8 +2747,8 @@
         "Background": "#FF48B9FF"
       }
     ],
-    "X": -1005.2130239701635,
-    "Y": -215.31235979290773,
-    "Zoom": 0.85798632165930477
+    "X": -488.777657277258,
+    "Y": 39.129052277289077,
+    "Zoom": 0.654959687963953
   }
 }
