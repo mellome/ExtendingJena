@@ -50,17 +50,33 @@ public class PPIntersection3DBSP extends FunctionBase2{
     @Override
     public NodeValue exec(NodeValue v1, NodeValue v2) {
 
-        // TODO: test only one NodeValue
-        List<Polygon> polygonsLst = node2Polygon(v1);
-        BSPTree mpTree = new BSPTree();
-        mpTree.buildBSPTree(polygonsLst);
+        List<Polygon> polygonsLst1 = node2Polygon(v1);
+        List<Polygon> polygonsLst2 = node2Polygon(v2);
+
+        BSPTree t1 = new BSPTree();
+        t1.buildBSPTree(polygonsLst1);
+        System.out.println("=========================T1=============================");
         try {
-            mpTree.traverse(mpTree, Vector3D.ZERO);
+            t1.traverse(t1, Vector3D.ZERO);
         } catch (IOException e) {
             System.out.println(e);
         }
         System.out.println("========================================================");
-        return NodeValue.FALSE;
+
+        BSPTree t2 = new BSPTree();
+        t2.buildBSPTree(polygonsLst2);
+        System.out.println("=========================T2=============================");
+        try {
+            t2.traverse(t2, Vector3D.ZERO);
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        System.out.println("========================================================");
+
+        boolean isIntersected = t1.collisionDetect(t1, t2);
+        System.out.println(isIntersected);
+
+        return isIntersected?NodeValue.TRUE:NodeValue.FALSE;
     }
 
     // @Override

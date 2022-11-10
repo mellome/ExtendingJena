@@ -44,6 +44,89 @@ public class GeometryOperators3D {
 	public static boolean intersect3D(Geometry geom1, Geometry geom2) {
 		return geom1.intersects(geom2);
 	}
+
+	public static List<Vector3D> intersectionRR3D(Polygon rectangleA, Polygon rectangleB) {
+		List<Vector3D> intersectionPoints = new ArrayList<Vector3D>();
+
+		Plane rectanglePlaneA = null;
+		Plane rectanglePlaneB = null;
+		if ((rectangleA.getCoordinates().length - 1) == 4) {
+
+			Coordinate pA1 = rectangleA.getCoordinates()[0];
+			Coordinate pB1 = rectangleA.getCoordinates()[1];
+			Coordinate pC1 = rectangleA.getCoordinates()[2];
+
+			Vector3D pt1V1 = new Vector3D(pA1.getX(), pA1.getY(), pA1.getZ());
+			Vector3D pt1V2 = new Vector3D(pB1.getX(), pB1.getY(), pB1.getZ());
+			Vector3D pt1V3 = new Vector3D(pC1.getX(), pC1.getY(), pC1.getZ());
+
+			rectanglePlaneA = new Plane(
+					pt1V1,
+					pt1V2,
+					pt1V3,
+					GeometryOperators3D.TOLERANCE);
+		}
+
+		if ((rectangleB.getCoordinates().length - 1) == 4) {
+
+			Coordinate pA2 = rectangleB.getCoordinates()[0];
+			Coordinate pB2 = rectangleB.getCoordinates()[1];
+			Coordinate pC2 = rectangleB.getCoordinates()[2];
+
+			Vector3D pt2V1 = new Vector3D(pA2.getX(), pA2.getY(), pA2.getZ());
+			Vector3D pt2V2 = new Vector3D(pB2.getX(), pB2.getY(), pB2.getZ());
+			Vector3D pt2V3 = new Vector3D(pC2.getX(), pC2.getY(), pC2.getZ());
+
+			rectanglePlaneB = new Plane(
+					pt2V1,
+					pt2V2,
+					pt2V3,
+					GeometryOperators3D.TOLERANCE);
+
+		}
+
+		if (rectanglePlaneA != null && rectanglePlaneB != null) {
+			Line l = GeometryOperators3D.intersection3D(rectanglePlaneA, rectanglePlaneB); // intersection of two planes
+
+			if (l != null){
+				ArrayList<Vector3D> interT1 = intersection3DLR(l, rectangleA);
+				ArrayList<Vector3D> interT2 = intersection3DLR(l, rectangleB);
+	
+				if (interT1.size() > 0 && interT2.size() > 0) { // the commen intersection line must be instersected with the given geometries!!!
+					intersectionPoints.addAll(interT1);
+					intersectionPoints.addAll(interT2);
+				}
+			}
+		}
+		return intersectionPoints;
+	}
+
+	public static ArrayList<Vector3D> intersection3DLR(Line source, Polygon rectangle) {
+		ArrayList<Vector3D> intersectionPoints = new ArrayList<Vector3D>();
+
+		for (int cIt1 = 1; cIt1 < rectangle.getCoordinates().length; cIt1++) {
+			Vector3D tempA = new Vector3D(
+				rectangle.getCoordinates()[cIt1 - 1].getX(),
+				rectangle.getCoordinates()[cIt1 - 1].getY(),
+				rectangle.getCoordinates()[cIt1 - 1].getZ());
+			Vector3D tempB = new Vector3D(
+				rectangle.getCoordinates()[cIt1].getX(),
+				rectangle.getCoordinates()[cIt1].getY(),
+				rectangle.getCoordinates()[cIt1].getZ());
+
+			Line target = new Line(tempA, tempB, GeometryOperators3D.TOLERANCE); // one edage
+			Vector3D interSectionPoint = source.intersection(target);
+
+			if (interSectionPoint != null) {
+				if (contains3D(tempA, tempB, interSectionPoint)) {
+					intersectionPoints.add(interSectionPoint);
+				}
+			}
+
+		}
+
+		return intersectionPoints;
+	}
 	
 	// =================================================================
 	// TOUCH
@@ -386,7 +469,7 @@ public class GeometryOperators3D {
 			ArrayList<Vector3D> interT1 = intersection3D(l, triangleA);
 			ArrayList<Vector3D> interT2 = intersection3D(l, triangleB);
 
-			if (interT1.size() > 0 || interT2.size() > 0) {
+			if (interT1.size() > 0 || interT2.size() > 0) { 
 				intersectionPoints.addAll(interT1);
 				intersectionPoints.addAll(interT2);
 			}

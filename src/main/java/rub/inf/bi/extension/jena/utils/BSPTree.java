@@ -3,6 +3,7 @@ package rub.inf.bi.extension.jena.utils;
 import java.util.List;
 
 import org.apache.commons.math3.geometry.euclidean.threed.Plane;
+import rub.inf.bi.extension.jena.utils.*;
 // import org.apache.commons.geometry.euclidean.threed.Plane;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 import org.locationtech.jts.geom.Coordinate;
@@ -361,40 +362,6 @@ public class BSPTree implements Serializable{
         // }
     }
 
-    // public void drawBSPTree(BSPTree tree, String treeName) throws IOException{
-        
-    //     if (tree == null){
-    //         System.out.println(treeName + " is null");
-    //         return;
-    //     }
-    //     if (isLeaf()){
-    //         drawTreeContent(tree, "Leaf");
-    //         return;
-    //     }
-    //     drawTreeContent(tree, treeName);
-    //     drawBSPTree(tree.frontTree, "Front");
-    //     drawBSPTree(tree.backTree, "Back");
-    // }
-
-    // TODO: can set up the position point to traverse the bsp tree as you wished.
-    // private void drawTreeContent(List<Polygon> polygons) throws IOException{
-    //     InputStream input = new FileInputStream(new File(PATH));
-    //     OutputStream optStream = new FileOutputStream(new File(PATH));
-    //     Obj obj = ObjUtils.convertToRenderable(ObjReader.read(input));;
-        
-    //     for (Polygon p : polygons){
-    //         Coordinate[] coordinates = p.getCoordinates();
-    //         for (Coordinate c: coordinates){
-    //             obj.addVertex((float)c.getX(), (float)c.getY(), (float)c.getZ());
-    //         }
-    //     }
-    //     ObjWriter.write(obj, optStream);
-    // }
-
-    // private void drawTreeContent(BSPTree tree, String treeName){
-    //     System.out.println( "#" + treeName + ": " + tree.polygonList.size());
-    // }
-
     private void drawTreeContent(List<Polygon> polygons) throws IOException{
         for (Polygon p : polygons){
             Coordinate[] coordinates = p.getCoordinates();
@@ -411,6 +378,52 @@ public class BSPTree implements Serializable{
 
     private BSPTree merge(BSPTree t1, BSPTree t2){
         return null;
+    }
+
+    /*
+     * This is the naive version of collision detection algorithm.
+     * Idea:
+     * 1. classify two given polygons if they are intersected.
+     */
+    public boolean collisionDetect(BSPTree t1, BSPTree t2){
+        
+        // in PRE-ORDER
+        if( t1 == null || t2 == null ){ // 
+            return false;
+        }
+        if( traverseIntersection(t1, t2.divider) ){ // mid
+            return true;
+        }
+        boolean left = collisionDetect(t1, t2.frontTree); // front/left
+        boolean right = collisionDetect(t1, t2.backTree); // back/right
+
+        return left || right;
+    }
+
+    private boolean traverseIntersection(BSPTree t, Polygon p){
+        // in PRE-ORDER
+        if( t == null || p == null){ 
+            return false;
+        }
+
+        List<Vector3D> intersectedPoints = GeometryOperators3D.intersectionRR3D(t.divider, p);
+        if(intersectedPoints.size() > 0){
+            return true;
+        }
+
+        // if( classifyPolygon(t.partition, p) == 2 ){ // mid
+        //     return true;
+        // }
+        boolean left = traverseIntersection(t.frontTree, p); // left
+        boolean right = traverseIntersection(t.backTree, p); // right
+        return left || right;
+    }
+
+    /*
+     * This is an optimization algorithm.
+     */
+    private void treeReduce(){
+
     }
 
     public static void main(String[] args) {
