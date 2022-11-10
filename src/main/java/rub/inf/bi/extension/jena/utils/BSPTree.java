@@ -23,8 +23,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 // import org.locationtech.jts.math.Plane3D;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class BSPTree implements Serializable{
@@ -50,7 +52,7 @@ public class BSPTree implements Serializable{
                   frontList = new ArrayList<>(),
                   backList = new ArrayList<>();
     Logger logger =  Logger.getLogger(this.getClass().getName());
-    final String PATH = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/geoOBJ/bspTree.obj";
+    // final String PATH = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/geoOBJ/bspTree.obj";
 
     public BSPTree() {
         frontTree = null;
@@ -71,6 +73,24 @@ public class BSPTree implements Serializable{
     public void addChild(BSPTree child){
         child.setParentTree(this);
         this.children.add(child);
+    }
+
+    public void setFrontChild(BSPTree frontChild){
+        frontChild.setParentTree(this);
+        this.frontTree = frontChild;
+    }
+
+    public void setBackChild(BSPTree backChild){
+        backChild.setParentTree(this);
+        this.backTree = backChild;
+    }
+
+    public void setFrontTree(BSPTree frontTree){
+        this.frontTree = frontTree;
+    }
+
+    public void setBackTree(BSPTree backTree){
+        this.backTree = backTree;
     }
 
     public void buildBSPTree(List<Polygon> polygons){
@@ -95,26 +115,32 @@ public class BSPTree implements Serializable{
                     break;
                 default: // SPANNING
                     Polygon[] splitPolygons = splitPolygon(tempPolygon, partition);
-                    frontList.add(splitPolygons[0]);
-                    backList.add(splitPolygons[1]);
+                    if(splitPolygons[0] != null){
+                        frontList.add(splitPolygons[0]);
+                    }
+                    if(splitPolygons[1] != null){
+                        backList.add(splitPolygons[1]);
+                    }
                     break;
             }
         }
         if (!frontList.isEmpty()){
-            this.frontTree = new BSPTree(this);
-            this.frontTree.buildBSPTree(frontList);
+            BSPTree newFrontTree = new BSPTree();
+            newFrontTree.buildBSPTree(frontList);
+            setFrontChild(newFrontTree);
         }
         if (!backList.isEmpty()){
-            this.backTree = new BSPTree(this);
-            this.backTree.buildBSPTree(backList);
+            BSPTree newBackTree = new BSPTree();
+            newBackTree.buildBSPTree(backList);
+            setBackChild(newBackTree);
         }
     } 
 
     private Polygon[] splitPolygon(Polygon polygon, Plane plane){
-        Coordinate[] vertexList = polygon.getCoordinates();
-        int count = polygon.getNumPoints(); // total number of vertices in the given polygon
-        int out_c = 0;
-        int in_c = 0;
+        Coordinate[] vertexList = Arrays.copyOf(polygon.getCoordinates(), polygon.getCoordinates().length-1); 
+        int count = polygon.getNumPoints()-1; // get rid of the duplicate vertice in the last place.
+        // int out_c = 0;
+        // int in_c = 0;
 
         double sidePtA, sidePtB;
         Vector3D ptA, ptB;
@@ -138,8 +164,7 @@ public class BSPTree implements Serializable{
                     // t = (n dot p1 - n dot p0) / n dot u
                     // n: normal of p0
                     Vector3D vecAB = new Vector3D(ptB.getX()-ptA.getX(), ptB.getY()-ptA.getY(), ptB.getZ()-ptA.getZ());
-
-                    double t = - sidePtA / dotProductVector3D(getNormal(plane), vecAB);
+                    double t = - classifyPoint(plane, ptA) / dotProductVector3D(getNormal(plane), vecAB);
                     Coordinate intersectedPoint = new Coordinate(
                         ptA.getX() + vecAB.getX()*t,
                         ptA.getY() + vecAB.getY()*t,
@@ -154,7 +179,7 @@ public class BSPTree implements Serializable{
                 if (sidePtA > 0){ // Point A in the front
                     Vector3D vecAB = new Vector3D(ptB.getX()-ptA.getX(), ptB.getY()-ptA.getY(), ptB.getZ()-ptA.getZ());
 
-                    double t = - sidePtA / dotProductVector3D(getNormal(plane), vecAB);
+                    double t = - classifyPoint(plane, ptA) / dotProductVector3D(getNormal(plane), vecAB);
                     Coordinate intersectedPoint = new Coordinate(
                         ptA.getX() + vecAB.getX()*t,
                         ptA.getY() + vecAB.getY()*t,
@@ -173,9 +198,22 @@ public class BSPTree implements Serializable{
             sidePtA = sidePtB;
         }
 
+        Polygon frontPo = null;
+        Polygon backPo = null;
+        if(frontPtList.size() > 3){
+            List <Coordinate> tempFrontPts =frontPtList;
+            tempFrontPts.add(frontPtList.get(0));
+            frontPo = createPolygon(frontPtList);
+        }
+        if(backPtList.size() > 3){
+            List <Coordinate> tempBackPts =backPtList;
+            tempBackPts.add(backPtList.get(0));
+            backPo = createPolygon(backPtList);
+        }
+
         return new Polygon[]{
-            createPolygon(frontPtList, out_c), // front polygon
-            createPolygon(backPtList, in_c) // back polygon
+            frontPo, // front polygon
+            backPo // back polygon
         };
     }
 
@@ -204,8 +242,9 @@ public class BSPTree implements Serializable{
     }
 
     public Polygon getPolygon(List<Polygon> polygons){
-		Polygon randomPolygon = polygons.get(new Random().nextInt(polygons.size()));
-        polygons.remove(randomPolygon);
+        int randIndex = new Random().nextInt(polygons.size());
+		Polygon randomPolygon = polygons.get(randIndex);
+        polygons.remove(randIndex);
         return randomPolygon;
     }
 
@@ -281,76 +320,128 @@ public class BSPTree implements Serializable{
         return 2; // SPANNING
     }
 
-    private Polygon createPolygon(List<Coordinate> pointList, int c){
-        Coordinate[] coordinates = new Coordinate[]{};
+    private static Polygon createPolygon(List<Coordinate> pointList){
+        Coordinate[] coordinates = new Coordinate[pointList.size()]; // first and last point must be the same!!!
+
         for (int i=0; i<pointList.size(); i++){
             coordinates[i] = pointList.get(i);
         }
+        // coordinates[pointList.size()] = pointList.get(0);
         GeometryFactory geometryFactory = new GeometryFactory();
-        Polygon polygon = geometryFactory.createPolygon(coordinates);
+        Polygon polygon = null;
+        try {
+            polygon = geometryFactory.createPolygon(coordinates);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+            System.out.println(coordinates.toString());
+        }
         return polygon;
     }
 
 
-    public void drawBSPTree(BSPTree tree, Vector3D viewPoint) throws IOException{
+    public void traverse(BSPTree tree, Vector3D viewPoint) throws IOException{
         
         if (tree == null){
             return;
         }
-        if (isLeaf()){
-            drawTreeContent(polygonList);
-            return;
-        }
-
-        double side = classifyPoint(partition, viewPoint);
-        if(side > 0.0){ // INFRONT 
-            drawBSPTree(frontTree, viewPoint);
-            drawTreeContent(polygonList);
-            drawBSPTree(backTree, viewPoint);
-        }
-        else if (side < 0.0){ // BEHIND
-            drawBSPTree(backTree, viewPoint);
-            drawTreeContent(polygonList);
-            drawBSPTree(frontTree, viewPoint);
-        }else{ // CONINCIDING
-            drawBSPTree(frontTree, viewPoint);
-            drawBSPTree(backTree, viewPoint);
-        }
-    }
-
-    public void drawBSPTree(BSPTree tree) throws IOException{
-        
-        if (tree == null){
-            return;
-        }
-        if (isLeaf()){
-            drawTreeContent(polygonList);
-            // System.out.println("leaf");
-            return;
-        }
-        drawBSPTree(tree.frontTree);
         drawTreeContent(tree.polygonList);
-        // System.out.println("leaf");
-        drawBSPTree(tree.backTree);
+        traverse(tree.backTree, viewPoint);
+        traverse(tree.frontTree, viewPoint);
+
+        // double side = classifyPoint(partition, viewPoint);
+        // if(side >= 0.0){ // INFRONT 
+        //     drawBSPTree(tree.frontTree, viewPoint);
+        //     drawTreeContent(polygonList);
+        //     drawBSPTree(tree.backTree, viewPoint);
+        // }
+        // else if (side < 0.0){ // BEHIND
+        //     drawBSPTree(tree.backTree, viewPoint);
+        //     drawTreeContent(polygonList);
+        //     drawBSPTree(tree.frontTree, viewPoint);
+        // }
     }
+
+    // public void drawBSPTree(BSPTree tree, String treeName) throws IOException{
+        
+    //     if (tree == null){
+    //         System.out.println(treeName + " is null");
+    //         return;
+    //     }
+    //     if (isLeaf()){
+    //         drawTreeContent(tree, "Leaf");
+    //         return;
+    //     }
+    //     drawTreeContent(tree, treeName);
+    //     drawBSPTree(tree.frontTree, "Front");
+    //     drawBSPTree(tree.backTree, "Back");
+    // }
+
+    // TODO: can set up the position point to traverse the bsp tree as you wished.
+    // private void drawTreeContent(List<Polygon> polygons) throws IOException{
+    //     InputStream input = new FileInputStream(new File(PATH));
+    //     OutputStream optStream = new FileOutputStream(new File(PATH));
+    //     Obj obj = ObjUtils.convertToRenderable(ObjReader.read(input));;
+        
+    //     for (Polygon p : polygons){
+    //         Coordinate[] coordinates = p.getCoordinates();
+    //         for (Coordinate c: coordinates){
+    //             obj.addVertex((float)c.getX(), (float)c.getY(), (float)c.getZ());
+    //         }
+    //     }
+    //     ObjWriter.write(obj, optStream);
+    // }
+
+    // private void drawTreeContent(BSPTree tree, String treeName){
+    //     System.out.println( "#" + treeName + ": " + tree.polygonList.size());
+    // }
 
     private void drawTreeContent(List<Polygon> polygons) throws IOException{
-        InputStream input = new FileInputStream(new File(PATH));
-        OutputStream optStream = new FileOutputStream(new File(PATH));
-        Obj obj = ObjUtils.convertToRenderable(ObjReader.read(input));;
-        
         for (Polygon p : polygons){
             Coordinate[] coordinates = p.getCoordinates();
-            for (Coordinate c: coordinates){
-                obj.addVertex((float)c.getX(), (float)c.getY(), (float)c.getZ());
-            }
+            System.out.println(Arrays.toString(coordinates));
         }
-        ObjWriter.write(obj, optStream);
     }
+
 
     //TODO: this can be used for performance enhancement
     private Polygon selectBestDivider(List<Polygon> polygonList){
         Polygon bestPolygon = null;
         return bestPolygon;
+    }
+
+    private BSPTree merge(BSPTree t1, BSPTree t2){
+        return null;
+    }
+
+    public static void main(String[] args) {
+        Coordinate[] coordinates1 = new Coordinate[]{
+            new Coordinate(4, 0, 0),
+            new Coordinate(4, 4, 0),
+            new Coordinate(0, 4, 0),
+            new Coordinate(0, 0, 0),
+            new Coordinate(4, 0, 0)
+        };
+        Coordinate[] coordinates2 = new Coordinate[]{
+            new Coordinate(4, -2, 2),
+            new Coordinate(4, 2, 2),
+            new Coordinate(0, 2, 2),
+            new Coordinate(0, -2, 2),
+            new Coordinate(4, -2, 2)
+        };
+
+        Coordinate[] coordinates3 = new Coordinate[]{
+            new Coordinate(5, -1, 2),
+            new Coordinate(5, 3, 2),
+            new Coordinate(1, 3, 2),
+            new Coordinate(1, -1, 2),
+            new Coordinate(5, -1, 2)
+        };
+        List<Coordinate> c = new ArrayList<>();
+        for( Coordinate coo : coordinates1){
+            c.add(coo);
+        }
+
+        Polygon p = createPolygon(c);
+        System.out.println(p);
     }
 }
