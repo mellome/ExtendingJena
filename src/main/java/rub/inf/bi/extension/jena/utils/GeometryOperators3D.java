@@ -2,6 +2,8 @@ package rub.inf.bi.extension.jena.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.apache.commons.math3.geometry.euclidean.threed.Line;
 import org.apache.commons.math3.geometry.euclidean.threed.Plane;
@@ -91,11 +93,16 @@ public class GeometryOperators3D {
 			if (l != null){
 				ArrayList<Vector3D> interT1 = intersection3DLR(l, rectangleA);
 				ArrayList<Vector3D> interT2 = intersection3DLR(l, rectangleB);
-	
-				if (interT1.size() > 0 && interT2.size() > 0) { // the commen intersection line must be instersected with the given geometries!!!
+				
+				List<Vector3D> commonVectorLst = interT1.stream().filter(interT2::contains).collect(Collectors.toList());
+				if (!commonVectorLst.isEmpty()) { // the commen intersection line must be instersected with the given geometries!!!
 					intersectionPoints.addAll(interT1);
 					intersectionPoints.addAll(interT2);
 				}
+				// if (interT1.size() > 0 && interT2.size() > 0) { // the commen intersection line must be instersected with the given geometries!!!
+				// 	intersectionPoints.addAll(interT1);
+				// 	intersectionPoints.addAll(interT2);
+				// }
 			}
 		}
 		return intersectionPoints;

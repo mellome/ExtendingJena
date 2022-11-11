@@ -341,25 +341,12 @@ public class BSPTree implements Serializable{
 
 
     public void traverse(BSPTree tree, Vector3D viewPoint) throws IOException{
-        
         if (tree == null){
             return;
         }
         drawTreeContent(tree.polygonList);
         traverse(tree.backTree, viewPoint);
         traverse(tree.frontTree, viewPoint);
-
-        // double side = classifyPoint(partition, viewPoint);
-        // if(side >= 0.0){ // INFRONT 
-        //     drawBSPTree(tree.frontTree, viewPoint);
-        //     drawTreeContent(polygonList);
-        //     drawBSPTree(tree.backTree, viewPoint);
-        // }
-        // else if (side < 0.0){ // BEHIND
-        //     drawBSPTree(tree.backTree, viewPoint);
-        //     drawTreeContent(polygonList);
-        //     drawBSPTree(tree.frontTree, viewPoint);
-        // }
     }
 
     private void drawTreeContent(List<Polygon> polygons) throws IOException{
@@ -386,7 +373,6 @@ public class BSPTree implements Serializable{
      * 1. classify two given polygons if they are intersected.
      */
     public boolean collisionDetect(BSPTree t1, BSPTree t2){
-        
         // in PRE-ORDER
         if( t1 == null || t2 == null ){ // 
             return false;
@@ -394,8 +380,8 @@ public class BSPTree implements Serializable{
         if( traverseIntersection(t1, t2.divider) ){ // mid
             return true;
         }
-        boolean left = collisionDetect(t1, t2.frontTree); // front/left
-        boolean right = collisionDetect(t1, t2.backTree); // back/right
+        boolean left = collisionDetect(t1, t2.frontTree); // left
+        boolean right = collisionDetect(t1, t2.backTree); // right
 
         return left || right;
     }
