@@ -3,6 +3,7 @@ package rub.inf.bi.extension.jena;
 import org.apache.jena.geosparql.configuration.GeoSPARQLConfig;
 import org.apache.jena.sparql.function.FunctionRegistry;
 
+import rub.inf.bi.extension.jena.sparql.bspTree3D.PPIntersection3DBSP;
 import rub.inf.bi.extension.jena.sparql.geometry3D.LLIntersection3D;
 import rub.inf.bi.extension.jena.sparql.geometry3D.LLIntersection3DGeometry;
 import rub.inf.bi.extension.jena.sparql.geometry3D.LPContains3D;
@@ -50,6 +51,7 @@ public class ExtendedFunctionConfig {
             functionRegistry.put(ExtendedFunctionVocabolary.topologicalWithin.getURI(), TopologicalWithin.class);
             functionRegistry.put(ExtendedFunctionVocabolary.topologicalDisjoint.getURI(), TopologicalDisjoint.class);
             functionRegistry.put(ExtendedFunctionVocabolary.topologicalTouch.getURI(), TopologicalTouch.class);
+            functionRegistry.put(ExtendedFunctionVocabolary.ppIntersection3DBSP.getURI(), PPIntersection3DBSP.class);
 
             functionRegistry.put(ExtendedFunctionVocabolary.ppIntersection3D.getURI(), PPIntersection3D.class);
             functionRegistry.put(ExtendedFunctionVocabolary.ppIntersection3DGeometry.getURI(), PPIntersection3DGeometry.class);
