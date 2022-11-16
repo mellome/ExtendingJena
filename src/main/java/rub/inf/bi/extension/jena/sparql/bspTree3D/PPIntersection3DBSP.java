@@ -46,7 +46,6 @@ import org.apache.jena.sparql.function.FunctionBase2;
 
 /*
  * MultiPolygon/Polygon -- MultiPolygon/Polygon
- * 
  */
 public class PPIntersection3DBSP extends FunctionBase2{
 
@@ -56,19 +55,18 @@ public class PPIntersection3DBSP extends FunctionBase2{
         List<Polygon> polygonsLst1 = BSPTree.node2Polygon(v1);
         List<Polygon> polygonsLst2 = BSPTree.node2Polygon(v2);
 
-        // System.out.println("==========================Polygon-Polygon==============================");
+        System.out.println("=========================(Multi)Polygon 1=============================");
         BSPTree t1 = new BSPTree();
         t1.buildBSPTree(polygonsLst1);
-        System.out.println("=========================T1=============================");
         try {
             t1.traverse(t1, Vector3D.ZERO);
         } catch (IOException e) {
             System.out.println(e);
         }
 
+        System.out.println("=========================(Multi)Polygon 2=============================");
         BSPTree t2 = new BSPTree();
         t2.buildBSPTree(polygonsLst2);
-        System.out.println("=========================T2=============================");
         try {
             t2.traverse(t2, Vector3D.ZERO);
         } catch (IOException e) {

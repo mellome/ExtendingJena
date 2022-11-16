@@ -33,6 +33,7 @@ public class ExtendedFunctionVocabolary {
     public static final Property topologicalDisjoint = property("TopologicalDisjoint"); // All geometries in 3D
     public static final Property topologicalTouch = property("TopologicalTouch"); // All geometries in 3D
     public static final Property ppIntersection3DBSP = property("PPIntersection3DBSP"); // All geometries in 3D
+    public static final Property plIntersection3DBSP = property("PLIntersection3DBSP"); // All geometries in 3D
 
     public static final Property ppIntersection3D = property("PPIntersection3D"); //Plane and plane
     public static final Property ppIntersection3DGeometry = property("PPIntersection3DGeometry"); //Geometry of Plane and plane

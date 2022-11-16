@@ -159,7 +159,7 @@ public class GeometryOperators3D {
 					polygon.getCoordinates()[cIt1].getY(),
 					polygon.getCoordinates()[cIt1].getZ());
 	
-				Line target = new Line(tempA, tempB, GeometryOperators3D.TOLERANCE); // first n-1 edages
+				Line target = new Line(tempA, tempB, GeometryOperators3D.TOLERANCE); 
 				Vector3D interSectionPoint = source.intersection(target);
 	
 				if (interSectionPoint != null) {
@@ -299,6 +299,36 @@ public class GeometryOperators3D {
 
 	}
 
+	public static ArrayList<Vector3D> intersection3D(Polygon planeFaceArea, Line line) {
+		ArrayList<Vector3D> intersectionPoints = new ArrayList<Vector3D>();
+		Plane planeA = null;
+		if ((planeFaceArea.getCoordinates().length - 1) >= 3) {
+
+			Coordinate pA1 = planeFaceArea.getCoordinates()[0];
+			Coordinate pB1 = planeFaceArea.getCoordinates()[1];
+			Coordinate pC1 = planeFaceArea.getCoordinates()[2];
+
+			Vector3D pt1V1 = new Vector3D(pA1.getX(), pA1.getY(), pA1.getZ());
+			Vector3D pt1V2 = new Vector3D(pB1.getX(), pB1.getY(), pB1.getZ());
+			Vector3D pt1V3 = new Vector3D(pC1.getX(), pC1.getY(), pC1.getZ());
+
+			planeA = new Plane(
+					pt1V1,
+					pt1V2,
+					pt1V3,
+					GeometryOperators3D.TOLERANCE);
+		}
+
+		Vector3D interSectionPoint = planeA.intersection(line);
+
+		if (interSectionPoint != null) {
+			if (contains3D(line, interSectionPoint) && contains3D(planeFaceArea, interSectionPoint)) { 
+				intersectionPoints.add(interSectionPoint);
+			}
+		}
+		return intersectionPoints;
+	}
+
 	public static ArrayList<Vector3D> intersection3D(Polygon planeFaceArea, LineString line) {
 		ArrayList<Vector3D> intersectionPoints = new ArrayList<Vector3D>();
 		Plane planeA = null;
@@ -345,9 +375,7 @@ public class GeometryOperators3D {
 			}
 
 		}
-
 		return intersectionPoints;
-
 	}
 
 	public static boolean contains3D(Polygon mesh, Vector3D point) {

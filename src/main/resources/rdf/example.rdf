@@ -36,10 +36,20 @@
                 <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>POLYGON Z((-10.0 -10.0 0.0, -20.0 -20.0 6.0, -15.0 -15.0 0.0, -10.0 -10.0 0.0))</geo:asWKT>
             </rdf:Description>
         </sf:POLYGON>
-        <!-- <sf:POLYGON>
+        <sf:POLYGON>
             <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON10'>
                 <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>POLYGON Z((-15.0 -15.0 7.0, -20.0 -20.0 7.0, -25.0 -25.0 8.0, -15.0 -15.0 7.0))</geo:asWKT>
             </rdf:Description>
-        </sf:POLYGON> -->
+        </sf:POLYGON>
+        <sf:LineString>
+            <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#LINESTRING1'>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>LINESTRING Z((-8.0 -8.0 15.0, -20.0 -20.0 10.0, -8.0 -8.0 15.0))</geo:asWKT>
+            </rdf:Description>
+        </sf:LineString>
+        <sf:LineString>
+            <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#LINESTRING2'>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>LINESTRING Z((-2.0 0.0 0.0, -6.0 -3.0 5.0, -2.0 0.0 0.0))</geo:asWKT>
+            </rdf:Description>
+        </sf:LineString>
     </rdf:Description>
 </rdf:RDF>

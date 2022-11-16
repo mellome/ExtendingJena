@@ -6,10 +6,18 @@
   <results>
     <result>
       <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#LINE2</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON4</uri>
       </binding>
       <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON1</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#LINESTRING2</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON5</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#LINESTRING2</uri>
       </binding>
     </result>
   </results>

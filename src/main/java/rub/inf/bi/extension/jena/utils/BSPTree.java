@@ -3,6 +3,7 @@ package rub.inf.bi.extension.jena.utils;
 import java.util.List;
 
 import org.apache.commons.math3.exception.MathArithmeticException;
+import org.apache.commons.math3.geometry.euclidean.threed.Line;
 import org.apache.commons.math3.geometry.euclidean.threed.Plane;
 import rub.inf.bi.extension.jena.utils.*;
 // import org.apache.commons.geometry.euclidean.threed.Plane;
@@ -19,6 +20,7 @@ import de.javagl.obj.ObjReader;
 import de.javagl.obj.ObjUtils;
 import de.javagl.obj.Obj;
 import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.MultiPolygon;
 
 import java.util.logging.Logger;
@@ -394,8 +396,7 @@ public class BSPTree implements Serializable{
 
     /*
      * This is the naive version of collision detection algorithm.
-     * Idea:
-     * 1. classify two given polygons if they are intersected.
+     * Detect "BSP Tree" and "BSP Tree"
      */
     public boolean collisionDetect(BSPTree t1, BSPTree t2){
         // in PRE-ORDER
@@ -407,6 +408,42 @@ public class BSPTree implements Serializable{
         }
         boolean left = collisionDetect(t1, t2.frontTree); // left
         boolean right = collisionDetect(t1, t2.backTree); // right
+
+        return left || right;
+    }
+
+    /*
+     * Detect "BSP Tree" and "LineString" 
+     */
+    public boolean collisionDetect(BSPTree t, LineString l){
+        // in PRE-ORDER
+        if( t == null || l == null ){ // 
+            return false;
+        }
+        List<Vector3D> iPt = GeometryOperators3D.intersection3D(t.divider, l);
+        if( iPt.size() > 0 ){ // mid
+            return true;
+        }
+        boolean left = collisionDetect(t.frontTree, l); // left
+        boolean right = collisionDetect(t.backTree, l); // right
+
+        return left || right;
+    }
+
+    /*
+     * Detect "BSP Tree" and "Line" 
+     */
+    public boolean collisionDetect(BSPTree t, Line l){
+        // in PRE-ORDER
+        if( t == null || l == null ){ // 
+            return false;
+        }
+        List<Vector3D> iPt = GeometryOperators3D.intersection3D(t.divider, l);
+        if( iPt.size() > 0 ){ // mid
+            return true;
+        }
+        boolean left = collisionDetect(t.frontTree, l); // left
+        boolean right = collisionDetect(t.backTree, l); // right
 
         return left || right;
     }
