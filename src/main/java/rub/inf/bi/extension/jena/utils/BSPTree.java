@@ -2,12 +2,16 @@ package rub.inf.bi.extension.jena.utils;
 
 import java.util.List;
 
+import org.apache.commons.math3.exception.MathArithmeticException;
 import org.apache.commons.math3.geometry.euclidean.threed.Plane;
 import rub.inf.bi.extension.jena.utils.*;
 // import org.apache.commons.geometry.euclidean.threed.Plane;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
+import org.apache.jena.geosparql.implementation.GeometryWrapper;
+import org.apache.jena.sparql.expr.NodeValue;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.CoordinateSequence;
+import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.Polygon;
 
 import de.javagl.obj.ObjWriter;
@@ -15,6 +19,8 @@ import de.javagl.obj.ObjReader;
 import de.javagl.obj.ObjUtils;
 import de.javagl.obj.Obj;
 import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.MultiPolygon;
+
 import java.util.logging.Logger;
 
 import java.io.File;
@@ -227,7 +233,8 @@ public class BSPTree implements Serializable{
     }
 
     public Vector3D getNormal(Plane plane) {
-        return new Vector3D(plane.getNormal().getX(), plane.getNormal().getY(), plane.getNormal().getZ());
+        // return new Vector3D(plane.getNormal().getX(), plane.getNormal().getY(), plane.getNormal().getZ());
+        return plane.getNormal();
     }
 
     public double dotProductVector3D(Vector3D v1, Vector3D v2){
@@ -249,15 +256,33 @@ public class BSPTree implements Serializable{
         return randomPolygon;
     }
 
-    public Plane getPlane(Polygon polygon){
+    public Plane getPlane(Polygon polygon) {
         CoordinateSequence seq = polygon.getExteriorRing().getCoordinateSequence();
         Coordinate c1 = seq.getCoordinate(1);
         Coordinate c2 = seq.getCoordinate(2);
         Coordinate c3 = seq.getCoordinate(3);
-        return new Plane(
-                        new Vector3D(c1.getX(), c1.getY(), c1.getZ()), 
-                        new Vector3D(c2.getX(), c2.getY(), c2.getZ()), 
-                        new Vector3D(c3.getX(), c3.getY(), c3.getZ()), 0);
+        Plane p = null;
+        try {
+            p = new Plane(
+                new Vector3D(c1.getX(), c1.getY(), c1.getZ()), 
+                new Vector3D(c2.getX(), c2.getY(), c2.getZ()), 
+                new Vector3D(c3.getX(), c3.getY(), c3.getZ()), 1.0e-10);
+        } catch (Exception e) {
+            p = new Plane(
+                new Vector3D(c1.getX(), c1.getY(), c1.getZ()), 
+                new Vector3D(c2.getX()*2, c2.getY()*2, c2.getZ()*2), 
+                new Vector3D(c3.getX()*3, c3.getY()*3, c3.getZ()*3), 1.0e-10);
+            System.out.println(e.getMessage());
+            System.out.println("c1: " + c1.getX()+ " " + c1.getY() + " " + c1.getZ());
+            System.out.println("c2: " + c2.getX()+ " " + c2.getY() + " " + c2.getZ());
+            System.out.println("c3: " + c3.getX()+ " " + c3.getY() + " " + c3.getZ());
+            System.out.println();
+        }
+        // return new Plane(
+        //                 new Vector3D(c1.getX(), c1.getY(), c1.getZ()), 
+        //                 new Vector3D(c2.getX(), c2.getY(), c2.getZ()), 
+        //                 new Vector3D(c3.getX(), c3.getY(), c3.getZ()), 1.0e-10);
+        return p;
     }
 
 
@@ -284,7 +309,7 @@ public class BSPTree implements Serializable{
         Vector3D p0 = partition.getOrigin();
         Vector3D p1 = point3D;
         Vector3D n = partition.getNormal();
-        
+
         return dotProductVector3D(n, subtractionVector3D(p0, p1));
     }
 
@@ -393,7 +418,7 @@ public class BSPTree implements Serializable{
         }
 
         List<Vector3D> intersectedPoints = GeometryOperators3D.intersectionRR3D(t.divider, p);
-        if(intersectedPoints.size() > 0){
+        if(intersectedPoints.size() > 0){ // two polygons has intersection point(s)
             return true;
         }
 
@@ -412,6 +437,32 @@ public class BSPTree implements Serializable{
 
     }
 
+    public static List<Polygon> node2Polygon(NodeValue nValue){
+        List<Polygon> poLst = new ArrayList<>();
+        // GeometryFactory fact = new GeometryFactory();
+        GeometryWrapper geoWrapper = GeometryWrapper.extract(nValue);
+        Geometry geom = geoWrapper.getParsingGeometry();
+
+        // node is "POLYGON"
+        if(geom instanceof Polygon) {
+            poLst.add((Polygon) geom);
+            return poLst;
+        }
+
+        // node is "MULTIPOLYGON"
+        MultiPolygon mpG = (MultiPolygon) geoWrapper.getParsingGeometry();
+        int numGeos = mpG.getNumGeometries();
+        for (int i=0; i < numGeos; i++){ // Extract Polygons out of MultiPolygon
+            try {
+                Polygon polygon = (Polygon) mpG.getGeometryN(i);
+                poLst.add(polygon);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return poLst;
+    }
+    
     public static void main(String[] args) {
         Coordinate[] coordinates1 = new Coordinate[]{
             new Coordinate(4, 0, 0),

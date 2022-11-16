@@ -44,15 +44,19 @@ import rub.inf.bi.extension.jena.utils.BSPTree;
 import org.apache.jena.sparql.expr.NodeValue;
 import org.apache.jena.sparql.function.FunctionBase2;
 
+/*
+ * MultiPolygon/Polygon -- MultiPolygon/Polygon
+ * 
+ */
 public class PPIntersection3DBSP extends FunctionBase2{
 
-    // NodeValue v1 and v2 are the same???
     @Override
     public NodeValue exec(NodeValue v1, NodeValue v2) {
 
-        List<Polygon> polygonsLst1 = node2Polygon(v1);
-        List<Polygon> polygonsLst2 = node2Polygon(v2);
+        List<Polygon> polygonsLst1 = BSPTree.node2Polygon(v1);
+        List<Polygon> polygonsLst2 = BSPTree.node2Polygon(v2);
 
+        // System.out.println("==========================Polygon-Polygon==============================");
         BSPTree t1 = new BSPTree();
         t1.buildBSPTree(polygonsLst1);
         System.out.println("=========================T1=============================");
@@ -61,7 +65,6 @@ public class PPIntersection3DBSP extends FunctionBase2{
         } catch (IOException e) {
             System.out.println(e);
         }
-        System.out.println("========================================================");
 
         BSPTree t2 = new BSPTree();
         t2.buildBSPTree(polygonsLst2);
@@ -71,10 +74,10 @@ public class PPIntersection3DBSP extends FunctionBase2{
         } catch (IOException e) {
             System.out.println(e);
         }
-        System.out.println("========================================================");
 
         boolean isIntersected = t1.collisionDetect(t1, t2);
-        System.out.println(isIntersected);
+        System.out.println("Res: " + isIntersected);
+        System.out.println("========================================================");
 
         return isIntersected?NodeValue.TRUE:NodeValue.FALSE;
     }
@@ -231,7 +234,6 @@ public class PPIntersection3DBSP extends FunctionBase2{
         return polygons;
     } 
 
-
     private Polygon genPolygon3D(Coordinates coords){
         // Coordinate pA1 = planeFaceArea.getCoordinates()[0];
         // Coordinate pB1 = planeFaceArea.getCoordinates()[1];
@@ -250,30 +252,4 @@ public class PPIntersection3DBSP extends FunctionBase2{
     //     tree.drawBSPTree(tree, "root");
     // }
 
-    private List<Polygon> node2Polygon(NodeValue... nValues){
-        List<Polygon> poLst = new ArrayList<>();
-        GeometryFactory fact = new GeometryFactory();
-
-        for (NodeValue nValue : nValues){
-            GeometryWrapper geoWrapper = GeometryWrapper.extract(nValue);
-            MultiPolygon mpG = (MultiPolygon) geoWrapper.getParsingGeometry();
-
-            // Extract Polygons out of MultiPolygon
-            int numGeos = mpG.getNumGeometries();
-            for (int i=0; i < numGeos; i++){
-
-                try {
-                    // Coordinates of each polygon
-                    // Coordinate[] coordinates = mpG.getGeometryN(i).getCoordinates();
-                    // LinearRing linear = new GeometryFactory().createLinearRing(coordinates);
-                    // Polygon polygon = new Polygon(linear, null, fact);
-                    Polygon polygon = (Polygon) mpG.getGeometryN(i);
-                    poLst.add(polygon);
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-            }
-        }
-        return poLst;
-    }
 }

@@ -1,29 +1,45 @@
 <rdf:RDF xmlns:gml='http://www.opengis.net/ont/gml#' xmlns:geof='http://www.opengis.net/def/function/geosparql/' xmlns:geo='http://www.opengis.net/ont/geosparql#' xmlns:xsd='http://www.w3.org/2001/XMLSchema#' xmlns:sf='http://www.opengis.net/ont/sf#' xmlns:my='https://www.inf.bi.ruhr-uni-bochum.de/jena/#' xmlns:geor='http://www.opengis.net/def/rule/geosparql/' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlns:owl='http://www.w3.org/2002/07/owl#' xmlns:uom='http://www.opengis.net/def/uom/OGC/1.0/' xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#' xmlns:ogc='http://www.opengis.net/'>
-	<rdf:Description rdf:about='my:RootModel'>
-		<sf:MultiPolygon>
-			<rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON1'>
-				<geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>MULTIPOLYGON Z(((0.0 0.0 0.0, 0.0 3.0 0.0, 3.0 3.0 0.0, 3.0 0.0 0.0, 0.0 0.0 0.0)), ((0.0 0.0 3.0, 0.0 3.0 3.0, 3.0 3.0 3.0, 3.0 0.0 3.0, 0.0 0.0 3.0)), ((0.0 0.0 0.0, 0.0 3.0 0.0, 0.0 3.0 3.0, 0.0 0.0 3.0, 0.0 0.0 0.0)), ((3.0 0.0 0.0, 3.0 3.0 0.0, 3.0 3.0 3.0, 3.0 0.0 3.0, 3.0 0.0 0.0)), ((0.0 0.0 0.0, 3.0 0.0 0.0, 3.0 0.0 3.0, 0.0 0.0 3.0, 0.0 0.0 0.0)), ((0.0 3.0 0.0, 3.0 3.0 0.0, 3.0 3.0 3.0, 0.0 3.0 3.0, 0.0 3.0 0.0)))</geo:asWKT>
-			</rdf:Description>
-		</sf:MultiPolygon>
-		<sf:MultiPolygon>
-			<rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON2'>
-				<geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>MULTIPOLYGON Z(((3.0 3.0 3.0, 3.0 6.0 3.0, 6.0 6.0 3.0, 6.0 3.0 3.0, 3.0 3.0 3.0)), ((3.0 3.0 6.0, 3.0 6.0 6.0, 6.0 6.0 6.0, 6.0 3.0 6.0, 3.0 3.0 6.0)), ((3.0 3.0 3.0, 3.0 6.0 3.0, 3.0 6.0 6.0, 3.0 3.0 6.0, 3.0 3.0 3.0)), ((6.0 3.0 3.0, 6.0 6.0 3.0, 6.0 6.0 6.0, 6.0 3.0 6.0, 6.0 3.0 3.0)), ((3.0 3.0 3.0, 6.0 3.0 3.0, 6.0 3.0 6.0, 3.0 3.0 6.0, 3.0 3.0 3.0)), ((3.0 6.0 3.0, 6.0 6.0 3.0, 6.0 6.0 6.0, 3.0 6.0 6.0, 3.0 6.0 3.0)))</geo:asWKT>
-			</rdf:Description>
-		</sf:MultiPolygon>
-		<sf:MultiPolygon>
-			<rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON3'>
-				<geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>MULTIPOLYGON Z(((6.0 6.0 3.0, 6.0 9.0 3.0, 9.0 9.0 3.0, 9.0 6.0 3.0, 6.0 6.0 3.0)), ((6.0 6.0 6.0, 6.0 9.0 6.0, 9.0 9.0 6.0, 9.0 6.0 6.0, 6.0 6.0 6.0)), ((6.0 6.0 3.0, 6.0 9.0 3.0, 6.0 9.0 6.0, 6.0 6.0 6.0, 6.0 6.0 3.0)), ((9.0 6.0 3.0, 9.0 9.0 3.0, 9.0 9.0 6.0, 9.0 6.0 6.0, 9.0 6.0 3.0)), ((6.0 6.0 3.0, 9.0 6.0 3.0, 9.0 6.0 6.0, 6.0 6.0 6.0, 6.0 6.0 3.0)), ((6.0 9.0 3.0, 9.0 9.0 3.0, 9.0 9.0 6.0, 6.0 9.0 6.0, 6.0 9.0 3.0)))</geo:asWKT>
-			</rdf:Description>
-		</sf:MultiPolygon>
-		<sf:MultiPolygon>
-			<rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON4'>
-				<geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>MULTIPOLYGON Z(((-6.0 -3.0 0.0, -6.0 0.0 0.0, -3.0 0.0 0.0, -3.0 -3.0 0.0, -6.0 -3.0 0.0)), ((-6.0 -3.0 3.0, -6.0 0.0 3.0, -3.0 0.0 3.0, -3.0 -3.0 3.0, -6.0 -3.0 3.0)), ((-6.0 -3.0 0.0, -6.0 0.0 0.0, -6.0 0.0 3.0, -6.0 -3.0 3.0, -6.0 -3.0 0.0)), ((-3.0 -3.0 0.0, -3.0 0.0 0.0, -3.0 0.0 3.0, -3.0 -3.0 3.0, -3.0 -3.0 0.0)), ((-6.0 -3.0 0.0, -3.0 -3.0 0.0, -3.0 -3.0 3.0, -6.0 -3.0 3.0, -6.0 -3.0 0.0)), ((-6.0 0.0 0.0, -3.0 0.0 0.0, -3.0 0.0 3.0, -6.0 0.0 3.0, -6.0 0.0 0.0)))</geo:asWKT>
-			</rdf:Description>
-		</sf:MultiPolygon>
-		<sf:MultiPolygon>
-			<rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON5'>
-				<geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>MULTIPOLYGON Z(((-7.0 -3.0 0.0, -7.0 0.0 0.0, -4.0 0.0 0.0, -4.0 -3.0 0.0, -7.0 -3.0 0.0)), ((-7.0 -3.0 3.0, -7.0 0.0 3.0, -4.0 0.0 3.0, -4.0 -3.0 3.0, -7.0 -3.0 3.0)), ((-7.0 -3.0 0.0, -7.0 0.0 0.0, -7.0 0.0 3.0, -7.0 -3.0 3.0, -7.0 -3.0 0.0)), ((-4.0 -3.0 0.0, -4.0 0.0 0.0, -4.0 0.0 3.0, -4.0 -3.0 3.0, -4.0 -3.0 0.0)), ((-7.0 -3.0 0.0, -4.0 -3.0 0.0, -4.0 -3.0 3.0, -7.0 -3.0 3.0, -7.0 -3.0 0.0)), ((-7.0 0.0 0.0, -4.0 0.0 0.0, -4.0 0.0 3.0, -7.0 0.0 3.0, -7.0 0.0 0.0)))</geo:asWKT>
-			</rdf:Description>
-		</sf:MultiPolygon>
-	</rdf:Description>
+    <rdf:Description rdf:about='my:RootModel'>
+        <sf:MultiPolygon>
+            <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON1'>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>MULTIPOLYGON Z(((0.0 0.0 0.0, 0.0 3.0 0.0, 3.0 3.0 0.0, 3.0 0.0 0.0, 0.0 0.0 0.0)), ((0.0 0.0 3.0, 0.0 3.0 3.0, 3.0 3.0 3.0, 3.0 0.0 3.0, 0.0 0.0 3.0)), ((0.0 0.0 0.0, 0.0 3.0 0.0, 0.0 3.0 3.0, 0.0 0.0 3.0, 0.0 0.0 0.0)), ((3.0 0.0 0.0, 3.0 3.0 0.0, 3.0 3.0 3.0, 3.0 0.0 3.0, 3.0 0.0 0.0)), ((0.0 0.0 0.0, 3.0 0.0 0.0, 3.0 0.0 3.0, 0.0 0.0 3.0, 0.0 0.0 0.0)), ((0.0 3.0 0.0, 3.0 3.0 0.0, 3.0 3.0 3.0, 0.0 3.0 3.0, 0.0 3.0 0.0)))</geo:asWKT>
+            </rdf:Description>
+        </sf:MultiPolygon>
+        <sf:MultiPolygon>
+            <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON2'>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>MULTIPOLYGON Z(((3.0 3.0 3.0, 3.0 6.0 3.0, 6.0 6.0 3.0, 6.0 3.0 3.0, 3.0 3.0 3.0)), ((3.0 3.0 6.0, 3.0 6.0 6.0, 6.0 6.0 6.0, 6.0 3.0 6.0, 3.0 3.0 6.0)), ((3.0 3.0 3.0, 3.0 6.0 3.0, 3.0 6.0 6.0, 3.0 3.0 6.0, 3.0 3.0 3.0)), ((6.0 3.0 3.0, 6.0 6.0 3.0, 6.0 6.0 6.0, 6.0 3.0 6.0, 6.0 3.0 3.0)), ((3.0 3.0 3.0, 6.0 3.0 3.0, 6.0 3.0 6.0, 3.0 3.0 6.0, 3.0 3.0 3.0)), ((3.0 6.0 3.0, 6.0 6.0 3.0, 6.0 6.0 6.0, 3.0 6.0 6.0, 3.0 6.0 3.0)))</geo:asWKT>
+            </rdf:Description>
+        </sf:MultiPolygon>
+        <sf:MultiPolygon>
+            <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON3'>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>MULTIPOLYGON Z(((6.0 6.0 3.0, 6.0 9.0 3.0, 9.0 9.0 3.0, 9.0 6.0 3.0, 6.0 6.0 3.0)), ((6.0 6.0 6.0, 6.0 9.0 6.0, 9.0 9.0 6.0, 9.0 6.0 6.0, 6.0 6.0 6.0)), ((6.0 6.0 3.0, 6.0 9.0 3.0, 6.0 9.0 6.0, 6.0 6.0 6.0, 6.0 6.0 3.0)), ((9.0 6.0 3.0, 9.0 9.0 3.0, 9.0 9.0 6.0, 9.0 6.0 6.0, 9.0 6.0 3.0)), ((6.0 6.0 3.0, 9.0 6.0 3.0, 9.0 6.0 6.0, 6.0 6.0 6.0, 6.0 6.0 3.0)), ((6.0 9.0 3.0, 9.0 9.0 3.0, 9.0 9.0 6.0, 6.0 9.0 6.0, 6.0 9.0 3.0)))</geo:asWKT>
+            </rdf:Description>
+        </sf:MultiPolygon>
+        <sf:MultiPolygon>
+            <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON4'>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>MULTIPOLYGON Z(((-6.0 -3.0 0.0, -6.0 0.0 0.0, -3.0 0.0 0.0, -3.0 -3.0 0.0, -6.0 -3.0 0.0)), ((-6.0 -3.0 3.0, -6.0 0.0 3.0, -3.0 0.0 3.0, -3.0 -3.0 3.0, -6.0 -3.0 3.0)), ((-6.0 -3.0 0.0, -6.0 0.0 0.0, -6.0 0.0 3.0, -6.0 -3.0 3.0, -6.0 -3.0 0.0)), ((-3.0 -3.0 0.0, -3.0 0.0 0.0, -3.0 0.0 3.0, -3.0 -3.0 3.0, -3.0 -3.0 0.0)), ((-6.0 -3.0 0.0, -3.0 -3.0 0.0, -3.0 -3.0 3.0, -6.0 -3.0 3.0, -6.0 -3.0 0.0)), ((-6.0 0.0 0.0, -3.0 0.0 0.0, -3.0 0.0 3.0, -6.0 0.0 3.0, -6.0 0.0 0.0)))</geo:asWKT>
+            </rdf:Description>
+        </sf:MultiPolygon>
+        <sf:MultiPolygon>
+            <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON5'>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>MULTIPOLYGON Z(((-7.0 -3.0 0.0, -7.0 0.0 0.0, -4.0 0.0 0.0, -4.0 -3.0 0.0, -7.0 -3.0 0.0)), ((-7.0 -3.0 3.0, -7.0 0.0 3.0, -4.0 0.0 3.0, -4.0 -3.0 3.0, -7.0 -3.0 3.0)), ((-7.0 -3.0 0.0, -7.0 0.0 0.0, -7.0 0.0 3.0, -7.0 -3.0 3.0, -7.0 -3.0 0.0)), ((-4.0 -3.0 0.0, -4.0 0.0 0.0, -4.0 0.0 3.0, -4.0 -3.0 3.0, -4.0 -3.0 0.0)), ((-7.0 -3.0 0.0, -4.0 -3.0 0.0, -4.0 -3.0 3.0, -7.0 -3.0 3.0, -7.0 -3.0 0.0)), ((-7.0 0.0 0.0, -4.0 0.0 0.0, -4.0 0.0 3.0, -7.0 0.0 3.0, -7.0 0.0 0.0)))</geo:asWKT>
+            </rdf:Description>
+        </sf:MultiPolygon>
+
+        <sf:MultiPolygon>
+            <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON8'>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>MULTIPOLYGON Z(((-13.0 -13.0 1.0, -13.0 -10.0 1.0, -10.0 -10.0 1.0, -10.0 -13.0 1.0, -13.0 -13.0 1.0)), ((-13.0 -13.0 4.0, -13.0 -10.0 4.0, -10.0 -10.0 4.0, -10.0 -13.0 4.0, -13.0 -13.0 4.0)), ((-13.0 -13.0 1.0, -13.0 -10.0 1.0, -13.0 -10.0 4.0, -13.0 -13.0 4.0, -13.0 -13.0 1.0)), ((-10.0 -13.0 1.0, -10.0 -10.0 1.0, -10.0 -10.0 4.0, -10.0 -13.0 4.0, -10.0 -13.0 1.0)), ((-13.0 -13.0 1.0, -10.0 -13.0 1.0, -10.0 -13.0 4.0, -13.0 -13.0 4.0, -13.0 -13.0 1.0)), ((-13.0 -10.0 1.0, -10.0 -10.0 1.0, -10.0 -10.0 4.0, -13.0 -10.0 4.0, -13.0 -10.0 1.0)))</geo:asWKT>
+            </rdf:Description>
+        </sf:MultiPolygon>
+        <sf:POLYGON>
+            <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON9'>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>POLYGON Z((-10.0 -10.0 0.0, -20.0 -20.0 6.0, -15.0 -15.0 0.0, -10.0 -10.0 0.0))</geo:asWKT>
+            </rdf:Description>
+        </sf:POLYGON>
+        <!-- <sf:POLYGON>
+            <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON10'>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>POLYGON Z((-15.0 -15.0 7.0, -20.0 -20.0 7.0, -25.0 -25.0 8.0, -15.0 -15.0 7.0))</geo:asWKT>
+            </rdf:Description>
+        </sf:POLYGON> -->
+    </rdf:Description>
 </rdf:RDF>

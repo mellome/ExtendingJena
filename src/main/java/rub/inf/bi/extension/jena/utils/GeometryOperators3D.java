@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.commons.math3.geometry.euclidean.threed.Line;
 import org.apache.commons.math3.geometry.euclidean.threed.Plane;
@@ -52,7 +53,7 @@ public class GeometryOperators3D {
 
 		Plane rectanglePlaneA = null;
 		Plane rectanglePlaneB = null;
-		if ((rectangleA.getCoordinates().length - 1) == 4) {
+		if ((rectangleA.getCoordinates().length - 1) >= 3) {
 
 			Coordinate pA1 = rectangleA.getCoordinates()[0];
 			Coordinate pB1 = rectangleA.getCoordinates()[1];
@@ -69,7 +70,7 @@ public class GeometryOperators3D {
 					GeometryOperators3D.TOLERANCE);
 		}
 
-		if ((rectangleB.getCoordinates().length - 1) == 4) {
+		if ((rectangleB.getCoordinates().length - 1) >= 3) {
 
 			Coordinate pA2 = rectangleB.getCoordinates()[0];
 			Coordinate pB2 = rectangleB.getCoordinates()[1];
@@ -91,47 +92,83 @@ public class GeometryOperators3D {
 			Line l = GeometryOperators3D.intersection3D(rectanglePlaneA, rectanglePlaneB); // intersection of two planes
 
 			if (l != null){
-				ArrayList<Vector3D> interT1 = intersection3DLR(l, rectangleA);
-				ArrayList<Vector3D> interT2 = intersection3DLR(l, rectangleB);
+				List<Vector3D> interT1 = intersection3DLP(l, rectangleA);
+				List<Vector3D> interT2 = intersection3DLP(l, rectangleB);
 				
-				List<Vector3D> commonVectorLst = interT1.stream().filter(interT2::contains).collect(Collectors.toList());
-				if (!commonVectorLst.isEmpty()) { // the commen intersection line must be instersected with the given geometries!!!
-					intersectionPoints.addAll(interT1);
-					intersectionPoints.addAll(interT2);
-				}
-				// if (interT1.size() > 0 && interT2.size() > 0) { // the commen intersection line must be instersected with the given geometries!!!
+				// List<Vector3D> interT1T2 = Stream.concat(interT1.stream(), interT2.stream()).collect(Collectors.toList());  
+				// List<Vector3D> commonVectorLst = interT1.stream().filter(interT2::contains).collect(Collectors.toList());
+				// if (!commonVectorLst.isEmpty()) {
 				// 	intersectionPoints.addAll(interT1);
 				// 	intersectionPoints.addAll(interT2);
 				// }
+				if (interT1.size() > 0 && interT2.size() > 0) { // the commen intersection line must be instersected with the given geometries!!!
+					for(Vector3D ipA : interT1){
+						if(contains3D(rectangleB, ipA)){
+							intersectionPoints.add(ipA);
+						}
+					}
+					for (Vector3D ipB : interT2){
+						if(contains3D(rectangleA, ipB)){
+							intersectionPoints.add(ipB);
+						}
+					}
+				}
 			}
 		}
 		return intersectionPoints;
 	}
 
-	public static ArrayList<Vector3D> intersection3DLR(Line source, Polygon rectangle) {
+	/*
+	 * Line -- Polygon
+	 */
+	public static ArrayList<Vector3D> intersection3DLP(Line source, Polygon polygon) {
 		ArrayList<Vector3D> intersectionPoints = new ArrayList<Vector3D>();
+		int num_edges = polygon.getCoordinates().length;
 
-		for (int cIt1 = 1; cIt1 < rectangle.getCoordinates().length; cIt1++) {
-			Vector3D tempA = new Vector3D(
-				rectangle.getCoordinates()[cIt1 - 1].getX(),
-				rectangle.getCoordinates()[cIt1 - 1].getY(),
-				rectangle.getCoordinates()[cIt1 - 1].getZ());
-			Vector3D tempB = new Vector3D(
-				rectangle.getCoordinates()[cIt1].getX(),
-				rectangle.getCoordinates()[cIt1].getY(),
-				rectangle.getCoordinates()[cIt1].getZ());
-
-			Line target = new Line(tempA, tempB, GeometryOperators3D.TOLERANCE); // one edage
-			Vector3D interSectionPoint = source.intersection(target);
-
-			if (interSectionPoint != null) {
-				if (contains3D(tempA, tempB, interSectionPoint)) {
-					intersectionPoints.add(interSectionPoint);
+		// rectangle
+		if ( num_edges == 3 ){
+			for (int cIt1 = 1; cIt1 < num_edges; cIt1++) {
+				Vector3D tempA = new Vector3D(
+					polygon.getCoordinates()[cIt1 - 1].getX(),
+					polygon.getCoordinates()[cIt1 - 1].getY(),
+					polygon.getCoordinates()[cIt1 - 1].getZ());
+				Vector3D tempB = new Vector3D(
+					polygon.getCoordinates()[cIt1].getX(),
+					polygon.getCoordinates()[cIt1].getY(),
+					polygon.getCoordinates()[cIt1].getZ());
+	
+				Line target = new Line(tempA, tempB, GeometryOperators3D.TOLERANCE); // first two edages
+				Vector3D interSectionPoint = source.intersection(target);
+	
+				if (interSectionPoint != null) {
+					if (contains3D(tempA, tempB, interSectionPoint)) {
+						intersectionPoints.add(interSectionPoint);
+					}
 				}
 			}
-
 		}
-
+		// polygon
+		if ( num_edges > 3 ){
+			for (int cIt1 = 1; cIt1 < num_edges; cIt1++) {
+				Vector3D tempA = new Vector3D(
+					polygon.getCoordinates()[cIt1 - 1].getX(),
+					polygon.getCoordinates()[cIt1 - 1].getY(),
+					polygon.getCoordinates()[cIt1 - 1].getZ());
+				Vector3D tempB = new Vector3D(
+					polygon.getCoordinates()[cIt1].getX(),
+					polygon.getCoordinates()[cIt1].getY(),
+					polygon.getCoordinates()[cIt1].getZ());
+	
+				Line target = new Line(tempA, tempB, GeometryOperators3D.TOLERANCE); // first n-1 edages
+				Vector3D interSectionPoint = source.intersection(target);
+	
+				if (interSectionPoint != null) {
+					if (contains3D(tempA, tempB, interSectionPoint)) {
+						intersectionPoints.add(interSectionPoint);
+					}
+				}
+			}
+		}
 		return intersectionPoints;
 	}
 	
@@ -347,6 +384,9 @@ public class GeometryOperators3D {
 		return result;
 	}
 
+	/*
+	 * determine if a vector point in the given triangle
+	 */
 	public static boolean contains3D(Vector3D trianglePointA, Vector3D trianglePointB, Vector3D trianglePointC,
 			Vector3D point) {
 		double areaABC = triangleArea(trianglePointA, trianglePointB, trianglePointC);
