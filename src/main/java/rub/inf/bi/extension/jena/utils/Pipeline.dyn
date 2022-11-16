@@ -1915,6 +1915,174 @@
       ],
       "Replication": "Disabled",
       "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.NurbsCurve.ByPointsTangents@Autodesk.DesignScript.Geometry.Point[],Autodesk.DesignScript.Geometry.Vector,Autodesk.DesignScript.Geometry.Vector",
+      "Id": "60e17a24ac304f7e88bd0277a0d91ead",
+      "Inputs": [
+        {
+          "Id": "3c3ca6631b2343b5bd542b578fae35f0",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6a2dc736c33c4ee4ab471b0237152914",
+          "Name": "startTangent",
+          "Description": "Vector",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a8c593b648d342f49ab55f39acd7f2c6",
+          "Name": "endTangent",
+          "Description": "Vector",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "02887445efcc4ac69b34f2dd8b07ba81",
+          "Name": "NurbsCurve",
+          "Description": "NurbsCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns a BSplineCurve through the points, with tangent directions.\n\nNurbsCurve.ByPointsTangents (points: Point[], startTangent: Vector, endTangent: Vector): NurbsCurve"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.NurbsCurve.ByControlPoints@Autodesk.DesignScript.Geometry.Point[]",
+      "Id": "589ea99256da4e3abca2cbd2786429f8",
+      "Inputs": [
+        {
+          "Id": "638bb235d5af4f4f838ea41e03113d28",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9507268289884f05b51fa877cdb1ec9c",
+          "Name": "NurbsCurve",
+          "Description": "NurbsCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a BSplineCurve by using explicit control points. NOTE 1: BSplineCurves with deg=1 have G1 discontinuities, which cause problems for extrusion, sweep, and other operations. They should be avoided. Use a PolyCurve instead. NOTE 2: If the curve is periodic (closed), then the first and last points MUST be the same.\n\nNurbsCurve.ByControlPoints (points: Point[]): NurbsCurve"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.NurbsCurve.ByControlPoints@Autodesk.DesignScript.Geometry.Point[]",
+      "Id": "aed2b63c664c4fd3b9cbb782c15bfddf",
+      "Inputs": [
+        {
+          "Id": "ac9625220078471cb60c61c6b285d04a",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "18ca0ebbe1f54ba9a65402a60076e5a0",
+          "Name": "NurbsCurve",
+          "Description": "NurbsCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a BSplineCurve by using explicit control points. NOTE 1: BSplineCurves with deg=1 have G1 discontinuities, which cause problems for extrusion, sweep, and other operations. They should be avoided. Use a PolyCurve instead. NOTE 2: If the curve is periodic (closed), then the first and last points MUST be the same.\n\nNurbsCurve.ByControlPoints (points: Point[]): NurbsCurve"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.NurbsCurve.ControlPoints",
+      "Id": "f212a76c674541529e556a9941edfaf6",
+      "Inputs": [
+        {
+          "Id": "9ec06fa82533477a9a7accb6175b11f5",
+          "Name": "nurbsCurve",
+          "Description": "Autodesk.DesignScript.Geometry.NurbsCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b1ee8ae8449e47d89bea29587b25a084",
+          "Name": "Point[]",
+          "Description": "An Array of Points",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the control points of the NurbsCurve. These are the points that the curve interpolates.\n\nNurbsCurve.ControlPoints ( ): Point[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.NurbsCurve.ControlPoints",
+      "Id": "5eae8ad53d1244d5baa44e634b4b892d",
+      "Inputs": [
+        {
+          "Id": "f6b2fdafc3ec4711af7c117c07a8a5dd",
+          "Name": "nurbsCurve",
+          "Description": "Autodesk.DesignScript.Geometry.NurbsCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d8942082380440f4b06b9e413639f361",
+          "Name": "Point[]",
+          "Description": "An Array of Points",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the control points of the NurbsCurve. These are the points that the curve interpolates.\n\nNurbsCurve.ControlPoints ( ): Point[]"
     }
   ],
   "Connectors": [
@@ -2178,15 +2346,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 35.412940979003906,
-      "EyeY": 18.758764266967773,
-      "EyeZ": -17.417102813720703,
-      "LookX": -7.6895027160644531,
-      "LookY": -21.462953567504883,
-      "LookZ": -4.1210899353027344,
-      "UpX": -0.72638481855392456,
-      "UpY": 0.56639444828033447,
-      "UpZ": -0.38931021094322205
+      "EyeX": 32.9375114440918,
+      "EyeY": 10.416510581970215,
+      "EyeZ": -9.4376640319824219,
+      "LookX": -5.2140731811523438,
+      "LookY": -13.120699882507324,
+      "LookZ": -12.100528717041016,
+      "UpX": -0.21262061595916748,
+      "UpY": 0.843383252620697,
+      "UpZ": -0.49345427751541138
     },
     "NodeViews": [
       {
@@ -2628,6 +2796,56 @@
         "Excluded": false,
         "X": 1900.860264375372,
         "Y": 492.15674667387555
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NurbsCurve.ByPointsTangents",
+        "Id": "60e17a24ac304f7e88bd0277a0d91ead",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 950.51787660422656,
+        "Y": 1136.2679519957046
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NurbsCurve.ByControlPoints",
+        "Id": "589ea99256da4e3abca2cbd2786429f8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1224.2443551554516,
+        "Y": 1058.6660439596762
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NurbsCurve.ByControlPoints",
+        "Id": "aed2b63c664c4fd3b9cbb782c15bfddf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1239.229128553384,
+        "Y": 1073.6508173576087
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NurbsCurve.ControlPoints",
+        "Id": "f212a76c674541529e556a9941edfaf6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1254.2139019513165,
+        "Y": 1088.6355907555412
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NurbsCurve.ControlPoints",
+        "Id": "5eae8ad53d1244d5baa44e634b4b892d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1194.2748083595864,
+        "Y": 1028.696497163811
       }
     ],
     "Annotations": [
@@ -2747,8 +2965,8 @@
         "Background": "#FF48B9FF"
       }
     ],
-    "X": -1005.2130239701635,
-    "Y": -215.31235979290773,
-    "Zoom": 0.85798632165930477
+    "X": -1347.3626618237827,
+    "Y": -1302.6681631704441,
+    "Zoom": 1.6016258212694279
   }
 }

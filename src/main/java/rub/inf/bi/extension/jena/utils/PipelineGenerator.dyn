@@ -1776,19 +1776,9 @@
       "Description": "Runs an embedded Python script."
     },
     {
-      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
-      "NodeType": "CodeBlockNode",
-      "Code": "",
-      "Id": "28fde220406e4ae287855350184c88a9",
-      "Inputs": [],
-      "Outputs": [],
-      "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
-    },
-    {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Common Geometry Types\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nMULTIPOLYGON = \"MULTIPOLYGON\";\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\r\n# Input \r\nNUM_MULTIPOLYGON = IN[0]\r\nNUM_MULTIPOLYGON = 50\r\n#num = IN[1]\r\n\r\n# output container\r\ngeo_type_lst = []\r\ngeo_lst = []\r\n\r\n# Point\r\n\r\n# LineString\r\nc=1\r\ngeo_data = Arc.ByThreePoints( Point.ByCoordinates(20, 20, 2),\r\n                            Point.ByCoordinates(25, 25, 2),\r\n                            Point.ByCoordinates(40, 10, 2))\r\ngeo_name = LINESTRING + str(c)\r\ngeo_type = LINESTRING\r\ngeo_lst.append((geo_data, geo_name, geo_type))\r\n\r\n\r\n# Polygon\r\n\r\n# Multipolygon\r\ni=1\r\nc=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    p1 = Point.ByCoordinates(i, i, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+i, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\r\ni=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    j = i + 10\r\n    p1 = Point.ByCoordinates(i, j, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+j, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\r\n\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = geo_lst\r\n\r\n",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Common Geometry Types\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nMULTIPOLYGON = \"MULTIPOLYGON\";\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\r\n# Input \r\nNUM_MULTIPOLYGON = IN[0]\r\n#NUM_MULTIPOLYGON = 50\r\n#num = IN[1]\r\n\r\n# output container\r\ngeo_type_lst = []\r\ngeo_lst = []\r\n\r\n# Point\r\n\r\n# LineString\r\n\"\"\"\r\nc=1\r\ngeo_data = Arc.ByThreePoints( Point.ByCoordinates(20, 20, 2),\r\n                            Point.ByCoordinates(25, 25, 2),\r\n                            Point.ByCoordinates(40, 10, 2))\r\ngeo_name = LINESTRING + str(c)\r\ngeo_type = LINESTRING\r\ngeo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n\r\n# Polygon\r\n\r\n# Multipolygon\r\n\"\"\"\r\ni=1\r\nc=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    p1 = Point.ByCoordinates(i, i, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+i, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\r\ni=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    j = i + 10\r\n    p1 = Point.ByCoordinates(i, j, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+j, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n#################################################\r\n# TOUCH - (c1, c2) (c2, c3)\r\nc = 1\r\np11 = Point.ByCoordinates(0, 0, 0)\r\np12 = Point.ByCoordinates(3, 3, 3)\r\ngeo_data1 = Cuboid.ByCorners(p11, p12)\r\ngeo_name1 = MULTIPOLYGON + str(c)\r\ngeo_type1 = MULTIPOLYGON\r\ngeo_lst.append((geo_data1, geo_name1, geo_type1))\r\n\r\nc = 2\r\np21 = Point.ByCoordinates(3, 3, 3)\r\np22 = Point.ByCoordinates(6, 6, 6)\r\ngeo_data2 = Cuboid.ByCorners(p21, p22)\r\ngeo_name2 = MULTIPOLYGON + str(c)\r\ngeo_type2 = MULTIPOLYGON\r\ngeo_lst.append((geo_data2, geo_name2, geo_type2))\r\n\r\nc = 3\r\np31 = Point.ByCoordinates(6, 6, 3)\r\np32 = Point.ByCoordinates(9, 9, 6)\r\ngeo_data3 = Cuboid.ByCorners(p31, p32)\r\ngeo_name3 = MULTIPOLYGON + str(c)\r\ngeo_type3 = MULTIPOLYGON\r\ngeo_lst.append((geo_data3, geo_name3, geo_type3))\r\n#################################################\r\n# INTERSECT - (c4, c5) \r\nc = 4\r\np41 = Point.ByCoordinates(-3, 0, 0)\r\np42 = Point.ByCoordinates(-6, -3, 3)\r\ngeo_data4 = Cuboid.ByCorners(p41, p42)\r\ngeo_name4 = MULTIPOLYGON + str(c)\r\ngeo_type4 = MULTIPOLYGON\r\ngeo_lst.append((geo_data4, geo_name4, geo_type4))\r\n\r\nc = 5\r\np51 = Point.ByCoordinates(-4, 0, 0)\r\np52 = Point.ByCoordinates(-7, -3, 3)\r\ngeo_data5 = Cuboid.ByCorners(p51, p52)\r\ngeo_name5 = MULTIPOLYGON + str(c)\r\ngeo_type5 = MULTIPOLYGON\r\ngeo_lst.append((geo_data5, geo_name5, geo_type5))\r\n#################################################\r\n\r\nc = 6\r\ngeo_data6 = Sphere.ByCenterPointRadius(Point.ByCoordinates(-3, -3, -3))\r\ngeo_name6 = MULTIPOLYGON + str(c)\r\ngeo_type6 = MULTIPOLYGON\r\n#mesh_sphere = Mesh.ByGeometry(sphere1)\r\ngeo_lst.append((geo_data5, geo_name5, geo_type5))\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = geo_lst\r\n\r\n",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "e5263d32c0c34ffd9ef5e7fcc14d974c",
@@ -1820,12 +1810,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "// Number of Geometries to generate\n100;",
+      "Code": "// Number of Geometries to generate\n20;",
       "Id": "2fc07c798e1b4ebf958f7ff659859e87",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "c78620f78d0f4963a7747d97eaf09286",
+          "Id": "2ca3a91f7c554ad48cfa828fbdd6f037",
           "Name": "",
           "Description": "Value of expression at line 2",
           "UsingDefaultValue": false,
@@ -1915,6 +1905,216 @@
       ],
       "Replication": "Disabled",
       "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Line.ByStartPointEndPoint@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Point",
+      "Id": "10f8ddfd88f64ef7a51412c17717abec",
+      "Inputs": [
+        {
+          "Id": "bd63430c5a714f0695ac9af3ee816a37",
+          "Name": "startPoint",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6aca5d0cd4494ef9bb2c18ba276b5d0b",
+          "Name": "endPoint",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1e8e7b5d9a364bd0b9bc8cf7e64d2a32",
+          "Name": "Line",
+          "Description": "Line",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a straight Line between two input Points.\n\nLine.ByStartPointEndPoint (startPoint: Point, endPoint: Point): Line"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0;\n0;\n3;\n1;\n0;\n0;",
+      "Id": "2c7413aedd4248ccac93e0efab97c909",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "3134dc768c3b4244a08eff7fec972357",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "863884ee523845d3b84355bea3ad3283",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "440206be7b494e029e272a010d274690",
+          "Name": "",
+          "Description": "Value of expression at line 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a7c300255ee64551a53ab5235a7945ed",
+          "Name": "",
+          "Description": "Value of expression at line 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a021abda4057459e970f657625d99927",
+          "Name": "",
+          "Description": "Value of expression at line 5",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1a04aac0ae404d16bfea5d7c535c4367",
+          "Name": "",
+          "Description": "Value of expression at line 6",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.ByCoordinates@double,double,double",
+      "Id": "089ee49a51a14ad9b23960adc80361bd",
+      "Inputs": [
+        {
+          "Id": "6c803a1f5e494c8caca710430559ba33",
+          "Name": "x",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7af3b1b15e9d440c983c11fffb607351",
+          "Name": "y",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b22767e2533a4d4bbf47071e0c834d3a",
+          "Name": "z",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6926ced4edef4212be06811650d1e167",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Form a Point given 3 cartesian coordinates\n\nPoint.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.ByCoordinates@double,double,double",
+      "Id": "b9b4adbf6e8b41b8bd1d3cfdcc751ff6",
+      "Inputs": [
+        {
+          "Id": "00f2679f6d1f49cf922d6cf97da52824",
+          "Name": "x",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "38aed8e4743f46608830a00fe63b7104",
+          "Name": "y",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "847f96c9500d46e7a2f0c302d9347ea6",
+          "Name": "z",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ddb04c731bc74f69ac7214fd75135fb8",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Form a Point given 3 cartesian coordinates\n\nPoint.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "",
+      "Id": "fe789f3241d045fa93cd43927766996a",
+      "Inputs": [],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
     }
   ],
   "Connectors": [
@@ -2149,9 +2349,9 @@
       "Id": "908ae5648c6b427191417e492e62a97a"
     },
     {
-      "Start": "c78620f78d0f4963a7747d97eaf09286",
+      "Start": "2ca3a91f7c554ad48cfa828fbdd6f037",
       "End": "54021daede9a49909cb2b4ccecadc30d",
-      "Id": "0936bacaa5704e0093564aa8bc750108"
+      "Id": "b74242cad1f942adae9067b1074e91fc"
     },
     {
       "Start": "34aab1073991461ea21aecb8f98aa0f5",
@@ -2162,6 +2362,46 @@
       "Start": "34aab1073991461ea21aecb8f98aa0f5",
       "End": "1bf83e6357a44ed88c6b44b3703edca8",
       "Id": "a8d478b9cf7f4922b69aed04d323fd25"
+    },
+    {
+      "Start": "3134dc768c3b4244a08eff7fec972357",
+      "End": "6c803a1f5e494c8caca710430559ba33",
+      "Id": "81b9b4891a824aa289fb668591e5e990"
+    },
+    {
+      "Start": "863884ee523845d3b84355bea3ad3283",
+      "End": "7af3b1b15e9d440c983c11fffb607351",
+      "Id": "efbed43c5431409ebdb005857b6924d1"
+    },
+    {
+      "Start": "440206be7b494e029e272a010d274690",
+      "End": "b22767e2533a4d4bbf47071e0c834d3a",
+      "Id": "4898f9d2de9f4fd1a9a044bace7eab0b"
+    },
+    {
+      "Start": "a7c300255ee64551a53ab5235a7945ed",
+      "End": "00f2679f6d1f49cf922d6cf97da52824",
+      "Id": "0471f9b59e4f4db29117c28a19a991ad"
+    },
+    {
+      "Start": "a021abda4057459e970f657625d99927",
+      "End": "38aed8e4743f46608830a00fe63b7104",
+      "Id": "75eb021963a44b03b329d6f5bd343d25"
+    },
+    {
+      "Start": "1a04aac0ae404d16bfea5d7c535c4367",
+      "End": "847f96c9500d46e7a2f0c302d9347ea6",
+      "Id": "c02b1cedf3e84ecda8c99ebda3142ea6"
+    },
+    {
+      "Start": "6926ced4edef4212be06811650d1e167",
+      "End": "bd63430c5a714f0695ac9af3ee816a37",
+      "Id": "ffe6ffd7b665424fa4eae5a7e2a513ff"
+    },
+    {
+      "Start": "ddb04c731bc74f69ac7214fd75135fb8",
+      "End": "6aca5d0cd4494ef9bb2c18ba276b5d0b",
+      "Id": "1155200b5ec64c7ca60670f21d389557"
     }
   ],
   "Dependencies": [],
@@ -2178,15 +2418,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 35.412940979003906,
-      "EyeY": 18.758764266967773,
-      "EyeZ": -17.417102813720703,
-      "LookX": -7.6895027160644531,
-      "LookY": -21.462953567504883,
-      "LookZ": -4.1210899353027344,
-      "UpX": -0.72638481855392456,
-      "UpY": 0.56639444828033447,
-      "UpZ": -0.38931021094322205
+      "EyeX": -2.473200798034668,
+      "EyeY": 11.029804229736328,
+      "EyeZ": 16.707866668701172,
+      "LookX": 1.020960807800293,
+      "LookY": -5.22038459777832,
+      "LookZ": -10.248530387878418,
+      "UpX": 0.024829458445310593,
+      "UpY": 0.96814340353012085,
+      "UpZ": -0.24916271865367889
     },
     "NodeViews": [
       {
@@ -2197,7 +2437,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 1904.7030820716639,
-        "Y": 883.31241282003134
+        "Y": 882.34770937100814
       },
       {
         "ShowGeometry": true,
@@ -2256,11 +2496,11 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 779.4079691197627,
-        "Y": 2268.8962655670343
+        "X": 839.32162673192386,
+        "Y": 2037.6016803665975
       },
       {
-        "ShowGeometry": true,
+        "ShowGeometry": false,
         "Name": "Points",
         "Id": "8cc6c1fb61484b86bab82908655d3df0",
         "IsSetAsInput": false,
@@ -2270,7 +2510,7 @@
         "Y": -131.005225015336
       },
       {
-        "ShowGeometry": true,
+        "ShowGeometry": false,
         "Name": "PolygonCoordList1",
         "Id": "ff616aa35b194fbfa265d2a312b357bd",
         "IsSetAsInput": false,
@@ -2280,7 +2520,7 @@
         "Y": 101.01175466792051
       },
       {
-        "ShowGeometry": true,
+        "ShowGeometry": false,
         "Name": "PolygonCoordList2",
         "Id": "20f595b21050444cad303c1015c8207f",
         "IsSetAsInput": false,
@@ -2297,7 +2537,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 1094.6736694355532,
-        "Y": 206.39593903341176
+        "Y": 205.43123558438856
       },
       {
         "ShowGeometry": true,
@@ -2456,8 +2696,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 692.7895571875373,
-        "Y": 2435.2947977804397
+        "X": 397.40129175083518,
+        "Y": 1999.1791039988939
       },
       {
         "ShowGeometry": true,
@@ -2500,7 +2740,7 @@
         "Y": -179.41511717005795
       },
       {
-        "ShowGeometry": true,
+        "ShowGeometry": false,
         "Name": "CubeCoord + Length",
         "Id": "26b91f1a142e42539c8751f65ccacf8b",
         "IsSetAsInput": false,
@@ -2530,14 +2770,14 @@
         "Y": 828.89720419431148
       },
       {
-        "ShowGeometry": true,
+        "ShowGeometry": false,
         "Name": "Code Block",
         "Id": "6f5992239c4844a3884b639772e60a4c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 573.92933974291464,
-        "Y": 2680.7181373168137
+        "X": 1111.7589173776646,
+        "Y": 2020.2745627083382
       },
       {
         "ShowGeometry": true,
@@ -2581,23 +2821,13 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Code Block",
-        "Id": "28fde220406e4ae287855350184c88a9",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 661.36119867243178,
-        "Y": 1243.8579144394646
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Geometry Generator",
         "Id": "e5263d32c0c34ffd9ef5e7fcc14d974c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1094.0570072710036,
-        "Y": 941.54830311475109
+        "X": 1082.0418802922206,
+        "Y": 1001.620444717946
       },
       {
         "ShowGeometry": true,
@@ -2607,7 +2837,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 1090.0545039103124,
-        "Y": 817.98579908020668
+        "Y": 817.02109563118347
       },
       {
         "ShowGeometry": true,
@@ -2617,7 +2847,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 1643.2816383385161,
-        "Y": 936.05733190356329
+        "Y": 935.09262845454009
       },
       {
         "ShowGeometry": true,
@@ -2627,7 +2857,57 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 1900.860264375372,
-        "Y": 492.15674667387555
+        "Y": 491.19204322485234
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Line.ByStartPointEndPoint",
+        "Id": "10f8ddfd88f64ef7a51412c17717abec",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1534.4945972871049,
+        "Y": 1200.4898952571493
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Code Block",
+        "Id": "2c7413aedd4248ccac93e0efab97c909",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1029.8016758411627,
+        "Y": 1227.4053910090468
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Point.ByCoordinates",
+        "Id": "089ee49a51a14ad9b23960adc80361bd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1252.810148238292,
+        "Y": 1131.6009975678348
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Point.ByCoordinates",
+        "Id": "b9b4adbf6e8b41b8bd1d3cfdcc751ff6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1265.4897807617008,
+        "Y": 1342.5679111217112
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "fe789f3241d045fa93cd43927766996a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1672.9716055738436,
+        "Y": 1672.2167316884411
       }
     ],
     "Annotations": [
@@ -2661,12 +2941,12 @@
           "2fc07c798e1b4ebf958f7ff659859e87",
           "5b79af2b71e44701b490b40587de9acd"
         ],
-        "Left": 1080.0545039103124,
-        "Top": 153.39593903341176,
-        "Width": 1069.6485781613512,
-        "Height": 938.66139287015164,
+        "Left": 1072.0418802922206,
+        "Top": 152.43123558438856,
+        "Width": 1128.8183840831514,
+        "Height": 953.1892091335576,
         "FontSize": 36.0,
-        "InitialTop": 206.39593903341176,
+        "InitialTop": 205.43123558438856,
         "InitialHeight": 880.15236408133921,
         "TextblockHeight": 43.0,
         "Background": "#FFFFAA45"
@@ -2717,7 +2997,7 @@
         "Left": 2265.4545423196755,
         "Top": 745.592925874691,
         "Width": 572.0938441725325,
-        "Height": 428.664882853137,
+        "Height": 443.664882853137,
         "FontSize": 36.0,
         "InitialTop": 798.592925874691,
         "InitialHeight": 426.664882853137,
@@ -2747,8 +3027,8 @@
         "Background": "#FF48B9FF"
       }
     ],
-    "X": -488.777657277258,
-    "Y": 39.129052277289077,
-    "Zoom": 0.654959687963953
+    "X": -897.2828911527273,
+    "Y": -661.72505881033021,
+    "Zoom": 0.73897422229630227
   }
 }
