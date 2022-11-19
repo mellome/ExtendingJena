@@ -2,6 +2,7 @@ package rub.inf.bi.extension.jena.utils;
 
 import java.util.List;
 
+import org.apache.commons.geometry.euclidean.threed.line.Line3D;
 import org.apache.commons.math3.exception.MathArithmeticException;
 import org.apache.commons.math3.geometry.euclidean.threed.Line;
 import org.apache.commons.math3.geometry.euclidean.threed.Plane;
@@ -14,6 +15,8 @@ import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.CoordinateSequence;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.Polygon;
+
+import com.github.andrewoma.dexx.collection.Vector;
 
 import de.javagl.obj.ObjWriter;
 import de.javagl.obj.ObjReader;
@@ -444,6 +447,24 @@ public class BSPTree implements Serializable{
         }
         boolean left = collisionDetect(t.frontTree, l); // left
         boolean right = collisionDetect(t.backTree, l); // right
+
+        return left || right;
+    }
+
+     /*
+     * Detect "BSP Tree" and "Line Segment" 
+     */
+    public boolean collisionDetect(BSPTree t, Vector3D v, Vector3D w){
+        // in PRE-ORDER
+        if( t == null){ // 
+            return false;
+        }
+        List<Vector3D> iPt = GeometryOperators3D.intersection3D(t.divider, v, w);
+        if( iPt.size() > 0 ){ // mid
+            return true;
+        }
+        boolean left = collisionDetect(t.frontTree, v, w); // left
+        boolean right = collisionDetect(t.backTree, v, w); // right
 
         return left || right;
     }

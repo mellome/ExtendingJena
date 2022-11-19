@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 import org.apache.commons.math3.geometry.euclidean.threed.Line;
 import org.apache.commons.math3.geometry.euclidean.threed.Plane;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
+import org.apache.commons.math3.util.Precision;
 import org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
@@ -171,7 +172,27 @@ public class GeometryOperators3D {
 		}
 		return intersectionPoints;
 	}
-	
+
+	public static double distanceToSegment( Vector3D p, Vector3D v, Vector3D w) {
+		// Return minimum distance between line segment vw and point p
+		final double l2 = Vector3D.distanceSq(v, w); // i.e. |w-v|^2 -  avoid a sqrt
+		if (l2 == 0.0)
+			return Vector3D.distance(p, v); // v == w case
+		// Consider the line extending the segment, parameterized as v + t (w - v).
+		// We find projection of point p onto the line.
+		// It falls where t = [(p-v) . (w-v)] / |w-v|^2
+		double t = Math.abs(Vector3D.dotProduct(p.subtract(v), w.subtract(v)) / l2);
+		// if (t < 0.0)
+		// 	return Vector3D.distance(p, v); // Beyond the 'v' end of the segment
+		// else if (t > 1.0)
+		// 	return Vector3D.distance(p, w); // Beyond the 'w' end of the segment
+		if (t > 1.0){
+			return Vector3D.distance(p, w);
+		}
+		Vector3D projection = v.add(w.subtract(v).scalarMultiply(t)); // Projection falls on the segment
+		double dis = Vector3D.distance(p, projection);
+		return dis;
+	}
 	// =================================================================
 	// TOUCH
 	// =================================================================
@@ -323,6 +344,40 @@ public class GeometryOperators3D {
 
 		if (interSectionPoint != null) {
 			if (contains3D(line, interSectionPoint) && contains3D(planeFaceArea, interSectionPoint)) { 
+				intersectionPoints.add(interSectionPoint);
+			}
+		}
+		return intersectionPoints;
+	}
+
+	public static ArrayList<Vector3D> intersection3D(Polygon planeFaceArea, Vector3D v, Vector3D w) {
+		ArrayList<Vector3D> intersectionPoints = new ArrayList<Vector3D>();
+		Plane planeA = null;
+		if ((planeFaceArea.getCoordinates().length - 1) >= 3) {
+
+			Coordinate pA1 = planeFaceArea.getCoordinates()[0];
+			Coordinate pB1 = planeFaceArea.getCoordinates()[1];
+			Coordinate pC1 = planeFaceArea.getCoordinates()[2];
+
+			Vector3D pt1V1 = new Vector3D(pA1.getX(), pA1.getY(), pA1.getZ());
+			Vector3D pt1V2 = new Vector3D(pB1.getX(), pB1.getY(), pB1.getZ());
+			Vector3D pt1V3 = new Vector3D(pC1.getX(), pC1.getY(), pC1.getZ());
+
+			planeA = new Plane(
+					pt1V1,
+					pt1V2,
+					pt1V3,
+					GeometryOperators3D.TOLERANCE);
+		}
+		Line l = new Line(v, w, TOLERANCE);
+		Vector3D interSectionPoint = planeA.intersection(l);
+
+		if (interSectionPoint != null) {
+			// contains3D(line, interSectionPoint)
+			// TODO: the accuracy can be adapted here.
+			double dis = distanceToSegment(interSectionPoint, v, w);
+			boolean disZero = dis < 1.0 && dis > 0.0;
+			if ( disZero && contains3D(planeFaceArea, interSectionPoint)) { 
 				intersectionPoints.add(interSectionPoint);
 			}
 		}

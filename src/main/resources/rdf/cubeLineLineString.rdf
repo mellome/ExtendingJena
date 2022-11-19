@@ -43,12 +43,17 @@
         </sf:POLYGON>
         <sf:LineString>
             <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#LINESTRING1'>
-                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>LINESTRING Z((-8.0 -8.0 15.0, -20.0 -20.0 10.0, -8.0 -8.0 15.0))</geo:asWKT>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>LINESTRING Z((-8.0 -8.0 15.0, -20.0 -20.0 10.0))</geo:asWKT>
             </rdf:Description>
         </sf:LineString>
         <sf:LineString>
             <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#LINESTRING2'>
-                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>LINESTRING Z((-2.0 0.0 0.0, -6.0 -3.0 5.0, -2.0 0.0 0.0))</geo:asWKT>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>LINESTRING Z((-2.0 0.0 0.0, -6.0 -3.0 5.0))</geo:asWKT>
+            </rdf:Description>
+        </sf:LineString>
+        <sf:LineString>
+            <rdf:Description rdf:about='https://www.inf.bi.ruhr-uni-bochum.de/jena/#LINESTRING3'>
+                <geo:asWKT rdf:datatype='http://www.opengis.net/ont/geosparql#wktLiteral'>LINESTRING Z((10.0 10.0 0.0, 5.0 5.0 0.0, 5.0 -2.0 0.0, -2.0 5.0 0.0, -10.0 0.0 0.0))</geo:asWKT>
             </rdf:Description>
         </sf:LineString>
     </rdf:Description>
