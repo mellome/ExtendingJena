@@ -120,8 +120,8 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\target\\classes\\rdf\\query_result.xml",
-      "InputValue": "..\\Workspace\\ExtendingJena\\target\\classes\\rdf\\query_result.xml",
+      "HintPath": "C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml",
+      "InputValue": "..\\..\\..\\..\\..\\..\\..\\resources\\rdf\\query_result.xml",
       "NodeType": "ExtensionNode",
       "Id": "963c470715ed4f5b815704780b1b964a",
       "Inputs": [],
@@ -471,7 +471,7 @@
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "14a74a6721ba4b4c96b29ec99ab36dd3",
+          "Id": "f427bc5da01a49c0a7821e5ec52e06f1",
           "Name": "",
           "Description": "rdf",
           "UsingDefaultValue": false,
@@ -480,7 +480,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "dbd7738a74ab46dfa91132fe2fe0748e",
+          "Id": "7313842ce31f4c598b2775fb7ec5c209",
           "Name": "",
           "Description": "owl",
           "UsingDefaultValue": false,
@@ -489,7 +489,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "fdeda2f4aec14f54b8c91f0d5151f728",
+          "Id": "a2309f1f89a940579245c11a63dda886",
           "Name": "",
           "Description": "ogc",
           "UsingDefaultValue": false,
@@ -498,7 +498,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "a5640c36aa874fb99957c7fbfc97bd6e",
+          "Id": "55939f003a0d408681622652bc9c72b6",
           "Name": "",
           "Description": "my",
           "UsingDefaultValue": false,
@@ -507,7 +507,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "98ab868b2ecc44e99c2b667f608ed4ca",
+          "Id": "8fb0ada8f6e14c1686fd70d815909312",
           "Name": "",
           "Description": "gml",
           "UsingDefaultValue": false,
@@ -516,7 +516,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "b8fce02e7523459b989de8e70c67fbe7",
+          "Id": "0262bdaa335446919b24831071029ab6",
           "Name": "",
           "Description": "geo",
           "UsingDefaultValue": false,
@@ -525,7 +525,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "fa9fcf8f6cb5400ca3d6a2683eafb96f",
+          "Id": "7dde2f2b817744f7b3f7e69aebe74b86",
           "Name": "",
           "Description": "geof",
           "UsingDefaultValue": false,
@@ -534,7 +534,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "158a4084313d45e69676af0810e305ce",
+          "Id": "ae3aecaf8f184bebb0fa1f1ff9ff061b",
           "Name": "",
           "Description": "rdfs",
           "UsingDefaultValue": false,
@@ -543,7 +543,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "ff95c2f9c259443cb522b3e66ed0cbbf",
+          "Id": "67d90835eee54bfcafd407423c3ba801",
           "Name": "",
           "Description": "uom",
           "UsingDefaultValue": false,
@@ -552,7 +552,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "e1c251b87b364adebb7dee3182eb24b9",
+          "Id": "f6fd2dd556c446079353dc285b1cfb4b",
           "Name": "",
           "Description": "sf",
           "UsingDefaultValue": false,
@@ -561,7 +561,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "152f1a91a3f14e599e6aae3fcc003c35",
+          "Id": "de208d58adf74b689166e6d7cfca216f",
           "Name": "",
           "Description": "xsd",
           "UsingDefaultValue": false,
@@ -570,7 +570,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "91cf56785daa4c408af3ee4dca001e59",
+          "Id": "b030e9096251429399f87b1d258e765b",
           "Name": "",
           "Description": "geor",
           "UsingDefaultValue": false,
@@ -579,7 +579,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "3079abf98a7148b6962e2e0267973632",
+          "Id": "e9a2d06a98f847af8d75d1e5e75cddce",
           "Name": "",
           "Description": "namespaces",
           "UsingDefaultValue": false,
@@ -592,53 +592,9 @@
       "Description": "Allows for DesignScript code to be authored directly"
     },
     {
-      "ConcreteType": "Watch3DNodeModels.Watch3D, Watch3DNodeModels",
-      "WatchWidth": 200.0,
-      "WatchHeight": 200.0,
-      "WasExecuted": true,
-      "Camera": {
-        "Name": "8e0e97ac-4563-4934-8ae8-f407ab7fb7ce Preview",
-        "EyeX": -17.0,
-        "EyeY": 24.0,
-        "EyeZ": 50.0,
-        "LookX": 12.0,
-        "LookY": -13.0,
-        "LookZ": -58.0,
-        "UpX": 0.0,
-        "UpY": 1.0,
-        "UpZ": 0.0
-      },
-      "NodeType": "ExtensionNode",
-      "Id": "8e0e97ac456349348ae8f407ab7fb7ce",
-      "Inputs": [
-        {
-          "Id": "59cd2113c3a84201972447f762f4d06f",
-          "Name": "",
-          "Description": "Incoming geometry objects.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "31e73eeff94b493fa46fe7ba29cfd59e",
-          "Name": "",
-          "Description": "Incoming geometry objects.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Shows a dynamic preview of geometry."
-    },
-    {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\example.rdf",
-      "InputValue": "..\\..\\..\\..\\..\\..\\..\\resources\\rdf\\example.rdf",
+      "HintPath": "C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\java\\rub\\inf\\bi\\extension\\jena\\utils\\example.rdf",
+      "InputValue": ".\\example.rdf",
       "NodeType": "ExtensionNode",
       "Id": "c35aef94b79f494486311eadd2b8352d",
       "Inputs": [],
@@ -696,607 +652,14 @@
       "Description": "Write the text content to a file specified by the path\n\nFileSystem.WriteText (filePath: string, text: string): void"
     },
     {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n#cBoid = Cuboid.ByLengths(2,2,2)\r\ncolor = Color.ByARGB(255,255,0,0) # red\r\n\r\ngeom = IN[0]\r\ninList = IN[1]\r\ncolor = IN[2]\r\no = ''\r\n\r\nif inList:\r\n    o = GeometryColor.ByGeometryColor(geom, color)\r\n    \r\nOUT = o\r\n",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "5b34801b03bf4e0290214b4c52894850",
-      "Inputs": [
-        {
-          "Id": "42915191fa9e411da75814f63335e81c",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "71e557c3927646778b6c4cfc2e1523e4",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "935a678206df4d0ab3fcb92690a97b46",
-          "Name": "IN[2]",
-          "Description": "Input #2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "ee765cd3c18344a3aca7874845aee6b1",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "CoreNodeModels.Input.ColorPalette, CoreNodeModels",
-      "InputValue": {
-        "R": 255,
-        "G": 0,
-        "B": 255,
-        "A": 255
-      },
-      "NodeType": "ColorInputNode",
-      "Id": "b714a12042164093bebad72997dbaf06",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "4978c6c037cc47f18f293d2e287a9fc9",
-          "Name": "Color",
-          "Description": "Selected Color.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Select a Color from the palette"
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "fa87b26c82a8488b888bd68e66796f2a",
-      "Inputs": [
-        {
-          "Id": "8f782d14e05842bf950e089df4756d1a",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "b354cda0dfe34d6c8a49e9a74ddbf7f7",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "4ef20f12a3e84a1ba41f1a346b2a1d16",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "e9ad885b7e2845d3b44873e888a7be38",
-      "Inputs": [
-        {
-          "Id": "599198b6a4784e43a03aa6d927630812",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "27939742b45246aea1aa77fb3007133b",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "058e873801cb4821b061b4b2fed0f5b7",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "fe9f9b9d604e448bb929e13a8b6eac0f",
-      "Inputs": [
-        {
-          "Id": "53000e9398e4440aaeff2b1947c9536b",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "11c480b0bd9b4c12ab6edc5afab31e5c",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "8789f690d0fb4d4ea09962f50d1af2d8",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "1df51be173274ce583cf70b7987b356d",
-      "Inputs": [
-        {
-          "Id": "08d637beb7f44745968098ad801f7bcd",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "1cb94fe3480c471bab4364ef5abedf5d",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "d9e178ae93e64c0a8da12b138d79da37",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "e7c2b58156c0432f8ebc24618c2f8e0e",
-      "Inputs": [
-        {
-          "Id": "56746e9369564afe9b2d91274d0febc5",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "acd41a39164246878a61a17134e60aca",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "06eee4082ef1498b9077ab77abefe8a1",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n#cBoid = Cuboid.ByLengths(2,2,2)\r\ncolor = Color.ByARGB(255,255,0,0) # red\r\n\r\ngeom = IN[0]\r\ninList = IN[1]\r\ncolor = IN[2]\r\no = ''\r\n\r\nif inList:\r\n    o = GeometryColor.ByGeometryColor(geom, color)\r\n    \r\nOUT = o\r\n",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "d816a2d3c88e4876baa161a90f11a416",
-      "Inputs": [
-        {
-          "Id": "203ae1d29d8f4c1a95e964baddbf4701",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "61bb6a1bf78641b28657f9cf8c3fd969",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "195518c28b114e62b18d4e0070eaf4c7",
-          "Name": "IN[2]",
-          "Description": "Input #2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "eb07da86db734600be0f078466535df2",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n#cBoid = Cuboid.ByLengths(2,2,2)\r\ncolor = Color.ByARGB(255,255,0,0) # red\r\n\r\ngeom = IN[0]\r\ninList = IN[1]\r\ncolor = IN[2]\r\no = ''\r\n\r\nif inList:\r\n    o = GeometryColor.ByGeometryColor(geom, color)\r\n#else:\r\n#    o = geom\r\n    \r\nOUT = o\r\n",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "43c394e8ed6a49e08743c025d5fde3fc",
-      "Inputs": [
-        {
-          "Id": "1bddaf911be1401ab475a828ef760c26",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "7ebe7601e0d64625a1e74a83c5e10bb2",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "bd8d36c918ef41d590260075e675f70c",
-          "Name": "IN[2]",
-          "Description": "Input #2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "25db36f9776f4d489bb96cc62118bbfc",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n#cBoid = Cuboid.ByLengths(2,2,2)\r\ncolor = Color.ByARGB(255,255,0,0) # red\r\n\r\ngeom = IN[0]\r\ninList = IN[1]\r\ncolor = IN[2]\r\no = ''\r\n\r\nif inList:\r\n    o = GeometryColor.ByGeometryColor(geom, color)\r\n    \r\nOUT = o\r\n",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "ad18b37dc3c14625bbfacef86803868b",
-      "Inputs": [
-        {
-          "Id": "d58a465620f14ccebf2f1db08763f2ab",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "d6c7a8703503455da3547336e6a3e8bf",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "208a7ca84f3d4846b00a515259a1f55c",
-          "Name": "IN[2]",
-          "Description": "Input #2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "2db22f83dbe143569e2457d82993c7da",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n#cBoid = Cuboid.ByLengths(2,2,2)\r\ncolor = Color.ByARGB(255,255,0,0) # red\r\n\r\ngeom = IN[0]\r\ninList = IN[1]\r\ncolor = IN[2]\r\no = ''\r\n\r\nif inList:\r\n    o = GeometryColor.ByGeometryColor(geom, color)\r\n    \r\nOUT = o\r\n",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "41f46af230dc407c854a0bb264db0f58",
-      "Inputs": [
-        {
-          "Id": "e9ed3926112e46ff8b2171289274241c",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "95a75c96b8a54f65a788c59cc5e3c6f9",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "c8d0be1e622d4af39354070a3eff6466",
-          "Name": "IN[2]",
-          "Description": "Input #2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "ad6ea306939b40809e4969faaff8a7a9",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
-      "VariableInputPorts": true,
-      "NodeType": "ExtensionNode",
-      "Id": "4aa5aca4c9d245ce95df137be708a5e7",
-      "Inputs": [
-        {
-          "Id": "900f2a08ee5e4ce386b7bbcb4523deef",
-          "Name": "item0",
-          "Description": "Item Index #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "61b6ae7ba5b542d6888769993e6a6b3d",
-          "Name": "item1",
-          "Description": "Item Index #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "d6af2b7a021d4d9c8d7871a16d248560",
-          "Name": "item2",
-          "Description": "Item Index #2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "13ebefd1b3c244cab6db4dfd4996bcea",
-          "Name": "item3",
-          "Description": "Item Index #3",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "bbcc9f3830624c75bf3a2accb5c79c24",
-          "Name": "item4",
-          "Description": "Item Index #4",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "4e0e8ab901624d46907eeb882ebab300",
-          "Name": "item5",
-          "Description": "Item Index #5",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "88eb910c87b448f69f1194d97f49e372",
-          "Name": "item6",
-          "Description": "Item Index #6",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "e9116484351f45579a2f99d2bfd526f2",
-          "Name": "list",
-          "Description": "A list",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Makes a new list out of the given inputs"
-    },
-    {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "/**\n* \"F5\": Run the script\n* \"Ctrl + I\": Isolate Selected Geometry\n*\n*\n*\n*\n**/;",
+      "Code": "/**\n* \"F5\": Run the script\n* \"Ctrl + I\": Isolate Selected Geometry\n* \"Ctrl + P\": Drag & Drop\n*\n*\n*\n**/;",
       "Id": "29d4977ffd5a4fbc99b46521c03c224b",
       "Inputs": [],
       "Outputs": [],
       "Replication": "Disabled",
       "Description": "Allows for DesignScript code to be authored directly"
-    },
-    {
-      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
-      "NodeType": "ExtensionNode",
-      "Id": "53b66a95df584de1bbabfe444f3b3828",
-      "Inputs": [
-        {
-          "Id": "228888bd05a248b99b139629841fbd97",
-          "Name": "",
-          "Description": "Node to evaluate.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "e695d0772cef4b3c837549eebeddf357",
-          "Name": "",
-          "Description": "Watch contents.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Visualize the output of node."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -1594,220 +957,6 @@
       "Description": "Allows for DesignScript code to be authored directly"
     },
     {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "79dbe59d888f43a1929f2def64e1d025",
-      "Inputs": [
-        {
-          "Id": "2a608ce5f5044935b4e0b06102275150",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "d354bfaa7f614b8ca447da25e8ac21e1",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "3aec7d6bdb5a470db329586e32021ee7",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n#cBoid = Cuboid.ByLengths(2,2,2)\r\ncolor = Color.ByARGB(255,255,0,0) # red\r\n\r\ngeom = IN[0]\r\ninList = IN[1]\r\ncolor = IN[2]\r\no = ''\r\n\r\nif inList:\r\n    o = GeometryColor.ByGeometryColor(geom, color)\r\n    \r\nOUT = o\r\n",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "ec8fb2efb84e4bd0a3c1704ce7c83781",
-      "Inputs": [
-        {
-          "Id": "8de92af5577d4f2db7a2ea3e185f4442",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "afab1f145ef74d4dbd1326fe822b8c6c",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "e649be32d0a141efa4faf7b763d0039e",
-          "Name": "IN[2]",
-          "Description": "Input #2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "0a346983fa83446884094efb2d68b0f1",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n#cBoid = Cuboid.ByLengths(2,2,2)\r\ncolor = Color.ByARGB(255,255,0,0) # red\r\n\r\ngeom = IN[0]\r\ninList = IN[1]\r\ncolor = IN[2]\r\no = ''\r\n\r\nif inList:\r\n    o = GeometryColor.ByGeometryColor(geom, color)\r\n    \r\nOUT = o\r\n",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "6debe35e0be74c33b9fe0c18b6eee089",
-      "Inputs": [
-        {
-          "Id": "48f1052b6a2b46d0b40e154133790cba",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "ff0c731c52e24a3eaf466b56a262480c",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "c43d8cef92f44774a4a4f08b55d98728",
-          "Name": "IN[2]",
-          "Description": "Input #2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "a5d83bca509a4083bc6e0a6f6a0905c4",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#dataEnteringNode = IN\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n\t#return geo.upper() == e.upper() for e in flat_lst\r\n    #if geo in flat_lst:\r\n    #    return True\r\n    #return False\r\n\t\r\n# Assign your output to the OUT variable.\r\nres_lst = IN[0]\r\ngeo_name = IN[1]\r\nOUT = inList(res_lst, geo_name)",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "f1ee6b7d09e047c39b5d28b8a162e48e",
-      "Inputs": [
-        {
-          "Id": "367528d85d9945d08de124843cd8f16d",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "5d29c2405d444596b6b9333793327a03",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "16a164f83a2141f3ad75400049caf566",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Common Geometry Types\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nMULTIPOLYGON = \"MULTIPOLYGON\";\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\r\n# Input \r\nNUM_MULTIPOLYGON = IN[0]\r\n#NUM_MULTIPOLYGON = 50\r\n#num = IN[1]\r\n\r\n# output container\r\ngeo_type_lst = []\r\ngeo_lst = []\r\n\r\n# Point\r\n\r\n# LineString\r\n\"\"\"\r\nc=1\r\ngeo_data = Arc.ByThreePoints( Point.ByCoordinates(20, 20, 2),\r\n                            Point.ByCoordinates(25, 25, 2),\r\n                            Point.ByCoordinates(40, 10, 2))\r\ngeo_name = LINESTRING + str(c)\r\ngeo_type = LINESTRING\r\ngeo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n\r\n# Polygon\r\n\r\n# Multipolygon\r\n\"\"\"\r\ni=1\r\nc=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    p1 = Point.ByCoordinates(i, i, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+i, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\r\ni=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    j = i + 10\r\n    p1 = Point.ByCoordinates(i, j, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+j, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n#################################################\r\n# TOUCH - (c1, c2) (c2, c3)\r\nc = 1\r\np11 = Point.ByCoordinates(0, 0, 0)\r\np12 = Point.ByCoordinates(3, 3, 3)\r\ngeo_data1 = Cuboid.ByCorners(p11, p12)\r\ngeo_name1 = MULTIPOLYGON + str(c)\r\ngeo_type1 = MULTIPOLYGON\r\ngeo_lst.append((geo_data1, geo_name1, geo_type1))\r\n\r\nc = 2\r\np21 = Point.ByCoordinates(3, 3, 3)\r\np22 = Point.ByCoordinates(6, 6, 6)\r\ngeo_data2 = Cuboid.ByCorners(p21, p22)\r\ngeo_name2 = MULTIPOLYGON + str(c)\r\ngeo_type2 = MULTIPOLYGON\r\ngeo_lst.append((geo_data2, geo_name2, geo_type2))\r\n\r\nc = 3\r\np31 = Point.ByCoordinates(6, 6, 3)\r\np32 = Point.ByCoordinates(9, 9, 6)\r\ngeo_data3 = Cuboid.ByCorners(p31, p32)\r\ngeo_name3 = MULTIPOLYGON + str(c)\r\ngeo_type3 = MULTIPOLYGON\r\ngeo_lst.append((geo_data3, geo_name3, geo_type3))\r\n#################################################\r\n# INTERSECT - (c4, c5) \r\nc = 4\r\np41 = Point.ByCoordinates(-3, 0, 0)\r\np42 = Point.ByCoordinates(-6, -3, 3)\r\ngeo_data4 = Cuboid.ByCorners(p41, p42)\r\ngeo_name4 = MULTIPOLYGON + str(c)\r\ngeo_type4 = MULTIPOLYGON\r\ngeo_lst.append((geo_data4, geo_name4, geo_type4))\r\n\r\nc = 5\r\np51 = Point.ByCoordinates(-4, 0, 0)\r\np52 = Point.ByCoordinates(-7, -3, 3)\r\ngeo_data5 = Cuboid.ByCorners(p51, p52)\r\ngeo_name5 = MULTIPOLYGON + str(c)\r\ngeo_type5 = MULTIPOLYGON\r\ngeo_lst.append((geo_data5, geo_name5, geo_type5))\r\n#################################################\r\n\r\nc = 6\r\ngeo_data6 = Sphere.ByCenterPointRadius(Point.ByCoordinates(-3, -3, -3))\r\ngeo_name6 = MULTIPOLYGON + str(c)\r\ngeo_type6 = MULTIPOLYGON\r\n#mesh_sphere = Mesh.ByGeometry(sphere1)\r\ngeo_lst.append((geo_data5, geo_name5, geo_type5))\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = geo_lst\r\n\r\n",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "e5263d32c0c34ffd9ef5e7fcc14d974c",
-      "Inputs": [
-        {
-          "Id": "54021daede9a49909cb2b4ccecadc30d",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "70486c137d9441c7aae82b053b0d813f",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
       "Code": "// Number of Geometries to generate\n20;",
@@ -1815,7 +964,7 @@
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "2ca3a91f7c554ad48cfa828fbdd6f037",
+          "Id": "e4b3930d4fa043c3982d30a182ffdd14",
           "Name": "",
           "Description": "Value of expression at line 2",
           "UsingDefaultValue": false,
@@ -1830,7 +979,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ngeo_lst = IN[0]\r\nexampleInstanceNamespace = IN[1] # dataEnteringNode[3];\r\ngeoSparqlNamespace = IN[2] # dataEnteringNode[4];\r\n\r\ndef lineString2WKT():\r\n    wktLiteral = \"<sf:LineString>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"LINESTRING Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:LineString>\";\r\n    return wktLiteral\r\n\r\ndef multipolygon2WKT(geometry):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    \"\"\"\r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \"\"\"\r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = Solid.Centroid(geometry)\r\n    offset = geometry.Length/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"\r\n    \r\n    cuboid_face = bottom_face + \", \" + top_face + \", \" + front_face + \", \" + back_face + \", \" + left_face + \", \" + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral += cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\n#####\r\nres = []\r\nfor geo_obj in geo_lst:\r\n    geometry = geo_obj[0];\r\n    name = geo_obj[1];\r\n    geometryType = geo_obj[2];\r\n    \r\n    if(geometryType.upper() == \"MULTIPOLYGON\"):\r\n        res.append(multipolygon2WKT(geometry))\r\n        \r\n    if(geometryType.upper() == \"POLYGON\"):\r\n        res.append(polygon2WKT())\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = res",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ngeo_lst = IN[0]\r\nexampleInstanceNamespace = IN[1] # dataEnteringNode[3];\r\ngeoSparqlNamespace = IN[2] # dataEnteringNode[4];\r\n\r\ndef lineString2WKT():\r\n    wktLiteral = \"<sf:LineString>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"LINESTRING Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    #wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:LineString>\";\r\n    return wktLiteral\r\n\r\ndef sphere2WKT(surface_lst):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(\";\r\n    for surface in surface_lst:\r\n        wktLiteral += \"((\";\r\n        try:\r\n            curves = Surface.PerimeterCurves(surface);\r\n        except:\r\n            raise Exception(\"something wrong at geometry import!\")\r\n        startP = None;\r\n        for curve in curves:\r\n            nextP = curve.StartPoint;\r\n            if(startP != None):\r\n                wktLiteral += \", \";\r\n            else:\r\n                startP = nextP;\r\n            wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        #Close the tiangle loop with a repeat of the first Point         \r\n        wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z) + \"))\";\r\n        if(surface != surface_lst[-1]):\r\n            wktLiteral += \", \"\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:MultiPolygon>\";\r\n    return wktLiteral\r\n    \r\n    \r\ndef multipolygon2WKT(geometry):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    \"\"\"\r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \"\"\"\r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = Solid.Centroid(geometry)\r\n    offset = geometry.Length/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"\r\n    \r\n    cuboid_face = bottom_face + \", \" + top_face + \", \" + front_face + \", \" + back_face + \", \" + left_face + \", \" + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral += cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\n#####\r\nres = []\r\nfor geo_obj in geo_lst:\r\n    geometry = geo_obj[0];\r\n    name = geo_obj[1];\r\n    geometryType = geo_obj[2];\r\n    \r\n    if(geometryType.upper() == \"MULTIPOLYGON\"):\r\n        res.append(multipolygon2WKT(geometry))\r\n    \r\n    if(geometryType.upper() == \"MULTIPOLYGON-SPHERE\"):\r\n        res.append(sphere2WKT(geometry))\r\n    \r\n    if(geometryType.upper() == \"POLYGON\"):\r\n        res.append(polygon2WKT())\r\n    \r\n    if(geometryType.upper() == \"LINESTRING\"):\r\n        res.append(lineString2WKT())\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = res",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "09412fe94eab41e68c31fa0307c3b82e",
@@ -1907,25 +1056,45 @@
       "Description": "Visualize the output of node."
     },
     {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "centroid = Point.ByCoordinates(-3,-3,-3);",
+      "Id": "fe789f3241d045fa93cd43927766996a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "df3fc9f7f7bc432d9b4bcae47f5511aa",
+          "Name": "",
+          "Description": "centroid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "Autodesk.DesignScript.Geometry.Line.ByStartPointEndPoint@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Point",
-      "Id": "10f8ddfd88f64ef7a51412c17717abec",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Sphere.ByCenterPointRadius@Autodesk.DesignScript.Geometry.Point,double",
+      "Id": "34c3ec044e2643248116b32cbc85bc9f",
       "Inputs": [
         {
-          "Id": "bd63430c5a714f0695ac9af3ee816a37",
-          "Name": "startPoint",
-          "Description": "Point",
-          "UsingDefaultValue": false,
+          "Id": "632a2dc32701404ab008e9431b125a7e",
+          "Name": "centerPoint",
+          "Description": "Point\nDefault value : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0)",
+          "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         },
         {
-          "Id": "6aca5d0cd4494ef9bb2c18ba276b5d0b",
-          "Name": "endPoint",
-          "Description": "Point",
-          "UsingDefaultValue": false,
+          "Id": "e41aed353cf145f5abb0e76d71c7430e",
+          "Name": "radius",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -1933,9 +1102,9 @@
       ],
       "Outputs": [
         {
-          "Id": "1e8e7b5d9a364bd0b9bc8cf7e64d2a32",
-          "Name": "Line",
-          "Description": "Line",
+          "Id": "5fe36685da954660a004fb6cb7cd2e82",
+          "Name": "Sphere",
+          "Description": "Sphere",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1943,17 +1112,238 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Creates a straight Line between two input Points.\n\nLine.ByStartPointEndPoint (startPoint: Point, endPoint: Point): Line"
+      "Description": "Create a Solid Sphere cetered at the input Point, with given radius.\n\nSphere.ByCenterPointRadius (centerPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), radius: double = 1): Sphere"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Dynamo.MeshToolkit.Mesh.ByGeometry@Autodesk.DesignScript.Geometry.Geometry,double,int",
+      "Id": "06493a8f57ad4782bdb9ae1e15d0525d",
+      "Inputs": [
+        {
+          "Id": "ed6464b138724d0181567f790d503ba9",
+          "Name": "inputGeometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "88afce6dde2d49c8a4575023e54d3e1c",
+          "Name": "tolerance",
+          "Description": "double\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9b77c5dddab0489681430a73b9fa7d03",
+          "Name": "maxGridLines",
+          "Description": "int\nDefault value : 512",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "28ec952b8c534477af8a2d155982a262",
+          "Name": "Mesh",
+          "Description": "Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Convert a Geometry object such as a Solid or Surface into a Mesh. The resolution of the mesh is determined by the Dynamo render precision\n\nMesh.ByGeometry (inputGeometry: Geometry, tolerance: double = -1, maxGridLines: int = 512): Mesh"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Dynamo.MeshToolkit.Mesh.TriangleCentroids",
+      "Id": "99ce511072864923816a141a10b068e5",
+      "Inputs": [
+        {
+          "Id": "9fdd6fad340a474ca5681bb7d9c327a1",
+          "Name": "mesh",
+          "Description": "Autodesk.Dynamo.MeshToolkit.Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "608c5793ace947c5a5a77c1190e48361",
+          "Name": "Point[]",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns Triangle Centroids\n\nMesh.TriangleCentroids ( ): Point[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Dynamo.MeshToolkit.Mesh.Explode",
+      "Id": "991bc6014911493e84623456f751195a",
+      "Inputs": [
+        {
+          "Id": "0bca9ddb0fc7416a8910320ba64cc086",
+          "Name": "mesh",
+          "Description": "Autodesk.Dynamo.MeshToolkit.Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "781fcb4195b84639946d3e5b2f931bbb",
+          "Name": "Mesh[]",
+          "Description": "Mesh[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Converts Mesh triangles to individual meshes and returns them.\n\nMesh.Explode ( ): Mesh[]"
+    },
+    {
+      "ConcreteType": "Watch3DNodeModels.Watch3D, Watch3DNodeModels",
+      "WatchWidth": 200.0,
+      "WatchHeight": 200.0,
+      "WasExecuted": true,
+      "Camera": {
+        "Name": "1a9767da-639d-4cb0-83a8-d568b124b464 Preview",
+        "EyeX": -17.0,
+        "EyeY": 24.0,
+        "EyeZ": 50.0,
+        "LookX": 12.0,
+        "LookY": -13.0,
+        "LookZ": -58.0,
+        "UpX": 0.0,
+        "UpY": 1.0,
+        "UpZ": 0.0
+      },
+      "NodeType": "ExtensionNode",
+      "Id": "1a9767da639d4cb083a8d568b124b464",
+      "Inputs": [
+        {
+          "Id": "43b45844e3c8420d97926d7e524b33b7",
+          "Name": "",
+          "Description": "Incoming geometry objects.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "30f615e036db458eb0cc3d0779b6a77f",
+          "Name": "",
+          "Description": "Incoming geometry objects.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Shows a dynamic preview of geometry."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Chop@var[]..[],int[]",
+      "Id": "ac7baec18464456eaf2c0d5b50d4030f",
+      "Inputs": [
+        {
+          "Id": "878e021702b140fab60601c5718d1a24",
+          "Name": "list",
+          "Description": "List to chop into sublists\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "943982f8da9b425996dcc1273478a2e0",
+          "Name": "lengths",
+          "Description": "Lengths of consecutive sublists to be created from the input list\n\nint[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "673ec465da944a4ea629096e7ff5a635",
+          "Name": "lists",
+          "Description": "Sublists created from the list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Chop a list into a set of consecutive sublists with the specified lengths. List division begins at the top of the list.\n\nList.Chop (list: var[]..[], lengths: int[]): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "0;\n0;\n3;\n1;\n0;\n0;",
-      "Id": "2c7413aedd4248ccac93e0efab97c909",
+      "Code": "3;",
+      "Id": "7dcb24a2ce40468685c26d7890aa99f8",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "3134dc768c3b4244a08eff7fec972357",
+          "Id": "fdb8567c84eb4afaafbdf30e0e106dd2",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "list;\npol = list[500];",
+      "Id": "4600ed00ce004c5ab079a769be303029",
+      "Inputs": [
+        {
+          "Id": "f80ed1184bcd462ebc0addebbc0e40f3",
+          "Name": "list",
+          "Description": "list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a1bf8936251d42cd906f9ce78b2704b1",
           "Name": "",
           "Description": "Value of expression at line 1",
           "UsingDefaultValue": false,
@@ -1962,45 +1352,9 @@
           "KeepListStructure": false
         },
         {
-          "Id": "863884ee523845d3b84355bea3ad3283",
+          "Id": "fa6691f5a6a94dcba65ed7d7d972cd49",
           "Name": "",
-          "Description": "Value of expression at line 2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "440206be7b494e029e272a010d274690",
-          "Name": "",
-          "Description": "Value of expression at line 3",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "a7c300255ee64551a53ab5235a7945ed",
-          "Name": "",
-          "Description": "Value of expression at line 4",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "a021abda4057459e970f657625d99927",
-          "Name": "",
-          "Description": "Value of expression at line 5",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "1a04aac0ae404d16bfea5d7c535c4367",
-          "Name": "",
-          "Description": "Value of expression at line 6",
+          "Description": "pol",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2011,34 +1365,15 @@
       "Description": "Allows for DesignScript code to be authored directly"
     },
     {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.ByCoordinates@double,double,double",
-      "Id": "089ee49a51a14ad9b23960adc80361bd",
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "5f0e1deb219e45e28b2a6b9fa3e9792f",
       "Inputs": [
         {
-          "Id": "6c803a1f5e494c8caca710430559ba33",
-          "Name": "x",
-          "Description": "double\nDefault value : 0",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "7af3b1b15e9d440c983c11fffb607351",
-          "Name": "y",
-          "Description": "double\nDefault value : 0",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "b22767e2533a4d4bbf47071e0c834d3a",
-          "Name": "z",
-          "Description": "double\nDefault value : 0",
-          "UsingDefaultValue": true,
+          "Id": "2fcd0388ae9b49c999f225a3ef51d25c",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -2046,47 +1381,29 @@
       ],
       "Outputs": [
         {
-          "Id": "6926ced4edef4212be06811650d1e167",
-          "Name": "Point",
-          "Description": "Point",
+          "Id": "57159d27bec049a8a2866d4e12adf284",
+          "Name": "",
+          "Description": "Watch contents.",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         }
       ],
-      "Replication": "Auto",
-      "Description": "Form a Point given 3 cartesian coordinates\n\nPoint.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Point"
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.ByCoordinates@double,double,double",
-      "Id": "b9b4adbf6e8b41b8bd1d3cfdcc751ff6",
+      "FunctionSignature": "Autodesk.Dynamo.MeshToolkit.Mesh.Vertices",
+      "Id": "67f1909d2ab7455c943e505eb46f0258",
       "Inputs": [
         {
-          "Id": "00f2679f6d1f49cf922d6cf97da52824",
-          "Name": "x",
-          "Description": "double\nDefault value : 0",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "38aed8e4743f46608830a00fe63b7104",
-          "Name": "y",
-          "Description": "double\nDefault value : 0",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "847f96c9500d46e7a2f0c302d9347ea6",
-          "Name": "z",
-          "Description": "double\nDefault value : 0",
-          "UsingDefaultValue": true,
+          "Id": "7b5fb97d61454deabeca57cd9107959c",
+          "Name": "mesh",
+          "Description": "Autodesk.Dynamo.MeshToolkit.Mesh",
+          "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -2094,9 +1411,9 @@
       ],
       "Outputs": [
         {
-          "Id": "ddb04c731bc74f69ac7214fd75135fb8",
-          "Name": "Point",
-          "Description": "Point",
+          "Id": "ab30e4972dee4b53b8c95c8e222a6ccd",
+          "Name": "Point[]",
+          "Description": "Point[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -2104,17 +1421,153 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Form a Point given 3 cartesian coordinates\n\nPoint.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Point"
+      "Description": "Converts the Mesh vertices to Points, and returns them\n\nMesh.Vertices ( ): Point[]"
     },
     {
-      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
-      "NodeType": "CodeBlockNode",
-      "Code": "",
-      "Id": "fe789f3241d045fa93cd43927766996a",
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n# Common Geometry Types\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nMULTIPOLYGON = \"MULTIPOLYGON\";\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\r\n# Input \r\nNUM_MULTIPOLYGON = IN[0]\r\n#NUM_MULTIPOLYGON = 50\r\n#num = IN[1]\r\n\r\n# output container\r\ngeo_type_lst = []\r\ngeo_lst = []\r\n\r\n# Point\r\n\r\n# LineString\r\n\"\"\"\r\nc=1\r\ngeo_data = Arc.ByThreePoints( Point.ByCoordinates(20, 20, 2),\r\n                            Point.ByCoordinates(25, 25, 2),\r\n                            Point.ByCoordinates(40, 10, 2))\r\ngeo_name = LINESTRING + str(c)\r\ngeo_type = LINESTRING\r\ngeo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n\r\n# Polygon\r\n\r\n# Multipolygon\r\n\"\"\"\r\ni=1\r\nc=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    p1 = Point.ByCoordinates(i, i, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+i, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\r\ni=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    j = i + 10\r\n    p1 = Point.ByCoordinates(i, j, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+j, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n#################################################\r\n# TOUCH - (c1, c2) (c2, c3)\r\nc = 1\r\np11 = Point.ByCoordinates(0, 0, 0)\r\np12 = Point.ByCoordinates(3, 3, 3)\r\ngeo_data1 = Cuboid.ByCorners(p11, p12)\r\ngeo_name1 = MULTIPOLYGON + str(c)\r\ngeo_type1 = MULTIPOLYGON\r\ngeo_lst.append((geo_data1, geo_name1, geo_type1))\r\n\r\nc = 2\r\np21 = Point.ByCoordinates(3, 3, 3)\r\np22 = Point.ByCoordinates(6, 6, 6)\r\ngeo_data2 = Cuboid.ByCorners(p21, p22)\r\ngeo_name2 = MULTIPOLYGON + str(c)\r\ngeo_type2 = MULTIPOLYGON\r\ngeo_lst.append((geo_data2, geo_name2, geo_type2))\r\n\r\nc = 3\r\np31 = Point.ByCoordinates(6, 6, 3)\r\np32 = Point.ByCoordinates(9, 9, 6)\r\ngeo_data3 = Cuboid.ByCorners(p31, p32)\r\ngeo_name3 = MULTIPOLYGON + str(c)\r\ngeo_type3 = MULTIPOLYGON\r\ngeo_lst.append((geo_data3, geo_name3, geo_type3))\r\n#################################################\r\n# INTERSECT - (c4, c5) \r\nc = 4\r\np41 = Point.ByCoordinates(-3, 0, 0)\r\np42 = Point.ByCoordinates(-6, -3, 3)\r\ngeo_data4 = Cuboid.ByCorners(p41, p42)\r\ngeo_name4 = MULTIPOLYGON + str(c)\r\ngeo_type4 = MULTIPOLYGON\r\ngeo_lst.append((geo_data4, geo_name4, geo_type4))\r\n\r\nc = 5\r\np51 = Point.ByCoordinates(-4, 0, 0)\r\np52 = Point.ByCoordinates(-7, -3, 3)\r\ngeo_data5 = Cuboid.ByCorners(p51, p52)\r\ngeo_name5 = MULTIPOLYGON + str(c)\r\ngeo_type5 = MULTIPOLYGON\r\ngeo_lst.append((geo_data5, geo_name5, geo_type5))\r\n#################################################\r\n\r\nc = 6\r\ngeo_data6 = Sphere.ByCenterPointRadius(Point.ByCoordinates(-3, -3, -3))\r\ngeo_name6 = MULTIPOLYGON + str(c)\r\ngeo_type6 = MULTIPOLYGON\r\n#mesh_sphere = Mesh.ByGeometry(sphere1)\r\ngeo_lst.append((geo_data5, geo_name5, geo_type5))\r\n\r\n#################################################\r\n# output\r\nOUT = geo_lst\r\n\r\n",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "ed9a22b47c4f467485b00c23697814cc",
+      "Inputs": [
+        {
+          "Id": "36c4e1b3f3a64684bc754fc3a22c8e73",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ca0881434dfa48c0b442878a5d001280",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n###########################################################\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n############################################################\r\n# Input\r\ngeo_lst = IN[0]\r\nres_lst = IN[1]\r\nswitch = IN[2]\r\n\r\n#################################################\r\n# Highlighter\r\ncolored_geo_lst = []\r\nif switch:\r\n    color = Color.ByARGB(255,255,0,0) # red\r\n    \r\n    for geo in geo_lst:\r\n        geo_name = geo[1]\r\n        if inList(res_lst, geo_name):  \r\n            geo_data = geo[0]\r\n            colored_geo = GeometryColor.ByGeometryColor(geo_data, color)\r\n            colored_geo_lst.append(colored_geo)\r\n\r\n#################################################\r\nOUT = colored_geo_lst\r\n",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "15b03d534ea443bc817c75dcd2beca67",
+      "Inputs": [
+        {
+          "Id": "0610d434bae34f388dcbe007bf32e9bb",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "456da64da57041e8a3ef104ae8e49a11",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0586be6a83484629a7639335e23f66a2",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f961f597dc734b07b2c3b538edfd7d7f",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "b748c56692a542cf82608f2f5de3368e",
       "Inputs": [],
-      "Outputs": [],
+      "Outputs": [
+        {
+          "Id": "0eaa73dd93cf42ccb63b6a16cfabc70e",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
       "Replication": "Disabled",
-      "Description": "Allows for DesignScript code to be authored directly"
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "Watch3DNodeModels.Watch3D, Watch3DNodeModels",
+      "WatchWidth": 200.0,
+      "WatchHeight": 200.0,
+      "WasExecuted": true,
+      "Camera": {
+        "Name": "7d928407-8cbe-4cc4-976d-171bbf5209a6 Preview",
+        "EyeX": -11.924962997436523,
+        "EyeY": 18.502040863037109,
+        "EyeZ": 25.470657348632813,
+        "LookX": 6.9249629974365234,
+        "LookY": -7.5020408630371094,
+        "LookZ": -33.470657348632813,
+        "UpX": 0.0,
+        "UpY": 1.0,
+        "UpZ": 0.0
+      },
+      "NodeType": "ExtensionNode",
+      "Id": "7d9284078cbe4cc4976d171bbf5209a6",
+      "Inputs": [
+        {
+          "Id": "c9bd05e91cee47d6aa242639a1d9d9c1",
+          "Name": "",
+          "Description": "Incoming geometry objects.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e517b3cf693b41eab56a1e01e74d3567",
+          "Name": "",
+          "Description": "Incoming geometry objects.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Shows a dynamic preview of geometry."
     }
   ],
   "Connectors": [
@@ -2145,38 +1598,8 @@
     },
     {
       "Start": "2c04ea2cfa9c4fa68b7cfd048e8d53a6",
-      "End": "8f782d14e05842bf950e089df4756d1a",
-      "Id": "ba116d2ad9f241bca6379b5b2440ec82"
-    },
-    {
-      "Start": "2c04ea2cfa9c4fa68b7cfd048e8d53a6",
-      "End": "53000e9398e4440aaeff2b1947c9536b",
-      "Id": "8927c4cb52df4bc4b620f4ad54d44aa9"
-    },
-    {
-      "Start": "2c04ea2cfa9c4fa68b7cfd048e8d53a6",
-      "End": "08d637beb7f44745968098ad801f7bcd",
-      "Id": "b4b2d66aeec542e080b21cd05422b20b"
-    },
-    {
-      "Start": "2c04ea2cfa9c4fa68b7cfd048e8d53a6",
-      "End": "56746e9369564afe9b2d91274d0febc5",
-      "Id": "4929ac43fb2d4942a131d5eb56a14280"
-    },
-    {
-      "Start": "2c04ea2cfa9c4fa68b7cfd048e8d53a6",
-      "End": "599198b6a4784e43a03aa6d927630812",
-      "Id": "bbceb618483e4937820a3c025188cb57"
-    },
-    {
-      "Start": "2c04ea2cfa9c4fa68b7cfd048e8d53a6",
-      "End": "2a608ce5f5044935b4e0b06102275150",
-      "Id": "1316b1d7af184dbfa51d3c1b8c0bf1b3"
-    },
-    {
-      "Start": "2c04ea2cfa9c4fa68b7cfd048e8d53a6",
-      "End": "367528d85d9945d08de124843cd8f16d",
-      "Id": "571220505720497ca1ce0227a25f5a01"
+      "End": "456da64da57041e8a3ef104ae8e49a11",
+      "Id": "2a436f5f6bd347b0827024ae0df5f9da"
     },
     {
       "Start": "8bbd33f439eb4c1ea76d5b4863a65de8",
@@ -2184,17 +1607,17 @@
       "Id": "c5723a7376674a2585a10265df162304"
     },
     {
-      "Start": "a5640c36aa874fb99957c7fbfc97bd6e",
+      "Start": "55939f003a0d408681622652bc9c72b6",
       "End": "39772af1835e467982718d7ae096579e",
       "Id": "3e663a36f23348cc9feca9cefff9208d"
     },
     {
-      "Start": "b8fce02e7523459b989de8e70c67fbe7",
+      "Start": "0262bdaa335446919b24831071029ab6",
       "End": "52019d2e5d174dc48b12fdce6846d9c2",
       "Id": "face3269eeaa443e84ad324942c0c913"
     },
     {
-      "Start": "3079abf98a7148b6962e2e0267973632",
+      "Start": "e9a2d06a98f847af8d75d1e5e75cddce",
       "End": "4662dbdc67f64d9eaa25bb84b6cf3169",
       "Id": "a9e306de17cb4f5293d201edc3a532fd"
     },
@@ -2202,101 +1625,6 @@
       "Start": "bd06b513d42a4ec5a2267a0de6b95808",
       "End": "e0b36f25ff0a43feab340b908c2720e4",
       "Id": "21b076eb864340f3a6a2203b6fec7a6d"
-    },
-    {
-      "Start": "ee765cd3c18344a3aca7874845aee6b1",
-      "End": "900f2a08ee5e4ce386b7bbcb4523deef",
-      "Id": "21a2ae1557da4ef191cef58fe0e8e98e"
-    },
-    {
-      "Start": "4978c6c037cc47f18f293d2e287a9fc9",
-      "End": "195518c28b114e62b18d4e0070eaf4c7",
-      "Id": "c35c5f0af736428d89d60b8b9c5473a8"
-    },
-    {
-      "Start": "4978c6c037cc47f18f293d2e287a9fc9",
-      "End": "bd8d36c918ef41d590260075e675f70c",
-      "Id": "ae61e89c0ecd4d37990145c64ee5d938"
-    },
-    {
-      "Start": "4978c6c037cc47f18f293d2e287a9fc9",
-      "End": "c8d0be1e622d4af39354070a3eff6466",
-      "Id": "fd475cb7efaf4a0e8516206acc308bee"
-    },
-    {
-      "Start": "4978c6c037cc47f18f293d2e287a9fc9",
-      "End": "935a678206df4d0ab3fcb92690a97b46",
-      "Id": "01169646c28a4fc68c725b10d71776bb"
-    },
-    {
-      "Start": "4978c6c037cc47f18f293d2e287a9fc9",
-      "End": "208a7ca84f3d4846b00a515259a1f55c",
-      "Id": "ff49d5ca4315447ab94b40c4d1611558"
-    },
-    {
-      "Start": "4978c6c037cc47f18f293d2e287a9fc9",
-      "End": "e649be32d0a141efa4faf7b763d0039e",
-      "Id": "4b11e695df20418db1aed87db65f8274"
-    },
-    {
-      "Start": "4978c6c037cc47f18f293d2e287a9fc9",
-      "End": "c43d8cef92f44774a4a4f08b55d98728",
-      "Id": "72a038fcb5aa47d39460381857e6ff36"
-    },
-    {
-      "Start": "4ef20f12a3e84a1ba41f1a346b2a1d16",
-      "End": "71e557c3927646778b6c4cfc2e1523e4",
-      "Id": "5c3e82da9bbb49a09da63d828d22cafe"
-    },
-    {
-      "Start": "058e873801cb4821b061b4b2fed0f5b7",
-      "End": "61bb6a1bf78641b28657f9cf8c3fd969",
-      "Id": "619ba13aba6f40739c0901552cde3dce"
-    },
-    {
-      "Start": "8789f690d0fb4d4ea09962f50d1af2d8",
-      "End": "7ebe7601e0d64625a1e74a83c5e10bb2",
-      "Id": "498c39b96db94bb7becd5d5d10ea3ed6"
-    },
-    {
-      "Start": "d9e178ae93e64c0a8da12b138d79da37",
-      "End": "d6c7a8703503455da3547336e6a3e8bf",
-      "Id": "c7a2efbf8cc24edb9bde75280a2a03a9"
-    },
-    {
-      "Start": "06eee4082ef1498b9077ab77abefe8a1",
-      "End": "95a75c96b8a54f65a788c59cc5e3c6f9",
-      "Id": "e99abcff08154ceda9bf89d31c371665"
-    },
-    {
-      "Start": "eb07da86db734600be0f078466535df2",
-      "End": "61b6ae7ba5b542d6888769993e6a6b3d",
-      "Id": "c641ec72672e45ecb68dc1cc0fc5aeb5"
-    },
-    {
-      "Start": "25db36f9776f4d489bb96cc62118bbfc",
-      "End": "d6af2b7a021d4d9c8d7871a16d248560",
-      "Id": "7f0486ea8129482e9cba86ece3f70141"
-    },
-    {
-      "Start": "2db22f83dbe143569e2457d82993c7da",
-      "End": "13ebefd1b3c244cab6db4dfd4996bcea",
-      "Id": "b28b0c00eb4342f0a8807878175e3b64"
-    },
-    {
-      "Start": "ad6ea306939b40809e4969faaff8a7a9",
-      "End": "bbcc9f3830624c75bf3a2accb5c79c24",
-      "Id": "d9b5f242d77a4d2f8344b9f71a574c49"
-    },
-    {
-      "Start": "e9116484351f45579a2f99d2bfd526f2",
-      "End": "228888bd05a248b99b139629841fbd97",
-      "Id": "00d4fc67ff6446929aa4137525e7f9b0"
-    },
-    {
-      "Start": "e695d0772cef4b3c837549eebeddf357",
-      "End": "59cd2113c3a84201972447f762f4d06f",
-      "Id": "bd49b9ab98ee4fc9a51ee004f82c0674"
     },
     {
       "Start": "fde71122b42f433eac50a7bc95aabbd6",
@@ -2311,7 +1639,7 @@
     {
       "Start": "e353654a2d624523b843b76fc1b26eac",
       "End": "3dd15c6a7ab447d2bb0a1ceb5546319b",
-      "Id": "6f9aa88d214647b99820690fc2caa518"
+      "Id": "30e5340af7104126b9b18346c6e0babc"
     },
     {
       "Start": "3aea9da347654932aa87ba43fe0a3f42",
@@ -2324,34 +1652,9 @@
       "Id": "a65221a53beb43f7b14065fb0112ca62"
     },
     {
-      "Start": "3aec7d6bdb5a470db329586e32021ee7",
-      "End": "afab1f145ef74d4dbd1326fe822b8c6c",
-      "Id": "d02deeadc7bd40a5a2ae8ef722ce1da8"
-    },
-    {
-      "Start": "0a346983fa83446884094efb2d68b0f1",
-      "End": "4e0e8ab901624d46907eeb882ebab300",
-      "Id": "7cc215a045614d69abc8db5ce82eb4a2"
-    },
-    {
-      "Start": "a5d83bca509a4083bc6e0a6f6a0905c4",
-      "End": "88eb910c87b448f69f1194d97f49e372",
-      "Id": "8a2ccd5c00414f20accb3af35749a2c4"
-    },
-    {
-      "Start": "16a164f83a2141f3ad75400049caf566",
-      "End": "ff0c731c52e24a3eaf466b56a262480c",
-      "Id": "6ad4d7207e78422d8bbb700ae43976e2"
-    },
-    {
-      "Start": "70486c137d9441c7aae82b053b0d813f",
-      "End": "81de61bb84f64c28b3d884c9f4d6d728",
-      "Id": "908ae5648c6b427191417e492e62a97a"
-    },
-    {
-      "Start": "2ca3a91f7c554ad48cfa828fbdd6f037",
-      "End": "54021daede9a49909cb2b4ccecadc30d",
-      "Id": "b74242cad1f942adae9067b1074e91fc"
+      "Start": "e4b3930d4fa043c3982d30a182ffdd14",
+      "End": "36c4e1b3f3a64684bc754fc3a22c8e73",
+      "Id": "d3b0457172f54657bba638bfe44e3624"
     },
     {
       "Start": "34aab1073991461ea21aecb8f98aa0f5",
@@ -2364,48 +1667,65 @@
       "Id": "a8d478b9cf7f4922b69aed04d323fd25"
     },
     {
-      "Start": "3134dc768c3b4244a08eff7fec972357",
-      "End": "6c803a1f5e494c8caca710430559ba33",
-      "Id": "81b9b4891a824aa289fb668591e5e990"
+      "Start": "608c5793ace947c5a5a77c1190e48361",
+      "End": "878e021702b140fab60601c5718d1a24",
+      "Id": "5be447503c564ee0ac334ff45274693e"
     },
     {
-      "Start": "863884ee523845d3b84355bea3ad3283",
-      "End": "7af3b1b15e9d440c983c11fffb607351",
-      "Id": "efbed43c5431409ebdb005857b6924d1"
+      "Start": "781fcb4195b84639946d3e5b2f931bbb",
+      "End": "f80ed1184bcd462ebc0addebbc0e40f3",
+      "Id": "462f2029065a4fd69e83e001ee01c3f6"
     },
     {
-      "Start": "440206be7b494e029e272a010d274690",
-      "End": "b22767e2533a4d4bbf47071e0c834d3a",
-      "Id": "4898f9d2de9f4fd1a9a044bace7eab0b"
+      "Start": "fdb8567c84eb4afaafbdf30e0e106dd2",
+      "End": "943982f8da9b425996dcc1273478a2e0",
+      "Id": "b897c8f7c7904c33b586e427b156da66"
     },
     {
-      "Start": "a7c300255ee64551a53ab5235a7945ed",
-      "End": "00f2679f6d1f49cf922d6cf97da52824",
-      "Id": "0471f9b59e4f4db29117c28a19a991ad"
+      "Start": "57159d27bec049a8a2866d4e12adf284",
+      "End": "43b45844e3c8420d97926d7e524b33b7",
+      "Id": "51fea2b0cdae4793b7b5e01c3f58d543"
     },
     {
-      "Start": "a021abda4057459e970f657625d99927",
-      "End": "38aed8e4743f46608830a00fe63b7104",
-      "Id": "75eb021963a44b03b329d6f5bd343d25"
+      "Start": "ab30e4972dee4b53b8c95c8e222a6ccd",
+      "End": "2fcd0388ae9b49c999f225a3ef51d25c",
+      "Id": "b532934f0cec4274b637159ef1b4082c"
     },
     {
-      "Start": "1a04aac0ae404d16bfea5d7c535c4367",
-      "End": "847f96c9500d46e7a2f0c302d9347ea6",
-      "Id": "c02b1cedf3e84ecda8c99ebda3142ea6"
+      "Start": "ca0881434dfa48c0b442878a5d001280",
+      "End": "81de61bb84f64c28b3d884c9f4d6d728",
+      "Id": "18e4f55e4250493cac3b876b57939729"
     },
     {
-      "Start": "6926ced4edef4212be06811650d1e167",
-      "End": "bd63430c5a714f0695ac9af3ee816a37",
-      "Id": "ffe6ffd7b665424fa4eae5a7e2a513ff"
+      "Start": "ca0881434dfa48c0b442878a5d001280",
+      "End": "0610d434bae34f388dcbe007bf32e9bb",
+      "Id": "add43fcd2bdd4179960c32a126c932ef"
     },
     {
-      "Start": "ddb04c731bc74f69ac7214fd75135fb8",
-      "End": "6aca5d0cd4494ef9bb2c18ba276b5d0b",
-      "Id": "1155200b5ec64c7ca60670f21d389557"
+      "Start": "f961f597dc734b07b2c3b538edfd7d7f",
+      "End": "c9bd05e91cee47d6aa242639a1d9d9c1",
+      "Id": "2bc0ff01ba8c4808bfdf8af214c51c69"
+    },
+    {
+      "Start": "0eaa73dd93cf42ccb63b6a16cfabc70e",
+      "End": "0586be6a83484629a7639335e23f66a2",
+      "Id": "fa71eb83bee443d5b759a30955de3274"
     }
   ],
   "Dependencies": [],
-  "NodeLibraryDependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "MeshToolkit",
+      "Version": "3.0.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "06493a8f57ad4782bdb9ae1e15d0525d",
+        "99ce511072864923816a141a10b068e5",
+        "991bc6014911493e84623456f751195a",
+        "67f1909d2ab7455c943e505eb46f0258"
+      ]
+    }
+  ],
   "Bindings": [],
   "View": {
     "Dynamo": {
@@ -2418,15 +1738,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -2.473200798034668,
-      "EyeY": 11.029804229736328,
-      "EyeZ": 16.707866668701172,
-      "LookX": 1.020960807800293,
-      "LookY": -5.22038459777832,
-      "LookZ": -10.248530387878418,
-      "UpX": 0.024829458445310593,
-      "UpY": 0.96814340353012085,
-      "UpZ": -0.24916271865367889
+      "EyeX": 8.05772590637207,
+      "EyeY": 15.715644836425781,
+      "EyeZ": 9.700404167175293,
+      "LookX": -1.0347151756286621,
+      "LookY": -8.2410812377929688,
+      "LookZ": -8.068324089050293,
+      "UpX": -0.0692940279841423,
+      "UpY": 0.83866035938262939,
+      "UpZ": -0.54022890329360962
     },
     "NodeViews": [
       {
@@ -2436,8 +1756,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1904.7030820716639,
-        "Y": 882.34770937100814
+        "X": 1893.9769367828908,
+        "Y": 777.23148554106911
       },
       {
         "ShowGeometry": true,
@@ -2446,8 +1766,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1337.8402640736203,
-        "Y": -70.85039359102359
+        "X": -74.429394224995349,
+        "Y": 1203.4156667147677
       },
       {
         "ShowGeometry": true,
@@ -2456,8 +1776,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1326.1098161060909,
-        "Y": -173.82012488014385
+        "X": -86.15984219252482,
+        "Y": 1100.4459354256473
       },
       {
         "ShowGeometry": true,
@@ -2466,8 +1786,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1061.1691042533862,
-        "Y": -169.55855042277165
+        "X": -351.1005540452295,
+        "Y": 1104.7075098830196
       },
       {
         "ShowGeometry": true,
@@ -2476,8 +1796,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1852.3198919030383,
-        "Y": -64.794235261764356
+        "X": 667.22241863599766,
+        "Y": 1133.629172148821
       },
       {
         "ShowGeometry": true,
@@ -2486,8 +1806,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1556.5237633683516,
-        "Y": -177.89963672898307
+        "X": 144.25410506973594,
+        "Y": 1096.3664235768081
       },
       {
         "ShowGeometry": true,
@@ -2496,8 +1816,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 839.32162673192386,
-        "Y": 2037.6016803665975
+        "X": 1682.6677431019555,
+        "Y": 2491.4362429894536
       },
       {
         "ShowGeometry": false,
@@ -2506,8 +1826,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2284.2792025985345,
-        "Y": -131.005225015336
+        "X": 396.47763177514014,
+        "Y": 145.72932343491163
       },
       {
         "ShowGeometry": false,
@@ -2516,8 +1836,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2286.9889924907447,
-        "Y": 101.01175466792051
+        "X": 399.18742166735035,
+        "Y": 377.74630311816816
       },
       {
         "ShowGeometry": false,
@@ -2526,8 +1846,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2288.3274293802529,
-        "Y": 296.95289040596435
+        "X": 400.52585855685845,
+        "Y": 573.687438856212
       },
       {
         "ShowGeometry": true,
@@ -2536,18 +1856,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1094.6736694355532,
-        "Y": 205.43123558438856
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Watch 3D",
-        "Id": "8e0e97ac456349348ae8f407ab7fb7ce",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 572.34291369708376,
-        "Y": 253.85327639601246
+        "X": 1083.9475241467808,
+        "Y": 100.3150117544501
       },
       {
         "ShowGeometry": true,
@@ -2556,8 +1866,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2637.548386492208,
-        "Y": 798.592925874691
+        "X": 2656.8554480119928,
+        "Y": 519.71314836668955
       },
       {
         "ShowGeometry": true,
@@ -2566,128 +1876,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2635.9332959162443,
-        "Y": 932.22575843341053
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Geometry Highlighter",
-        "Id": "5b34801b03bf4e0290214b4c52894850",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -209.43626510656054,
-        "Y": -172.26994229785805
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Color Palette",
-        "Id": "b714a12042164093bebad72997dbaf06",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 369.92736667870122,
-        "Y": 17.977123386172934
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "IF-inList",
-        "Id": "fa87b26c82a8488b888bd68e66796f2a",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -435.01914109214545,
-        "Y": -168.93207944767482
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "IF-inList",
-        "Id": "e9ad885b7e2845d3b44873e888a7be38",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -435.86574571674942,
-        "Y": -1.1551792698774079
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "IF-inList",
-        "Id": "fe9f9b9d604e448bb929e13a8b6eac0f",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -435.61986254349654,
-        "Y": 166.12995456141334
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "IF-inList",
-        "Id": "1df51be173274ce583cf70b7987b356d",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -431.71618556021326,
-        "Y": 340.73067601276432
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "IF-inList",
-        "Id": "e7c2b58156c0432f8ebc24618c2f8e0e",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -429.03177318027315,
-        "Y": 521.42772048083168
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Geometry Highlighter",
-        "Id": "d816a2d3c88e4876baa161a90f11a416",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -208.83418926155514,
-        "Y": -2.5462792598805208
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Geometry Highlighter",
-        "Id": "43c394e8ed6a49e08743c025d5fde3fc",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -209.31515254340979,
-        "Y": 169.37363083308128
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Geometry Highlighter",
-        "Id": "ad18b37dc3c14625bbfacef86803868b",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -209.91301240627422,
-        "Y": 340.01582803219515
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Geometry Highlighter",
-        "Id": "41f46af230dc407c854a0bb264db0f58",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -206.11392816164266,
-        "Y": 522.25046173834369
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Geo List",
-        "Id": "4aa5aca4c9d245ce95df137be708a5e7",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 179.74976590373842,
-        "Y": 16.195283767294768
+        "X": 2655.2403574360292,
+        "Y": 653.34598092540909
       },
       {
         "ShowGeometry": true,
@@ -2701,23 +1891,13 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "List Viewer",
-        "Id": "53b66a95df584de1bbabfe444f3b3828",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 176.45196639137453,
-        "Y": 253.99094777773144
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Switcher",
         "Id": "15a7732f6cb04dd091354990f47294cf",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2275.4545423196755,
-        "Y": 935.42582944015214
+        "X": 2294.7616038394603,
+        "Y": 656.5460519321507
       },
       {
         "ShowGeometry": true,
@@ -2726,8 +1906,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2533.2777129409569,
-        "Y": 1080.257808727828
+        "X": 2552.5847744607418,
+        "Y": 801.37803121982654
       },
       {
         "ShowGeometry": true,
@@ -2736,8 +1916,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1735.5562076348026,
-        "Y": -179.41511717005795
+        "X": 323.28654933618691,
+        "Y": 1094.8509431357334
       },
       {
         "ShowGeometry": false,
@@ -2746,8 +1926,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2282.9913413703689,
-        "Y": 490.09241104153875
+        "X": 395.1897705469745,
+        "Y": 766.8269594917864
       },
       {
         "ShowGeometry": true,
@@ -2756,8 +1936,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1560.2593427953975,
-        "Y": 57.804827069511816
+        "X": 147.98968449678182,
+        "Y": 1332.0708873753031
       },
       {
         "ShowGeometry": true,
@@ -2766,8 +1946,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2276.9915524927833,
-        "Y": 828.89720419431148
+        "X": 2296.2986140125681,
+        "Y": 550.01742668631
       },
       {
         "ShowGeometry": false,
@@ -2776,58 +1956,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1111.7589173776646,
-        "Y": 2020.2745627083382
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "IF-inList",
-        "Id": "79dbe59d888f43a1929f2def64e1d025",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -430.91026704486217,
-        "Y": 697.50538953428611
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Geometry Highlighter",
-        "Id": "ec8fb2efb84e4bd0a3c1704ce7c83781",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -206.28791806210427,
-        "Y": 701.73713872004953
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Geometry Highlighter",
-        "Id": "6debe35e0be74c33b9fe0c18b6eee089",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -206.33730900029343,
-        "Y": 892.29417576794492
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "IF-inList",
-        "Id": "f1ee6b7d09e047c39b5d28b8a162e48e",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -435.48491478258688,
-        "Y": 890.11490837612234
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Geometry Generator",
-        "Id": "e5263d32c0c34ffd9ef5e7fcc14d974c",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1082.0418802922206,
-        "Y": 1001.620444717946
+        "X": 1672.7984947933214,
+        "Y": 2173.9350839113522
       },
       {
         "ShowGeometry": true,
@@ -2836,8 +1966,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1090.0545039103124,
-        "Y": 817.02109563118347
+        "X": 1055.8874195131657,
+        "Y": 653.50238582402108
       },
       {
         "ShowGeometry": true,
@@ -2846,8 +1976,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1643.2816383385161,
-        "Y": 935.09262845454009
+        "X": 1470.62069156342,
+        "Y": 651.6285055276586
       },
       {
         "ShowGeometry": true,
@@ -2856,58 +1986,158 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1900.860264375372,
-        "Y": 491.19204322485234
+        "X": 1890.1341190866008,
+        "Y": 386.07581939491308
       },
       {
         "ShowGeometry": false,
-        "Name": "Line.ByStartPointEndPoint",
-        "Id": "10f8ddfd88f64ef7a51412c17717abec",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1534.4945972871049,
-        "Y": 1200.4898952571493
-      },
-      {
-        "ShowGeometry": false,
-        "Name": "Code Block",
-        "Id": "2c7413aedd4248ccac93e0efab97c909",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1029.8016758411627,
-        "Y": 1227.4053910090468
-      },
-      {
-        "ShowGeometry": false,
-        "Name": "Point.ByCoordinates",
-        "Id": "089ee49a51a14ad9b23960adc80361bd",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1252.810148238292,
-        "Y": 1131.6009975678348
-      },
-      {
-        "ShowGeometry": false,
-        "Name": "Point.ByCoordinates",
-        "Id": "b9b4adbf6e8b41b8bd1d3cfdcc751ff6",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1265.4897807617008,
-        "Y": 1342.5679111217112
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Code Block",
         "Id": "fe789f3241d045fa93cd43927766996a",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1672.9716055738436,
-        "Y": 1672.2167316884411
+        "X": 1654.6562818805728,
+        "Y": 1888.4330613176171
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Sphere.ByCenterPointRadius",
+        "Id": "34c3ec044e2643248116b32cbc85bc9f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2069.0704231449422,
+        "Y": 1894.1791460753309
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Mesh.ByGeometry",
+        "Id": "06493a8f57ad4782bdb9ae1e15d0525d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2359.6652208868868,
+        "Y": 1889.1658860562684
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Mesh.TriangleCentroids",
+        "Id": "99ce511072864923816a141a10b068e5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2768.8832536490572,
+        "Y": 1914.3813536304742
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Mesh.Explode",
+        "Id": "991bc6014911493e84623456f751195a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2769.2041350071904,
+        "Y": 2152.5037591522578
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch 3D",
+        "Id": "1a9767da639d4cb083a8d568b124b464",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4095.0560277304744,
+        "Y": 2153.6292655672269
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Chop",
+        "Id": "ac7baec18464456eaf2c0d5b50d4030f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3215.2222389028166,
+        "Y": 1913.3945753240671
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "7dcb24a2ce40468685c26d7890aa99f8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3669.9287029029233,
+        "Y": 1996.4833181725812
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Code Block",
+        "Id": "4600ed00ce004c5ab079a769be303029",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3021.5687589113022,
+        "Y": 2153.3978129129237
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "5f0e1deb219e45e28b2a6b9fa3e9792f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3643.503108526972,
+        "Y": 2216.7493535777185
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Mesh.Vertices",
+        "Id": "67f1909d2ab7455c943e505eb46f0258",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3317.6423947606959,
+        "Y": 2168.2785923829479
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geometry Generator",
+        "Id": "ed9a22b47c4f467485b00c23697814cc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1091.3701071620221,
+        "Y": 788.2748065056719
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geometry Highlighter",
+        "Id": "15b03d534ea443bc817c75dcd2beca67",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1303.1898710617995,
+        "Y": 1096.9651533374574
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "On/Off",
+        "Id": "b748c56692a542cf82608f2f5de3368e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1066.4390217755454,
+        "Y": 1099.6389125216483
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch 3D",
+        "Id": "7d9284078cbe4cc4976d171bbf5209a6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1576.5297867166009,
+        "Y": 1172.0689390558866
       }
     ],
     "Annotations": [
@@ -2920,12 +2150,12 @@
           "20f595b21050444cad303c1015c8207f",
           "26b91f1a142e42539c8751f65ccacf8b"
         ],
-        "Left": 2272.9913413703689,
-        "Top": -227.005225015336,
+        "Left": 385.1897705469745,
+        "Top": 49.729323434911635,
         "Width": 401.0,
         "Height": 856.09763605687476,
         "FontSize": 36.0,
-        "InitialTop": -131.005225015336,
+        "InitialTop": 145.72932343491163,
         "InitialHeight": 766.09763605687476,
         "TextblockHeight": 86.0,
         "Background": "#FFC1D676"
@@ -2937,52 +2167,19 @@
           "e00054a13da24212ab4540997633798f",
           "94e1fb21689642b9b5fa86b874146ae5",
           "09412fe94eab41e68c31fa0307c3b82e",
-          "e5263d32c0c34ffd9ef5e7fcc14d974c",
           "2fc07c798e1b4ebf958f7ff659859e87",
-          "5b79af2b71e44701b490b40587de9acd"
+          "5b79af2b71e44701b490b40587de9acd",
+          "ed9a22b47c4f467485b00c23697814cc"
         ],
-        "Left": 1072.0418802922206,
-        "Top": 152.43123558438856,
-        "Width": 1128.8183840831514,
-        "Height": 953.1892091335576,
+        "Left": 1045.8874195131657,
+        "Top": 47.3150117544501,
+        "Width": 1144.2466995734349,
+        "Height": 859.916473786619,
         "FontSize": 36.0,
-        "InitialTop": 205.43123558438856,
-        "InitialHeight": 880.15236408133921,
+        "InitialTop": 100.3150117544501,
+        "InitialHeight": 947.317690084654,
         "TextblockHeight": 43.0,
         "Background": "#FFFFAA45"
-      },
-      {
-        "Id": "8f1eaa04e16b43899c987a4f0ba58e74",
-        "Title": "Geometry Highlighter",
-        "Nodes": [
-          "5b34801b03bf4e0290214b4c52894850",
-          "b714a12042164093bebad72997dbaf06",
-          "fa87b26c82a8488b888bd68e66796f2a",
-          "e9ad885b7e2845d3b44873e888a7be38",
-          "fe9f9b9d604e448bb929e13a8b6eac0f",
-          "1df51be173274ce583cf70b7987b356d",
-          "e7c2b58156c0432f8ebc24618c2f8e0e",
-          "d816a2d3c88e4876baa161a90f11a416",
-          "43c394e8ed6a49e08743c025d5fde3fc",
-          "ad18b37dc3c14625bbfacef86803868b",
-          "41f46af230dc407c854a0bb264db0f58",
-          "4aa5aca4c9d245ce95df137be708a5e7",
-          "53b66a95df584de1bbabfe444f3b3828",
-          "8e0e97ac456349348ae8f407ab7fb7ce",
-          "79dbe59d888f43a1929f2def64e1d025",
-          "ec8fb2efb84e4bd0a3c1704ce7c83781",
-          "6debe35e0be74c33b9fe0c18b6eee089",
-          "f1ee6b7d09e047c39b5d28b8a162e48e"
-        ],
-        "Left": -445.86574571674942,
-        "Top": -225.26994229785805,
-        "Width": 1238.2086594138332,
-        "Height": 1273.5641180658031,
-        "FontSize": 36.0,
-        "InitialTop": -172.26994229785805,
-        "InitialHeight": 1209.5641180658031,
-        "TextblockHeight": 43.0,
-        "Background": "#FFFF7BAC"
       },
       {
         "Id": "5c0afc45a1c048e1a54d2a4955e0da61",
@@ -2994,12 +2191,12 @@
           "bc6e3de400aa462da2f128593313d246",
           "4e3575612a134261972d058ad1f6bbdb"
         ],
-        "Left": 2265.4545423196755,
-        "Top": 745.592925874691,
-        "Width": 572.0938441725325,
+        "Left": 2284.7616038394603,
+        "Top": 466.71314836668955,
+        "Width": 571.47875359656882,
         "Height": 443.664882853137,
         "FontSize": 36.0,
-        "InitialTop": 798.592925874691,
+        "InitialTop": 519.71314836668955,
         "InitialHeight": 426.664882853137,
         "TextblockHeight": 43.0,
         "Background": "#FFFFAA45"
@@ -3016,19 +2213,37 @@
           "707d96c4b0c447fab11fd20d86754199",
           "3f57e74dd731444791e46505ab0dfb81"
         ],
-        "Left": 1051.1691042533862,
-        "Top": -232.41511717005795,
-        "Width": 998.38710338141641,
-        "Height": 358.21994423956977,
+        "Left": -361.1005540452295,
+        "Top": 1041.8509431357334,
+        "Width": 1222.3229726812272,
+        "Height": 358.21994423956971,
         "FontSize": 36.0,
-        "InitialTop": -179.41511717005795,
+        "InitialTop": 1094.8509431357334,
         "InitialHeight": 382.21994423956977,
         "TextblockHeight": 43.0,
         "Background": "#FF48B9FF"
+      },
+      {
+        "Id": "ae93889f56834dc4bcf3ed27c24b8842",
+        "Title": "Highlight of Query Result",
+        "Nodes": [
+          "15b03d534ea443bc817c75dcd2beca67",
+          "b748c56692a542cf82608f2f5de3368e",
+          "7d9284078cbe4cc4976d171bbf5209a6"
+        ],
+        "Left": 1056.4390217755454,
+        "Top": 1043.9651533374574,
+        "Width": 740.09076494105557,
+        "Height": 406.10378571842921,
+        "FontSize": 36.0,
+        "InitialTop": 1096.9651533374574,
+        "InitialHeight": 383.10378571842921,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
       }
     ],
-    "X": -897.2828911527273,
-    "Y": -661.72505881033021,
-    "Zoom": 0.73897422229630227
+    "X": 427.76178198588923,
+    "Y": 124.16237093920279,
+    "Zoom": 0.2798376555236915
   }
 }
