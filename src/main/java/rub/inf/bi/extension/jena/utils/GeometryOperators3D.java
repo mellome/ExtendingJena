@@ -376,7 +376,9 @@ public class GeometryOperators3D {
 			// contains3D(line, interSectionPoint)
 			// TODO: the accuracy can be adapted here.
 			double dis = distanceToSegment(interSectionPoint, v, w);
-			boolean disZero = dis < 1.0 && dis > 0.0;
+			double roundingDis = Math.round(dis);
+			// boolean disZero = dis < 1.0 && dis > 0.0;
+			boolean disZero = roundingDis == 0;
 			if ( disZero && contains3D(planeFaceArea, interSectionPoint)) { 
 				intersectionPoints.add(interSectionPoint);
 			}
