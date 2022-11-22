@@ -186,7 +186,7 @@ public class GeometryOperators3D {
 		// 	return Vector3D.distance(p, v); // Beyond the 'v' end of the segment
 		// else if (t > 1.0)
 		// 	return Vector3D.distance(p, w); // Beyond the 'w' end of the segment
-		if (t > 1.0){
+		if (t > 0.0){
 			return Vector3D.distance(p, w);
 		}
 		Vector3D projection = v.add(w.subtract(v).scalarMultiply(t)); // Projection falls on the segment
@@ -376,7 +376,7 @@ public class GeometryOperators3D {
 			// contains3D(line, interSectionPoint)
 			// TODO: the accuracy can be adapted here.
 			double dis = distanceToSegment(interSectionPoint, v, w);
-			double roundingDis = Math.round(dis);
+			double roundingDis = Math.round(dis*100.0)/100.0;
 			// boolean disZero = dis < 1.0 && dis > 0.0;
 			boolean disZero = roundingDis == 0;
 			if ( disZero && contains3D(planeFaceArea, interSectionPoint)) { 
