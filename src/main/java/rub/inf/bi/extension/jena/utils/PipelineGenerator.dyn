@@ -668,7 +668,7 @@
       "Id": "15a7732f6cb04dd091354990f47294cf",
       "Inputs": [
         {
-          "Id": "f92d4d948b40403391a7a0c1b07ba273",
+          "Id": "1974b6e451e04b2895f81d9fa91b3476",
           "Name": "SW",
           "Description": "SW",
           "UsingDefaultValue": false,
@@ -677,7 +677,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "0212e2a0b0ed4b5380c68c447d397ffa",
+          "Id": "5c92f97e281740b5bc33b14c82bf039e",
           "Name": "data",
           "Description": "data",
           "UsingDefaultValue": false,
@@ -688,7 +688,7 @@
       ],
       "Outputs": [
         {
-          "Id": "fde71122b42f433eac50a7bc95aabbd6",
+          "Id": "810eca3ebcfe4ce3927f2aa9dfaac8fd",
           "Name": "",
           "Description": "Value of expression at line 1",
           "UsingDefaultValue": false,
@@ -979,7 +979,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ngeo_lst = IN[0]\r\nexampleInstanceNamespace = IN[1] # dataEnteringNode[3];\r\ngeoSparqlNamespace = IN[2] # dataEnteringNode[4];\r\n\r\ndef lineString2WKT():\r\n    wktLiteral = \"<sf:LineString>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"LINESTRING Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    #wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:LineString>\";\r\n    return wktLiteral\r\n\r\ndef sphere2WKT(surface_lst):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(\";\r\n    for surface in surface_lst:\r\n        wktLiteral += \"((\";\r\n        try:\r\n            curves = Surface.PerimeterCurves(surface);\r\n        except:\r\n            raise Exception(\"something wrong at geometry import!\")\r\n        startP = None;\r\n        for curve in curves:\r\n            nextP = curve.StartPoint;\r\n            if(startP != None):\r\n                wktLiteral += \", \";\r\n            else:\r\n                startP = nextP;\r\n            wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        #Close the tiangle loop with a repeat of the first Point         \r\n        wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z) + \"))\";\r\n        if(surface != surface_lst[-1]):\r\n            wktLiteral += \", \"\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:MultiPolygon>\";\r\n    return wktLiteral\r\n    \r\n    \r\ndef multipolygon2WKT(geometry):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    \"\"\"\r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \"\"\"\r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = Solid.Centroid(geometry)\r\n    offset = geometry.Length/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"\r\n    \r\n    cuboid_face = bottom_face + \", \" + top_face + \", \" + front_face + \", \" + back_face + \", \" + left_face + \", \" + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral += cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\n#####\r\nres = []\r\nfor geo_obj in geo_lst:\r\n    geometry = geo_obj[0];\r\n    name = geo_obj[1];\r\n    geometryType = geo_obj[2];\r\n    \r\n    if(geometryType.upper() == \"MULTIPOLYGON\"):\r\n        res.append(multipolygon2WKT(geometry))\r\n    \r\n    if(geometryType.upper() == \"MULTIPOLYGON-SPHERE\"):\r\n        res.append(sphere2WKT(geometry))\r\n    \r\n    if(geometryType.upper() == \"POLYGON\"):\r\n        res.append(polygon2WKT())\r\n    \r\n    if(geometryType.upper() == \"LINESTRING\"):\r\n        res.append(lineString2WKT())\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = res",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ngeo_lst = IN[0]\r\nexampleInstanceNamespace = IN[1] # dataEnteringNode[3];\r\ngeoSparqlNamespace = IN[2] # dataEnteringNode[4];\r\n\r\ndef lineString2WKT():\r\n    wktLiteral = \"<sf:LineString>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"LINESTRING Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    #wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:LineString>\";\r\n    return wktLiteral\r\n\r\ndef sphere2WKT(surface_lst):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(\";\r\n    for surface in surface_lst:\r\n        wktLiteral += \"((\";\r\n        try:\r\n            curves = Surface.PerimeterCurves(surface);\r\n        except:\r\n            raise Exception(\"something wrong at geometry import!\")\r\n        startP = None;\r\n        for curve in curves:\r\n            nextP = curve.StartPoint;\r\n            if(startP != None):\r\n                wktLiteral += \", \";\r\n            else:\r\n                startP = nextP;\r\n            wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        #Close the tiangle loop with a repeat of the first Point         \r\n        wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z) + \"))\";\r\n        if(surface != surface_lst[-1]):\r\n            wktLiteral += \", \"\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:MultiPolygon>\";\r\n    return wktLiteral\r\n    \r\n    \r\ndef multipolygon2WKT(geometry):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    \"\"\"\r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \"\"\"\r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = Solid.Centroid(geometry)\r\n    offset = geometry.Length/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"\r\n    \r\n    cuboid_face = bottom_face + \", \" + top_face + \", \" + front_face + \", \" + back_face + \", \" + left_face + \", \" + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral += cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\ndef polygon2WKT():\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geometry\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\n#####\r\nres = []\r\nfor geo_obj in geo_lst:\r\n    geometry = geo_obj[0];\r\n    name = geo_obj[1];\r\n    geometryType = geo_obj[2];\r\n    \r\n    if(geometryType.upper() == \"MULTIPOLYGON\"):\r\n        res.append(multipolygon2WKT(geometry))\r\n    \r\n    if(geometryType.upper() == \"MULTIPOLYGON_SPHERE\"):\r\n        res.append(sphere2WKT(geometry))\r\n    \r\n    if(geometryType.upper() == \"POLYGON\"):\r\n        res.append(polygon2WKT())\r\n    \r\n    if(geometryType.upper() == \"LINESTRING\"):\r\n        res.append(lineString2WKT())\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = res",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "09412fe94eab41e68c31fa0307c3b82e",
@@ -1426,8 +1426,8 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n# Common Geometry Types\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nMULTIPOLYGON = \"MULTIPOLYGON\";\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\r\n# Input \r\nNUM_MULTIPOLYGON = IN[0]\r\n#NUM_MULTIPOLYGON = 50\r\n#num = IN[1]\r\n\r\n# output container\r\ngeo_type_lst = []\r\ngeo_lst = []\r\n\r\n# Point\r\n\r\n# LineString\r\n\"\"\"\r\nc=1\r\ngeo_data = Arc.ByThreePoints( Point.ByCoordinates(20, 20, 2),\r\n                            Point.ByCoordinates(25, 25, 2),\r\n                            Point.ByCoordinates(40, 10, 2))\r\ngeo_name = LINESTRING + str(c)\r\ngeo_type = LINESTRING\r\ngeo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n\r\n# Polygon\r\n\r\n# Multipolygon\r\n\"\"\"\r\ni=1\r\nc=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    p1 = Point.ByCoordinates(i, i, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+i, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\r\ni=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    j = i + 10\r\n    p1 = Point.ByCoordinates(i, j, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+j, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n#################################################\r\n# TOUCH - (c1, c2) (c2, c3)\r\nc = 1\r\np11 = Point.ByCoordinates(0, 0, 0)\r\np12 = Point.ByCoordinates(3, 3, 3)\r\ngeo_data1 = Cuboid.ByCorners(p11, p12)\r\ngeo_name1 = MULTIPOLYGON + str(c)\r\ngeo_type1 = MULTIPOLYGON\r\ngeo_lst.append((geo_data1, geo_name1, geo_type1))\r\n\r\nc = 2\r\np21 = Point.ByCoordinates(3, 3, 3)\r\np22 = Point.ByCoordinates(6, 6, 6)\r\ngeo_data2 = Cuboid.ByCorners(p21, p22)\r\ngeo_name2 = MULTIPOLYGON + str(c)\r\ngeo_type2 = MULTIPOLYGON\r\ngeo_lst.append((geo_data2, geo_name2, geo_type2))\r\n\r\nc = 3\r\np31 = Point.ByCoordinates(6, 6, 3)\r\np32 = Point.ByCoordinates(9, 9, 6)\r\ngeo_data3 = Cuboid.ByCorners(p31, p32)\r\ngeo_name3 = MULTIPOLYGON + str(c)\r\ngeo_type3 = MULTIPOLYGON\r\ngeo_lst.append((geo_data3, geo_name3, geo_type3))\r\n#################################################\r\n# INTERSECT - (c4, c5) \r\nc = 4\r\np41 = Point.ByCoordinates(-3, 0, 0)\r\np42 = Point.ByCoordinates(-6, -3, 3)\r\ngeo_data4 = Cuboid.ByCorners(p41, p42)\r\ngeo_name4 = MULTIPOLYGON + str(c)\r\ngeo_type4 = MULTIPOLYGON\r\ngeo_lst.append((geo_data4, geo_name4, geo_type4))\r\n\r\nc = 5\r\np51 = Point.ByCoordinates(-4, 0, 0)\r\np52 = Point.ByCoordinates(-7, -3, 3)\r\ngeo_data5 = Cuboid.ByCorners(p51, p52)\r\ngeo_name5 = MULTIPOLYGON + str(c)\r\ngeo_type5 = MULTIPOLYGON\r\ngeo_lst.append((geo_data5, geo_name5, geo_type5))\r\n#################################################\r\n\r\nc = 6\r\ngeo_data6 = Sphere.ByCenterPointRadius(Point.ByCoordinates(-3, -3, -3))\r\ngeo_name6 = MULTIPOLYGON + str(c)\r\ngeo_type6 = MULTIPOLYGON\r\n#mesh_sphere = Mesh.ByGeometry(sphere1)\r\ngeo_lst.append((geo_data5, geo_name5, geo_type5))\r\n\r\n#################################################\r\n# output\r\nOUT = geo_lst\r\n\r\n",
-      "Engine": "IronPython2",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n# Common Geometry Types\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nMULTIPOLYGON = \"MULTIPOLYGON\";\r\nSPHERE = \"MULTIPOLYGON-SPHERE\"\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\r\n# Input \r\nNUM_MULTIPOLYGON = IN[0]\r\n#NUM_MULTIPOLYGON = 50\r\n#num = IN[1]\r\n\r\n# output container\r\ngeo_type_lst = []\r\ngeo_lst = []\r\n\r\n# Point\r\n\r\n# LineString\r\n\"\"\"\r\nc=1\r\ngeo_data = Arc.ByThreePoints( Point.ByCoordinates(20, 20, 2),\r\n                            Point.ByCoordinates(25, 25, 2),\r\n                            Point.ByCoordinates(40, 10, 2))\r\ngeo_name = LINESTRING + str(c)\r\ngeo_type = LINESTRING\r\ngeo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n\r\n# Polygon\r\n\r\n# Multipolygon\r\n\"\"\"\r\ni=1\r\nc=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    p1 = Point.ByCoordinates(i, i, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+i, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\r\ni=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    j = i + 10\r\n    p1 = Point.ByCoordinates(i, j, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+j, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n#################################################\r\n# Polygon\r\np = 1\r\npt_lst = [Point.ByCoordinates(-4, 6, 0),\r\n          Point.ByCoordinates(-9, 6, 3),  \r\n          Point.ByCoordinates(-7, 6, 6)]\r\ngeo_data_p1 = pt_lst\r\ngeo_name_p1 = POLYGON + str(p)\r\ngeo_type_p1 = POLYGON\r\ngeometry_p1 = Surface.ByPerimeterPoints(pt_lst)\r\ngeo_lst.append((geo_data_p1, geo_name_p1, geo_type_p1, geometry_p1))\r\n\r\n\r\np = 2\r\npt_lst = [Point.ByCoordinates(-4, 10, 0),\r\n          Point.ByCoordinates(-9, 10, 3),  \r\n          Point.ByCoordinates(-7, 8, 6)]\r\ngeo_data_p2 = pt_lst\r\ngeo_name_p2 = POLYGON + str(p)\r\ngeo_type_p2 = POLYGON\r\ngeometry_p2 = Surface.ByPerimeterPoints(pt_lst)\r\ngeo_lst.append((geo_data_p2, geo_name_p2, geo_type_p2, geometry_p2))\r\n#################################################\r\n# Cubes\r\nc = 1\r\np11 = Point.ByCoordinates(0, 0, 0)\r\np12 = Point.ByCoordinates(3, 3, 3)\r\ngeo_data1 = Cuboid.ByCorners(p11, p12)\r\ngeo_name1 = MULTIPOLYGON + str(c)\r\ngeo_type1 = MULTIPOLYGON\r\ngeo_lst.append((geo_data1, geo_name1, geo_type1))\r\n\r\nc = 2\r\np21 = Point.ByCoordinates(3, 3, 3)\r\np22 = Point.ByCoordinates(6, 6, 6)\r\ngeo_data2 = Cuboid.ByCorners(p21, p22)\r\ngeo_name2 = MULTIPOLYGON + str(c)\r\ngeo_type2 = MULTIPOLYGON\r\ngeo_lst.append((geo_data2, geo_name2, geo_type2))\r\n\r\nc = 3\r\np31 = Point.ByCoordinates(6, 6, 3)\r\np32 = Point.ByCoordinates(9, 9, 6)\r\ngeo_data3 = Cuboid.ByCorners(p31, p32)\r\ngeo_name3 = MULTIPOLYGON + str(c)\r\ngeo_type3 = MULTIPOLYGON\r\ngeo_lst.append((geo_data3, geo_name3, geo_type3))\r\n\r\nc = 4\r\np41 = Point.ByCoordinates(-3, 0, 0)\r\np42 = Point.ByCoordinates(-6, -3, 3)\r\ngeo_data4 = Cuboid.ByCorners(p41, p42)\r\ngeo_name4 = MULTIPOLYGON + str(c)\r\ngeo_type4 = MULTIPOLYGON\r\ngeo_lst.append((geo_data4, geo_name4, geo_type4))\r\n\r\nc = 5\r\np51 = Point.ByCoordinates(-4, 0, 0)\r\np52 = Point.ByCoordinates(-7, -3, 3)\r\ngeo_data5 = Cuboid.ByCorners(p51, p52)\r\ngeo_name5 = MULTIPOLYGON + str(c)\r\ngeo_type5 = MULTIPOLYGON\r\ngeo_lst.append((geo_data5, geo_name5, geo_type5))\r\n\r\nc = 6\r\np61 = Point.ByCoordinates(-3, 5, 0)\r\np62 = Point.ByCoordinates(0, 8, 3)\r\ngeo_data6 = Cuboid.ByCorners(p61, p62)\r\ngeo_name6 = MULTIPOLYGON + str(c)\r\ngeo_type6 = MULTIPOLYGON\r\ngeo_lst.append((geo_data6, geo_name6, geo_type6))\r\n\r\nc = 7\r\np71 = Point.ByCoordinates(-8, 5, 0)\r\np72 = Point.ByCoordinates(-5, 8, 3)\r\ngeo_data7 = Cuboid.ByCorners(p71, p72)\r\ngeo_name7 = MULTIPOLYGON + str(c)\r\ngeo_type7 = MULTIPOLYGON\r\ngeo_lst.append((geo_data7, geo_name7, geo_type7))\r\n#################################################\r\n# Sphere - (c4, c5) \r\ns = 1\r\ngeo_data_s1 = Sphere.ByCenterPointRadius(Point.ByCoordinates(-7, -3, 6), radius=3)\r\ngeo_name_s1 = MULTIPOLYGON + str(s)\r\ngeo_type_s1 = SPHERE\r\n#mesh_sphere = Mesh.ByGeometry(geo_data6)\r\n#geo_data6 = mesh_sphere\r\ngeo_lst.append((geo_data_s1, geo_name_s1, geo_type_s1))\r\n#################################################\r\n# LineString\r\nl = 1\r\npt_lst =   [Point.ByCoordinates(10, 10, 0),\r\n            Point.ByCoordinates(5, 5, 0),\r\n            Point.ByCoordinates(5, 3, 0),\r\n            Point.ByCoordinates(-3, 5, 0),\r\n            Point.ByCoordinates(-7, 0, 0),\r\n            Point.ByCoordinates(-10, -5, 0)]\r\n\r\ngeo_data_l1 = pt_lst\r\ngeo_name_l1 = LINESTRING + str(l)\r\ngeo_type_l1 = LINESTRING\r\ngeometry_l1 = PolyCurve.ByPoints(pt_lst, False)\r\ngeo_lst.append((geo_data_l1, geo_name_l1, geo_type_l1, geometry_l1))\r\n\r\n# output\r\nOUT = geo_lst\r\n\r\n",
+      "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "ed9a22b47c4f467485b00c23697814cc",
       "Inputs": [
@@ -1458,8 +1458,8 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n###########################################################\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n############################################################\r\n# Input\r\ngeo_lst = IN[0]\r\nres_lst = IN[1]\r\nswitch = IN[2]\r\n\r\n#################################################\r\n# Highlighter\r\ncolored_geo_lst = []\r\nif switch:\r\n    color = Color.ByARGB(255,255,0,0) # red\r\n    \r\n    for geo in geo_lst:\r\n        geo_name = geo[1]\r\n        if inList(res_lst, geo_name):  \r\n            geo_data = geo[0]\r\n            colored_geo = GeometryColor.ByGeometryColor(geo_data, color)\r\n            colored_geo_lst.append(colored_geo)\r\n\r\n#################################################\r\nOUT = colored_geo_lst\r\n",
-      "Engine": "IronPython2",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n###########################################################\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n############################################################\r\n# Input\r\ngeo_lst = IN[0]\r\nres_lst = IN[1]\r\nswitch = IN[2]\r\n\r\n#################################################\r\n# Highlighter\r\ncolored_geo_lst = []\r\nif switch:\r\n    color = Color.ByARGB(255,255,0,0) # red\r\n    \r\n    for geo in geo_lst:\r\n        geo_name = geo[1]\r\n        if inList(res_lst, geo_name):  \r\n            geo_data = geo[0]\r\n            colored_geo = ''\r\n            if (geo[2].upper() == \"LINESTRING\" or geo[2].upper() == \"POLYGON\"):\r\n                colored_geo = GeometryColor.ByGeometryColor(geo[3], color)\r\n            else:\r\n                colored_geo = GeometryColor.ByGeometryColor(geo_data, color)\r\n            colored_geo_lst.append(colored_geo)\r\n\r\n#################################################\r\nOUT = colored_geo_lst\r\n",
+      "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "15b03d534ea443bc817c75dcd2beca67",
       "Inputs": [
@@ -1532,15 +1532,15 @@
       "WasExecuted": true,
       "Camera": {
         "Name": "7d928407-8cbe-4cc4-976d-171bbf5209a6 Preview",
-        "EyeX": -11.924962997436523,
-        "EyeY": 18.502040863037109,
-        "EyeZ": 25.470657348632813,
-        "LookX": 6.9249629974365234,
-        "LookY": -7.5020408630371094,
-        "LookZ": -33.470657348632813,
-        "UpX": 0.0,
-        "UpY": 1.0,
-        "UpZ": 0.0
+        "EyeX": -22.017862319946289,
+        "EyeY": 24.371135711669922,
+        "EyeZ": -14.300628662109375,
+        "LookX": 17.017862319946289,
+        "LookY": -13.371135711669922,
+        "LookZ": 6.300628662109375,
+        "UpX": 0.38150030374526978,
+        "UpY": 0.91351383924484253,
+        "UpZ": 0.14124518632888794
       },
       "NodeType": "ExtensionNode",
       "Id": "7d9284078cbe4cc4976d171bbf5209a6",
@@ -1573,7 +1573,7 @@
   "Connectors": [
     {
       "Start": "f4c68ed56fdd401c858255578208df3b",
-      "End": "0212e2a0b0ed4b5380c68c447d397ffa",
+      "End": "5c92f97e281740b5bc33b14c82bf039e",
       "Id": "00f35e42b59949a3950f0065315f77d9"
     },
     {
@@ -1627,12 +1627,12 @@
       "Id": "21b076eb864340f3a6a2203b6fec7a6d"
     },
     {
-      "Start": "fde71122b42f433eac50a7bc95aabbd6",
+      "Start": "810eca3ebcfe4ce3927f2aa9dfaac8fd",
       "End": "6f433e359e584c96b5cd746da1837256",
       "Id": "08762a13ef63445a8d86b5c309e05251"
     },
     {
-      "Start": "fde71122b42f433eac50a7bc95aabbd6",
+      "Start": "810eca3ebcfe4ce3927f2aa9dfaac8fd",
       "End": "484d2768b2d0421fb401750cf2bdfaa2",
       "Id": "c04eef08ef9d4c87b72efc48a07fe126"
     },
@@ -1648,7 +1648,7 @@
     },
     {
       "Start": "abc883ea418c4c88a5dd5e0788732297",
-      "End": "f92d4d948b40403391a7a0c1b07ba273",
+      "End": "1974b6e451e04b2895f81d9fa91b3476",
       "Id": "a65221a53beb43f7b14065fb0112ca62"
     },
     {
@@ -1738,15 +1738,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 8.05772590637207,
-      "EyeY": 15.715644836425781,
-      "EyeZ": 9.700404167175293,
-      "LookX": -1.0347151756286621,
-      "LookY": -8.2410812377929688,
-      "LookZ": -8.068324089050293,
-      "UpX": -0.0692940279841423,
-      "UpY": 0.83866035938262939,
-      "UpZ": -0.54022890329360962
+      "EyeX": -11.489660263061523,
+      "EyeY": 16.360317230224609,
+      "EyeZ": -14.630919456481934,
+      "LookX": 6.536433219909668,
+      "LookY": -9.441258430480957,
+      "LookZ": 8.7347640991210938,
+      "UpX": 0.28590381145477295,
+      "UpY": 0.878807783126831,
+      "UpZ": 0.38204184174537659
     },
     "NodeViews": [
       {
@@ -1866,8 +1866,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2656.8554480119928,
-        "Y": 519.71314836668955
+        "X": 2656.85544801199,
+        "Y": 519.71314836669
       },
       {
         "ShowGeometry": true,
@@ -1876,8 +1876,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2655.2403574360292,
-        "Y": 653.34598092540909
+        "X": 2655.24035743603,
+        "Y": 653.345980925409
       },
       {
         "ShowGeometry": true,
@@ -1896,8 +1896,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2294.7616038394603,
-        "Y": 656.5460519321507
+        "X": 2294.76160383946,
+        "Y": 656.546051932151
       },
       {
         "ShowGeometry": true,
@@ -1906,8 +1906,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2552.5847744607418,
-        "Y": 801.37803121982654
+        "X": 2552.58477446074,
+        "Y": 801.378031219827
       },
       {
         "ShowGeometry": true,
@@ -1946,7 +1946,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2296.2986140125681,
+        "X": 2296.29861401257,
         "Y": 550.01742668631
       },
       {
@@ -1976,8 +1976,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1470.62069156342,
-        "Y": 651.6285055276586
+        "X": 1483.4542131131739,
+        "Y": 718.90582671764594
       },
       {
         "ShowGeometry": true,
@@ -2106,8 +2106,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1091.3701071620221,
-        "Y": 788.2748065056719
+        "X": 1065.6713115039549,
+        "Y": 811.63734801300541
       },
       {
         "ShowGeometry": true,
@@ -2174,10 +2174,10 @@
         "Left": 1045.8874195131657,
         "Top": 47.3150117544501,
         "Width": 1144.2466995734349,
-        "Height": 859.916473786619,
+        "Height": 868.32233625855531,
         "FontSize": 36.0,
         "InitialTop": 100.3150117544501,
-        "InitialHeight": 947.317690084654,
+        "InitialHeight": 856.32233625855531,
         "TextblockHeight": 43.0,
         "Background": "#FFFFAA45"
       },
@@ -2191,12 +2191,12 @@
           "bc6e3de400aa462da2f128593313d246",
           "4e3575612a134261972d058ad1f6bbdb"
         ],
-        "Left": 2284.7616038394603,
-        "Top": 466.71314836668955,
-        "Width": 571.47875359656882,
+        "Left": 2284.76160383946,
+        "Top": 466.71314836669,
+        "Width": 571.47875359657019,
         "Height": 443.664882853137,
         "FontSize": 36.0,
-        "InitialTop": 519.71314836668955,
+        "InitialTop": 519.71314836669,
         "InitialHeight": 426.664882853137,
         "TextblockHeight": 43.0,
         "Background": "#FFFFAA45"
@@ -2215,11 +2215,11 @@
         ],
         "Left": -361.1005540452295,
         "Top": 1041.8509431357334,
-        "Width": 1222.3229726812272,
-        "Height": 358.21994423956971,
+        "Width": 1237.3229726812272,
+        "Height": 469.77822901308764,
         "FontSize": 36.0,
         "InitialTop": 1094.8509431357334,
-        "InitialHeight": 382.21994423956977,
+        "InitialHeight": 382.21994423956971,
         "TextblockHeight": 43.0,
         "Background": "#FF48B9FF"
       },
@@ -2237,13 +2237,13 @@
         "Height": 406.10378571842921,
         "FontSize": 36.0,
         "InitialTop": 1096.9651533374574,
-        "InitialHeight": 383.10378571842921,
+        "InitialHeight": 220.10378571842921,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": 427.76178198588923,
-    "Y": 124.16237093920279,
-    "Zoom": 0.2798376555236915
+    "X": -686.28567666199751,
+    "Y": -609.51183399697288,
+    "Zoom": 0.95815549183218185
   }
 }
