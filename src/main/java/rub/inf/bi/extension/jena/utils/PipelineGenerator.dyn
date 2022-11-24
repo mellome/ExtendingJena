@@ -60,35 +60,6 @@
       "Description": "Runs an embedded Python script."
     },
     {
-      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
-      "NodeType": "ExtensionNode",
-      "Id": "55e5541613984633bd3985a301a6f2f0",
-      "Inputs": [
-        {
-          "Id": "df6bd6c740bd4c5aa0dad6bc110ad43c",
-          "Name": "path",
-          "Description": "Path to the file.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "c6f0f1e62fef44aeb70b601c869d460c",
-          "Name": "file",
-          "Description": "File object",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Creates a file object from a path."
-    },
-    {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
       "FunctionSignature": "DSCore.IO.FileSystem.FileExists@string",
@@ -120,8 +91,8 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml",
-      "InputValue": "..\\..\\..\\..\\..\\..\\..\\resources\\rdf\\query_result.xml",
+      "HintPath": "Z:\\query_result\\query_result.xml",
+      "InputValue": "Z:\\query_result\\query_result.xml",
       "NodeType": "ExtensionNode",
       "Id": "963c470715ed4f5b815704780b1b964a",
       "Inputs": [],
@@ -171,7 +142,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport ctypes\r\nimport xml.etree.ElementTree as ET\r\nsys.path.append(r\"C:\\Users\\nobita_yhe\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\")\r\n\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nfrom xml.dom.minidom import parse, parseString\r\n\r\ndir = \"r'C:\\\\Users\\\\nobita_yhe\\\\Workspace\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\rdf\\\\query_result.xml'\"\r\n#dir = r'C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml'\r\nwarn_str = 'File or File Path does not exist.'\r\nres = ''\r\n\r\ndef xmlParsing2Uri(path=dir):\r\n    \"\"\" it returns the list in structure like [[uri1, uri2],...,[uri1, uri2]]\"\"\"\r\n    dom = parse(path)\r\n    data = dom.documentElement\r\n    resList = data.getElementsByTagName('result')\r\n    \r\n    res_lst = []\r\n    for res in resList: # handle the <result>...</result>\r\n        ur_lst = []\r\n        for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n            for ur in bi.getElementsByTagName('uri'):\r\n                ur_lst.append(ur.childNodes[0].nodeValue)\r\n        res_lst.append(ur_lst)\r\n        ur_lst = []\r\n    return res_lst\r\n\r\n\r\ndef xml2GeometryString(path=dir):\r\n    \"\"\" it returns the list in structure like [[Geomety1, Geomety2],...,[Geomety1, Geomety2]]\"\"\"\r\n    dom = parse(path)\r\n    data = dom.documentElement\r\n    resList = data.getElementsByTagName('result')\r\n    seperator = '#'\r\n\r\n    res_lst = []\r\n    for res in resList: # handle the <result>...</result>\r\n        ur_lst = []\r\n        for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n            for ur in bi.getElementsByTagName('uri'):\r\n                uri_str = ur.childNodes[0].nodeValue\r\n                geo_index = uri_str.find(seperator) \r\n                geo_str = uri_str[geo_index+1:]\r\n                ur_lst.append(geo_str)\r\n        res_lst.append(ur_lst)\r\n        ur_lst = []\r\n    return res_lst\r\n\r\ndef xml2GeoInDynamo(path=dir):\r\n    with open(r'C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml', 'r', encoding='utf-8') as file:\r\n        xml_data = file.read()\r\n        dom = parseString(xml_data)\r\n        #dom = parse(xml_data)\r\n        data = dom.documentElement\r\n        resList = data.getElementsByTagName('result')\r\n        seperator = '#'\r\n        \r\n        res_lst = []\r\n        for res in resList: # handle the <result>...</result>\r\n            ur_lst = []\r\n            for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n                for ur in bi.getElementsByTagName('uri'):\r\n                    uri_str = ur.childNodes[0].nodeValue\r\n                    geo_index = uri_str.find(seperator) \r\n                    geo_str = uri_str[geo_index+1:]\r\n                    ur_lst.append(geo_str)\r\n            res_lst.append(ur_lst)\r\n            ur_lst = []\r\n    return res_lst\r\n    \r\n   \r\n\r\nif IN[0] == True:\r\n\tdir = IN[1]\r\n\tres = xml2GeoInDynamo(dir)\r\nelse:\r\n\tctypes.windll.user32.MessageBoxW(0, warn_str, 'Input Exception',1)\r\n\tres = warn_str\r\n\t\r\n# Assign your output to the OUT variable.\r\nOUT = res\r\n\r\n",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport ctypes\r\nimport xml.etree.ElementTree as ET\r\nsys.path.append(r\"C:\\Users\\yhe\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\")\r\n\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nfrom xml.dom.minidom import parse, parseString\r\n\r\n#dir = \"r'C:\\\\Users\\\\nobita_yhe\\\\Workspace\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\rdf\\\\query_result.xml'\"\r\n#dir = r'C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml'\r\nwarn_str = 'File or File Path does not exist.'\r\nres = ''\r\n######################################################\r\n\r\ndef xmlParsing2Uri(path=dir):\r\n    \"\"\" it returns the list in structure like [[uri1, uri2],...,[uri1, uri2]]\"\"\"\r\n    dom = parse(path)\r\n    data = dom.documentElement\r\n    resList = data.getElementsByTagName('result')\r\n    \r\n    res_lst = []\r\n    for res in resList: # handle the <result>...</result>\r\n        ur_lst = []\r\n        for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n            for ur in bi.getElementsByTagName('uri'):\r\n                ur_lst.append(ur.childNodes[0].nodeValue)\r\n        res_lst.append(ur_lst)\r\n        ur_lst = []\r\n    return res_lst\r\n\r\n\r\ndef xml2GeometryString(path=dir):\r\n    \"\"\" it returns the list in structure like [[Geomety1, Geomety2],...,[Geomety1, Geomety2]]\"\"\"\r\n    dom = parse(path)\r\n    data = dom.documentElement\r\n    resList = data.getElementsByTagName('result')\r\n    seperator = '#'\r\n\r\n    res_lst = []\r\n    for res in resList: # handle the <result>...</result>\r\n        ur_lst = []\r\n        for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n            for ur in bi.getElementsByTagName('uri'):\r\n                uri_str = ur.childNodes[0].nodeValue\r\n                geo_index = uri_str.find(seperator) \r\n                geo_str = uri_str[geo_index+1:]\r\n                ur_lst.append(geo_str)\r\n        res_lst.append(ur_lst)\r\n        ur_lst = []\r\n    return res_lst\r\n\r\ndef xml2GeoInDynamo(path=dir):\r\n    #with open(r'C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml', 'r', encoding='utf-8') as file:\r\n    with open(path, 'r', encoding='utf-8') as file:\r\n        xml_data = file.read()\r\n        dom = parseString(xml_data)\r\n        #dom = parse(xml_data)\r\n        data = dom.documentElement\r\n        resList = data.getElementsByTagName('result')\r\n        seperator = '#'\r\n        \r\n        res_lst = []\r\n        for res in resList: # handle the <result>...</result>\r\n            ur_lst = []\r\n            for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n                for ur in bi.getElementsByTagName('uri'):\r\n                    uri_str = ur.childNodes[0].nodeValue\r\n                    geo_index = uri_str.find(seperator) \r\n                    geo_str = uri_str[geo_index+1:]\r\n                    ur_lst.append(geo_str)\r\n            res_lst.append(ur_lst)\r\n            ur_lst = []\r\n    return res_lst\r\n    \r\n######################################################\r\n\r\nif IN[0] == True:\r\n    dir = IN[1]\r\n    res = xml2GeoInDynamo(dir)\r\nelse:\r\n\tctypes.windll.user32.MessageBoxW(0, warn_str, 'Input Exception',1)\r\n\tres = warn_str\r\n######################################################\r\n# Assign your output to the OUT variable.\r\nOUT = res\r\n\r\n",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "3caf2c5d39a14bb8a8d117a845916766",
@@ -593,8 +564,8 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\java\\rub\\inf\\bi\\extension\\jena\\utils\\example.rdf",
-      "InputValue": ".\\example.rdf",
+      "HintPath": "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\example.rdf",
+      "InputValue": "..\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\example.rdf",
       "NodeType": "ExtensionNode",
       "Id": "c35aef94b79f494486311eadd2b8352d",
       "Inputs": [],
@@ -1532,15 +1503,15 @@
       "WasExecuted": true,
       "Camera": {
         "Name": "7d928407-8cbe-4cc4-976d-171bbf5209a6 Preview",
-        "EyeX": -22.017862319946289,
-        "EyeY": 24.371135711669922,
-        "EyeZ": -14.300628662109375,
-        "LookX": 17.017862319946289,
-        "LookY": -13.371135711669922,
-        "LookZ": 6.300628662109375,
-        "UpX": 0.38150030374526978,
-        "UpY": 0.91351383924484253,
-        "UpZ": 0.14124518632888794
+        "EyeX": -17.0,
+        "EyeY": 24.0,
+        "EyeZ": 50.0,
+        "LookX": 12.0,
+        "LookY": -13.0,
+        "LookZ": -58.0,
+        "UpX": 0.0,
+        "UpY": 1.0,
+        "UpZ": 0.0
       },
       "NodeType": "ExtensionNode",
       "Id": "7d9284078cbe4cc4976d171bbf5209a6",
@@ -1568,6 +1539,45 @@
       ],
       "Replication": "Disabled",
       "Description": "Shows a dynamic preview of geometry."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "80b16f3f20094a978114d38819afd778",
+      "Inputs": [
+        {
+          "Id": "28406ff61ced4b458435eba731a4fefc",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "28d8dfafd9b84e6a9f2e7caf64469b7c",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "",
+      "Id": "a526582e5e1b49d8bd36b6bac2d75c86",
+      "Inputs": [],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
     }
   ],
   "Connectors": [
@@ -1575,11 +1585,6 @@
       "Start": "f4c68ed56fdd401c858255578208df3b",
       "End": "5c92f97e281740b5bc33b14c82bf039e",
       "Id": "00f35e42b59949a3950f0065315f77d9"
-    },
-    {
-      "Start": "c6f0f1e62fef44aeb70b601c869d460c",
-      "End": "ad16ba208c4a435eb9c34e51e4bb261f",
-      "Id": "3f174c8b529f43b9bd9faadf19c16cd8"
     },
     {
       "Start": "9e6a623c31214ec7a86d96dce9d36894",
@@ -1593,8 +1598,8 @@
     },
     {
       "Start": "0eba4e25d56d42f99f6cd7d1d4848abe",
-      "End": "df6bd6c740bd4c5aa0dad6bc110ad43c",
-      "Id": "7e99db6f4ae94f0ea884b776c32edf85"
+      "End": "28406ff61ced4b458435eba731a4fefc",
+      "Id": "195068a61adf47b09f377ba12b652430"
     },
     {
       "Start": "2c04ea2cfa9c4fa68b7cfd048e8d53a6",
@@ -1710,6 +1715,11 @@
       "Start": "0eaa73dd93cf42ccb63b6a16cfabc70e",
       "End": "0586be6a83484629a7639335e23f66a2",
       "Id": "fa71eb83bee443d5b759a30955de3274"
+    },
+    {
+      "Start": "28d8dfafd9b84e6a9f2e7caf64469b7c",
+      "End": "ad16ba208c4a435eb9c34e51e4bb261f",
+      "Id": "c734f4813c6743ada61c1ef707840e40"
     }
   ],
   "Dependencies": [],
@@ -1738,15 +1748,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -11.489660263061523,
-      "EyeY": 16.360317230224609,
-      "EyeZ": -14.630919456481934,
-      "LookX": 6.536433219909668,
-      "LookY": -9.441258430480957,
-      "LookZ": 8.7347640991210938,
-      "UpX": 0.28590381145477295,
-      "UpY": 0.878807783126831,
-      "UpZ": 0.38204184174537659
+      "EyeX": 20.388097763061523,
+      "EyeY": 3.5511620044708252,
+      "EyeZ": -9.0292634963989258,
+      "LookX": -27.9365234375,
+      "LookY": -3.1664555072784424,
+      "LookZ": 4.8298063278198242,
+      "UpX": 0.10297767817974091,
+      "UpY": 0.99452447891235352,
+      "UpZ": -0.017795860767364502
     },
     "NodeViews": [
       {
@@ -1761,23 +1771,13 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "File From Path",
-        "Id": "55e5541613984633bd3985a301a6f2f0",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -74.429394224995349,
-        "Y": 1203.4156667147677
-      },
-      {
-        "ShowGeometry": true,
         "Name": "FileSystem.FileExists",
         "Id": "9c3c9a9cb6f048cf9f7f1435208d010b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -86.15984219252482,
-        "Y": 1100.4459354256473
+        "X": -105.85299614696385,
+        "Y": 1083.9036861039187
       },
       {
         "ShowGeometry": true,
@@ -1786,8 +1786,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -351.1005540452295,
-        "Y": 1104.7075098830196
+        "X": -370.79370799966853,
+        "Y": 1088.165260561291
       },
       {
         "ShowGeometry": true,
@@ -1796,8 +1796,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 667.22241863599766,
-        "Y": 1133.629172148821
+        "X": 647.52926468155863,
+        "Y": 1117.0869228270924
       },
       {
         "ShowGeometry": true,
@@ -1806,8 +1806,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 144.25410506973594,
-        "Y": 1096.3664235768081
+        "X": 124.56095111529692,
+        "Y": 1079.8241742550795
       },
       {
         "ShowGeometry": true,
@@ -1916,8 +1916,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 323.28654933618691,
-        "Y": 1094.8509431357334
+        "X": 303.59339538174788,
+        "Y": 1078.3086938140048
       },
       {
         "ShowGeometry": false,
@@ -1936,8 +1936,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 147.98968449678182,
-        "Y": 1332.0708873753031
+        "X": 185.38526434276787,
+        "Y": 1217.3573574995726
       },
       {
         "ShowGeometry": true,
@@ -2116,7 +2116,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1303.1898710617995,
+        "X": 1305.0287295634787,
         "Y": 1096.9651533374574
       },
       {
@@ -2136,8 +2136,28 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1576.5297867166009,
-        "Y": 1172.0689390558866
+        "X": 1577.7973587199367,
+        "Y": 1153.4082697722079
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "80b16f3f20094a978114d38819afd778",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -102.25165221769885,
+        "Y": 1181.3391297033465
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "a526582e5e1b49d8bd36b6bac2d75c86",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -877.0,
+        "Y": 2347.0
       }
     ],
     "Annotations": [
@@ -2151,13 +2171,13 @@
           "26b91f1a142e42539c8751f65ccacf8b"
         ],
         "Left": 385.1897705469745,
-        "Top": 49.729323434911635,
-        "Width": 401.0,
-        "Height": 856.09763605687476,
+        "Top": 49.229323434911635,
+        "Width": 402.0,
+        "Height": 855.09763605687476,
         "FontSize": 36.0,
         "InitialTop": 145.72932343491163,
         "InitialHeight": 766.09763605687476,
-        "TextblockHeight": 86.0,
+        "TextblockHeight": 86.5,
         "Background": "#FFC1D676"
       },
       {
@@ -2193,7 +2213,7 @@
         ],
         "Left": 2284.76160383946,
         "Top": 466.71314836669,
-        "Width": 571.47875359657019,
+        "Width": 582.59384417253023,
         "Height": 443.664882853137,
         "FontSize": 36.0,
         "InitialTop": 519.71314836669,
@@ -2205,7 +2225,6 @@
         "Id": "3b23e7e8a50c49f58eeca893711b4716",
         "Title": "XML(query result) Import and Parsing",
         "Nodes": [
-          "55e5541613984633bd3985a301a6f2f0",
           "9c3c9a9cb6f048cf9f7f1435208d010b",
           "963c470715ed4f5b815704780b1b964a",
           "aef00e0d9cbc4c89bc624f16784d0389",
@@ -2213,13 +2232,13 @@
           "707d96c4b0c447fab11fd20d86754199",
           "3f57e74dd731444791e46505ab0dfb81"
         ],
-        "Left": -361.1005540452295,
-        "Top": 1041.8509431357334,
-        "Width": 1237.3229726812272,
-        "Height": 469.77822901308764,
+        "Left": -380.79370799966853,
+        "Top": 1025.3086938140048,
+        "Width": 1222.8229726812272,
+        "Height": 314.27822901308764,
         "FontSize": 36.0,
-        "InitialTop": 1094.8509431357334,
-        "InitialHeight": 382.21994423956971,
+        "InitialTop": 1078.3086938140048,
+        "InitialHeight": 284.04866368556782,
         "TextblockHeight": 43.0,
         "Background": "#FF48B9FF"
       },
@@ -2233,17 +2252,17 @@
         ],
         "Left": 1056.4390217755454,
         "Top": 1043.9651533374574,
-        "Width": 740.09076494105557,
-        "Height": 406.10378571842921,
+        "Width": 741.35833694439134,
+        "Height": 387.44311643475044,
         "FontSize": 36.0,
         "InitialTop": 1096.9651533374574,
-        "InitialHeight": 220.10378571842921,
+        "InitialHeight": 201.44311643475044,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       }
     ],
-    "X": -686.28567666199751,
-    "Y": -609.51183399697288,
-    "Zoom": 0.95815549183218185
+    "X": 202.25273492093174,
+    "Y": -226.730785434499,
+    "Zoom": 0.642444323986598
   }
 }
