@@ -66,7 +66,7 @@ public class PLIntersection3DBSP extends FunctionBase2{
 	    				geom2.getCoordinates()[i].getZ()
 	    		);
 	    		
-	    		// Line l = new Line(p1, p2, GeometryOperators3D.TOLERANCE);
+	    		Line l = new Line(p1, p2, GeometryOperators3D.TOLERANCE); // ONLY FOR DEBUGGING!!!
 	    		// lines.add(l);
                 if(t1.collisionDetect(t1, p1, p2)){
                     System.out.println("(Multi)Polygon -- Line(String) intersection: true");
