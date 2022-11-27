@@ -46,11 +46,11 @@ public class PLIntersection3DBSP extends FunctionBase2{
             List<Polygon> polygonsLst1 = BSPTree.node2Polygon(v1);
             BSPTree t1 = new BSPTree();
             t1.buildBSPTree(polygonsLst1);
-            try {
-                t1.traverse(t1, Vector3D.ZERO);
-            } catch (IOException e) {
-                System.out.println(e);
-            }
+            // try {
+            //     t1.traverse(t1, Vector3D.ZERO);
+            // } catch (IOException e) {
+            //     System.out.println(e);
+            // }
 
             System.out.println("=========================Line(String)=============================");
 	    	for(int i = 1; i < geom2.getCoordinates().length; i++) {

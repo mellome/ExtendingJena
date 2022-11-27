@@ -179,7 +179,7 @@ public class GeometryOperators3D {
 		// 	return Vector3D.distance(p, v); // Beyond the 'v' end of the segment
 		// else if (t > 1.0)
 		// 	return Vector3D.distance(p, w); // Beyond the 'w' end of the segment
-		if (t > 0.0){
+		if (t > 1.0){
 			return Vector3D.distance(p, w);
 		}
 		Vector3D projection = v.add(w.subtract(v).scalarMultiply(t)); // Projection falls on the segment
@@ -371,9 +371,10 @@ public class GeometryOperators3D {
 			double dis = distanceToSegment(interSectionPoint, v, w);
 			double roundingDis = Math.round(dis*100.0)/100.0;
 			// boolean disZero = dis < 1.0 && dis > 0.0;
-			boolean disZero = roundingDis == 0;
-			if ( disZero && contains3D(planeFaceArea, interSectionPoint)) { 
-				intersectionPoints.add(interSectionPoint);
+			boolean disZero = (roundingDis == 0.0 );
+			if ( disZero ) { // if ( disZero && contains3D(planeFaceArea, interSectionPoint))  pointInPolygon(interSectionPoint, planeFaceArea)
+				if ( pointInPolygon(interSectionPoint, planeFaceArea) )
+					intersectionPoints.add(interSectionPoint);
 			}
 		}
 		return intersectionPoints;
@@ -499,12 +500,23 @@ public class GeometryOperators3D {
 		Coordinate[] points = polygon.getCoordinates();
 		int i, j, nvert = points.length;
 		boolean c = false;
+		// check if the point is on the edges or interior
 		for(i = 0, j = nvert - 1; i < nvert; j = i++) {
 			// Coordinate pt = point.getCoordinate();
 			if( ( (points[i].getY() >= pt.getY() ) != (points[j].getY() >= pt.getY()) ) &&
 				(pt.getX() <= (points[j].getX() - points[i].getX()) * (pt.getY() - points[i].getY()) / (points[j].getY() - points[i].getY()) + points[i].getX())
 			)
 			c = !c;
+		}
+
+		// check if the point is landed on one of the vertices
+		for ( Coordinate vert : points){
+			double diffX = Math.round(Math.abs(vert.getX() - pt.getX())*100.0)/100.0;
+			double diffY = Math.round(Math.abs(vert.getY() - pt.getY())*100.0)/100.0;
+			double diffZ = Math.round(Math.abs(vert.getZ() - pt.getZ())*100.0)/100.0;
+			if ( diffX == 0.0 && diffY == 0.0 && diffZ == 0.0 ){
+				return true;
+			}
 		}
 		return c;
 	  }
