@@ -2,6 +2,7 @@ package rub.inf.bi.extension.jena.sparql.bspTree3D;
 
 import org.apache.jena.sparql.expr.NodeValue;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,11 +46,11 @@ public class PLIntersection3DBSP extends FunctionBase2{
             List<Polygon> polygonsLst1 = BSPTree.node2Polygon(v1);
             BSPTree t1 = new BSPTree();
             t1.buildBSPTree(polygonsLst1);
-            // try {
-            //     t1.traverse(t1, Vector3D.ZERO);
-            // } catch (IOException e) {
-            //     System.out.println(e);
-            // }
+            try {
+                t1.traverse(t1, Vector3D.ZERO);
+            } catch (IOException e) {
+                System.out.println(e);
+            }
 
             System.out.println("=========================Line(String)=============================");
 	    	for(int i = 1; i < geom2.getCoordinates().length; i++) {
@@ -67,7 +68,6 @@ public class PLIntersection3DBSP extends FunctionBase2{
 	    		);
 	    		
 	    		Line l = new Line(p1, p2, GeometryOperators3D.TOLERANCE); // ONLY FOR DEBUGGING!!!
-	    		// lines.add(l);
                 if(t1.collisionDetect(t1, p1, p2)){
                     System.out.println("(Multi)Polygon -- Line(String) intersection: true");
                     return NodeValue.TRUE;
@@ -78,6 +78,4 @@ public class PLIntersection3DBSP extends FunctionBase2{
         System.out.println("(Multi)Polygon -- Line(String) intersection: false");
         return NodeValue.FALSE;
     }
-        
-    
 }

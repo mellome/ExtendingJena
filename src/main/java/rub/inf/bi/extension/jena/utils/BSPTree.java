@@ -214,13 +214,17 @@ public class BSPTree implements Serializable{
         Polygon backPo = null;
         if(frontPtList.size() > 3){
             List <Coordinate> tempFrontPts =frontPtList;
-            tempFrontPts.add(frontPtList.get(0));
-            frontPo = createPolygon(frontPtList);
+            if (frontPtList.get(0) != frontPtList.get(frontPtList.size()-1)){ // test if first and last elements are the same
+                tempFrontPts.add(tempFrontPts.get(0));
+            }
+            frontPo = createPolygon(tempFrontPts);
         }
         if(backPtList.size() > 3){
             List <Coordinate> tempBackPts =backPtList;
-            tempBackPts.add(backPtList.get(0));
-            backPo = createPolygon(backPtList);
+            if (backPtList.get(0) != backPtList.get(backPtList.size()-1)){ // test if first and last elements are the same
+                tempBackPts.add(tempBackPts.get(0));
+            }
+            backPo = createPolygon(tempBackPts);
         }
 
         return new Polygon[]{
@@ -314,8 +318,12 @@ public class BSPTree implements Serializable{
         Vector3D p0 = partition.getOrigin();
         Vector3D p1 = point3D;
         Vector3D n = partition.getNormal();
-
-        return dotProductVector3D(n, subtractionVector3D(p0, p1));
+        double dis = Math.round(dotProductVector3D(n, subtractionVector3D(p0, p1))*100.0)/100.0;
+        if (Math.abs(dis) == 0.0){
+            return 0.0;
+        } 
+        return dis;
+        // return dotProductVector3D(n, subtractionVector3D(p0, p1));
     }
 
     /* 

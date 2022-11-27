@@ -86,7 +86,6 @@ public class GeometryOperators3D {
 					pt2V2,
 					pt2V3,
 					GeometryOperators3D.TOLERANCE);
-
 		}
 
 		if (rectanglePlaneA != null && rectanglePlaneB != null) {
@@ -96,20 +95,14 @@ public class GeometryOperators3D {
 				List<Vector3D> interT1 = intersection3DLP(l, rectangleA);
 				List<Vector3D> interT2 = intersection3DLP(l, rectangleB);
 				
-				// List<Vector3D> interT1T2 = Stream.concat(interT1.stream(), interT2.stream()).collect(Collectors.toList());  
-				// List<Vector3D> commonVectorLst = interT1.stream().filter(interT2::contains).collect(Collectors.toList());
-				// if (!commonVectorLst.isEmpty()) {
-				// 	intersectionPoints.addAll(interT1);
-				// 	intersectionPoints.addAll(interT2);
-				// }
 				if (interT1.size() > 0 && interT2.size() > 0) { // the commen intersection line must be instersected with the given geometries!!!
 					for(Vector3D ipA : interT1){
-						if(contains3D(rectangleB, ipA)){
+						if (pointInPolygon(ipA, rectangleB)){ // if(contains3D(rectangleB, ipA))
 							intersectionPoints.add(ipA);
 						}
 					}
-					for (Vector3D ipB : interT2){
-						if(contains3D(rectangleA, ipB)){
+					for (Vector3D ipB : interT2){ 
+						if (pointInPolygon(ipB, rectangleA)){ // if(contains3D(rectangleA, ipB))
 							intersectionPoints.add(ipB);
 						}
 					}
@@ -495,6 +488,27 @@ public class GeometryOperators3D {
 		return (d1 * d2) / 2.0;
 	}
 
+	/*
+	 * Point Inclusion in Polygon Test
+	 * 
+	 * Credits: 
+	 * 1. https://wrfranklin.org/Research/Short_Notes/pnpoly.html
+	 * 2. https://stackoverflow.com/questions/11716268/point-in-polygon-algorithm
+	 */
+	public static boolean pointInPolygon(Vector3D pt, Polygon polygon) {
+		Coordinate[] points = polygon.getCoordinates();
+		int i, j, nvert = points.length;
+		boolean c = false;
+		for(i = 0, j = nvert - 1; i < nvert; j = i++) {
+			// Coordinate pt = point.getCoordinate();
+			if( ( (points[i].getY() >= pt.getY() ) != (points[j].getY() >= pt.getY()) ) &&
+				(pt.getX() <= (points[j].getX() - points[i].getX()) * (pt.getY() - points[i].getY()) / (points[j].getY() - points[i].getY()) + points[i].getX())
+			)
+			c = !c;
+		}
+		return c;
+	  }
+
 	public static boolean contains3D(Vector3D lineStart, Vector3D lineEnd, Vector3D point) {
 		double distance = lineStart.distance(point) + lineEnd.distance(point);
 		double sumDistance = lineStart.distance(lineEnd);
@@ -657,10 +671,7 @@ public class GeometryOperators3D {
 					intersectionPoints.add(interSectionPoint);
 				}
 			}
-
 		}
-
 		return intersectionPoints;
 	}
-
 }
