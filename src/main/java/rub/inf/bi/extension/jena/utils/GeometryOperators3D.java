@@ -13,6 +13,7 @@ import org.apache.commons.math3.util.Precision;
 import org.apache.commons.math3.geometry.euclidean.threed.Euclidean3D;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.geom.LineSegment;
 import org.locationtech.jts.geom.LineString;
 import org.locationtech.jts.geom.MultiPolygon;
 import org.locationtech.jts.geom.Point;
@@ -33,6 +34,14 @@ public class GeometryOperators3D {
 
 	// Yifeng
 	// =================================================================
+	public static boolean pointOnSegment3D(Vector3D point, Vector3D s_point, Vector3D e_point) {
+		double dis = distanceToSegment(point, s_point, e_point);
+		if ( regulateDoubleShit(dis) == 0.0 ){
+			return true;
+		}
+		return false;
+	}
+
 	public static boolean contains3D(Geometry geom1, Geometry geom2) {
 		return geom1.contains(geom2);
 	}
@@ -305,10 +314,8 @@ public class GeometryOperators3D {
 
 				ArrayList<Vector3D> intersectionResult = intersection3D(triangle, line);
 				intersectionPoints.addAll(intersectionResult);
-
 			}
 		}
-
 		return intersectionPoints;
 
 	}
@@ -500,26 +507,59 @@ public class GeometryOperators3D {
 		Coordinate[] points = polygon.getCoordinates();
 		int i, j, nvert = points.length;
 		boolean c = false;
-		// check if the point is on the edges or interior
+
+		// check if the point is in interior
+		// ray-casting algorithm
 		for(i = 0, j = nvert - 1; i < nvert; j = i++) {
 			// Coordinate pt = point.getCoordinate();
-			if( ( (points[i].getY() >= pt.getY() ) != (points[j].getY() >= pt.getY()) ) &&
-				(pt.getX() <= (points[j].getX() - points[i].getX()) * (pt.getY() - points[i].getY()) / (points[j].getY() - points[i].getY()) + points[i].getX())
-			)
-			c = !c;
+
+			if( ( (points[i].getY() > pt.getY() ) != (points[j].getY() > pt.getY()) ) &&
+				(pt.getX() < (points[j].getX() - points[i].getX()) * (pt.getY() - points[i].getY()) / (points[j].getY() - points[i].getY()) + points[i].getX())
+			){
+				c = !c;
+			}
+			// if( ( (regulateDoubleShit(points[i].getY()) >= regulateDoubleShit(pt.getY()) ) != (regulateDoubleShit(points[j].getY()) >= regulateDoubleShit(pt.getY())) ) 
+			// && (regulateDoubleShit(pt.getX()) <= (regulateDoubleShit(points[j].getX()) - regulateDoubleShit(points[i].getX())) * (regulateDoubleShit(pt.getY()) - regulateDoubleShit(points[i].getY())) / (regulateDoubleShit(points[j].getY()) - regulateDoubleShit(points[i].getY())) + regulateDoubleShit(points[i].getX()))
+			// ){
+			// 	c = !c;
+			// }
+		}
+
+		// check if the point is landed on one of the edges
+		if ( c == false ) {
+			// int a = points.length-1; // last point
+			for(int s = points.length-1, e = 0 ; e < points.length ; s=e, e++ ) {
+				Vector3D s_pt =  new Vector3D(points[s].getX(),  points[s].getY(),  points[s].getZ());
+				Vector3D e_pt =  new Vector3D(points[e].getX(),  points[e].getY(),  points[e].getZ());
+				if (pointOnSegment3D(pt, s_pt, e_pt)){
+					return true;
+				}
+			}
 		}
 
 		// check if the point is landed on one of the vertices
-		for ( Coordinate vert : points){
-			double diffX = Math.round(Math.abs(vert.getX() - pt.getX())*100.0)/100.0;
-			double diffY = Math.round(Math.abs(vert.getY() - pt.getY())*100.0)/100.0;
-			double diffZ = Math.round(Math.abs(vert.getZ() - pt.getZ())*100.0)/100.0;
-			if ( diffX == 0.0 && diffY == 0.0 && diffZ == 0.0 ){
-				return true;
+		if ( c == false ) {
+			for ( Coordinate vert : points){
+				double diffX = Math.round(Math.abs(vert.getX() - pt.getX())*100.0)/100.0;
+				double diffY = Math.round(Math.abs(vert.getY() - pt.getY())*100.0)/100.0;
+				double diffZ = Math.round(Math.abs(vert.getZ() - pt.getZ())*100.0)/100.0;
+				if ( diffX == 0.0 && diffY == 0.0 && diffZ == 0.0 ){
+					return true;
+				}
 			}
-		}
+		} 
 		return c;
-	  }
+	}
+
+	/*
+	 * change the sick value "-0.00000" to "0.0"
+	 */
+	public static double regulateDoubleShit(double shitValue){
+		if ((Math.round(Math.abs(shitValue)*100.0)/100.0) == 0.0){
+			return 0.0;
+		}
+		return shitValue;
+	}
 
 	public static boolean contains3D(Vector3D lineStart, Vector3D lineEnd, Vector3D point) {
 		double distance = lineStart.distance(point) + lineEnd.distance(point);
