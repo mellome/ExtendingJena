@@ -1397,7 +1397,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\nclr.AddReference('MeshToolkit')\r\nfrom Autodesk.Dynamo.MeshToolkit import *\r\n\r\n# Common Geometry Types\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nMULTIPOLYGON = \"MULTIPOLYGON\"\r\nMULTIPOLYGON_ROTATION = \"MULTIPOLYGON_ROTATION\"\r\nSPHERE = \"MULTIPOLYGON_SPHERE\"\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\r\n# Input \r\nNUM_MULTIPOLYGON = IN[0]\r\n#NUM_MULTIPOLYGON = 50\r\n#num = IN[1]\r\n\r\n# output container\r\ngeo_type_lst = []\r\ngeo_lst = []\r\n\r\n# Point\r\n\r\n# LineString\r\n\"\"\"\r\nc=1\r\ngeo_data = Arc.ByThreePoints( Point.ByCoordinates(20, 20, 2),\r\n                            Point.ByCoordinates(25, 25, 2),\r\n                            Point.ByCoordinates(40, 10, 2))\r\ngeo_name = LINESTRING + str(c)\r\ngeo_type = LINESTRING\r\ngeo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n\r\n# Polygon\r\n\r\n# Multipolygon\r\n\"\"\"\r\ni=1\r\nc=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    p1 = Point.ByCoordinates(i, i, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+i, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\r\ni=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    j = i + 10\r\n    p1 = Point.ByCoordinates(i, j, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+j, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n#################################################\r\n# Polygon\r\np = 1\r\npt_lst = [Point.ByCoordinates(-4, 6, 0),\r\n          Point.ByCoordinates(-9, 6, 3),  \r\n          Point.ByCoordinates(-7, 6, 6)]\r\ngeo_data_p1 = pt_lst\r\ngeo_name_p1 = POLYGON + str(p)\r\ngeo_type_p1 = POLYGON\r\ngeometry_p1 = Surface.ByPerimeterPoints(pt_lst)\r\ngeo_lst.append((geo_data_p1, geo_name_p1, geo_type_p1, geometry_p1))\r\n\r\n\r\np = 2\r\npt_lst = [Point.ByCoordinates(-4, 10, 0),\r\n          Point.ByCoordinates(-9, 10, 3),  \r\n          Point.ByCoordinates(-7, 8, 6)]\r\ngeo_data_p2 = pt_lst\r\ngeo_name_p2 = POLYGON + str(p)\r\ngeo_type_p2 = POLYGON\r\ngeometry_p2 = Surface.ByPerimeterPoints(pt_lst)\r\ngeo_lst.append((geo_data_p2, geo_name_p2, geo_type_p2, geometry_p2))\r\n#################################################\r\n# Cubes\r\nc = 1\r\np11 = Point.ByCoordinates(0, 0, 0)\r\np12 = Point.ByCoordinates(3, 3, 3)\r\ngeo_data1 = Cuboid.ByCorners(p11, p12)\r\ngeo_name1 = MULTIPOLYGON + str(c)\r\ngeo_type1 = MULTIPOLYGON\r\n#geo_tag = Tag.CreateTag()\r\ngeo_lst.append((geo_data1, geo_name1, geo_type1))\r\n\r\nc = 2\r\np21 = Point.ByCoordinates(3, 3, 3)\r\np22 = Point.ByCoordinates(6, 6, 6)\r\ngeo_data2 = Cuboid.ByCorners(p21, p22)\r\ngeo_name2 = MULTIPOLYGON + str(c)\r\ngeo_type2 = MULTIPOLYGON\r\ngeo_lst.append((geo_data2, geo_name2, geo_type2))\r\n\r\nc = 3\r\np31 = Point.ByCoordinates(6, 6, 3)\r\np32 = Point.ByCoordinates(9, 9, 6)\r\ngeo_data3 = Cuboid.ByCorners(p31, p32)\r\ngeo_name3 = MULTIPOLYGON + str(c)\r\ngeo_type3 = MULTIPOLYGON\r\ngeo_lst.append((geo_data3, geo_name3, geo_type3))\r\n\r\nc = 4\r\np41 = Point.ByCoordinates(-3, 0, 0)\r\np42 = Point.ByCoordinates(-6, -3, 3)\r\ngeo_data4 = Cuboid.ByCorners(p41, p42)\r\ngeo_name4 = MULTIPOLYGON + str(c)\r\ngeo_type4 = MULTIPOLYGON\r\ngeo_lst.append((geo_data4, geo_name4, geo_type4))\r\n\r\nc = 5\r\np51 = Point.ByCoordinates(-4, 0, 0)\r\np52 = Point.ByCoordinates(-7, -3, 3)\r\ngeo_data5 = Cuboid.ByCorners(p51, p52)\r\ngeo_name5 = MULTIPOLYGON + str(c)\r\ngeo_type5 = MULTIPOLYGON\r\ngeo_lst.append((geo_data5, geo_name5, geo_type5))\r\n\r\nc = 6\r\np61 = Point.ByCoordinates(-3, 5, 0)\r\np62 = Point.ByCoordinates(0, 8, 3)\r\ngeo_data6 = Cuboid.ByCorners(p61, p62)\r\ngeo_name6 = MULTIPOLYGON + str(c)\r\ngeo_type6 = MULTIPOLYGON\r\ngeo_lst.append((geo_data6, geo_name6, geo_type6))\r\n\r\nc = 7\r\np71 = Point.ByCoordinates(-8, 5, 0)\r\np72 = Point.ByCoordinates(-5, 8, 3)\r\ngeo_data7 = Cuboid.ByCorners(p71, p72)\r\ngeo_name7 = MULTIPOLYGON + str(c)\r\ngeo_type7 = MULTIPOLYGON\r\ngeo_lst.append((geo_data7, geo_name7, geo_type7))\r\n\r\nc = 8\r\np1 = Point.ByCoordinates(-13, 10, 0)\r\np2 = Point.ByCoordinates(-10, 3, 3)\r\n\r\ncube = Cuboid.ByCorners(p1, p2)\r\nold_cs = CoordinateSystem.Identity()\r\nnew_cs = CoordinateSystem.Identity()\r\nnew_cs2 = new_cs.Rotate(p1, Vector.ByCoordinates(1,0,3), 25)\r\ngeometry = cube.Transform(old_cs, new_cs2)\r\n\r\ngeo_data = geometry.Faces\r\ngeo_name = MULTIPOLYGON + str(c)\r\ngeo_type = MULTIPOLYGON_ROTATION\r\ngeo_lst.append((geo_data, geo_name, geo_type, geometry))\r\n\r\nc = 9\r\np_s = Point.ByCoordinates(-15, 8, 0)\r\np_e = Point.ByCoordinates(-20, 3, 5)\r\ngeo_data = Cuboid.ByCorners(p_s, p_e)\r\ngeo_name = MULTIPOLYGON + str(c)\r\ngeo_type = MULTIPOLYGON\r\ngeo_lst.append((geo_data, geo_name, geo_type))\r\n\r\n#################################################\r\n# Sphere - (c4, c5) \r\ns = c + 1\r\n\r\ncentroid_pt = Point.ByCoordinates(-7, -3, 6)\r\ngeometry = Sphere.ByCenterPointRadius(centroid_pt, radius=3)\r\n\r\nsphere_mesh = Mesh.ByGeometry(geometry)\r\nmesh_lst = Mesh.Explode(sphere_mesh)\r\n\r\nmesh_vert_lst = []\r\nfor mesh in mesh_lst:\r\n    mesh_vert_lst.append(Mesh.Vertices(mesh))\r\n\r\ngeo_data = mesh_vert_lst\r\ngeo_name = MULTIPOLYGON + str(s)\r\ngeo_type = SPHERE\r\n\r\n#geo_data6 = mesh_sphere\r\ngeo_lst.append((geo_data, geo_name, geo_type, geometry))\r\n\r\n#################################################\r\n# LineString\r\nl = 1\r\npt_lst =   [Point.ByCoordinates(10, 10, 0),\r\n            Point.ByCoordinates(5, 5, 0),\r\n            Point.ByCoordinates(5, 3, 0),\r\n            Point.ByCoordinates(-3, 5, 0),\r\n            Point.ByCoordinates(-7, 0, 0),\r\n            Point.ByCoordinates(-12, 6, 0),\r\n            Point.ByCoordinates(-15, 6, 0),\r\n            Point.ByCoordinates(-15, 1, 0)]\r\n\r\ngeo_data_l1 = pt_lst\r\ngeo_name_l1 = LINESTRING + str(l)\r\ngeo_type_l1 = LINESTRING\r\ngeometry_l1 = PolyCurve.ByPoints(pt_lst, False)\r\ngeo_lst.append((geo_data_l1, geo_name_l1, geo_type_l1, geometry_l1))\r\n\r\n# output\r\nOUT = geo_lst\r\n\r\n",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\nclr.AddReference('MeshToolkit')\r\nfrom Autodesk.Dynamo.MeshToolkit import *\r\n\r\n# Common Geometry Types\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nMULTIPOLYGON = \"MULTIPOLYGON\"\r\nMULTIPOLYGON_ROTATION = \"MULTIPOLYGON_ROTATION\"\r\nSPHERE = \"MULTIPOLYGON_SPHERE\"\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\r\n# Input \r\nNUM_MULTIPOLYGON = IN[0]\r\n#NUM_MULTIPOLYGON = 50\r\n#num = IN[1]\r\n\r\n# output container\r\ngeo_type_lst = []\r\ngeo_lst = []\r\n\r\n# Point\r\n\r\n# LineString\r\n\"\"\"\r\nc=1\r\ngeo_data = Arc.ByThreePoints( Point.ByCoordinates(20, 20, 2),\r\n                            Point.ByCoordinates(25, 25, 2),\r\n                            Point.ByCoordinates(40, 10, 2))\r\ngeo_name = LINESTRING + str(c)\r\ngeo_type = LINESTRING\r\ngeo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n\r\n# Polygon\r\n\r\n# Multipolygon\r\n\"\"\"\r\ni=1\r\nc=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    p1 = Point.ByCoordinates(i, i, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+i, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\r\ni=1\r\nfor i in range(-NUM_MULTIPOLYGON, NUM_MULTIPOLYGON, 4):\r\n    c+=1\r\n    j = i + 10\r\n    p1 = Point.ByCoordinates(i, j, 0)\r\n    p2 = Point.ByCoordinates(3+i, 3+j, 3)\r\n    \r\n    geo_data = Cuboid.ByCorners(p1, p2)\r\n    geo_name = MULTIPOLYGON + str(c)\r\n    geo_type = MULTIPOLYGON\r\n    geo_lst.append((geo_data, geo_name, geo_type))\r\n\"\"\"\r\n#################################################\r\n# Polygon\r\np = 1\r\npt_lst = [Point.ByCoordinates(-4, 6, 0),\r\n          Point.ByCoordinates(-9, 6, 3),  \r\n          Point.ByCoordinates(-7, 6, 6)]\r\ngeo_data_p1 = pt_lst\r\ngeo_name_p1 = POLYGON + str(p)\r\ngeo_type_p1 = POLYGON\r\ngeometry_p1 = Surface.ByPerimeterPoints(pt_lst)\r\ngeo_lst.append((geo_data_p1, geo_name_p1, geo_type_p1, geometry_p1))\r\n\r\n\r\np = 2\r\npt_lst = [Point.ByCoordinates(-4, 10, 0),\r\n          Point.ByCoordinates(-9, 10, 3),  \r\n          Point.ByCoordinates(-7, 8, 6)]\r\ngeo_data_p2 = pt_lst\r\ngeo_name_p2 = POLYGON + str(p)\r\ngeo_type_p2 = POLYGON\r\ngeometry_p2 = Surface.ByPerimeterPoints(pt_lst)\r\ngeo_lst.append((geo_data_p2, geo_name_p2, geo_type_p2, geometry_p2))\r\n#################################################\r\n# Cubes\r\nc = 1\r\np11 = Point.ByCoordinates(0, 0, 0)\r\np12 = Point.ByCoordinates(3, 3, 3)\r\ngeo_data1 = Cuboid.ByCorners(p11, p12)\r\ngeo_name1 = MULTIPOLYGON + str(c)\r\ngeo_type1 = MULTIPOLYGON\r\n#geo_tag = Tag.CreateTag()\r\ngeo_lst.append((geo_data1, geo_name1, geo_type1))\r\n\r\nc = 2\r\np21 = Point.ByCoordinates(3, 3, 3)\r\np22 = Point.ByCoordinates(6, 6, 6)\r\ngeo_data2 = Cuboid.ByCorners(p21, p22)\r\ngeo_name2 = MULTIPOLYGON + str(c)\r\ngeo_type2 = MULTIPOLYGON\r\ngeo_lst.append((geo_data2, geo_name2, geo_type2))\r\n\r\nc = 3\r\np31 = Point.ByCoordinates(6, 6, 3)\r\np32 = Point.ByCoordinates(9, 9, 6)\r\ngeo_data3 = Cuboid.ByCorners(p31, p32)\r\ngeo_name3 = MULTIPOLYGON + str(c)\r\ngeo_type3 = MULTIPOLYGON\r\ngeo_lst.append((geo_data3, geo_name3, geo_type3))\r\n\r\nc = 4\r\np41 = Point.ByCoordinates(-3, 0, 0)\r\np42 = Point.ByCoordinates(-6, -3, 3)\r\ngeo_data4 = Cuboid.ByCorners(p41, p42)\r\ngeo_name4 = MULTIPOLYGON + str(c)\r\ngeo_type4 = MULTIPOLYGON\r\ngeo_lst.append((geo_data4, geo_name4, geo_type4))\r\n\r\nc = 5\r\np51 = Point.ByCoordinates(-4, 0, 0)\r\np52 = Point.ByCoordinates(-7, -3, 3)\r\ngeo_data5 = Cuboid.ByCorners(p51, p52)\r\ngeo_name5 = MULTIPOLYGON + str(c)\r\ngeo_type5 = MULTIPOLYGON\r\ngeo_lst.append((geo_data5, geo_name5, geo_type5))\r\n\r\nc = 6\r\np61 = Point.ByCoordinates(-3, 5, 0)\r\np62 = Point.ByCoordinates(0, 8, 3)\r\ngeo_data6 = Cuboid.ByCorners(p61, p62)\r\ngeo_name6 = MULTIPOLYGON + str(c)\r\ngeo_type6 = MULTIPOLYGON\r\ngeo_lst.append((geo_data6, geo_name6, geo_type6))\r\n\r\nc = 7\r\np71 = Point.ByCoordinates(-8, 5, 0)\r\np72 = Point.ByCoordinates(-5, 8, 3)\r\ngeo_data7 = Cuboid.ByCorners(p71, p72)\r\ngeo_name7 = MULTIPOLYGON + str(c)\r\ngeo_type7 = MULTIPOLYGON\r\ngeo_lst.append((geo_data7, geo_name7, geo_type7))\r\n\r\nc = 8\r\np1 = Point.ByCoordinates(-13, 10, 0)\r\np2 = Point.ByCoordinates(-10, 3, 3)\r\n\r\ncube = Cuboid.ByCorners(p1, p2)\r\nold_cs = CoordinateSystem.Identity()\r\nnew_cs = CoordinateSystem.Identity()\r\nnew_cs2 = new_cs.Rotate(p1, Vector.ByCoordinates(1,0,3), 25)\r\ngeometry = cube.Transform(old_cs, new_cs2)\r\n\r\ngeo_data = geometry.Faces\r\ngeo_name = MULTIPOLYGON + str(c)\r\ngeo_type = MULTIPOLYGON_ROTATION\r\ngeo_lst.append((geo_data, geo_name, geo_type, geometry))\r\n\r\nc = 9\r\np_s = Point.ByCoordinates(-15, 8, 0)\r\np_e = Point.ByCoordinates(-20, 3, 5)\r\ngeo_data = Cuboid.ByCorners(p_s, p_e)\r\ngeo_name = MULTIPOLYGON + str(c)\r\ngeo_type = MULTIPOLYGON\r\ngeo_lst.append((geo_data, geo_name, geo_type))\r\n\r\n#################################################\r\n# Sphere - (c4, c5) \r\ns = 1\r\nc = 10\r\n\r\ncentroid_pt = Point.ByCoordinates(-7, -3, 6)\r\ngeometry = Sphere.ByCenterPointRadius(centroid_pt, radius=3)\r\n\r\nsphere_mesh = Mesh.ByGeometry(geometry)\r\nmesh_lst = Mesh.Explode(sphere_mesh)\r\n\r\nmesh_vert_lst = []\r\nfor mesh in mesh_lst:\r\n    mesh_vert_lst.append(Mesh.Vertices(mesh))\r\n\r\ngeo_data = mesh_vert_lst\r\ngeo_name = MULTIPOLYGON + str(c)\r\ngeo_type = SPHERE\r\ngeo_lst.append((geo_data, geo_name, geo_type, geometry))\r\n\r\n\r\ns = 2\r\nc = 11\r\n\r\ncentroid_pt = Point.ByCoordinates(-20, 3, 5)\r\ngeometry = Sphere.ByCenterPointRadius(centroid_pt, radius=2)\r\n\r\nsphere_mesh = Mesh.ByGeometry(geometry)\r\nmesh_lst = Mesh.Explode(sphere_mesh)\r\n\r\nmesh_vert_lst = []\r\nfor mesh in mesh_lst:\r\n    mesh_vert_lst.append(Mesh.Vertices(mesh))\r\n\r\ngeo_data = mesh_vert_lst\r\ngeo_name = MULTIPOLYGON + str(c)\r\ngeo_type = SPHERE\r\n\r\ngeo_lst.append((geo_data, geo_name, geo_type, geometry))\r\n\r\n#################################################\r\n# LineString\r\nl = 1\r\npt_lst =   [Point.ByCoordinates(10, 10, 0),\r\n            Point.ByCoordinates(5, 5, 0),\r\n            Point.ByCoordinates(5, 3, 0),\r\n            Point.ByCoordinates(-3, 5, 0),\r\n            Point.ByCoordinates(-7, 0, 0),\r\n            Point.ByCoordinates(-12, 6, 0),\r\n            Point.ByCoordinates(-15, 6, 0),\r\n            Point.ByCoordinates(-15, 1, 0)]\r\n\r\ngeo_data_l1 = pt_lst\r\ngeo_name_l1 = LINESTRING + str(l)\r\ngeo_type_l1 = LINESTRING\r\ngeometry_l1 = PolyCurve.ByPoints(pt_lst, False)\r\ngeo_lst.append((geo_data_l1, geo_name_l1, geo_type_l1, geometry_l1))\r\n\r\n# output\r\nOUT = geo_lst\r\n\r\n",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "ed9a22b47c4f467485b00c23697814cc",
@@ -1429,7 +1429,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n###########################################################\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n############################################################\r\n# Input\r\ngeo_lst = IN[0]\r\nres_lst = IN[1]\r\nswitch = IN[2]\r\n\r\n#################################################\r\n# Highlighter\r\ncolored_geo_lst = []\r\nif switch:\r\n    color = Color.ByARGB(255,255,0,0) # red\r\n    \r\n    for geo in geo_lst:\r\n        geo_name = geo[1]\r\n        if inList(res_lst, geo_name):  \r\n            geo_data = geo[0]\r\n            colored_geo = ''\r\n            if (geo[2].upper() == \"LINESTRING\" \r\n            or geo[2].upper() == \"POLYGON\"\r\n            or geo[2].upper() == \"MULTIPOLYGON_ROTATION\"):\r\n                colored_geo = GeometryColor.ByGeometryColor(geo[3], color)\r\n            else:\r\n                colored_geo = GeometryColor.ByGeometryColor(geo_data, color)\r\n            colored_geo_lst.append(colored_geo)\r\n\r\n#################################################\r\nOUT = colored_geo_lst\r\n",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n###########################################################\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n############################################################\r\n# Input\r\ngeo_lst = IN[0]\r\nres_lst = IN[1]\r\nswitch = IN[2]\r\n\r\n#################################################\r\n# Highlighter\r\ncolored_geo_lst = []\r\nif switch:\r\n    color = Color.ByARGB(255,255,0,0) # red\r\n    \r\n    for geo in geo_lst:\r\n        geo_name = geo[1]\r\n        if inList(res_lst, geo_name):  \r\n            geo_data = geo[0]\r\n            colored_geo = ''\r\n            if (geo[2].upper() == \"LINESTRING\" \r\n            or geo[2].upper() == \"POLYGON\"\r\n            or geo[2].upper() == \"MULTIPOLYGON_ROTATION\"\r\n            or geo[2].upper() == \"MULTIPOLYGON_SPHERE\" ):\r\n                colored_geo = GeometryColor.ByGeometryColor(geo[3], color)\r\n            else:\r\n                colored_geo = GeometryColor.ByGeometryColor(geo_data, color)\r\n            colored_geo_lst.append(colored_geo)\r\n\r\n#################################################\r\nOUT = colored_geo_lst\r\n",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "15b03d534ea443bc817c75dcd2beca67",
@@ -1479,7 +1479,7 @@
     {
       "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
       "NodeType": "BooleanInputNode",
-      "InputValue": false,
+      "InputValue": true,
       "Id": "b748c56692a542cf82608f2f5de3368e",
       "Inputs": [],
       "Outputs": [
@@ -1652,12 +1652,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "POINT = \"POINT\";\nMULTIPOINT = \"MULTIPOINT\";\nLINESTRING = \"LINESTRING\";\nMULTILINESTRING = \"MULTILINESTRING\";\nPOLYGON = \"POLYGON\";\nMULTIPOLYGON = \"MULTIPOLYGON\";\nMULTIPOLYGON_ROTATION = \"MULTIPOLYGON_ROTATION\";\nSPHERE = \"MULTIPOLYGON-SPHERE\";\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\ngeo_sel_lst=\n[\"MULTIPOLYGON7\"];",
+      "Code": "POINT = \"POINT\";\nMULTIPOINT = \"MULTIPOINT\";\nLINESTRING = \"LINESTRING\";\nMULTILINESTRING = \"MULTILINESTRING\";\nPOLYGON = \"POLYGON\";\nMULTIPOLYGON = \"MULTIPOLYGON\";\nMULTIPOLYGON_ROTATION = \"MULTIPOLYGON_ROTATION\";\nSPHERE = \"MULTIPOLYGON-SPHERE\";\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\ngeo_sel_lst=\n[\"MULTIPOLYGON5\"];",
       "Id": "fb87db2584334ccaae2d4b50cf6a3ee0",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "95827813ac454c82a5eab7086811d3b0",
+          "Id": "ac84634dea9f4c41a9247983a23630f2",
           "Name": "",
           "Description": "POINT",
           "UsingDefaultValue": false,
@@ -1666,7 +1666,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "d78d1ad2ff4644abb1d265d8c332767d",
+          "Id": "ce7cb61794f24c2d9a1d1fdf6589bbca",
           "Name": "",
           "Description": "MULTIPOINT",
           "UsingDefaultValue": false,
@@ -1675,7 +1675,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "85684dce7e0f4818b4f18561484cad59",
+          "Id": "3de6c97bbcd046b5a7bd021f6a163333",
           "Name": "",
           "Description": "LINESTRING",
           "UsingDefaultValue": false,
@@ -1684,7 +1684,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "9547f25f47534edf8f6345ccd0cdf3ff",
+          "Id": "49af685fa0f44b1eb87185e007f69b92",
           "Name": "",
           "Description": "MULTILINESTRING",
           "UsingDefaultValue": false,
@@ -1693,7 +1693,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "448a417fa5884a13a7fbe3d9f9533629",
+          "Id": "872f922d080545c786164124979cb896",
           "Name": "",
           "Description": "POLYGON",
           "UsingDefaultValue": false,
@@ -1702,7 +1702,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "33ddc9d680be4526a9cd085dcafee8e3",
+          "Id": "40cbe787d5a24910a7fe45dc11d3620a",
           "Name": "",
           "Description": "MULTIPOLYGON",
           "UsingDefaultValue": false,
@@ -1711,7 +1711,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "852b33b7f8204f309738e173ee3f61ac",
+          "Id": "99f11461f9a64fd0a866fb96359685f4",
           "Name": "",
           "Description": "MULTIPOLYGON_ROTATION",
           "UsingDefaultValue": false,
@@ -1720,7 +1720,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "e482884cd344421aa45fefd719dbc3e1",
+          "Id": "70b4a7f170d74fada485a03f75d8faf3",
           "Name": "",
           "Description": "SPHERE",
           "UsingDefaultValue": false,
@@ -1729,7 +1729,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "274bcd5e1b02494fb7f8fd1089c3b4e5",
+          "Id": "0173631215bf4f8cb47871633ccb71e6",
           "Name": "",
           "Description": "GEOMETRYCOLLECTION",
           "UsingDefaultValue": false,
@@ -1738,7 +1738,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "cd8104982c3347bf9fb48ab93829132c",
+          "Id": "7b839acc4d3f42a787f66ce06678200b",
           "Name": "",
           "Description": "geo_sel_lst",
           "UsingDefaultValue": false,
@@ -2195,7 +2195,7 @@
     {
       "Start": "5fe36685da954660a004fb6cb7cd2e82",
       "End": "ed6464b138724d0181567f790d503ba9",
-      "Id": "d8d4f6b5eeaa41aa960396f3cf1393ff"
+      "Id": "7f60a7eda6d24006aa5d17b56eef9f45"
     },
     {
       "Start": "28ec952b8c534477af8a2d155982a262",
@@ -2273,9 +2273,9 @@
       "Id": "fab9ddb5e7594ffe890b85d213247275"
     },
     {
-      "Start": "cd8104982c3347bf9fb48ab93829132c",
+      "Start": "7b839acc4d3f42a787f66ce06678200b",
       "End": "50de933f946b4adf9404500c7659cc24",
-      "Id": "6d59103a617b492bb9e66afa5a632925"
+      "Id": "f0f625a38a854a95bf5cdae6535b6ff2"
     },
     {
       "Start": "769a888447694d52843db4a01a65b6da",
@@ -2354,15 +2354,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -28.664871215820313,
-      "EyeY": 20.156711578369141,
-      "EyeZ": 0.040178298950195313,
-      "LookX": 21.577201843261719,
-      "LookY": -23.111896514892578,
-      "LookZ": -9.2239131927490234,
-      "UpX": 0.51327317953109741,
-      "UpY": 0.83138877153396606,
-      "UpZ": -0.21293999254703522
+      "EyeX": -35.670654296875,
+      "EyeY": 14.421408653259277,
+      "EyeZ": -12.73851203918457,
+      "LookX": 24.433921813964844,
+      "LookY": -11.571124076843262,
+      "LookZ": 11.130826950073242,
+      "UpX": 0.19516484439373016,
+      "UpY": 0.97625726461410522,
+      "UpZ": 0.093982324004173279
     },
     "NodeViews": [
       {
@@ -2611,7 +2611,7 @@
         "Id": "34c3ec044e2643248116b32cbc85bc9f",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Excluded": false,
+        "Excluded": true,
         "X": 2016.1837134636362,
         "Y": 2454.5167866796564
       },
@@ -2712,8 +2712,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1072.8338315316255,
-        "Y": 779.92603801075484
+        "X": 1091.3729483448258,
+        "Y": 777.73253096469057
       },
       {
         "ShowGeometry": true,
@@ -2722,7 +2722,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1297.9254600181584,
+        "X": 1298.2347701476549,
         "Y": 1080.0248540865045
       },
       {
@@ -2773,7 +2773,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 1540.4519388295203,
-        "Y": 1549.52093362478
+        "Y": 1548.524383985196
       },
       {
         "ShowGeometry": true,
@@ -2783,7 +2783,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 1056.6697073170694,
-        "Y": 1823.15502952213
+        "Y": 1822.1584798825461
       },
       {
         "ShowGeometry": true,
@@ -2792,8 +2792,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1051.9715402719185,
-        "Y": 1510.48337421538
+        "X": 1035.0301963989912,
+        "Y": 1507.4937252966283
       },
       {
         "ShowGeometry": true,
@@ -2803,7 +2803,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 1791.6832309173303,
-        "Y": 1543.10495529022
+        "Y": 1542.1084056506361
       },
       {
         "ShowGeometry": true,
@@ -2813,7 +2813,7 @@
         "IsSetAsOutput": false,
         "Excluded": false,
         "X": 2047.8547178748104,
-        "Y": 1547.37736402256
+        "Y": 1546.380814382976
       },
       {
         "ShowGeometry": true,
@@ -2923,7 +2923,7 @@
         "Height": 861.44646036994368,
         "FontSize": 36.0,
         "InitialTop": 99.67744193056717,
-        "InitialHeight": 1010.425272820787,
+        "InitialHeight": 823.0550890341234,
         "TextblockHeight": 43.0,
         "Background": "#FFFFAA45"
       },
@@ -2960,11 +2960,11 @@
         ],
         "Left": -380.79370799966853,
         "Top": 1023.6639164500605,
-        "Width": 1223.6631695935255,
-        "Height": 363.5,
+        "Width": 1244.6631695935255,
+        "Height": 431.0,
         "FontSize": 36.0,
         "InitialTop": 1076.6639164500605,
-        "InitialHeight": 284.04866368556782,
+        "InitialHeight": 285.6934410495121,
         "TextblockHeight": 43.0,
         "Background": "#FF48B9FF"
       },
@@ -2982,7 +2982,7 @@
         "Height": 341.56112360262114,
         "FontSize": 36.0,
         "InitialTop": 1080.0248540865045,
-        "InitialHeight": 148.91762723415081,
+        "InitialHeight": 155.56112360262114,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
@@ -2996,13 +2996,13 @@
           "cf3db25f6480433ebb3b8afa03322ecf",
           "eee283b1c55244568a077e84693ca07b"
         ],
-        "Left": 1041.9715402719185,
-        "Top": 1471.48337421538,
-        "Width": 1123.8831776028919,
-        "Height": 419.67165530674993,
+        "Left": 1025.0301963989912,
+        "Top": 1468.4937252966283,
+        "Width": 1140.8245214758192,
+        "Height": 421.66475458591776,
         "FontSize": 24.0,
-        "InitialTop": 1510.48337421538,
-        "InitialHeight": 457.671655306751,
+        "InitialTop": 1507.4937252966283,
+        "InitialHeight": 459.66475458591776,
         "TextblockHeight": 29.0,
         "Background": "#FFB0C4DE"
       },
@@ -3047,16 +3047,16 @@
         "Left": 1554.8265591961,
         "Top": 2386.4236986681822,
         "Width": 2695.8503116333404,
-        "Height": 846.32358933399655,
+        "Height": 773.10790078621039,
         "FontSize": 24.0,
         "InitialTop": 2453.9236986681822,
-        "InitialHeight": 808.82358933399655,
+        "InitialHeight": 601.12273911840566,
         "TextblockHeight": 57.5,
         "Background": "#FFD3D3D3"
       }
     ],
-    "X": -433.18483212875583,
-    "Y": -243.29836014955526,
-    "Zoom": 0.501731153310878
+    "X": -857.60739812629117,
+    "Y": -464.44034953444805,
+    "Zoom": 0.82180645717529943
   }
 }
