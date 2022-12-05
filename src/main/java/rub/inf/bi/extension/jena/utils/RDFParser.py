@@ -1,3 +1,4 @@
+import json
 from xml.dom.minidom import parse, parseString
 
 dir_mac = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/cubeSphere.rdf"
@@ -184,6 +185,12 @@ def inList(res_lst, geo):
         return True
     return False
 
+# def writeFile(dict, file=" "):
+#     # Serializing json
+#     json_object = json.dumps(dict)
+#     # Writing to sample.json
+#     with open("sample.json", "w") as outfile:
+#         outfile.write(json_object)
 
 if __name__ == "__main__":
     rdfParsing2GeoData()
