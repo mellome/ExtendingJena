@@ -20,7 +20,11 @@ def rdfParsing2GeoData(path=dir):
     for i in range(1, len(rdf_desc_lst)): # first description element (root element) should be removed.
         descr_el = rdf_desc_lst[i]
         geo_name_num = descr_el.attributes._attrs['rdf:about'].nodeValue.split('#')[1]
-        geo_wkt_data = descr_el.childNodes[1].firstChild.data
+        geo_wkt_data = ""
+        try:
+            geo_wkt_data = descr_el.childNodes[0].firstChild.data
+        except:
+            geo_wkt_data = descr_el.childNodes[1].firstChild.data
         geo_algebra_lst = []
 
         if ( geo_name_num.find('POINT') != -1 or
