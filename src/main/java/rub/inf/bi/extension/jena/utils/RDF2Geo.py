@@ -1,14 +1,6 @@
 import sys
-import clr
 import random
-clr.AddReference('ProtoGeometry')
-from Autodesk.DesignScript.Geometry import *
-clr.AddReference('DSCoreNodes')
-from DSCore import *
-clr.AddReference('GeometryColor')
-from Modifiers import GeometryColor
-clr.AddReference('MeshToolkit')
-from Autodesk.Dynamo.MeshToolkit import *
+import JSONWriterLoader
 
 # Common Geometry Types
 POINT = "POINT";
@@ -29,8 +21,8 @@ NUM_LINESTRING = 10
 NUM_POINT = 10
 
 # Input 
-json_file = IN[0]
-switch_generator = IN[1]
+dir = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\JSON\\xxl3DScene.json"
+json_file = JSONWriterLoader.json_loader(dir)
 
 # output container
 geo_lst = []
@@ -42,10 +34,6 @@ geo_mPol_lst = []
 geo_sph_lst = []
 
 geo_combi_lst = []
-
-
-if switch_generator == False:
-    OUT = ""
 
 for geo_name, geo_data in json_file.items():
     
@@ -75,6 +63,7 @@ for geo_name, geo_data in json_file.items():
 
         geo_pt_obj = (geo_data, geo_name, geo_type, geometry)
         geo_pt_lst.append(geo_pt_obj)
+        continue
 
     if ( geo_name.find('LINESTRING') != -1 or
         geo_name.find('Linestring') != -1 or
@@ -93,7 +82,7 @@ for geo_name, geo_data in json_file.items():
 
         geo_li_obj = (geo_data, geo_name, geo_type, geometry)
         geo_li_lst.append(geo_li_obj)
-
+        continue
 
     if ( geo_name.find('SPHERE') != -1 or
         geo_name.find('Sphere') != -1 ):
@@ -115,24 +104,7 @@ for geo_name, geo_data in json_file.items():
 
         geo_sph_obj = (geo_data, geo_name, geo_type, geometry)
         geo_sph_lst.append(geo_sph_obj)
-
-
-    if ( geo_name.find('POLYGON') != -1 or 
-        geo_name.find('Polygon') != -1 ):
-        
-        pt_lst = []
-        for vert_data in geo_data[0]:
-            pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])
-            pt_lst.append(pt)
-        face = Surface.ByPerimeterPoints(pt_lst)
-
-        geo_data = pt_lst
-        geo_name = geo_name.upper()
-        geo_type = 'POLYGON'
-        geometry = Surface.ByPerimeterPoints(pt_lst)
-
-        geo_pol_obj = (geo_data, geo_name, geo_type, geometry)
-        geo_pol_lst.append(geo_pol_obj)
+        continue
 
     if ( geo_name.find('MULTIPOLYGON') != -1 or
         geo_name.find('Multipolygon') != -1  or
@@ -146,7 +118,9 @@ for geo_name, geo_data in json_file.items():
             for vert_data in face_data:
                 pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])
                 pt_lst.append(pt)
+                # print()
             face = Surface.ByPerimeterPoints(pt_lst)
+            # face = []
             face_lst.append(face)
 
         geo_data = face_lst
@@ -156,10 +130,29 @@ for geo_name, geo_data in json_file.items():
 
         geo_mPol_obj = (geo_data, geo_name, geo_type, geometry)
         geo_mPol_lst.append(geo_mPol_obj)
+        continue
+
+    if ( geo_name.find('POLYGON') != -1 or 
+        geo_name.find('Polygon') != -1 ):
+        
+        pt_lst = []
+        for vert_data in geo_data[0]:
+            pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])
+            pt_lst.append(pt)
+            # print()
+        face = Surface.ByPerimeterPoints(pt_lst)
+        face = []
+
+        geo_data = pt_lst
+        geo_name = geo_name.upper()
+        geo_type = 'POLYGON'
+        geometry = Surface.ByPerimeterPoints(pt_lst)
+        # geometry = geo_data
+
+        geo_pol_obj = (geo_data, geo_name, geo_type, geometry)
+        geo_pol_lst.append(geo_pol_obj)
+        continue
 
     
 geo_combi_lst = geo_pt_lst + geo_li_lst + geo_pol_lst + geo_mPol_lst + geo_sph_lst
-
-######################### Output ############################
-OUT = geo_combi_lst
-
+print(geo_combi_lst)

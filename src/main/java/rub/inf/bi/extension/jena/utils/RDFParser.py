@@ -1,9 +1,11 @@
 import json
 from xml.dom.minidom import parse, parseString
 
-dir_mac = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/cubeSphere.rdf"
+# dir_mac = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/example.rdf"
+dir_win = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\example.rdf"
+dir = dir_win
 
-def rdfParsing2GeoData(path=dir_mac):
+def rdfParsing2GeoData(path=dir):
     """ it returns the json file in structure like { "POLYGON1" : [...], 
                                                      "POLYGON2" : [...], 
                                                      "MULTIPOLYGON1" : [...], ...
@@ -98,7 +100,7 @@ def rdfParsing2GeoData(path=dir_mac):
             geo_dict[geo_name_num] = geo_algebra_lst
     return geo_dict
 
-def xmlParsing2Uri(path=dir_mac):
+def xmlParsing2Uri(path=dir):
     """ it returns the list in structure like [[uri1, uri2],...,[uri1, uri2]]"""
     dom = parse(path)
     data = dom.documentElement
@@ -115,7 +117,7 @@ def xmlParsing2Uri(path=dir_mac):
     return res_lst
 
 
-def xml2GeometryString(path=dir_mac):
+def xml2GeometryString(path=dir):
     """ it returns the list in structure like [[Geomety1, Geomety2],...,[Geomety1, Geomety2]]"""
     dom = parse(path)
     data = dom.documentElement
