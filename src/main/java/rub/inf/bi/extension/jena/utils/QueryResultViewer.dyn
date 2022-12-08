@@ -101,7 +101,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport ctypes\r\nimport xml.etree.ElementTree as ET\r\nsys.path.append(r\"C:\\Users\\yhe\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\")\r\n\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nfrom xml.dom.minidom import parse, parseString\r\n\r\n#dir = \"r'C:\\\\Users\\\\nobita_yhe\\\\Workspace\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\rdf\\\\query_result.xml'\"\r\n#dir = r'C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml'\r\nwarn_str = 'File or File Path does not exist.'\r\nres = ''\r\n######################################################\r\n\r\ndef xmlParsing2Uri(path=dir):\r\n    \"\"\" it returns the list in structure like [[uri1, uri2],...,[uri1, uri2]]\"\"\"\r\n    dom = parse(path)\r\n    data = dom.documentElement\r\n    resList = data.getElementsByTagName('result')\r\n    \r\n    res_lst = []\r\n    for res in resList: # handle the <result>...</result>\r\n        ur_lst = []\r\n        for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n            for ur in bi.getElementsByTagName('uri'):\r\n                ur_lst.append(ur.childNodes[0].nodeValue)\r\n        res_lst.append(ur_lst)\r\n        ur_lst = []\r\n    return res_lst\r\n\r\n\r\ndef xml2GeometryString(path=dir):\r\n    \"\"\" it returns the list in structure like [[Geomety1, Geomety2],...,[Geomety1, Geomety2]]\"\"\"\r\n    dom = parse(path)\r\n    data = dom.documentElement\r\n    resList = data.getElementsByTagName('result')\r\n    seperator = '#'\r\n\r\n    res_lst = []\r\n    for res in resList: # handle the <result>...</result>\r\n        ur_lst = []\r\n        for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n            for ur in bi.getElementsByTagName('uri'):\r\n                uri_str = ur.childNodes[0].nodeValue\r\n                geo_index = uri_str.find(seperator) \r\n                geo_str = uri_str[geo_index+1:]\r\n                ur_lst.append(geo_str)\r\n        res_lst.append(ur_lst)\r\n        ur_lst = []\r\n    return res_lst\r\n\r\ndef xml2GeoInDynamo(path=dir):\r\n    #with open(r'C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml', 'r', encoding='utf-8') as file:\r\n    with open(path, 'r', encoding='utf-8') as file:\r\n        xml_data = file.read()\r\n        dom = parseString(xml_data)\r\n        #dom = parse(xml_data)\r\n        data = dom.documentElement\r\n        resList = data.getElementsByTagName('result')\r\n        seperator = '#'\r\n        \r\n        res_lst = []\r\n        for res in resList: # handle the <result>...</result>\r\n            ur_lst = []\r\n            for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n                for ur in bi.getElementsByTagName('uri'):\r\n                    uri_str = ur.childNodes[0].nodeValue\r\n                    geo_index = uri_str.find(seperator) \r\n                    geo_str = uri_str[geo_index+1:]\r\n                    ur_lst.append(geo_str)\r\n            res_lst.append(ur_lst)\r\n            ur_lst = []\r\n    return res_lst\r\n    \r\n######################################################\r\n\r\nif IN[0] == True:\r\n    dir = IN[1]\r\n    res = xml2GeoInDynamo(dir)\r\nelse:\r\n\tctypes.windll.user32.MessageBoxW(0, warn_str, 'Input Exception',1)\r\n\tres = warn_str\r\n######################################################\r\n# Assign your output to the OUT variable.\r\nOUT = res\r\n\r\n",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport ctypes\r\nimport xml.etree.ElementTree as ET\r\nsys.path.append(r\"C:\\Users\\yhe\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\")\r\n\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nfrom xml.dom.minidom import parse, parseString\r\n\r\n#dir = \"r'C:\\\\Users\\\\nobita_yhe\\\\Workspace\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\rdf\\\\query_result.xml'\"\r\n#dir = r'C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml'\r\nwarn_str = '(XML) File or File Path does not exist.'\r\nres = ''\r\n######################################################\r\n\r\ndef xmlParsing2Uri(path=dir):\r\n    \"\"\" it returns the list in structure like [[uri1, uri2],...,[uri1, uri2]]\"\"\"\r\n    dom = parse(path)\r\n    data = dom.documentElement\r\n    resList = data.getElementsByTagName('result')\r\n    \r\n    res_lst = []\r\n    for res in resList: # handle the <result>...</result>\r\n        ur_lst = []\r\n        for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n            for ur in bi.getElementsByTagName('uri'):\r\n                ur_lst.append(ur.childNodes[0].nodeValue)\r\n        res_lst.append(ur_lst)\r\n        ur_lst = []\r\n    return res_lst\r\n\r\n\r\ndef xml2GeometryString(path=dir):\r\n    \"\"\" it returns the list in structure like [[Geomety1, Geomety2],...,[Geomety1, Geomety2]]\"\"\"\r\n    dom = parse(path)\r\n    data = dom.documentElement\r\n    resList = data.getElementsByTagName('result')\r\n    seperator = '#'\r\n\r\n    res_lst = []\r\n    for res in resList: # handle the <result>...</result>\r\n        ur_lst = []\r\n        for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n            for ur in bi.getElementsByTagName('uri'):\r\n                uri_str = ur.childNodes[0].nodeValue\r\n                geo_index = uri_str.find(seperator) \r\n                geo_str = uri_str[geo_index+1:]\r\n                ur_lst.append(geo_str)\r\n        res_lst.append(ur_lst)\r\n        ur_lst = []\r\n    return res_lst\r\n\r\ndef xml2GeoInDynamo(path=dir):\r\n    #with open(r'C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml', 'r', encoding='utf-8') as file:\r\n    with open(path, 'r', encoding='utf-8') as file:\r\n        xml_data = file.read()\r\n        dom = parseString(xml_data)\r\n        #dom = parse(xml_data)\r\n        data = dom.documentElement\r\n        resList = data.getElementsByTagName('result')\r\n        seperator = '#'\r\n        \r\n        res_lst = []\r\n        for res in resList: # handle the <result>...</result>\r\n            ur_lst = []\r\n            for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n                for ur in bi.getElementsByTagName('uri'):\r\n                    uri_str = ur.childNodes[0].nodeValue\r\n                    geo_index = uri_str.find(seperator) \r\n                    geo_str = uri_str[geo_index+1:]\r\n                    ur_lst.append(geo_str)\r\n            res_lst.append(ur_lst)\r\n            ur_lst = []\r\n    return res_lst\r\n    \r\n######################################################\r\n\r\nif IN[0] == True:\r\n    dir = IN[1]\r\n    res = xml2GeoInDynamo(dir)\r\nelse:\r\n\tctypes.windll.user32.MessageBoxW(0, warn_str, 'Input Exception',1)\r\n\tres = warn_str\r\n######################################################\r\n# Assign your output to the OUT variable.\r\nOUT = res\r\n\r\n",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "3caf2c5d39a14bb8a8d117a845916766",
@@ -728,120 +728,6 @@
       "Description": "Converts the Mesh vertices to Points, and returns them\n\nMesh.Vertices ( ): Point[]"
     },
     {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n###########################################################\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n\r\ndef inList(res_lst, geo):\r\n    flat_lst = flatten(res_lst)\r\n    res = False\r\n    \r\n    for e in flat_lst:\r\n        if e is None:\r\n            break\r\n        if geo.upper() == e.upper():\r\n            res = True\r\n            break\r\n    return res\r\n############################################################\r\n# Input\r\ngeo_lst = IN[0]\r\nres_lst = IN[1]\r\nswitch = IN[2]\r\n\r\n#################################################\r\n# Highlighter\r\ncolored_geo_lst = []\r\nif switch:\r\n    color = Color.ByARGB(255,255,0,0) # red\r\n    \r\n    for geo in geo_lst:\r\n        geo_name = geo[1]\r\n        if inList(res_lst, geo_name):  \r\n            colored_geo = GeometryColor.ByGeometryColor(geo[3], color)\r\n            colored_geo_lst.append(colored_geo)\r\n\r\n#################################################\r\nOUT = colored_geo_lst\r\n",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "15b03d534ea443bc817c75dcd2beca67",
-      "Inputs": [
-        {
-          "Id": "0610d434bae34f388dcbe007bf32e9bb",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "456da64da57041e8a3ef104ae8e49a11",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "0586be6a83484629a7639335e23f66a2",
-          "Name": "IN[2]",
-          "Description": "Input #2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "f961f597dc734b07b2c3b538edfd7d7f",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
-      "NodeType": "BooleanInputNode",
-      "InputValue": true,
-      "Id": "b748c56692a542cf82608f2f5de3368e",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "0eaa73dd93cf42ccb63b6a16cfabc70e",
-          "Name": "",
-          "Description": "Boolean",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Selection between a true and false."
-    },
-    {
-      "ConcreteType": "Watch3DNodeModels.Watch3D, Watch3DNodeModels",
-      "WatchWidth": 200.0,
-      "WatchHeight": 200.0,
-      "WasExecuted": true,
-      "Camera": {
-        "Name": "7d928407-8cbe-4cc4-976d-171bbf5209a6 Preview",
-        "EyeX": -17.0,
-        "EyeY": 24.0,
-        "EyeZ": 50.0,
-        "LookX": 12.0,
-        "LookY": -13.0,
-        "LookZ": -58.0,
-        "UpX": 0.0,
-        "UpY": 1.0,
-        "UpZ": 0.0
-      },
-      "NodeType": "ExtensionNode",
-      "Id": "7d9284078cbe4cc4976d171bbf5209a6",
-      "Inputs": [
-        {
-          "Id": "c9bd05e91cee47d6aa242639a1d9d9c1",
-          "Name": "",
-          "Description": "Incoming geometry objects.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "e517b3cf693b41eab56a1e01e74d3567",
-          "Name": "",
-          "Description": "Incoming geometry objects.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Shows a dynamic preview of geometry."
-    },
-    {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
       "NodeType": "ExtensionNode",
       "Id": "80b16f3f20094a978114d38819afd778",
@@ -1175,68 +1061,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import sys\r\nimport clr\r\nimport itertools\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\n\r\n#================= Help Function ====================\r\ndef getGeometry(geo_obj):\r\n    return geo_obj[3]\r\n\r\n#================= Input ====================\r\ngeo_lst = IN[0]\r\nswitch = IN[1]\r\n\r\n#================= Body ====================\r\ninter_geo_lst = []\r\n\r\n\"\"\"\r\ncomparison algorithnm:\r\n\r\ngeo_obj_1 in lst start from 0 to n-1\r\n    geo_obj_2 in lst start from 1 to n\r\nlst remove geo_obj_1\r\n\"\"\"\r\ncolor = Color.ByARGB(230,230,250,0)\r\nfor i in range(0, len(geo_lst)-1):\r\n    geo_obj_1 = geo_lst[i]\r\n    geometry_1 = getGeometry(geo_obj_1)\r\n    temp_lst = []\r\n\r\n    geo_obj_1_has_intersection = False\r\n    for j in range(1, len(geo_lst)):\r\n        geo_obj_2 = geo_lst[j]\r\n        geometry_2 = getGeometry(geo_obj_2)\r\n\r\n        if Geometry.DoesIntersect(geometry_1, geometry_2):\r\n            geo_obj_1_has_intersection = True\r\n            \r\n            colored_geometry_2 = GeometryColor.ByGeometryColor(geometry_2, color)\r\n            temp_lst.append(colored_geometry_2)\r\n    \r\n    if geo_obj_1_has_intersection:\r\n        colored_geometry_1 = GeometryColor.ByGeometryColor(geometry_1, color)\r\n        temp_lst.append(colored_geometry_1)\r\n    \r\n    inter_geo_lst.append(temp_lst)\r\n\r\n# remove duplicated from list \r\noutput_lst = [] \r\nfor geometry in inter_geo_lst: \r\n    if geometry not in output_lst: \r\n        output_lst.append(geometry) \r\n        \r\n#output_lst = itertools.groupby(inter_geo_lst) # remove the duplicate(s)\r\n#output_lst = inter_geo_lst\r\n\r\n#================= Coloring ====================\r\n\"\"\"\r\ncolor = Color.ByARGB(230,230,250,0)\r\ncolored_output_lst = []\r\n\r\nfor geometry_lst in output_lst:\r\n    temp_lst\r\n    for geometry in geometry_lst:\r\n        \r\n        colored_geo = GeometryColor.ByGeometryColor(geometry, color)\r\n        temp_lst\r\n    colored_output_lst.append(colored_geo)\r\n\"\"\"\r\n#================= Output ====================\r\nOUT = output_lst",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "904eab0b83e04652adb889795141ef18",
-      "Inputs": [
-        {
-          "Id": "37b374863a5c46bcb015c3443654f6e0",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "231283b7cc8c4f089ac862d761a430a5",
-          "Name": "IN[1]",
-          "Description": "Input #1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "150504c40350463da38e35fbb7b8055c",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
-      "NodeType": "BooleanInputNode",
-      "InputValue": false,
-      "Id": "0277eb7efc10401aaa549ffa41c1ed7d",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "3b378e1bef4741f9bf93f488d6aa8d0b",
-          "Name": "",
-          "Description": "Boolean",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Selection between a true and false."
-    },
-    {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "import sys\r\nimport clr\r\nimport random\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\nclr.AddReference('MeshToolkit')\r\nfrom Autodesk.Dynamo.MeshToolkit import *\r\n\r\n# Common Geometry Types\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nPOLYGON_ROTATION = \"POLYGON_ROTATION\"\r\nMULTIPOLYGON = \"MULTIPOLYGON\"\r\nMULTIPOLYGON_ROTATION = \"MULTIPOLYGON_ROTATION\"\r\nSPHERE = \"MULTIPOLYGON_SPHERE\"\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\r\n# Input \r\njson_file = IN[0]\r\nswitch_generator = IN[1]\r\nswitch_coloring = IN[2]\r\n\r\n# output container\r\ngeo_lst = []\r\n\r\ngeo_pt_lst = []\r\ngeo_li_lst = []\r\ngeo_pol_lst = []\r\ngeo_mPol_lst = []\r\ngeo_sph_lst = []\r\n\r\ngeo_combi_lst = []\r\n\r\n\"\"\"\r\ndef coloring(geometry):\r\n    if switch_coloring:\r\n        color = Color.ByARGB(230,230,250,0)\r\n        return GeometryColor.ByGeometryColor(geometry, color)\r\n    return geomery\r\n\"\"\"\r\n\r\nif switch_generator == False:\r\n    OUT = []\r\n\r\nfor geo_name, geo_data in json_file.items():\r\n    \r\n    if ( geo_name.find('POINT') != -1 or\r\n        geo_name.find('Point') != -1 ):\r\n\r\n        pt_data = geo_data\r\n        pt_x = 0.0\r\n        pt_y = 0.0\r\n        pt_z = 0.0\r\n        if (len(pt_data) == 3): # (x, y, z)\r\n            pt_x = pt_data[0]\r\n            pt_y = pt_data[1]\r\n            pt_z = pt_data[2]\r\n            \r\n        if (len(pt_data) == 2): # (x, y)\r\n            pt_x = pt_data[0]\r\n            pt_y = pt_data[1]\r\n            pt_z = 0.0\r\n            \r\n        pt = Point.ByCoordinates(pt_x, pt_y, pt_z)\r\n\r\n        geo_data = pt\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'POINT'\r\n        geometry = pt\r\n\r\n        geo_pt_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_pt_lst.append(geo_pt_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('LINESTRING') != -1 or\r\n        geo_name.find('Linestring') != -1 or\r\n        geo_name.find('LINE') != -1 or\r\n        geo_name.find('Line') != -1 ):\r\n\r\n        pt_lst = []\r\n        for pt_data in geo_data[0]:\r\n            pt = Point.ByCoordinates(pt_data[0], pt_data[1], pt_data[2])\r\n            pt_lst.append(pt)\r\n\r\n        geo_data = pt_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'LINESTRING'\r\n        geometry = PolyCurve.ByPoints(pt_lst, False)\r\n\r\n        geo_li_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_li_lst.append(geo_li_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('SPHERE') != -1 or\r\n        geo_name.find('Sphere') != -1 ):\r\n\r\n        face_lst = []\r\n        for face_data in geo_data:\r\n\r\n            pt_lst = []\r\n            for vert_data in face_data:\r\n                pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n                pt_lst.append(pt)\r\n            face = Surface.ByPerimeterPoints(pt_lst)\r\n            face_lst.append(face)\r\n\r\n        geo_data = face_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'MULTIPOLYGON_SPHERE'\r\n        geometry = face_lst\r\n\r\n        geo_sph_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_sph_lst.append(geo_sph_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('MULTIPOLYGON') != -1 or\r\n        geo_name.find('Multipolygon') != -1  or\r\n        geo_name.find('CUBE') != -1 or\r\n        geo_name.find('Cube') != -1 ):\r\n\r\n        face_lst = []\r\n        for face_data in geo_data:\r\n\r\n            pt_lst = []\r\n            for vert_data in face_data:\r\n                pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n                pt_lst.append(pt)\r\n                # print()\r\n            face = Surface.ByPerimeterPoints(pt_lst)\r\n            # face = []\r\n            face_lst.append(face)\r\n\r\n        geo_data = face_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'MULTIPOLYGON'\r\n        geometry = face_lst\r\n\r\n        geo_mPol_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_mPol_lst.append(geo_mPol_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('POLYGON') != -1 or \r\n        geo_name.find('Polygon') != -1 ):\r\n        \r\n        pt_lst = []\r\n        for vert_data in geo_data[0]:\r\n            pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n            pt_lst.append(pt)\r\n            # print()\r\n        face = Surface.ByPerimeterPoints(pt_lst)\r\n        #face = []\r\n\r\n        geo_data = pt_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'POLYGON'\r\n        geometry = face\r\n        # geometry = geo_data\r\n\r\n        geo_pol_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_pol_lst.append(geo_pol_obj)\r\n        continue\r\n\r\n    \r\ngeo_combi_lst = geo_pt_lst + geo_li_lst + geo_pol_lst + geo_mPol_lst + geo_sph_lst\r\n\r\n######################### Output ############################\r\nOUT = geo_combi_lst\r\n\r\n",
+      "Code": "import sys\r\nimport clr\r\nimport random\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\nclr.AddReference('MeshToolkit')\r\nfrom Autodesk.Dynamo.MeshToolkit import *\r\n\r\n############# Common Geometry Types ##################\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nPOLYGON_ROTATION = \"POLYGON_ROTATION\"\r\nMULTIPOLYGON = \"MULTIPOLYGON\"\r\nMULTIPOLYGON_ROTATION = \"MULTIPOLYGON_ROTATION\"\r\nSPHERE = \"MULTIPOLYGON_SPHERE\"\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n\"\"\"\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\"\"\"\r\n###################### Input ######################### \r\njson_file = IN[0]\r\nres_dict = IN[1]\r\nground_truth_dict = IN[2]\r\nswitch_generator = IN[3]\r\nswitch_ground_truth = IN[4]\r\nswitch_query_result = IN[5]\r\n\r\n################# Container ####################\r\ngeo_lst = []\r\n\r\ngeo_pt_lst = []\r\ngeo_li_lst = []\r\ngeo_pol_lst = []\r\ngeo_mPol_lst = []\r\ngeo_sph_lst = []\r\n\r\ngeo_combi_lst = []\r\n\r\n################# Color & Filter #####################\r\ncolor_green_ground_truth = Color.ByARGB(230,230,250,0)\r\ncolor_red_query_result = Color.ByARGB(255,255,0,0)\r\ncolor = \"\"\r\nfilter_dict = json_file\r\n\r\nswitch_coloring = False\r\n\r\nif switch_ground_truth and not switch_query_result:\r\n    switch_coloring = True\r\n    color = color_green_ground_truth\r\n    filter_dict = ground_truth_dict\r\n    \r\nif not switch_ground_truth and switch_query_result:\r\n    switch_coloring = True\r\n    color = color_red_query_result\r\n    filter_dict = res_dict\r\n    \r\nif switch_ground_truth and switch_query_result:\r\n    switch_coloring = False\r\n    color = \"\"\r\n    filter_dict = json_file\r\n    \r\ndef coloring(geometry, geo_name):\r\n    if switch_coloring:\r\n        \r\n        if geo_name in filter_dict.keys():\r\n            return GeometryColor.ByGeometryColor(geometry, color)\r\n            \r\n    return geometry\r\n\r\n######################## Body #######################\r\n\r\nif switch_generator == False:\r\n    OUT = []\r\n    exit()\r\n    \r\nfor geo_name, geo_data in json_file.items():\r\n   \r\n    if ( geo_name.find('POINT') != -1 or\r\n        geo_name.find('Point') != -1 ):\r\n\r\n        pt_data = geo_data\r\n        pt_x = 0.0\r\n        pt_y = 0.0\r\n        pt_z = 0.0\r\n        if (len(pt_data) == 3): # (x, y, z)\r\n            pt_x = pt_data[0]\r\n            pt_y = pt_data[1]\r\n            pt_z = pt_data[2]\r\n            \r\n        if (len(pt_data) == 2): # (x, y)\r\n            pt_x = pt_data[0]\r\n            pt_y = pt_data[1]\r\n            pt_z = 0.0\r\n            \r\n        pt = Point.ByCoordinates(pt_x, pt_y, pt_z)\r\n\r\n        geo_data = pt\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'POINT'\r\n        geometry = coloring(pt, geo_name.upper())\r\n\r\n        geo_pt_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_pt_lst.append(geo_pt_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('LINESTRING') != -1 or\r\n        geo_name.find('Linestring') != -1 or\r\n        geo_name.find('LINE') != -1 or\r\n        geo_name.find('Line') != -1 ):\r\n\r\n        pt_lst = []\r\n        for pt_data in geo_data[0]:\r\n            pt = Point.ByCoordinates(pt_data[0], pt_data[1], pt_data[2])\r\n            pt_lst.append(pt)\r\n\r\n        geo_data = pt_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'LINESTRING'\r\n        geometry = coloring(PolyCurve.ByPoints(pt_lst, False), geo_name.upper())\r\n\r\n        geo_li_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_li_lst.append(geo_li_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('SPHERE') != -1 or\r\n        geo_name.find('Sphere') != -1 ):\r\n\r\n        face_lst = []\r\n        for face_data in geo_data:\r\n\r\n            pt_lst = []\r\n            for vert_data in face_data:\r\n                pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n                pt_lst.append(pt)\r\n            face = coloring(Surface.ByPerimeterPoints(pt_lst), geo_name.upper())\r\n            face_lst.append(face)\r\n\r\n        geo_data = face_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'MULTIPOLYGON_SPHERE'\r\n        geometry = face_lst\r\n\r\n        geo_sph_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_sph_lst.append(geo_sph_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('MULTIPOLYGON') != -1 or\r\n        geo_name.find('Multipolygon') != -1  or\r\n        geo_name.find('CUBE') != -1 or\r\n        geo_name.find('Cube') != -1 ):\r\n\r\n        face_lst = []\r\n        for face_data in geo_data:\r\n\r\n            pt_lst = []\r\n            for vert_data in face_data:\r\n                pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n                pt_lst.append(pt)\r\n                # print()\r\n            face = coloring(Surface.ByPerimeterPoints(pt_lst), geo_name.upper())\r\n            # face = []\r\n            face_lst.append(face)\r\n\r\n        geo_data = face_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'MULTIPOLYGON'\r\n        geometry = face_lst\r\n\r\n        geo_mPol_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_mPol_lst.append(geo_mPol_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('POLYGON') != -1 or \r\n        geo_name.find('Polygon') != -1 ):\r\n        \r\n        pt_lst = []\r\n        for vert_data in geo_data[0]:\r\n            pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n            pt_lst.append(pt)\r\n            # print()\r\n        face = Surface.ByPerimeterPoints(pt_lst)\r\n        #face = []\r\n\r\n        geo_data = pt_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'POLYGON'\r\n        geometry = coloring(face, geo_name.upper())\r\n        # geometry = geo_data\r\n\r\n        geo_pol_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_pol_lst.append(geo_pol_obj)\r\n        continue\r\n\r\n    \r\ngeo_combi_lst = geo_pt_lst + geo_li_lst + geo_pol_lst + geo_mPol_lst + geo_sph_lst\r\n\r\n######################### Output ############################\r\nOUT = geo_combi_lst\r\n\r\n",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "da5cd7ec9968431b9c02ee6620412ada",
@@ -1267,6 +1092,33 @@
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
+        },
+        {
+          "Id": "5d142a883af646e184dd9e9f73e6e93d",
+          "Name": "IN[3]",
+          "Description": "Input #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4c95af32e5654724a7b923a7a9e60ce3",
+          "Name": "IN[4]",
+          "Description": "Input #4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0a02505cff52471aaff4ecb33f07f20f",
+          "Name": "IN[5]",
+          "Description": "Input #5",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
         }
       ],
       "Outputs": [
@@ -1286,7 +1138,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport json\r\nimport ctypes\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndir = IN[0]\r\n\r\nwarn_str = 'File or File Path does not exist.'\r\n\r\ndata = {}\r\ntry:\r\n    with open(dir, 'r') as fp:\r\n        data = json.load(fp)\r\nexcept:\r\n    ctypes.windll.user32.MessageBoxW(0, warn_str, 'Input Exception',1)\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = data",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport json\r\nimport ctypes\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndir = IN[0]\r\n\r\nwarn_str = '(Base) File or File Path does not exist.'\r\n\r\ndata = {}\r\ntry:\r\n    with open(dir, 'r') as fp:\r\n        data = json.load(fp)\r\nexcept:\r\n    ctypes.windll.user32.MessageBoxW(0, warn_str, 'Input Exception',1)\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = data",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "47aeafe1cb99450cb9aab7def0b47fef",
@@ -1417,7 +1269,7 @@
     {
       "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
       "NodeType": "BooleanInputNode",
-      "InputValue": true,
+      "InputValue": false,
       "Id": "5050387ca57e4e008dd9971ef30e2629",
       "Inputs": [],
       "Outputs": [
@@ -1435,26 +1287,37 @@
       "Description": "Selection between a true and false."
     },
     {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n    \r\n###################################################\r\nres_lst = flatten(IN[0])\r\ngeo_dict = IN[1]\r\n\r\nres_dict = {}\r\nfor res in res_lst:\r\n    \r\n    if res in geo_dict.keys():\r\n        res_dict[res] = geo_dict[res]\r\n\r\nOUT = res_dict",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "bdfa9bdb56f54ae4accd18df8a341608",
-      "Inputs": [
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "09fd105ed35b432787de4f7ec72e8c0b",
+      "Inputs": [],
+      "Outputs": [
         {
-          "Id": "012ceca7393e4d98a5c021210807c314",
-          "Name": "IN[0]",
-          "Description": "Input #0",
+          "Id": "aaed95d7801b4ea29dc18a422c775495",
+          "Name": "",
+          "Description": "Boolean",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
-        },
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    return out_lst\r\n    \r\n###################################################\r\nres_lst = flatten(IN[0])\r\n\r\nres_dict = {}\r\nfor res in res_lst:\r\n    res_dict[res] = res\r\n\r\nOUT = res_dict",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "000ca572a653468cba6ba27813cb14b1",
+      "Inputs": [
         {
-          "Id": "94f78e32d0124780876afb47a652fafa",
-          "Name": "IN[1]",
-          "Description": "Input #1",
+          "Id": "e7239c6019dd442e94088e46108327f5",
+          "Name": "IN[0]",
+          "Description": "Input #0",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1463,7 +1326,7 @@
       ],
       "Outputs": [
         {
-          "Id": "af96a22555284cbeb64742012786aa34",
+          "Id": "1e42b32d05b34c40855c7c0d90c56f74",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -1478,10 +1341,10 @@
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
       "NodeType": "ExtensionNode",
-      "Id": "93bb66fed256477ba269b3a5ebdc4f38",
+      "Id": "bb34d26722024927908183f1ec37e9d1",
       "Inputs": [
         {
-          "Id": "2bae822e2b7343c0af43ad01e67b0469",
+          "Id": "bfc092bee3e443dd98f2e7b59d5befc7",
           "Name": "",
           "Description": "Node to evaluate.",
           "UsingDefaultValue": false,
@@ -1492,7 +1355,7 @@
       ],
       "Outputs": [
         {
-          "Id": "4dcd49c04d4e4335b4010aae2cd09eb5",
+          "Id": "26144c8263bc4f648848aebcb83e688f",
           "Name": "",
           "Description": "Watch contents.",
           "UsingDefaultValue": false,
@@ -1505,26 +1368,38 @@
       "Description": "Visualize the output of node."
     },
     {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "import sys\r\nimport clr\r\nimport random\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\nclr.AddReference('MeshToolkit')\r\nfrom Autodesk.Dynamo.MeshToolkit import *\r\n\r\n# Common Geometry Types\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nPOLYGON_ROTATION = \"POLYGON_ROTATION\"\r\nMULTIPOLYGON = \"MULTIPOLYGON\"\r\nMULTIPOLYGON_ROTATION = \"MULTIPOLYGON_ROTATION\"\r\nSPHERE = \"MULTIPOLYGON_SPHERE\"\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\r\n# Input \r\njson_file = IN[0]\r\nswitch_coloring = IN[1]\r\n\r\n# output container\r\ngeo_lst = []\r\n\r\ngeo_pt_lst = []\r\ngeo_li_lst = []\r\ngeo_pol_lst = []\r\ngeo_mPol_lst = []\r\ngeo_sph_lst = []\r\n\r\ngeo_combi_lst = []\r\n\r\n\r\ndef coloring(geometry):\r\n    if switch_coloring:\r\n        color = Color.ByARGB(255,255,0,0)\r\n        return GeometryColor.ByGeometryColor(geometry, color)\r\n    else:\r\n        return geomery\r\n\r\nfor geo_name, geo_data in json_file.items():\r\n    \r\n    if ( geo_name.find('POINT') != -1 or\r\n        geo_name.find('Point') != -1 ):\r\n\r\n        pt_data = geo_data\r\n        pt_x = 0.0\r\n        pt_y = 0.0\r\n        pt_z = 0.0\r\n        if (len(pt_data) == 3): # (x, y, z)\r\n            pt_x = pt_data[0]\r\n            pt_y = pt_data[1]\r\n            pt_z = pt_data[2]\r\n            \r\n        if (len(pt_data) == 2): # (x, y)\r\n            pt_x = pt_data[0]\r\n            pt_y = pt_data[1]\r\n            pt_z = 0.0\r\n            \r\n        pt = Point.ByCoordinates(pt_x, pt_y, pt_z)\r\n\r\n        geo_data = pt\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'POINT'\r\n        geometry = coloring(pt)\r\n\r\n        geo_pt_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_pt_lst.append(geo_pt_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('LINESTRING') != -1 or\r\n        geo_name.find('Linestring') != -1 or\r\n        geo_name.find('LINE') != -1 or\r\n        geo_name.find('Line') != -1 ):\r\n\r\n        pt_lst = []\r\n        for pt_data in geo_data[0]:\r\n            pt = Point.ByCoordinates(pt_data[0], pt_data[1], pt_data[2])\r\n            pt_lst.append(pt)\r\n\r\n        geo_data = pt_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'LINESTRING'\r\n        geometry = coloring(PolyCurve.ByPoints(pt_lst, False))\r\n\r\n        geo_li_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_li_lst.append(geo_li_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('SPHERE') != -1 or\r\n        geo_name.find('Sphere') != -1 ):\r\n\r\n        face_lst = []\r\n        for face_data in geo_data:\r\n\r\n            pt_lst = []\r\n            for vert_data in face_data:\r\n                pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n                pt_lst.append(pt)\r\n            face = coloring(Surface.ByPerimeterPoints(pt_lst))\r\n            face_lst.append(face)\r\n\r\n        geo_data = face_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'MULTIPOLYGON_SPHERE'\r\n        geometry = face_lst\r\n\r\n        geo_sph_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_sph_lst.append(geo_sph_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('MULTIPOLYGON') != -1 or\r\n        geo_name.find('Multipolygon') != -1  or\r\n        geo_name.find('CUBE') != -1 or\r\n        geo_name.find('Cube') != -1 ):\r\n\r\n        face_lst = []\r\n        for face_data in geo_data:\r\n\r\n            pt_lst = []\r\n            for vert_data in face_data:\r\n                pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n                pt_lst.append(pt)\r\n                # print()\r\n            face = coloring(Surface.ByPerimeterPoints(pt_lst))\r\n            # face = []\r\n            face_lst.append(face)\r\n\r\n        geo_data = face_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'MULTIPOLYGON'\r\n        geometry = face_lst\r\n\r\n        geo_mPol_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_mPol_lst.append(geo_mPol_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('POLYGON') != -1 or \r\n        geo_name.find('Polygon') != -1 ):\r\n        \r\n        pt_lst = []\r\n        for vert_data in geo_data[0]:\r\n            pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n            pt_lst.append(pt)\r\n            # print()\r\n        face = coloring(Surface.ByPerimeterPoints(pt_lst))\r\n        #face = []\r\n\r\n        geo_data = pt_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'POLYGON'\r\n        geometry = face\r\n        # geometry = geo_data\r\n\r\n        geo_pol_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_pol_lst.append(geo_pol_obj)\r\n        continue\r\n\r\n    \r\ngeo_combi_lst = geo_pt_lst + geo_li_lst + geo_pol_lst + geo_mPol_lst + geo_sph_lst\r\n\r\n######################### Output ############################\r\nOUT = geo_combi_lst\r\n\r\n",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "ed60bcf0fb044b54afebb634b63095a8",
-      "Inputs": [
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\JSON\\groundTruth.json",
+      "InputValue": "..\\..\\..\\..\\..\\..\\..\\resources\\JSON\\groundTruth.json",
+      "NodeType": "ExtensionNode",
+      "Id": "363295086fd740c3beb3646509bd7c28",
+      "Inputs": [],
+      "Outputs": [
         {
-          "Id": "cf7c7eaa80a14321a23bc27538d53d60",
-          "Name": "IN[0]",
-          "Description": "Input #0",
+          "Id": "c1ccacc93cae4053805f508d26891149",
+          "Name": "",
+          "Description": "Filename",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
-        },
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its filename"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport json\r\nimport ctypes\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndir = IN[0]\r\n\r\nwarn_str = '<GroundTruth> File or File Path does not exist.'\r\n\r\ndata = {}\r\ntry:\r\n    with open(dir, 'r') as fp:\r\n        data = json.load(fp)\r\nexcept:\r\n    ctypes.windll.user32.MessageBoxW(0, warn_str, 'Input Exception',1)\r\n\r\n# Assign your output to the OUT variable.\r\nif data is None:\r\n    data = {}\r\nOUT = data",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "41747d547b9c4b27931b3ca6e0215c61",
+      "Inputs": [
         {
-          "Id": "adddb33a344940cbb64db06fbf9efde0",
-          "Name": "IN[1]",
-          "Description": "Input #1",
+          "Id": "01ab0da28f9d4d13ad5d143529754337",
+          "Name": "IN[0]",
+          "Description": "Input #0",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1533,7 +1408,7 @@
       ],
       "Outputs": [
         {
-          "Id": "6a2d010952b541958cec97aa6573c03f",
+          "Id": "f9159692e5274ac3bf74ca665b285e6f",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -1544,6 +1419,140 @@
       ],
       "Replication": "Disabled",
       "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "01862427cde34887b192d733a66de2c9",
+      "Inputs": [
+        {
+          "Id": "ced4b62b819d4a19a1d892b07dca1e3a",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "01bbd51d12a94a31a6584ab1f4ca2d98",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Watch3DNodeModels.Watch3D, Watch3DNodeModels",
+      "WatchWidth": 200.0,
+      "WatchHeight": 200.0,
+      "WasExecuted": true,
+      "Camera": {
+        "Name": "e6fa0700-9dc6-4b9d-97d7-557102086108 Preview",
+        "EyeX": -17.0,
+        "EyeY": 24.0,
+        "EyeZ": 50.0,
+        "LookX": 12.0,
+        "LookY": -13.0,
+        "LookZ": -58.0,
+        "UpX": 0.0,
+        "UpY": 1.0,
+        "UpZ": 0.0
+      },
+      "NodeType": "ExtensionNode",
+      "Id": "e6fa07009dc64b9d97d7557102086108",
+      "Inputs": [
+        {
+          "Id": "5d31176e058f41f082326ad3ad061fd1",
+          "Name": "",
+          "Description": "Incoming geometry objects.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5e25b51881694f31a83d460250b8cd41",
+          "Name": "",
+          "Description": "Incoming geometry objects.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Shows a dynamic preview of geometry."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndict = IN[0]\r\n\r\n# Place your code below this line\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = dict.keys()",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "a284fc7eef434eab93d66ed4b6fb2c12",
+      "Inputs": [
+        {
+          "Id": "31693300afca477c9560194681eb1a42",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d43f90e59fea493fbc32c082e6edef50",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "33e25e9b47f747349545b2191bf1223e",
+      "Inputs": [
+        {
+          "Id": "7402f03806dd41199315a74fc45cf0e7",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3cc5ca291e444c9a98ca3c3bd977227e",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
     }
   ],
   "Connectors": [
@@ -1564,8 +1573,8 @@
     },
     {
       "Start": "2c04ea2cfa9c4fa68b7cfd048e8d53a6",
-      "End": "012ceca7393e4d98a5c021210807c314",
-      "Id": "48314378b6fa46c8b39c2fdb5416ce34"
+      "End": "e7239c6019dd442e94088e46108327f5",
+      "Id": "03bdd381458d450f8ba8592041ac9b36"
     },
     {
       "Start": "8bbd33f439eb4c1ea76d5b4863a65de8",
@@ -1623,16 +1632,6 @@
       "Id": "b532934f0cec4274b637159ef1b4082c"
     },
     {
-      "Start": "f961f597dc734b07b2c3b538edfd7d7f",
-      "End": "c9bd05e91cee47d6aa242639a1d9d9c1",
-      "Id": "2bc0ff01ba8c4808bfdf8af214c51c69"
-    },
-    {
-      "Start": "0eaa73dd93cf42ccb63b6a16cfabc70e",
-      "End": "adddb33a344940cbb64db06fbf9efde0",
-      "Id": "6bbdc4586d614416823b2536ef63ee30"
-    },
-    {
       "Start": "28d8dfafd9b84e6a9f2e7caf64469b7c",
       "End": "ad16ba208c4a435eb9c34e51e4bb261f",
       "Id": "c734f4813c6743ada61c1ef707840e40"
@@ -1668,14 +1667,14 @@
       "Id": "9b853b9e1e4e4873a245e351e5ccd6b0"
     },
     {
-      "Start": "3b378e1bef4741f9bf93f488d6aa8d0b",
-      "End": "231283b7cc8c4f089ac862d761a430a5",
-      "Id": "80315a0ceed246babe68ff99674c0e43"
-    },
-    {
       "Start": "a16f8cede777454c92f9c9c9f93cb514",
       "End": "ad8d59584a5e4bb2910046f3b59ce971",
       "Id": "f5bd8c6084644fc2a25296d6e818df5f"
+    },
+    {
+      "Start": "a16f8cede777454c92f9c9c9f93cb514",
+      "End": "5d31176e058f41f082326ad3ad061fd1",
+      "Id": "3cb8f1a4228e412ebc15ab3a551b1c0b"
     },
     {
       "Start": "7f1501f6b7d240558791f76b98319eed",
@@ -1689,8 +1688,8 @@
     },
     {
       "Start": "a07aaf905fe740b6a7e84957029c119d",
-      "End": "94f78e32d0124780876afb47a652fafa",
-      "Id": "bcac1a091454446aa54f44b7305db42a"
+      "End": "31693300afca477c9560194681eb1a42",
+      "Id": "6bfa8b401de54681a49780000215b8a8"
     },
     {
       "Start": "8f2378090418471e945d35be8e02cc60",
@@ -1699,23 +1698,48 @@
     },
     {
       "Start": "fa0731a7592e480db5494df02ee3e51e",
-      "End": "7435e184bee547cc84e6005d9da7efb8",
-      "Id": "eb1386bb8ef54ee199929aeca96bfe31"
+      "End": "5d142a883af646e184dd9e9f73e6e93d",
+      "Id": "ef3276b026a042549cf3a003381daf9a"
     },
     {
       "Start": "61c1fcf384124f7889d1e2211f036a3e",
+      "End": "4c95af32e5654724a7b923a7a9e60ce3",
+      "Id": "1f640b22df294005ab4bb857f54c44ba"
+    },
+    {
+      "Start": "aaed95d7801b4ea29dc18a422c775495",
+      "End": "0a02505cff52471aaff4ecb33f07f20f",
+      "Id": "3e51bedd6834431b96df05ac635f9a37"
+    },
+    {
+      "Start": "1e42b32d05b34c40855c7c0d90c56f74",
+      "End": "bfc092bee3e443dd98f2e7b59d5befc7",
+      "Id": "9412c4ba910c427583fc2c96296aeda1"
+    },
+    {
+      "Start": "26144c8263bc4f648848aebcb83e688f",
+      "End": "7435e184bee547cc84e6005d9da7efb8",
+      "Id": "2ae8c8db860f4543bf370032a4005ff0"
+    },
+    {
+      "Start": "c1ccacc93cae4053805f508d26891149",
+      "End": "01ab0da28f9d4d13ad5d143529754337",
+      "Id": "e481087e3fbb4059b4c078605f233172"
+    },
+    {
+      "Start": "f9159692e5274ac3bf74ca665b285e6f",
+      "End": "ced4b62b819d4a19a1d892b07dca1e3a",
+      "Id": "8a53f996f32a49fc8520624ce2d5a60a"
+    },
+    {
+      "Start": "01bbd51d12a94a31a6584ab1f4ca2d98",
       "End": "c6982d49eb6743ff9574c168e582c886",
-      "Id": "d5a4bd99da644823ab90d633f0e16ed8"
+      "Id": "d1f9a76c7d8a40e8ab8a3ec6b73ad6bf"
     },
     {
-      "Start": "af96a22555284cbeb64742012786aa34",
-      "End": "2bae822e2b7343c0af43ad01e67b0469",
-      "Id": "e0daf0c8af0446a2bde00452b3a2bdec"
-    },
-    {
-      "Start": "af96a22555284cbeb64742012786aa34",
-      "End": "cf7c7eaa80a14321a23bc27538d53d60",
-      "Id": "ec45a1fb13f24605b5679a312dad2f70"
+      "Start": "d43f90e59fea493fbc32c082e6edef50",
+      "End": "7402f03806dd41199315a74fc45cf0e7",
+      "Id": "f9a0376e968f4691a9aabffcbac6b780"
     }
   ],
   "Dependencies": [],
@@ -1744,15 +1768,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -126.35799407958984,
-      "EyeY": 76.468490600585938,
-      "EyeZ": -0.35635948181152344,
-      "LookX": 114.55506134033203,
-      "LookY": -39.160842895507813,
-      "LookZ": -10.015268325805664,
-      "UpX": 0.13918155431747437,
-      "UpY": 0.99023741483688354,
-      "UpZ": -0.0076464875601232052
+      "EyeX": -58.801292419433594,
+      "EyeY": 35.375881195068359,
+      "EyeZ": -143.48110961914063,
+      "LookX": 35.166084289550781,
+      "LookY": -11.848262786865234,
+      "LookZ": 144.457275390625,
+      "UpX": -0.029872052371501923,
+      "UpY": 0.99406331777572632,
+      "UpZ": -0.10462242364883423
     },
     "NodeViews": [
       {
@@ -1762,8 +1786,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -619.67261501267672,
-        "Y": 1045.9126270959073
+        "X": -676.47193885982927,
+        "Y": 1670.985684164333
       },
       {
         "ShowGeometry": true,
@@ -1772,18 +1796,18 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -883.38715412712554,
-        "Y": 1042.7783617947498
+        "X": -945.15924966689067,
+        "Y": 1670.9594011710583
       },
       {
         "ShowGeometry": true,
-        "Name": "Query Result Viewer",
+        "Name": "List Viewer",
         "Id": "aef00e0d9cbc4c89bc624f16784d0389",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 232.23476014270909,
-        "Y": 1047.631676295855
+        "X": 77.852944058877483,
+        "Y": 1609.1304509445215
       },
       {
         "ShowGeometry": true,
@@ -1792,8 +1816,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -380.35710035654415,
-        "Y": 1047.4403730557638
+        "X": -446.53357970379625,
+        "Y": 1671.2702372010363
       },
       {
         "ShowGeometry": true,
@@ -1812,8 +1836,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1335.1990358325247,
-        "Y": 1452.7787625091987
+        "X": -1382.7178710663081,
+        "Y": 1545.03428040798
       },
       {
         "ShowGeometry": true,
@@ -1822,8 +1846,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -202.05993656199666,
-        "Y": 1049.1153948094591
+        "X": -263.8320321017618,
+        "Y": 1677.2964341857676
       },
       {
         "ShowGeometry": true,
@@ -1832,8 +1856,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -385.56564936049222,
-        "Y": 975.11098459365883
+        "X": -447.33774490025735,
+        "Y": 1603.2920239699674
       },
       {
         "ShowGeometry": false,
@@ -1957,43 +1981,13 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Geometry Highlighter",
-        "Id": "15b03d534ea443bc817c75dcd2beca67",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1798.7949350100209,
-        "Y": 1345.0961556586537
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "On/Off - Query Result Viewer",
-        "Id": "b748c56692a542cf82608f2f5de3368e",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -876.73019024315329,
-        "Y": 1440.6264999191062
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Watch 3D",
-        "Id": "7d9284078cbe4cc4976d171bbf5209a6",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1799.0781918705313,
-        "Y": 1531.2266263363056
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Watch",
         "Id": "80b16f3f20094a978114d38819afd778",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -608.33204056183126,
-        "Y": 1226.7475950494425
+        "X": -670.1041361015964,
+        "Y": 1854.9286344257509
       },
       {
         "ShowGeometry": true,
@@ -2067,33 +2061,13 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Groundtruth",
-        "Id": "904eab0b83e04652adb889795141ef18",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1607.5455161792922,
-        "Y": 1338.0763229584659
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "On/Off - Groundtruth",
-        "Id": "0277eb7efc10401aaa549ffa41c1ed7d",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1566.2453011318867,
-        "Y": 1551.8668900047498
-      },
-      {
-        "ShowGeometry": true,
         "Name": "JSON Parser",
         "Id": "da5cd7ec9968431b9c02ee6620412ada",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 93.556354463219009,
-        "Y": 1939.634141562462
+        "X": 459.85571103684197,
+        "Y": 2172.2666246943827
       },
       {
         "ShowGeometry": true,
@@ -2102,18 +2076,18 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -515.5369000296829,
-        "Y": 1952.0369402285035
+        "X": -579.4924219491561,
+        "Y": 2172.1663726485608
       },
       {
         "ShowGeometry": true,
-        "Name": "JSON Viewer",
+        "Name": "JSON-Base Viewer",
         "Id": "3cfb3fe3994b4566a2c99f8419182612",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -272.99600735867182,
-        "Y": 1940.5841747483341
+        "X": -343.26269307431403,
+        "Y": 2171.9546505689318
       },
       {
         "ShowGeometry": true,
@@ -2122,8 +2096,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -883.53530777485344,
-        "Y": 1952.5712583355155
+        "X": -944.91817212282012,
+        "Y": 2172.1006622252958
       },
       {
         "ShowGeometry": true,
@@ -2132,8 +2106,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -885.34548386051665,
-        "Y": 2079.1677675541505
+        "X": -950.90896733376758,
+        "Y": 2424.1157452024681
       },
       {
         "ShowGeometry": true,
@@ -2142,48 +2116,108 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 298.17887908989792,
-        "Y": 1938.9369283558908
+        "X": 696.55156629390876,
+        "Y": 2172.2018945251948
       },
       {
         "ShowGeometry": true,
-        "Name": "On/Off - coloring geometry",
+        "Name": "On/Off - Ground Truth",
         "Id": "5050387ca57e4e008dd9971ef30e2629",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -884.6436848912299,
-        "Y": 2161.4095472892946
+        "X": -949.61475176441172,
+        "Y": 2506.3575249376117
       },
       {
         "ShowGeometry": true,
-        "Name": "Query Result Selector",
-        "Id": "bdfa9bdb56f54ae4accd18df8a341608",
+        "Name": "On/Off - Query Result",
+        "Id": "09fd105ed35b432787de4f7ec72e8c0b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -568.194519197998,
-        "Y": 1538.5314416556855
+        "X": -948.75674648273082,
+        "Y": 2580.7977718669244
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List to Dict",
+        "Id": "000ca572a653468cba6ba27813cb14b1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 328.35109474204341,
+        "Y": 1615.6107977837758
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JSON Viewer",
+        "Id": "bb34d26722024927908183f1ec37e9d1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 588.49662920384219,
+        "Y": 1677.6815322351194
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "363295086fd740c3beb3646509bd7c28",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -945.22669941857589,
+        "Y": 2315.1215763498808
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JSON Loader",
+        "Id": "41747d547b9c4b27931b3ca6e0215c61",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -577.8719142319444,
+        "Y": 2315.398754108382
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JSON-GroundTruth Viewer",
+        "Id": "01862427cde34887b192d733a66de2c9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -48.441330322483054,
+        "Y": 2329.7412763325465
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch 3D",
+        "Id": "e6fa07009dc64b9d97d7557102086108",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 462.33079687856025,
+        "Y": 2426.49792623953
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "a284fc7eef434eab93d66ed4b6fb2c12",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -38.184944413263224,
+        "Y": 2125.1653365048915
       },
       {
         "ShowGeometry": true,
         "Name": "Watch",
-        "Id": "93bb66fed256477ba269b3a5ebdc4f38",
+        "Id": "33e25e9b47f747349545b2191bf1223e",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 127.66091474154371,
-        "Y": 1438.490842546971
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "JSON Parser",
-        "Id": "ed60bcf0fb044b54afebb634b63095a8",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -179.15321388985433,
-        "Y": 1541.3570268399567
+        "X": 222.37820878984985,
+        "Y": 2125.5200543227547
       }
     ],
     "Annotations": [
@@ -2197,15 +2231,17 @@
           "3caf2c5d39a14bb8a8d117a845916766",
           "707d96c4b0c447fab11fd20d86754199",
           "3f57e74dd731444791e46505ab0dfb81",
-          "80b16f3f20094a978114d38819afd778"
+          "80b16f3f20094a978114d38819afd778",
+          "000ca572a653468cba6ba27813cb14b1",
+          "bb34d26722024927908183f1ec37e9d1"
         ],
-        "Left": -893.38715412712554,
-        "Top": 922.11098459365883,
-        "Width": 1324.1219142698346,
-        "Height": 436.02069170219613,
+        "Left": -955.15924966689067,
+        "Top": 1550.2920239699674,
+        "Width": 1810.655878870733,
+        "Height": 436.83842697455407,
         "FontSize": 36.0,
-        "InitialTop": 975.11098459365883,
-        "InitialHeight": 396.63661045578363,
+        "InitialTop": 1603.2920239699674,
+        "InitialHeight": 396.63661045578351,
         "TextblockHeight": 43.0,
         "Background": "#FF48B9FF"
       },
@@ -2260,27 +2296,8 @@
         "Background": "#FFD3D3D3"
       },
       {
-        "Id": "ae93889f56834dc4bcf3ed27c24b8842",
-        "Title": "Highlight of Query Result + Groundtruth",
-        "Nodes": [
-          "b748c56692a542cf82608f2f5de3368e",
-          "bdfa9bdb56f54ae4accd18df8a341608",
-          "ed60bcf0fb044b54afebb634b63095a8",
-          "93bb66fed256477ba269b3a5ebdc4f38"
-        ],
-        "Left": -886.73019024315329,
-        "Top": 1385.490842546971,
-        "Width": 1283.391104984697,
-        "Height": 431.0,
-        "FontSize": 36.0,
-        "InitialTop": 1438.490842546971,
-        "InitialHeight": 152.61919297751274,
-        "TextblockHeight": 43.0,
-        "Background": "#FFC1D676"
-      },
-      {
         "Id": "e1cae2e0c07d41daad9494a8ca0df2b0",
-        "Title": "RDF Import and Parsing",
+        "Title": "JSON Import and Parsing",
         "Nodes": [
           "da5cd7ec9968431b9c02ee6620412ada",
           "3cfb3fe3994b4566a2c99f8419182612",
@@ -2288,40 +2305,26 @@
           "b048d5afe4c442b6944bf104390e697b",
           "fa6983f6e1af4be3bcf56aea05aaddd4",
           "c41c5d8ce1fb432c892d90a27d70ee0a",
-          "5050387ca57e4e008dd9971ef30e2629"
+          "5050387ca57e4e008dd9971ef30e2629",
+          "09fd105ed35b432787de4f7ec72e8c0b",
+          "01862427cde34887b192d733a66de2c9",
+          "363295086fd740c3beb3646509bd7c28",
+          "41747d547b9c4b27931b3ca6e0215c61",
+          "e6fa07009dc64b9d97d7557102086108"
         ],
-        "Left": -895.34548386051665,
-        "Top": 1899.9369283558908,
-        "Width": 1493.5243629504146,
-        "Height": 418.64724639244332,
+        "Left": -960.90896733376758,
+        "Top": 2132.9546505689318,
+        "Width": 1957.4605336276763,
+        "Height": 571.54327567059818,
         "FontSize": 24.0,
-        "InitialTop": 1938.9369283558908,
-        "InitialHeight": 426.431823660487,
+        "InitialTop": 2171.9546505689318,
+        "InitialHeight": 553.84312129799264,
         "TextblockHeight": 29.0,
         "Background": "#FF90EE90"
-      },
-      {
-        "Id": "3fcf88c252534555a58accbbb80a48c1",
-        "Title": "Background",
-        "Nodes": [
-          "15b03d534ea443bc817c75dcd2beca67",
-          "7d9284078cbe4cc4976d171bbf5209a6",
-          "904eab0b83e04652adb889795141ef18",
-          "0277eb7efc10401aaa549ffa41c1ed7d"
-        ],
-        "Left": 1556.2453011318867,
-        "Top": 1299.0763229584659,
-        "Width": 462.83289073864466,
-        "Height": 510.15030337783969,
-        "FontSize": 24.0,
-        "InitialTop": 1338.0763229584659,
-        "InitialHeight": 358.79056704628397,
-        "TextblockHeight": 29.0,
-        "Background": "#FFD3D3D3"
       }
     ],
-    "X": 635.80301253714242,
-    "Y": -1047.4675728270386,
-    "Zoom": 0.72719350135873373
+    "X": 710.57083011172074,
+    "Y": -1282.5226370951279,
+    "Zoom": 0.70951056055877948
   }
 }
