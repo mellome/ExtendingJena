@@ -1496,15 +1496,24 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndict = IN[0]\r\n\r\n# Place your code below this line\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = dict.keys()",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n################# Input #######################\r\nres_dict = IN[0]\r\nground_truth_dict = IN[1]\r\n\r\n################## Body ####################\r\ncount = 0\r\n\r\nfor res_key in res_dict.keys():\r\n\r\n    if res_key in ground_truth_dict.keys():\r\n        count += 1\r\n\r\nac = count/len(res_dict)\r\n################## Output ###################\r\nOUT = ac",
       "Engine": "CPython3",
       "VariableInputPorts": true,
-      "Id": "a284fc7eef434eab93d66ed4b6fb2c12",
+      "Id": "d205bf66921949beb7be8002e1f79852",
       "Inputs": [
         {
-          "Id": "31693300afca477c9560194681eb1a42",
+          "Id": "684eadea5bf24dc3b236131d110b1835",
           "Name": "IN[0]",
           "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "45a4f4a5baff41a09d83cb48763f18e3",
+          "Name": "IN[1]",
+          "Description": "Input #1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1513,7 +1522,7 @@
       ],
       "Outputs": [
         {
-          "Id": "d43f90e59fea493fbc32c082e6edef50",
+          "Id": "4a43c16ce1ec44c4b1f6a0913ac553ce",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -1528,10 +1537,10 @@
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
       "NodeType": "ExtensionNode",
-      "Id": "33e25e9b47f747349545b2191bf1223e",
+      "Id": "6152757309134f8a8469cc9945423019",
       "Inputs": [
         {
-          "Id": "7402f03806dd41199315a74fc45cf0e7",
+          "Id": "78f518cfd1014475a8d546f1dcea56e8",
           "Name": "",
           "Description": "Node to evaluate.",
           "UsingDefaultValue": false,
@@ -1542,7 +1551,129 @@
       ],
       "Outputs": [
         {
-          "Id": "3cc5ca291e444c9a98ca3c3bd977227e",
+          "Id": "fb8138fae498431f9ee053e9e3193c44",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport ctypes\r\nimport xml.etree.ElementTree as ET\r\nsys.path.append(r\"C:\\Users\\yhe\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\")\r\n\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nfrom xml.dom.minidom import parse, parseString\r\n\r\nwarn_str = '<.dyn> File or File Path does not exist.'\r\nres = ''\r\n######################################################\r\n\r\ndef rdfParsing2GeoData(path=dir):\r\n    \"\"\" it returns the json file in structure like { \"POLYGON1\" : [...], \r\n                                                     \"POLYGON2\" : [...], \r\n                                                     \"MULTIPOLYGON1\" : [...], ...\r\n                                                    }\r\n    \"\"\"\r\n    geo_dict = {}\r\n    dom = parse(path)\r\n    data = dom.documentElement\r\n    rdf_desc_lst = data.getElementsByTagName(\"rdf:Description\")\r\n    # geo_in_wkt = data.getElementsByTagName(\"geo:asWKT\")\r\n\r\n    for i in range(1, len(rdf_desc_lst)): # first description element (root element) should be removed.\r\n        descr_el = rdf_desc_lst[i]\r\n        geo_name_num = descr_el.attributes._attrs['rdf:about'].nodeValue.split('#')[1]\r\n        geo_wkt_data = \"\"\r\n        try:\r\n            geo_wkt_data = descr_el.childNodes[0].firstChild.data\r\n        except:\r\n            geo_wkt_data = descr_el.childNodes[1].firstChild.data\r\n        geo_algebra_lst = []\r\n\r\n        if ( geo_name_num.find('POINT') != -1 or\r\n            geo_name_num.find('Point') != -1 ):\r\n            \r\n            wkt_data_lst = geo_wkt_data.split(\"(\")[1] # remove title 'POINT'\r\n            vert_str_lst = wkt_data_lst\r\n            vert_str_lst = vert_str_lst.replace( \")\", \"\" ) # remove character ')'\r\n\r\n            pt_algebra_lst = []\r\n            pt_str_lst = vert_str_lst.split(\" \")\r\n\r\n            pt_algebra_lst = [ float(pt_str) for pt_str in pt_str_lst ]\r\n            geo_algebra_lst.append(pt_algebra_lst)\r\n            \r\n        if ( geo_name_num.find('LINESTRING') != -1 or\r\n            geo_name_num.find('Linestring') != -1 or\r\n            geo_name_num.find('LINE') != -1 or\r\n            geo_name_num.find('Line') != -1 ):\r\n\r\n            wkt_data_lst = geo_wkt_data.split(\"((\")[1] # remove title 'LINESTRING'\r\n            vert_str_lst = wkt_data_lst\r\n            vert_str_lst = vert_str_lst.replace( \")\", \"\" ) # remove character ')'\r\n            vert_str_lst = vert_str_lst.split(\", \")\r\n\r\n            line_algebra_lst = []\r\n            for i in range(0, len(vert_str_lst)):\r\n\r\n                pt_str_lst = vert_str_lst[i].split(\" \")\r\n                line_algebra_lst.append([ float(pt_str) for pt_str in pt_str_lst ])\r\n            geo_algebra_lst.append(line_algebra_lst)\r\n\r\n        if ( geo_name_num.find('POLYGON') != -1 or \r\n            geo_name_num.find('Polygon') != -1 ):\r\n\r\n            wkt_data_lst = geo_wkt_data.split(\"((\")[1] # remove title 'POLYGON Z'\r\n            vert_str_lst = wkt_data_lst\r\n            vert_str_lst = vert_str_lst.replace( \")\", \"\" ) # remove character ')'\r\n            vert_str_lst = vert_str_lst.replace( \"(\", \"\" ) # remove character '('\r\n            vert_str_lst = vert_str_lst.split(\", \")\r\n\r\n            face_algebra_lst = []\r\n            for i in range(0, len(vert_str_lst)-1): # last point not included\r\n\r\n                pt_str_lst = vert_str_lst[i].split(\" \")\r\n                face_algebra_lst.append([ float(pt_str) for pt_str in pt_str_lst ])\r\n            geo_algebra_lst.append(face_algebra_lst)\r\n\r\n        if ( geo_name_num.find('MULTIPOLYGON') != -1 or\r\n            geo_name_num.find('Multipolygon') != -1  or\r\n            geo_name_num.find('CUBE') != -1 or\r\n            geo_name_num.find('Cube') != -1 or\r\n            geo_name_num.find('SPHERE') != -1 or\r\n            geo_name_num.find('Sphere') != -1 ):\r\n\r\n            wkt_data_lst = geo_wkt_data.split(\"(((\")[1] # remove title 'MULTIPOLYGON Z'\r\n            face_str_lst = wkt_data_lst.split(\"), \")\r\n\r\n            face_algebra_lst = []\r\n            for face_str in face_str_lst:\r\n                vert_str_lst = face_str.replace( \")\", \"\" ) # remove character ')'\r\n                vert_str_lst = vert_str_lst.replace( \"(\", \"\" ) # remove character '('\r\n                vert_str_lst = vert_str_lst.split(\", \")\r\n\r\n                pt_algebra_lst = []\r\n                for i in range(0, len(vert_str_lst)-1): # last point not included\r\n\r\n                    pt_str_lst = vert_str_lst[i].split(\" \")\r\n                        \r\n                    pt_algebra = [ float(pt_str) for pt_str in pt_str_lst ]\r\n                    pt_algebra_lst.append(pt_algebra)\r\n\r\n                face_algebra_lst.append(pt_algebra_lst)\r\n            geo_algebra_lst = face_algebra_lst\r\n\r\n        if geo_name_num not in geo_dict.keys():\r\n            geo_dict[geo_name_num] = geo_algebra_lst\r\n    return geo_dict\r\n    \r\n######################################################\r\njson_file = {}\r\nif IN[0]:\r\n    try:\r\n        dir = \"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\rdf\\\\xxl3DScene.rdf\"\r\n        json_file = rdfParsing2GeoData(dir)\r\n    except:\r\n        ctypes.windll.user32.MessageBoxW(0, warn_str, 'Input Exception',1)\r\n\r\n######################### Output ##########################\r\nOUT = json_file\r\n\r\n",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "a594b4946d004034804f1bedacfb0117",
+      "Inputs": [
+        {
+          "Id": "977285870d004598ad201aceca0be828",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f7d9a00974484a40a656e605f1ecd39b",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "9ec25572ee8e43ffbd3ba38605b2eedb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "93aae28ddd7444e9b4e2ddc2846612df",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport json\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\ndir = \"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\JSON\\\\xxl3DScene.json\"\r\nwarn_str = '<.json> File or File Path does not exist.'\r\n\r\n\r\njson_file = IN[0]\r\nswitch_writer = IN[1]\r\n\r\nres = False\r\n\r\nif switch_writer:\r\n    try: \r\n        with open(dir, 'w') as fp:\r\n            json.dump(json_file, fp, sort_keys=True, indent=4)\r\n        res = True\r\n    except:\r\n        ctypes.windll.user32.MessageBoxW(0, warn_str, 'Input Exception',1)\r\nOUT = res",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "591a22a6b8ba48e6a2feba37c0d6bdc6",
+      "Inputs": [
+        {
+          "Id": "1d70c6bf1fa44dc1b2ee41f89f12b021",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5c8eade2933345a785f0beff865e6f5b",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "924b8bd135e940e28b56ee15b050b0ef",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "835c18ac8dca47699096b4d67ebdb16d",
+      "Inputs": [
+        {
+          "Id": "1e12eb8d9e844b8bac1130d6a6e0715c",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fe9c0d893bd24d2dba5cac6d70b156cc",
           "Name": "",
           "Description": "Watch contents.",
           "UsingDefaultValue": false,
@@ -1687,11 +1818,6 @@
       "Id": "fde0ab3f3f644f6d8dabe4c35314a011"
     },
     {
-      "Start": "a07aaf905fe740b6a7e84957029c119d",
-      "End": "31693300afca477c9560194681eb1a42",
-      "Id": "6bfa8b401de54681a49780000215b8a8"
-    },
-    {
       "Start": "8f2378090418471e945d35be8e02cc60",
       "End": "a5f598d2e023499d9bf0355794e7c82f",
       "Id": "78dfab9e734f4456be6ac89d122c31ec"
@@ -1717,6 +1843,11 @@
       "Id": "9412c4ba910c427583fc2c96296aeda1"
     },
     {
+      "Start": "1e42b32d05b34c40855c7c0d90c56f74",
+      "End": "684eadea5bf24dc3b236131d110b1835",
+      "Id": "5cba3d60ee034fbca11f167e0d6872b5"
+    },
+    {
       "Start": "26144c8263bc4f648848aebcb83e688f",
       "End": "7435e184bee547cc84e6005d9da7efb8",
       "Id": "2ae8c8db860f4543bf370032a4005ff0"
@@ -1732,14 +1863,39 @@
       "Id": "8a53f996f32a49fc8520624ce2d5a60a"
     },
     {
+      "Start": "f9159692e5274ac3bf74ca665b285e6f",
+      "End": "45a4f4a5baff41a09d83cb48763f18e3",
+      "Id": "9a949db342ac4bf7842f813411c3df09"
+    },
+    {
       "Start": "01bbd51d12a94a31a6584ab1f4ca2d98",
       "End": "c6982d49eb6743ff9574c168e582c886",
       "Id": "d1f9a76c7d8a40e8ab8a3ec6b73ad6bf"
     },
     {
-      "Start": "d43f90e59fea493fbc32c082e6edef50",
-      "End": "7402f03806dd41199315a74fc45cf0e7",
-      "Id": "f9a0376e968f4691a9aabffcbac6b780"
+      "Start": "4a43c16ce1ec44c4b1f6a0913ac553ce",
+      "End": "78f518cfd1014475a8d546f1dcea56e8",
+      "Id": "c199512a29d64f849b68e3248e830e4f"
+    },
+    {
+      "Start": "f7d9a00974484a40a656e605f1ecd39b",
+      "End": "1d70c6bf1fa44dc1b2ee41f89f12b021",
+      "Id": "62f102060d0a4b2f9cca28230383a3a5"
+    },
+    {
+      "Start": "93aae28ddd7444e9b4e2ddc2846612df",
+      "End": "977285870d004598ad201aceca0be828",
+      "Id": "63b63ea16cdf4545b195c80bb43287d9"
+    },
+    {
+      "Start": "93aae28ddd7444e9b4e2ddc2846612df",
+      "End": "5c8eade2933345a785f0beff865e6f5b",
+      "Id": "c547550b8c69486a99116363237a88f2"
+    },
+    {
+      "Start": "924b8bd135e940e28b56ee15b050b0ef",
+      "End": "1e12eb8d9e844b8bac1130d6a6e0715c",
+      "Id": "eb9e6b7a300340f89787fc8da6588406"
     }
   ],
   "Dependencies": [],
@@ -1768,15 +1924,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -58.801292419433594,
-      "EyeY": 35.375881195068359,
-      "EyeZ": -143.48110961914063,
-      "LookX": 35.166084289550781,
-      "LookY": -11.848262786865234,
-      "LookZ": 144.457275390625,
-      "UpX": -0.029872052371501923,
-      "UpY": 0.99406331777572632,
-      "UpZ": -0.10462242364883423
+      "EyeX": 184.09553527832031,
+      "EyeY": -8.37579345703125,
+      "EyeZ": -18.564764022827148,
+      "LookX": -207.73074340820313,
+      "LookY": 31.903411865234375,
+      "LookZ": 19.540929794311523,
+      "UpX": 0.33179190754890442,
+      "UpY": 0.94268274307250977,
+      "UpZ": -0.035544920712709427
     },
     "NodeViews": [
       {
@@ -2066,8 +2222,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 459.85571103684197,
-        "Y": 2172.2666246943827
+        "X": 461.867313014302,
+        "Y": 2116.9475703142248
       },
       {
         "ShowGeometry": true,
@@ -2076,8 +2232,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -579.4924219491561,
-        "Y": 2172.1663726485608
+        "X": -577.48081997169606,
+        "Y": 2116.8473182684029
       },
       {
         "ShowGeometry": true,
@@ -2086,8 +2242,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -343.26269307431403,
-        "Y": 2171.9546505689318
+        "X": -341.251091096854,
+        "Y": 2116.6355961887739
       },
       {
         "ShowGeometry": true,
@@ -2096,8 +2252,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -944.91817212282012,
-        "Y": 2172.1006622252958
+        "X": -942.90657014536009,
+        "Y": 2116.7816078451378
       },
       {
         "ShowGeometry": true,
@@ -2106,8 +2262,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -950.90896733376758,
-        "Y": 2424.1157452024681
+        "X": -948.89736535630755,
+        "Y": 2368.79669082231
       },
       {
         "ShowGeometry": true,
@@ -2116,8 +2272,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 696.55156629390876,
-        "Y": 2172.2018945251948
+        "X": 698.5631682713688,
+        "Y": 2116.8828401450369
       },
       {
         "ShowGeometry": true,
@@ -2126,8 +2282,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -949.61475176441172,
-        "Y": 2506.3575249376117
+        "X": -947.60314978695169,
+        "Y": 2451.0384705574538
       },
       {
         "ShowGeometry": true,
@@ -2136,8 +2292,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -948.75674648273082,
-        "Y": 2580.7977718669244
+        "X": -946.74514450527067,
+        "Y": 2525.4787174867665
       },
       {
         "ShowGeometry": true,
@@ -2166,8 +2322,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -945.22669941857589,
-        "Y": 2315.1215763498808
+        "X": -943.21509744111586,
+        "Y": 2259.8025219697229
       },
       {
         "ShowGeometry": true,
@@ -2176,8 +2332,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -577.8719142319444,
-        "Y": 2315.398754108382
+        "X": -575.86031225448437,
+        "Y": 2260.0796997282241
       },
       {
         "ShowGeometry": true,
@@ -2186,8 +2342,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -48.441330322483054,
-        "Y": 2329.7412763325465
+        "X": -75.774163156179156,
+        "Y": 2483.9088815764758
       },
       {
         "ShowGeometry": true,
@@ -2196,28 +2352,68 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 462.33079687856025,
-        "Y": 2426.49792623953
+        "X": 464.34239885602028,
+        "Y": 2371.1788718593721
       },
       {
         "ShowGeometry": true,
-        "Name": "Python Script",
-        "Id": "a284fc7eef434eab93d66ed4b6fb2c12",
+        "Name": "Accuracy Calculator",
+        "Id": "d205bf66921949beb7be8002e1f79852",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -38.184944413263224,
-        "Y": 2125.1653365048915
+        "X": -951.28161302479953,
+        "Y": 2973.5077784516725
       },
       {
         "ShowGeometry": true,
         "Name": "Watch",
-        "Id": "33e25e9b47f747349545b2191bf1223e",
+        "Id": "6152757309134f8a8469cc9945423019",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 222.37820878984985,
-        "Y": 2125.5200543227547
+        "X": -647.0608354477348,
+        "Y": 2974.93026440726
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RDF-JSON Converter",
+        "Id": "a594b4946d004034804f1bedacfb0117",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1402.1472350195831,
+        "Y": 2136.8379336137446
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "On/Off",
+        "Id": "9ec25572ee8e43ffbd3ba38605b2eedb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1610.5815974495511,
+        "Y": 2152.9099057188178
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JSON Writer",
+        "Id": "591a22a6b8ba48e6a2feba37c0d6bdc6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1162.0742054859638,
+        "Y": 2149.9831427236541
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JSON Viewer",
+        "Id": "835c18ac8dca47699096b4d67ebdb16d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1240.9454601454242,
+        "Y": 2298.0397084879023
       }
     ],
     "Annotations": [
@@ -2237,8 +2433,8 @@
         ],
         "Left": -955.15924966689067,
         "Top": 1550.2920239699674,
-        "Width": 1810.655878870733,
-        "Height": 436.83842697455407,
+        "Width": 1827.655878870733,
+        "Height": 505.389508265152,
         "FontSize": 36.0,
         "InitialTop": 1603.2920239699674,
         "InitialHeight": 396.63661045578351,
@@ -2312,19 +2508,55 @@
           "41747d547b9c4b27931b3ca6e0215c61",
           "e6fa07009dc64b9d97d7557102086108"
         ],
-        "Left": -960.90896733376758,
-        "Top": 2132.9546505689318,
+        "Left": -958.89736535630755,
+        "Top": 2077.6355961887739,
         "Width": 1957.4605336276763,
-        "Height": 571.54327567059818,
+        "Height": 784.27328538770189,
         "FontSize": 24.0,
-        "InitialTop": 2171.9546505689318,
+        "InitialTop": 2116.6355961887739,
         "InitialHeight": 553.84312129799264,
         "TextblockHeight": 29.0,
         "Background": "#FF90EE90"
+      },
+      {
+        "Id": "414485b7dc084b4a95524a8e1b3b60f4",
+        "Title": "Accuracy Calculation",
+        "Nodes": [
+          "d205bf66921949beb7be8002e1f79852",
+          "6152757309134f8a8469cc9945423019"
+        ],
+        "Left": -961.28161302479953,
+        "Top": 2920.5077784516725,
+        "Width": 403.22077757706472,
+        "Height": 183.0,
+        "FontSize": 36.0,
+        "InitialTop": 2973.5077784516725,
+        "InitialHeight": 146.42248595558749,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "06b97a14c0c94522ba7a55a381a424f0",
+        "Title": "RDF-to-JSON",
+        "Nodes": [
+          "a594b4946d004034804f1bedacfb0117",
+          "9ec25572ee8e43ffbd3ba38605b2eedb",
+          "591a22a6b8ba48e6a2feba37c0d6bdc6",
+          "835c18ac8dca47699096b4d67ebdb16d"
+        ],
+        "Left": -1620.5815974495511,
+        "Top": 2083.8379336137446,
+        "Width": 600.00739196358722,
+        "Height": 323.20177487415776,
+        "FontSize": 36.0,
+        "InitialTop": 2136.8379336137446,
+        "InitialHeight": 306.20177487415776,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
       }
     ],
-    "X": 710.57083011172074,
-    "Y": -1282.5226370951279,
-    "Zoom": 0.70951056055877948
+    "X": 743.98475081131642,
+    "Y": -1213.1264900415476,
+    "Zoom": 0.624960069051489
   }
 }

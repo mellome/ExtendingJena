@@ -52,30 +52,40 @@ public class PPIntersection3DBSP extends FunctionBase2{
     @Override
     public NodeValue exec(NodeValue v1, NodeValue v2) {
 
+        GeometryWrapper geometry1 = GeometryWrapper.extract(v1);
+	    Geometry geom1 = geometry1.getParsingGeometry();
+	    
+		GeometryWrapper geometry2 = GeometryWrapper.extract(v2);
+	    Geometry geom2 = geometry2.getParsingGeometry();
+
+        if (geom1 instanceof LineString || geom2 instanceof LineString) {
+            return NodeValue.FALSE;
+        }
+        
         List<Polygon> polygonsLst1 = BSPTree.node2Polygon(v1);
         List<Polygon> polygonsLst2 = BSPTree.node2Polygon(v2);
 
-        System.out.println("=========================(Multi)Polygon 1=============================");
+        // System.out.println("=========================(Multi)Polygon 1=============================");
         BSPTree t1 = new BSPTree();
         t1.buildBSPTree(polygonsLst1);
-        try {
-            t1.traverse(t1, Vector3D.ZERO);
-        } catch (IOException e) {
-            System.out.println(e);
-        }
+        // try {
+        //     t1.traverse(t1, Vector3D.ZERO);
+        // } catch (IOException e) {
+        //     System.out.println(e);
+        // }
 
-        System.out.println("=========================(Multi)Polygon 2=============================");
+        // System.out.println("=========================(Multi)Polygon 2=============================");
         BSPTree t2 = new BSPTree();
         t2.buildBSPTree(polygonsLst2);
-        try {
-            t2.traverse(t2, Vector3D.ZERO);
-        } catch (IOException e) {
-            System.out.println(e);
-        }
+        // try {
+        //     t2.traverse(t2, Vector3D.ZERO);
+        // } catch (IOException e) {
+        //     System.out.println(e);
+        // }
 
         boolean isIntersected = t1.collisionDetect(t1, t2);
-        System.out.println("Res: " + isIntersected);
-        System.out.println("========================================================");
+        // System.out.println("Res: " + isIntersected);
+        // System.out.println("========================================================");
 
         return isIntersected?NodeValue.TRUE:NodeValue.FALSE;
     }

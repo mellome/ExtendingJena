@@ -50,16 +50,21 @@ import rub.inf.bi.extension.jena.NamespaceManager;
 
 public class RunTopologicalValidationExample {
     // Directories for WIN11
-    // private static String ontologiePath ="C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\example.rdf"; // "example", "3DScenario"
-    // private static String originalQueryPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test4_PLIntersection3DBSP.ttl";
-    // private static String queryResultPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml";
+    private static String ontologiePath ="C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\xxl3DScene.rdf"; // "example", "3DScenario"
+    private static String originalQueryPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test4_PPIntersection3DBSP.ttl";
+    private static String queryResultPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml";
 
     // Directories for MAC
-    private static String ontologiePath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/cubeLineLineString.rdf";
-    private static String originalQueryPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/sparql/Geometry3D Tests/Test4_PLIntersection3DBSP.ttl";
-    private static String queryResultPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/query_result.xml";
+    // private static String ontologiePath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/cubeLineLineString.rdf";
+    // private static String originalQueryPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/sparql/Geometry3D Tests/Test4_PLIntersection3DBSP.ttl";
+    // private static String queryResultPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/query_result.xml";
 
     public static void main(String[] args) {
+
+        // ================================ Running Start =====================================
+        long startTime = System.nanoTime();
+        // =====================================================================
+
         //Definition of all namespaces in use
 		HashMap<String, String> prefixes = new HashMap<String, String>();
 		prefixes.put("ifc", "http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#");
@@ -112,7 +117,7 @@ public class RunTopologicalValidationExample {
         // read the RDF/XML file
         model.read(input, null);
 
-        System.out.println("\n==================Result===================");
+        System.out.println("\n================== Result ===================");
 		try(QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
 	        ResultSet results = qexec.execSelect() ;
             //Boolean isColumnNameStored = false;
@@ -150,6 +155,11 @@ public class RunTopologicalValidationExample {
 	        // }
 	    }
 		System.out.println("===========================================");
+        // ================================ Running Stop =====================================
+        long endTime   = System.nanoTime();
+        long totalTime = (endTime - startTime) / 1000000; // ns to ms
+        System.out.println("Running Time: " + totalTime);
+        // =====================================================================
 
     }
 

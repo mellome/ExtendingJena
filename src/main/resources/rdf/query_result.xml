@@ -6,66 +6,450 @@
   <results>
     <result>
       <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON35</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON47</uri>
       </binding>
       <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON30</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON16</uri>
       </binding>
     </result>
     <result>
       <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON29</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON75</uri>
       </binding>
       <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON44</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON13</uri>
       </binding>
     </result>
     <result>
       <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON44</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON9</uri>
       </binding>
       <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON29</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON48</uri>
       </binding>
     </result>
     <result>
       <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON18</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON11</uri>
       </binding>
       <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON25</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON41</uri>
       </binding>
     </result>
     <result>
       <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON12</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON48</uri>
       </binding>
       <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON40</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON9</uri>
       </binding>
     </result>
     <result>
       <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON25</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON16</uri>
       </binding>
       <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON18</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON47</uri>
       </binding>
     </result>
     <result>
       <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON40</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON19</uri>
       </binding>
       <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON12</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON72</uri>
       </binding>
     </result>
     <result>
       <binding name="GeometryA">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON30</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON36</uri>
       </binding>
       <binding name="GeometryB">
-        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON35</uri>
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON49</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON100</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON79</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON99</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON80</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON99</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON41</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON1</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON94</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON24</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON15</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON13</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON54</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON28</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON80</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON28</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON58</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON80</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON99</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON80</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON28</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON80</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON41</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON80</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON58</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON22</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON68</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON49</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON36</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON49</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON31</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON94</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON1</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON71</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON32</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON71</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON60</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON82</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON37</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON45</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON32</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON72</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON19</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON13</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON75</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON79</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON100</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON54</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON13</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON5</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON52</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON41</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON99</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON41</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON80</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON41</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON58</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON31</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON49</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON41</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON11</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON68</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON22</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON52</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON5</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON15</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON24</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON48</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON60</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON25</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON7</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON17</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON94</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON32</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON71</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON32</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON45</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON32</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON76</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON7</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON25</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON94</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON17</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON76</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON32</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON37</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON82</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON58</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON28</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON58</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON80</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON58</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#POLYGON41</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON60</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON71</uri>
+      </binding>
+    </result>
+    <result>
+      <binding name="GeometryA">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON60</uri>
+      </binding>
+      <binding name="GeometryB">
+        <uri>https://www.inf.bi.ruhr-uni-bochum.de/jena/#MULTIPOLYGON48</uri>
       </binding>
     </result>
   </results>
