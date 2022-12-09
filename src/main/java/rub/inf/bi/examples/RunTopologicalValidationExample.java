@@ -51,7 +51,7 @@ import rub.inf.bi.extension.jena.NamespaceManager;
 public class RunTopologicalValidationExample {
     // Directories for WIN11
     private static String ontologiePath ="C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\xxl3DScene.rdf"; // "example", "3DScenario"
-    private static String originalQueryPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test4_PPIntersection3DBSP.ttl";
+    private static String originalQueryPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test4_PLIntersection3DBSP.ttl";
     private static String queryResultPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml";
 
     // Directories for MAC

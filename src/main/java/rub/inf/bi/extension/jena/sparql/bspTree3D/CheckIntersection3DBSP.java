@@ -47,11 +47,16 @@ import org.apache.jena.sparql.function.FunctionBase2;
 /*
  * MultiPolygon -- Surface
  */
-public class PSIntersection3DBSP extends FunctionBase2{
+public class CheckIntersection3DBSP extends FunctionBase2{
 
     @Override
     public NodeValue exec(NodeValue v1, NodeValue v2) {
-        // TODO Auto-generated method stub
+        /**
+         *  TODO: 
+         *  1. check all types of intersection from the given 3D scene.
+         *  2. return intersected geometry. (Point, Line, Surface)
+         */
+
         return null;
     }
     
