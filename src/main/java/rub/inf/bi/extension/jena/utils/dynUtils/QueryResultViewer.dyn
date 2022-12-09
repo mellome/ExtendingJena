@@ -1061,7 +1061,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "import sys\r\nimport clr\r\nimport random\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\nclr.AddReference('MeshToolkit')\r\nfrom Autodesk.Dynamo.MeshToolkit import *\r\n\r\n############# Common Geometry Types ##################\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nPOLYGON_ROTATION = \"POLYGON_ROTATION\"\r\nMULTIPOLYGON = \"MULTIPOLYGON\"\r\nMULTIPOLYGON_ROTATION = \"MULTIPOLYGON_ROTATION\"\r\nSPHERE = \"MULTIPOLYGON_SPHERE\"\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n\"\"\"\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\"\"\"\r\n###################### Input ######################### \r\njson_file = IN[0]\r\nres_dict = IN[1]\r\nground_truth_dict = IN[2]\r\nswitch_generator = IN[3]\r\nswitch_ground_truth = IN[4]\r\nswitch_query_result = IN[5]\r\n\r\n################# Container ####################\r\ngeo_lst = []\r\n\r\ngeo_pt_lst = []\r\ngeo_li_lst = []\r\ngeo_pol_lst = []\r\ngeo_mPol_lst = []\r\ngeo_sph_lst = []\r\n\r\ngeo_combi_lst = []\r\n\r\n################# Color & Filter #####################\r\ncolor_green_ground_truth = Color.ByARGB(230,230,250,0)\r\ncolor_red_query_result = Color.ByARGB(255,255,0,0)\r\ncolor = \"\"\r\nfilter_dict = json_file\r\n\r\nswitch_coloring = False\r\n\r\nif switch_ground_truth and not switch_query_result:\r\n    switch_coloring = True\r\n    color = color_green_ground_truth\r\n    filter_dict = ground_truth_dict\r\n    \r\nif not switch_ground_truth and switch_query_result:\r\n    switch_coloring = True\r\n    color = color_red_query_result\r\n    filter_dict = res_dict\r\n    \r\nif switch_ground_truth and switch_query_result:\r\n    switch_coloring = False\r\n    color = \"\"\r\n    filter_dict = json_file\r\n    \r\ndef coloring(geometry, geo_name):\r\n    if switch_coloring:\r\n        \r\n        if geo_name in filter_dict.keys():\r\n            return GeometryColor.ByGeometryColor(geometry, color)\r\n            \r\n    return geometry\r\n\r\n######################## Body #######################\r\n\r\nif switch_generator == False:\r\n    OUT = []\r\n    exit()\r\n    \r\nfor geo_name, geo_data in json_file.items():\r\n   \r\n    if ( geo_name.find('POINT') != -1 or\r\n        geo_name.find('Point') != -1 ):\r\n\r\n        pt_data = geo_data\r\n        pt_x = 0.0\r\n        pt_y = 0.0\r\n        pt_z = 0.0\r\n        if (len(pt_data) == 3): # (x, y, z)\r\n            pt_x = pt_data[0]\r\n            pt_y = pt_data[1]\r\n            pt_z = pt_data[2]\r\n            \r\n        if (len(pt_data) == 2): # (x, y)\r\n            pt_x = pt_data[0]\r\n            pt_y = pt_data[1]\r\n            pt_z = 0.0\r\n            \r\n        pt = Point.ByCoordinates(pt_x, pt_y, pt_z)\r\n\r\n        geo_data = pt\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'POINT'\r\n        geometry = coloring(pt, geo_name.upper())\r\n\r\n        geo_pt_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_pt_lst.append(geo_pt_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('LINESTRING') != -1 or\r\n        geo_name.find('Linestring') != -1 or\r\n        geo_name.find('LINE') != -1 or\r\n        geo_name.find('Line') != -1 ):\r\n\r\n        pt_lst = []\r\n        for pt_data in geo_data[0]:\r\n            pt = Point.ByCoordinates(pt_data[0], pt_data[1], pt_data[2])\r\n            pt_lst.append(pt)\r\n\r\n        geo_data = pt_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'LINESTRING'\r\n        geometry = coloring(PolyCurve.ByPoints(pt_lst, False), geo_name.upper())\r\n\r\n        geo_li_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_li_lst.append(geo_li_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('SPHERE') != -1 or\r\n        geo_name.find('Sphere') != -1 ):\r\n\r\n        face_lst = []\r\n        for face_data in geo_data:\r\n\r\n            pt_lst = []\r\n            for vert_data in face_data:\r\n                pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n                pt_lst.append(pt)\r\n            face = coloring(Surface.ByPerimeterPoints(pt_lst), geo_name.upper())\r\n            face_lst.append(face)\r\n\r\n        geo_data = face_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'MULTIPOLYGON_SPHERE'\r\n        geometry = face_lst\r\n\r\n        geo_sph_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_sph_lst.append(geo_sph_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('MULTIPOLYGON') != -1 or\r\n        geo_name.find('Multipolygon') != -1  or\r\n        geo_name.find('CUBE') != -1 or\r\n        geo_name.find('Cube') != -1 ):\r\n\r\n        face_lst = []\r\n        for face_data in geo_data:\r\n\r\n            pt_lst = []\r\n            for vert_data in face_data:\r\n                pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n                pt_lst.append(pt)\r\n                # print()\r\n            face = coloring(Surface.ByPerimeterPoints(pt_lst), geo_name.upper())\r\n            # face = []\r\n            face_lst.append(face)\r\n\r\n        geo_data = face_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'MULTIPOLYGON'\r\n        geometry = face_lst\r\n\r\n        geo_mPol_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_mPol_lst.append(geo_mPol_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('POLYGON') != -1 or \r\n        geo_name.find('Polygon') != -1 ):\r\n        \r\n        pt_lst = []\r\n        for vert_data in geo_data[0]:\r\n            pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n            pt_lst.append(pt)\r\n            # print()\r\n        face = Surface.ByPerimeterPoints(pt_lst)\r\n        #face = []\r\n\r\n        geo_data = pt_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'POLYGON'\r\n        geometry = coloring(face, geo_name.upper())\r\n        # geometry = geo_data\r\n\r\n        geo_pol_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_pol_lst.append(geo_pol_obj)\r\n        continue\r\n\r\n    \r\ngeo_combi_lst = geo_pt_lst + geo_li_lst + geo_pol_lst + geo_mPol_lst + geo_sph_lst\r\n\r\n######################### Output ############################\r\nOUT = geo_combi_lst\r\n\r\n",
+      "Code": "import sys\r\nimport clr\r\nimport random\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\nclr.AddReference('MeshToolkit')\r\nfrom Autodesk.Dynamo.MeshToolkit import *\r\n\r\n############# Common Geometry Types ##################\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nPOLYGON_ROTATION = \"POLYGON_ROTATION\"\r\nMULTIPOLYGON = \"MULTIPOLYGON\"\r\nMULTIPOLYGON_ROTATION = \"MULTIPOLYGON_ROTATION\"\r\nSPHERE = \"MULTIPOLYGON_SPHERE\"\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n\"\"\"\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\"\"\"\r\n###################### Input ######################### \r\njson_file = IN[0]\r\nres_dict = IN[1]\r\nground_truth_dict = IN[2]\r\nswitch_generator = IN[3]\r\nswitch_ground_truth = IN[4]\r\nswitch_query_result = IN[5]\r\n\r\n################# Container ####################\r\ngeo_lst = []\r\n\r\ngeo_pt_lst = []\r\ngeo_li_lst = []\r\ngeo_pol_lst = []\r\ngeo_mPol_lst = []\r\ngeo_sph_lst = []\r\n\r\ngeo_combi_lst = []\r\n\r\n################# Color & Filter #####################\r\ncolor_green_ground_truth = Color.ByARGB(230,230,250,0)\r\ncolor_red_query_result = Color.ByARGB(255,255,0,0)\r\n\r\n\"\"\"\r\ncolor = \"\"\r\nfilter_dict = json_file\r\nswitch_coloring = False\r\n\r\nif switch_ground_truth and not switch_query_result:\r\n    switch_coloring = True\r\n    color = color_green_ground_truth\r\n    filter_dict = ground_truth_dict\r\n    \r\nif not switch_ground_truth and switch_query_result:\r\n    switch_coloring = True\r\n    color = color_red_query_result\r\n    filter_dict = res_dict\r\n    \r\nif switch_ground_truth and switch_query_result:\r\n    switch_coloring = False\r\n    color = \"\"\r\n    filter_dict = json_file\r\n    \r\ndef coloring(geometry, geo_name):\r\n    if switch_coloring:\r\n        \r\n        if geo_name in filter_dict.keys():\r\n            return GeometryColor.ByGeometryColor(geometry, color)\r\n            \r\n    return geometry\r\n\"\"\"\r\ndef coloring(geometry, geo_name):\r\n    if switch_ground_truth and not switch_query_result:\r\n        if geo_name in ground_truth_dict.keys():\r\n            return GeometryColor.ByGeometryColor(geometry, color_green_ground_truth)\r\n    \r\n    if not switch_ground_truth and switch_query_result:\r\n        if geo_name in res_dict.keys():\r\n            return GeometryColor.ByGeometryColor(geometry, color_red_query_result)\r\n    \r\n    if switch_ground_truth and switch_query_result:\r\n        temp_geometry = geometry\r\n        if geo_name in ground_truth_dict.keys():\r\n            temp_geometry = GeometryColor.ByGeometryColor(geometry, color_green_ground_truth)\r\n        if geo_name in res_dict.keys():\r\n            temp_geometry = GeometryColor.ByGeometryColor(geometry, color_red_query_result)\r\n        return temp_geometry\r\n        \r\n    return geometry \r\n######################## Body #######################\r\n\r\nif switch_generator == False:\r\n    OUT = []\r\n    sys.exit(0)\r\n    \r\nfor geo_name, geo_data in json_file.items():\r\n   \r\n    if ( geo_name.find('POINT') != -1 or\r\n        geo_name.find('Point') != -1 ):\r\n\r\n        pt_data = geo_data\r\n        pt_x = 0.0\r\n        pt_y = 0.0\r\n        pt_z = 0.0\r\n        if (len(pt_data) == 3): # (x, y, z)\r\n            pt_x = pt_data[0]\r\n            pt_y = pt_data[1]\r\n            pt_z = pt_data[2]\r\n            \r\n        if (len(pt_data) == 2): # (x, y)\r\n            pt_x = pt_data[0]\r\n            pt_y = pt_data[1]\r\n            pt_z = 0.0\r\n            \r\n        pt = Point.ByCoordinates(pt_x, pt_y, pt_z)\r\n\r\n        geo_data = pt\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'POINT'\r\n        geometry = coloring(pt, geo_name.upper())\r\n\r\n        geo_pt_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_pt_lst.append(geo_pt_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('LINESTRING') != -1 or\r\n        geo_name.find('Linestring') != -1 or\r\n        geo_name.find('LINE') != -1 or\r\n        geo_name.find('Line') != -1 ):\r\n\r\n        pt_lst = []\r\n        for pt_data in geo_data[0]:\r\n            pt = Point.ByCoordinates(pt_data[0], pt_data[1], pt_data[2])\r\n            pt_lst.append(pt)\r\n\r\n        geo_data = pt_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'LINESTRING'\r\n        geometry = coloring(PolyCurve.ByPoints(pt_lst, False), geo_name.upper())\r\n\r\n        geo_li_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_li_lst.append(geo_li_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('SPHERE') != -1 or\r\n        geo_name.find('Sphere') != -1 ):\r\n\r\n        face_lst = []\r\n        for face_data in geo_data:\r\n\r\n            pt_lst = []\r\n            for vert_data in face_data:\r\n                pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n                pt_lst.append(pt)\r\n            face = coloring(Surface.ByPerimeterPoints(pt_lst), geo_name.upper())\r\n            face_lst.append(face)\r\n\r\n        geo_data = face_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'MULTIPOLYGON_SPHERE'\r\n        geometry = face_lst\r\n\r\n        geo_sph_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_sph_lst.append(geo_sph_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('MULTIPOLYGON') != -1 or\r\n        geo_name.find('Multipolygon') != -1  or\r\n        geo_name.find('CUBE') != -1 or\r\n        geo_name.find('Cube') != -1 ):\r\n\r\n        face_lst = []\r\n        for face_data in geo_data:\r\n\r\n            pt_lst = []\r\n            for vert_data in face_data:\r\n                pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n                pt_lst.append(pt)\r\n                # print()\r\n            face = coloring(Surface.ByPerimeterPoints(pt_lst), geo_name.upper())\r\n            # face = []\r\n            face_lst.append(face)\r\n\r\n        geo_data = face_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'MULTIPOLYGON'\r\n        geometry = face_lst\r\n\r\n        geo_mPol_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_mPol_lst.append(geo_mPol_obj)\r\n        continue\r\n\r\n    if ( geo_name.find('POLYGON') != -1 or \r\n        geo_name.find('Polygon') != -1 ):\r\n        \r\n        pt_lst = []\r\n        for vert_data in geo_data[0]:\r\n            pt = Point.ByCoordinates(vert_data[0], vert_data[1], vert_data[2])\r\n            pt_lst.append(pt)\r\n            # print()\r\n        face = Surface.ByPerimeterPoints(pt_lst)\r\n        #face = []\r\n\r\n        geo_data = pt_lst\r\n        geo_name = geo_name.upper()\r\n        geo_type = 'POLYGON'\r\n        geometry = coloring(face, geo_name.upper())\r\n        # geometry = geo_data\r\n\r\n        geo_pol_obj = (geo_data, geo_name, geo_type, geometry)\r\n        geo_pol_lst.append(geo_pol_obj)\r\n        continue\r\n\r\n    \r\ngeo_combi_lst = geo_pt_lst + geo_li_lst + geo_pol_lst + geo_mPol_lst + geo_sph_lst\r\n\r\n######################### Output ############################\r\nOUT = geo_combi_lst\r\n\r\n",
       "Engine": "CPython3",
       "VariableInputPorts": true,
       "Id": "da5cd7ec9968431b9c02ee6620412ada",
@@ -1220,7 +1220,7 @@
     {
       "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
       "NodeType": "BooleanInputNode",
-      "InputValue": true,
+      "InputValue": false,
       "Id": "b048d5afe4c442b6944bf104390e697b",
       "Inputs": [],
       "Outputs": [
@@ -1269,7 +1269,7 @@
     {
       "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
       "NodeType": "BooleanInputNode",
-      "InputValue": false,
+      "InputValue": true,
       "Id": "5050387ca57e4e008dd9971ef30e2629",
       "Inputs": [],
       "Outputs": [
@@ -1870,7 +1870,7 @@
     {
       "Start": "01bbd51d12a94a31a6584ab1f4ca2d98",
       "End": "c6982d49eb6743ff9574c168e582c886",
-      "Id": "d1f9a76c7d8a40e8ab8a3ec6b73ad6bf"
+      "Id": "4f88022a29cf46a7aefa4864b2f0c381"
     },
     {
       "Start": "4a43c16ce1ec44c4b1f6a0913ac553ce",
@@ -1924,15 +1924,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 42.6339111328125,
-      "EyeY": 23.710483551025391,
-      "EyeZ": 174.40692138671875,
-      "LookX": -66.269119262695313,
-      "LookY": -0.18286514282226563,
-      "LookZ": -173.43075561523438,
-      "UpX": 0.070509076118469238,
-      "UpY": 0.98246902227401733,
-      "UpZ": 0.17257751524448395
+      "EyeX": 108.79200128279626,
+      "EyeY": 5.4185942411422729,
+      "EyeZ": -78.225586732849479,
+      "LookX": -132.35731506347656,
+      "LookY": 18.099466323852539,
+      "LookZ": 79.159950256347656,
+      "UpX": 0.25574305653572083,
+      "UpY": 0.95375305414199829,
+      "UpZ": -0.15795828402042389
     },
     "NodeViews": [
       {
@@ -2222,7 +2222,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 467.67625567696132,
+        "X": 464.70034672952534,
         "Y": 2159.5464831737268
       },
       {
@@ -2433,8 +2433,8 @@
         ],
         "Left": -955.15924966689067,
         "Top": 1550.2920239699674,
-        "Width": 1731.655878870733,
-        "Height": 413.63661045578351,
+        "Width": 1827.655878870733,
+        "Height": 505.389508265152,
         "FontSize": 36.0,
         "InitialTop": 1603.2920239699674,
         "InitialHeight": 396.63661045578351,
@@ -2510,8 +2510,8 @@
         ],
         "Left": -953.08842269364823,
         "Top": 2120.2345090482759,
-        "Width": 1957.4605336276763,
-        "Height": 574.27328538770189,
+        "Width": 1746.4605336276763,
+        "Height": 784.27328538770189,
         "FontSize": 24.0,
         "InitialTop": 2159.2345090482759,
         "InitialHeight": 553.84312129799264,
@@ -2527,7 +2527,7 @@
         ],
         "Left": -952.74466765542388,
         "Top": 2977.4192218782296,
-        "Width": 610.22077757706472,
+        "Width": 614.22077757706472,
         "Height": 191.42248595558749,
         "FontSize": 36.0,
         "InitialTop": 3030.4192218782296,
@@ -2555,8 +2555,8 @@
         "Background": "#FF848484"
       }
     ],
-    "X": 1002.1648561282102,
-    "Y": -2259.8341600307949,
-    "Zoom": 0.90159108502497942
+    "X": 817.058627673432,
+    "Y": -1259.6581536509191,
+    "Zoom": 0.71929723449667948
   }
 }

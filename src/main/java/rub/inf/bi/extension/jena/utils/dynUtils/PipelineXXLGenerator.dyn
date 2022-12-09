@@ -782,12 +782,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "// Number of Geometries to generate\nnum_point = 0;\nnum_lineString = 5;\nnum_polygon = 30;\nnum_multipolygon = 30;\nnum_sphere = 1;",
+      "Code": "// Number of Geometries to generate\nnum_point = 0;\nnum_lineString = 1;\nnum_polygon = 80;\nnum_multipolygon = 80;\nnum_sphere = 5;",
       "Id": "2fc07c798e1b4ebf958f7ff659859e87",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "1fc3bffe8c4b4f1a957e019eb418085b",
+          "Id": "728633d13bbd49eeb2738c07b992ad4c",
           "Name": "",
           "Description": "num_point",
           "UsingDefaultValue": false,
@@ -796,7 +796,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "aeedbbcca69c4523bd45b5a9a89d9d3c",
+          "Id": "9a95eb450f394e52bdae7ded52c60ac1",
           "Name": "",
           "Description": "num_lineString",
           "UsingDefaultValue": false,
@@ -805,7 +805,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "4b48cbca252845a28fab505fbc5ba8ed",
+          "Id": "a10029198ade454e8a71901cd7ca4b82",
           "Name": "",
           "Description": "num_polygon",
           "UsingDefaultValue": false,
@@ -814,7 +814,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "0975b1ffd2244533887454cdbde3fe07",
+          "Id": "315fe2c2e2c145979dcfb5f7715ae1ab",
           "Name": "",
           "Description": "num_multipolygon",
           "UsingDefaultValue": false,
@@ -823,7 +823,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "16080e0d5f4143b0bb58a4c172ca45c7",
+          "Id": "57628193e0df47f3978385e03a38f0c5",
           "Name": "",
           "Description": "num_sphere",
           "UsingDefaultValue": false,
@@ -2397,29 +2397,29 @@
       "Id": "220f7f728ba74abebec777ccb6c7433c"
     },
     {
-      "Start": "1fc3bffe8c4b4f1a957e019eb418085b",
+      "Start": "728633d13bbd49eeb2738c07b992ad4c",
       "End": "36c4e1b3f3a64684bc754fc3a22c8e73",
-      "Id": "00ec44c75d33480e8df3b61145d325e0"
+      "Id": "6293fc003a02483eadf2cd7f3e114570"
     },
     {
-      "Start": "aeedbbcca69c4523bd45b5a9a89d9d3c",
+      "Start": "9a95eb450f394e52bdae7ded52c60ac1",
       "End": "226ae4241c264019afe1994583ee5282",
-      "Id": "328796953c404428afea2da32bc8b7e6"
+      "Id": "43c62ae436de45a5ad034bd31ad4b8bc"
     },
     {
-      "Start": "4b48cbca252845a28fab505fbc5ba8ed",
+      "Start": "a10029198ade454e8a71901cd7ca4b82",
       "End": "7e84627f5a234e70b64953072d3421e0",
-      "Id": "7468a47cd1844798884bbafba9c2c7c7"
+      "Id": "9be91642c4cd4f6f86e90b8ce33cdf48"
     },
     {
-      "Start": "0975b1ffd2244533887454cdbde3fe07",
+      "Start": "315fe2c2e2c145979dcfb5f7715ae1ab",
       "End": "dc6d541a21a249d6bbb0bdd1137a2b5f",
-      "Id": "ac6eb3b7962f4eb081ea3203a734dc11"
+      "Id": "ef0c267735ec488eb28ce10f92bf509d"
     },
     {
-      "Start": "16080e0d5f4143b0bb58a4c172ca45c7",
+      "Start": "57628193e0df47f3978385e03a38f0c5",
       "End": "c00bb54be18e4d6eb201cd094e3363f1",
-      "Id": "01f71118323e453ab06320802d7731e7"
+      "Id": "884d0df214eb4350b0aa3d18d58de3e8"
     },
     {
       "Start": "34aab1073991461ea21aecb8f98aa0f5",
@@ -2608,15 +2608,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -141.87606811523438,
-      "EyeY": 19.791988372802734,
-      "EyeZ": -105.06549835205078,
-      "LookX": 128.22866821289063,
-      "LookY": -13.906337738037109,
-      "LookZ": 117.83905792236328,
-      "UpX": -0.082913301885128021,
-      "UpY": 0.99406415224075317,
-      "UpZ": -0.070440985262393951
+      "EyeX": 154.31443786621094,
+      "EyeY": -19.739377975463867,
+      "EyeZ": -27.896614074707031,
+      "LookX": -167.96183776855469,
+      "LookY": 25.625028610229492,
+      "LookZ": 40.670173645019531,
+      "UpX": 0.31928107142448425,
+      "UpY": 0.94413143396377563,
+      "UpZ": -0.081703498959541321
     },
     "NodeViews": [
       {
@@ -3065,7 +3065,7 @@
         "Id": "904eab0b83e04652adb889795141ef18",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Excluded": false,
+        "Excluded": true,
         "X": 1449.50730218779,
         "Y": 1852.0815602107243
       },
@@ -3176,8 +3176,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3075.9975750421268,
-        "Y": 448.04053511614813
+        "X": 3081.4893873846981,
+        "Y": 475.49959682900919
       },
       {
         "ShowGeometry": true,
@@ -3186,8 +3186,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2796.0147593434344,
-        "Y": 423.92851167435435
+        "X": 2798.3683932045365,
+        "Y": 475.70845661860653
       },
       {
         "ShowGeometry": true,
@@ -3237,7 +3237,7 @@
         ],
         "Left": 1148.361258500511,
         "Top": -111.10390631035466,
-        "Width": 1289.5786026805692,
+        "Width": 1360.95556718271,
         "Height": 1288.5058443633441,
         "FontSize": 36.0,
         "InitialTop": -58.10390631035466,
@@ -3252,12 +3252,12 @@
           "816efb74f1fe40ae86ff95e7e92e975b",
           "83fd206245ba449286d14efaa9d569e3"
         ],
-        "Left": 2786.0147593434344,
-        "Top": 370.92851167435435,
-        "Width": 490.48281569869232,
-        "Height": 196.11202344179378,
+        "Left": 2788.3683932045365,
+        "Top": 422.49959682900919,
+        "Width": 493.62099418016169,
+        "Height": 172.0,
         "FontSize": 36.0,
-        "InitialTop": 423.92851167435435,
+        "InitialTop": 475.49959682900919,
         "InitialHeight": 169.11202344179378,
         "TextblockHeight": 43.0,
         "Background": "#FFFFAA45"
@@ -3393,8 +3393,8 @@
         "Background": "#FFFFA07A"
       }
     ],
-    "X": -875.18726961373454,
-    "Y": -62.437362861530914,
-    "Zoom": 0.57072295495242742
+    "X": -1287.4313288391995,
+    "Y": -71.69425140836529,
+    "Zoom": 0.63731238099091858
   }
 }

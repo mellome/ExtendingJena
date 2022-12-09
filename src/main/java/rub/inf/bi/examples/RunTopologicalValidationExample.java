@@ -158,7 +158,7 @@ public class RunTopologicalValidationExample {
         // ================================ Running Stop =====================================
         long endTime   = System.nanoTime();
         long totalTime = (endTime - startTime) / 1000000; // ns to ms
-        System.out.println("Running Time: " + totalTime + "ms");
+        System.out.println("Running Time: " + totalTime + " ms");
         // =====================================================================
 
     }
