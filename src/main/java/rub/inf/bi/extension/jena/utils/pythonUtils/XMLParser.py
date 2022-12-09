@@ -1,4 +1,4 @@
-import numpy as np
+import json
 from xml.dom.minidom import parse, parseString
 
 dir_mac = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/query_result.xml"
@@ -91,8 +91,27 @@ def inList(res_lst, geo):
         return True
     return False
 
+def run():
+    res_xml_dir = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml"
+    res_json_dir = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\JSON\\query_result.json"
+
+    res = xml2GeoInDynamo(res_xml_dir)
+    res_lst = flatten(res)
+
+    res_dict = {}
+    for res in res_lst:
+        res_dict[res] = res
+    
+    try:
+        with open(res_json_dir, 'w') as fp:
+            json.dump(res_dict, fp, sort_keys=True, indent=4)
+    except Exception as err:
+        print(f"Unexpected {err=}, {type(err)=}")
+        raise
+
 if __name__ == "__main__":
     #print(xml2GeometryString())
-    lst = [["Point1","Polygon1"],"Triangle2", ["Line1",["Line2"]]]
-    geo = "Point1"
-    print(inList(lst,geo))
+    # lst = [["Point1","Polygon1"],"Triangle2", ["Line1",["Line2"]]]
+    # geo = "Point1"
+    # print(inList(lst,geo))
+    run()
