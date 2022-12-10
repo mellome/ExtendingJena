@@ -1684,6 +1684,76 @@
       ],
       "Replication": "Disabled",
       "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n################# Input #######################\r\nres_dict = IN[0]\r\nground_truth_dict = IN[1]\r\n\r\n################## Body ####################\r\nforeigner_lst = []\r\nif not (res_dict is None) and not (ground_truth_dict is None):\r\n    \r\n    foreigner_lst = [ res_key for res_key in res_dict.keys() if res_key not in ground_truth_dict.keys() ]   \r\n    \r\n################## Output ###################\r\nOUT = foreigner_lst",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "6959172f5d3b4469b4d6077c4572a914",
+      "Inputs": [
+        {
+          "Id": "e5048adf5c444e2a9fefbfd7f6f20006",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "777c2b833ace4c20b47852fb391f9842",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f055373fb27f4d7082960cf06bf89027",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "6368f216bd6243789794d9dec8378852",
+      "Inputs": [
+        {
+          "Id": "cd55c2a96d1741d5b5e182600005d096",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fb62a2037f3745419d3c05a6ac306c85",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
     }
   ],
   "Connectors": [
@@ -1848,6 +1918,11 @@
       "Id": "5cba3d60ee034fbca11f167e0d6872b5"
     },
     {
+      "Start": "1e42b32d05b34c40855c7c0d90c56f74",
+      "End": "e5048adf5c444e2a9fefbfd7f6f20006",
+      "Id": "adf848b0cda948c58672cf31b992225e"
+    },
+    {
       "Start": "26144c8263bc4f648848aebcb83e688f",
       "End": "7435e184bee547cc84e6005d9da7efb8",
       "Id": "2ae8c8db860f4543bf370032a4005ff0"
@@ -1866,6 +1941,11 @@
       "Start": "f9159692e5274ac3bf74ca665b285e6f",
       "End": "45a4f4a5baff41a09d83cb48763f18e3",
       "Id": "9a949db342ac4bf7842f813411c3df09"
+    },
+    {
+      "Start": "f9159692e5274ac3bf74ca665b285e6f",
+      "End": "777c2b833ace4c20b47852fb391f9842",
+      "Id": "7c618ea32f8f4e899ae305e0d2f0f48f"
     },
     {
       "Start": "01bbd51d12a94a31a6584ab1f4ca2d98",
@@ -1896,6 +1976,11 @@
       "Start": "924b8bd135e940e28b56ee15b050b0ef",
       "End": "1e12eb8d9e844b8bac1130d6a6e0715c",
       "Id": "eb9e6b7a300340f89787fc8da6588406"
+    },
+    {
+      "Start": "f055373fb27f4d7082960cf06bf89027",
+      "End": "cd55c2a96d1741d5b5e182600005d096",
+      "Id": "3a6d06b1e2294ef19a4037750de86bc3"
     }
   ],
   "Dependencies": [],
@@ -1924,15 +2009,15 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": -36.057064056396484,
-      "EyeY": 8.1128702163696289,
-      "EyeZ": -153.07528686523438,
-      "LookX": 12.491743087768555,
-      "LookY": 15.405190467834473,
-      "LookZ": 154.0096435546875,
-      "UpX": -0.027221750468015671,
-      "UpY": 0.95885324478149414,
-      "UpZ": -0.28259420394897461
+      "EyeX": 7.6309356689453125,
+      "EyeY": 27.21986198425293,
+      "EyeZ": -96.6581039428711,
+      "LookX": -12.630935668945313,
+      "LookY": -28.264997482299805,
+      "LookZ": 99.0423355102539,
+      "UpX": -0.015440678223967552,
+      "UpY": 0.99617242813110352,
+      "UpZ": 0.086036428809165955
     },
     "NodeViews": [
       {
@@ -1942,8 +2027,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -676.47193885982927,
-        "Y": 1670.985684164333
+        "X": -671.00492434252021,
+        "Y": 1672.362815771912
       },
       {
         "ShowGeometry": true,
@@ -1952,8 +2037,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -945.15924966689067,
-        "Y": 1670.9594011710583
+        "X": -939.69223514958162,
+        "Y": 1672.3365327786373
       },
       {
         "ShowGeometry": true,
@@ -1962,8 +2047,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 77.852944058877483,
-        "Y": 1609.1304509445215
+        "X": 83.319958576186536,
+        "Y": 1610.5075825521005
       },
       {
         "ShowGeometry": true,
@@ -1972,8 +2057,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -446.53357970379625,
-        "Y": 1671.2702372010363
+        "X": -441.0665651864872,
+        "Y": 1672.6473688086153
       },
       {
         "ShowGeometry": true,
@@ -1992,8 +2077,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -1382.7178710663081,
-        "Y": 1545.03428040798
+        "X": -1491.2074668565626,
+        "Y": 1547.8892697708816
       },
       {
         "ShowGeometry": true,
@@ -2002,8 +2087,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -263.8320321017618,
-        "Y": 1677.2964341857676
+        "X": -258.36501758445274,
+        "Y": 1678.6735657933466
       },
       {
         "ShowGeometry": true,
@@ -2012,8 +2097,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -447.33774490025735,
-        "Y": 1603.2920239699674
+        "X": -441.8707303829483,
+        "Y": 1604.6691555775465
       },
       {
         "ShowGeometry": false,
@@ -2142,8 +2227,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -670.1041361015964,
-        "Y": 1854.9286344257509
+        "X": -664.63712158428734,
+        "Y": 1856.30576603333
       },
       {
         "ShowGeometry": true,
@@ -2232,7 +2317,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -571.67187730903674,
+        "X": -571.67187730903663,
         "Y": 2159.4462311279049
       },
       {
@@ -2252,7 +2337,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -937.09762748270077,
+        "X": -937.09762748270089,
         "Y": 2159.38052070464
       },
       {
@@ -2262,7 +2347,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -943.08842269364823,
+        "X": -943.08842269364834,
         "Y": 2411.3956036818122
       },
       {
@@ -2282,7 +2367,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -941.79420712429237,
+        "X": -941.79420712429248,
         "Y": 2493.6373834169558
       },
       {
@@ -2292,7 +2377,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -940.93620184261135,
+        "X": -940.93620184261147,
         "Y": 2568.0776303462685
       },
       {
@@ -2302,8 +2387,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 328.35109474204341,
-        "Y": 1615.6107977837758
+        "X": 333.81810925935235,
+        "Y": 1610.7700812007467
       },
       {
         "ShowGeometry": true,
@@ -2312,8 +2397,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 588.49662920384219,
-        "Y": 1677.6815322351194
+        "X": 593.96364372115124,
+        "Y": 1679.0586638426985
       },
       {
         "ShowGeometry": true,
@@ -2322,7 +2407,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -937.40615477845654,
+        "X": -937.40615477845643,
         "Y": 2302.4014348292249
       },
       {
@@ -2332,7 +2417,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -570.051369591825,
+        "X": -570.05136959182494,
         "Y": 2302.6786125877261
       },
       {
@@ -2362,7 +2447,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -942.74466765542388,
+        "X": -941.55302396357285,
         "Y": 3030.4192218782296
       },
       {
@@ -2372,7 +2457,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -638.52389007835916,
+        "X": -637.332246386508,
         "Y": 3031.8417078338171
       },
       {
@@ -2414,6 +2499,26 @@
         "Excluded": false,
         "X": 3163.5682725538809,
         "Y": 2100.7923252599094
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Foreigner Selector",
+        "Id": "6959172f5d3b4469b4d6077c4572a914",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -938.754972451997,
+        "Y": 3190.9992550224279
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "6368f216bd6243789794d9dec8378852",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -636.60305007408419,
+        "Y": 3189.6161499703171
       }
     ],
     "Annotations": [
@@ -2431,12 +2536,12 @@
           "000ca572a653468cba6ba27813cb14b1",
           "bb34d26722024927908183f1ec37e9d1"
         ],
-        "Left": -955.15924966689067,
-        "Top": 1550.2920239699674,
-        "Width": 1827.655878870733,
-        "Height": 505.389508265152,
+        "Left": -949.69223514958162,
+        "Top": 1551.6691555775465,
+        "Width": 1810.655878870733,
+        "Height": 436.83842697455407,
         "FontSize": 36.0,
-        "InitialTop": 1603.2920239699674,
+        "InitialTop": 1604.6691555775465,
         "InitialHeight": 396.63661045578351,
         "TextblockHeight": 43.0,
         "Background": "#FF48B9FF"
@@ -2508,10 +2613,10 @@
           "41747d547b9c4b27931b3ca6e0215c61",
           "e6fa07009dc64b9d97d7557102086108"
         ],
-        "Left": -953.08842269364823,
+        "Left": -953.08842269364834,
         "Top": 2120.2345090482759,
         "Width": 1957.4605336276763,
-        "Height": 784.27328538770189,
+        "Height": 679.27328538770189,
         "FontSize": 24.0,
         "InitialTop": 2159.2345090482759,
         "InitialHeight": 553.84312129799264,
@@ -2523,12 +2628,14 @@
         "Title": "Accuracy Calculation",
         "Nodes": [
           "d205bf66921949beb7be8002e1f79852",
-          "6152757309134f8a8469cc9945423019"
+          "6152757309134f8a8469cc9945423019",
+          "6959172f5d3b4469b4d6077c4572a914",
+          "6368f216bd6243789794d9dec8378852"
         ],
-        "Left": -952.74466765542388,
+        "Left": -951.55302396357285,
         "Top": 2977.4192218782296,
-        "Width": 614.22077757706472,
-        "Height": 191.42248595558749,
+        "Width": 614.22077757706484,
+        "Height": 343.5800331441983,
         "FontSize": 36.0,
         "InitialTop": 3030.4192218782296,
         "InitialHeight": 146.42248595558749,
@@ -2555,8 +2662,8 @@
         "Background": "#FF848484"
       }
     ],
-    "X": 960.08559017758739,
-    "Y": -1411.8959536961245,
-    "Zoom": 0.72372304084186057
+    "X": 686.91592463756115,
+    "Y": -1556.3293317819355,
+    "Zoom": 0.6857471943577067
   }
 }
