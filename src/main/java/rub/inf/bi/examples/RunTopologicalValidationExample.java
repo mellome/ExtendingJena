@@ -53,10 +53,17 @@ public class RunTopologicalValidationExample {
     private static final String TEST_4_PL = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test4_PLIntersection3DBSP.ttl";
     private static final String TEST_4_PP = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test4_PPIntersection3DBSP.ttl";
     private static final String TEST_5_CHECK_INTERSECTION = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test5_CheckIntersection3DBSP.ttl";
-
+    private static final String TEST_5_ = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test5_CheckIntersection3DBSP.ttl";
+    private static final String TEST_DISJOINT = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Topological Predicates3D Tests\\Test_DISJOINT.ttl";
+    private static final String TEST_TOUCH = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Topological Predicates3D Tests\\Test_TOUCH.ttl";
+    private static final String TEST_CONTAIN = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Topological Predicates3D Tests\\Test_CONTAIN.ttl";
+    private static final String TEST_WITHIN = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Topological Predicates3D Tests\\Test_WITHIN.ttl";
+    private static final String TEST_OVERLAP = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Topological Predicates3D Tests\\Test_OVERLAP.ttl";
+    private static final String TEST_EQUAL = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Topological Predicates3D Tests\\Test_EQUAL.ttl";
+   
     // Directories for WIN11
     private static String ontologiePath ="C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\xxl3DScene.rdf"; // "example", "3DScenario"
-    private static String originalQueryPath = TEST_4_PL;
+    private static String originalQueryPath = TEST_OVERLAP;
     private static String queryResultPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml";
 
     // Directories for MAC

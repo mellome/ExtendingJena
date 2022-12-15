@@ -6,6 +6,8 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.measure.quantity.Length;
+
 import org.apache.commons.math3.geometry.euclidean.threed.Line;
 import org.apache.commons.math3.geometry.euclidean.threed.Plane;
 import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
@@ -23,7 +25,6 @@ public class GeometryOperators3D {
 
 	public static final double TOLERANCE = 0.1;
 
-	// TODO: why should we create different functions in case of different geometries but not use the general function directely?
 	public static boolean contains3D(Plane plane, Vector3D point) {
 		return plane.contains(point);
 	}
@@ -50,12 +51,31 @@ public class GeometryOperators3D {
 		return geom1.within(geom2);
 	}
 
-	public static boolean disjoint3D(Geometry geom1, Geometry geom2) {
-		return geom1.disjoint(geom2);
+	public static boolean equal3D(Polygon pol1, Polygon pol2) {
+		Coordinate[] pol1Coord = pol1.getCoordinates();
+		Coordinate[] pol2Coord = pol2.getCoordinates();
+		for (Coordinate c1 : pol1Coord){
+			boolean res = false;
+			for (Coordinate c2 : pol2Coord){
+				if ( c1.getX()==c2.getX() && c1.getY()==c2.getY() && c1.getZ()==c2.getZ() ){
+					res = true;
+				}
+			}
+			if ( res == false ) { // if one vertice of polygon 1 cannot be found in polygon 2 then return false
+				return false;
+			}
+		}
+		return true;
 	}
 
-	public static boolean intersect3D(Geometry geom1, Geometry geom2) {
-		return geom1.intersects(geom2);
+	public static boolean disjoint3D(Polygon pol1, Polygon pol2) {
+		List<Vector3D> res_lst = intersectionRR3D(pol1, pol2);
+		return res_lst.size() == 0? true:false;
+	}
+
+	public static boolean intersect3D(Polygon pol1, Polygon pol2) {
+		List<Vector3D> res_lst = intersectionRR3D(pol1, pol2);
+		return res_lst.size() > 0? true:false;
 	}
 
 	public static List<Vector3D> intersectionRR3D(Polygon rectangleA, Polygon rectangleB) {

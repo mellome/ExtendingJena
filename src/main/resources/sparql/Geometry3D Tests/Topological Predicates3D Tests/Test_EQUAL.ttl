@@ -1,0 +1,7 @@
+SELECT ?GeometryA ?GeometryB
+WHERE { 
+	?GeometryA geo:asWKT ?aWKT .
+	?GeometryB geo:asWKT ?bWKT .
+
+	FILTER (my:TopologicalEqual(?aWKT, ?bWKT) && !sameTerm(?aWKT, ?bWKT))
+}

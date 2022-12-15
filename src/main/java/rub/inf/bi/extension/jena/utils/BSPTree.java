@@ -395,7 +395,7 @@ public class BSPTree implements Serializable{
     }
 
 
-    //TODO: this can be used for performance enhancement
+    //! TODO: This can be used for performance enhancement
     private Polygon selectBestDivider(List<Polygon> polygonList){
         Polygon bestPolygon = null;
         return bestPolygon;
@@ -405,9 +405,13 @@ public class BSPTree implements Serializable{
         return null;
     }
 
-    /*
-     * This is the naive version of collision detection algorithm.
-     * Detect "BSP Tree" and "BSP Tree"
+    /**
+     ** This is the naive version of collision detection algorithm.
+     ** Detect "BSP Tree" and "BSP Tree"
+     * 
+     * @param BSPTree t1
+     * @param BSPTree t2
+     * @return
      */
     public boolean collisionDetect(BSPTree t1, BSPTree t2){
         // in PRE-ORDER
@@ -423,9 +427,13 @@ public class BSPTree implements Serializable{
         return left || right;
     }
 
-    /*
-     * Detect "BSP Tree" and "LineString" 
-     */
+    /**
+     ** Detect "BSP Tree" and "LineString"
+     * 
+     * @param BSPTree t
+     * @param LineString l
+     * @return
+     */ 
     public boolean collisionDetect(BSPTree t, LineString l){
         // in PRE-ORDER
         if( t == null || l == null ){ // 
@@ -441,8 +449,12 @@ public class BSPTree implements Serializable{
         return left || right;
     }
 
-    /*
-     * Detect "BSP Tree" and "Line" 
+    /**
+     ** Detect "BSP Tree" and "Line" 
+     * 
+     * @param BSPTree t
+     * @param Line l
+     * @return
      */
     public boolean collisionDetect(BSPTree t, Line l){
         // in PRE-ORDER
@@ -459,9 +471,14 @@ public class BSPTree implements Serializable{
         return left || right;
     }
 
-     /*
-     * Detect "BSP Tree" and "Line Segment" 
-     */
+    /**
+     ** Detect "BSP Tree" and "Line Segment" 
+     * 
+     * @param BSPTree t
+     * @param Vector3D v
+     * @param Vector3D w
+     * @return
+     */ 
     public boolean collisionDetect(BSPTree t, Vector3D v, Vector3D w){
         // in PRE-ORDER
         if( t == null){ // 
@@ -477,8 +494,14 @@ public class BSPTree implements Serializable{
         return left || right;
     }
 
+    /**
+     * Standard intersection discriminator
+     * ! in PRE-ORDER
+     * @param BSPTree t
+     * @param Polygon p
+     * @return
+     */
     private boolean traverseIntersection(BSPTree t, Polygon p){
-        // in PRE-ORDER
         if( t == null || p == null){ 
             return false;
         }
@@ -494,6 +517,59 @@ public class BSPTree implements Serializable{
         boolean left = traverseIntersection(t.frontTree, p); // left
         boolean right = traverseIntersection(t.backTree, p); // right
         return left || right;
+    }
+
+    /**
+     * DISJOINT Discriminator
+     * ! In POST-ORDER
+     * @param BSPTree t
+     * @param Polygon p
+     * @return
+     */
+    public boolean traverseDISJOINT(BSPTree t, Polygon p){
+        if( t == null && p != null ) { 
+            return true;
+        }
+
+        boolean left = traverseDISJOINT(t.frontTree, p); // left
+        boolean right = traverseDISJOINT(t.backTree, p); // right
+        Boolean isDisjoint = GeometryOperators3D.disjoint3D(t.divider, p); // middle
+
+        return left && right && isDisjoint;
+    }
+
+    /**
+     * EQUAL Discriminator
+     * ! In POST-ORDER
+     * @param BSPTree t
+     * @param Polygon p
+     * @return
+     */
+    public boolean traverseEQUAL(BSPTree t, Polygon p){
+        if( t == null && p != null ) { 
+            return true;
+        }
+
+        boolean left = traverseEQUAL(t.frontTree, p); // left
+        boolean right = traverseEQUAL(t.backTree, p); // right
+        Boolean isEqual = GeometryOperators3D.equal3D(t.divider, p); // middle
+
+        return left || right || isEqual;
+    }
+
+    public boolean traverseTOUCH() {
+        Boolean res = false;
+        return res;
+    }
+
+    public boolean traverseCONTAIN() {
+        Boolean res = false;
+        return res;
+    }
+
+    public boolean traverselOVERLAP() {
+        Boolean res = false;
+        return res;
     }
 
     /*

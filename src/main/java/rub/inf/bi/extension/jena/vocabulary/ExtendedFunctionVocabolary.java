@@ -41,7 +41,12 @@ public class ExtendedFunctionVocabolary {
     public static final Property ttIntersection3DGeometry = property("TTIntersection3DGeometry"); //Geometry of Triangle and Triangle (as MultiPolygon)
     public static final Property tlIntersection3D = property("TLIntersection3D"); //Triangle and Line (as MultiPolygon and LineString)
     public static final Property tlIntersection3DGeometry = property("TLIntersection3DGeometry"); //Geometry of Triangle and Line (as MultiPolygon and LineString)
-     
+    public static final Property topologicalDISJOINT = property("TopologicalDisjoint");
+    public static final Property topologicalTOUCH = property("TopologicalTouch"); 
+    public static final Property topologicalCONTAIN = property("TopologicalContain"); 
+    public static final Property topologicalWITHIN = property("TopologicalWithin"); 
+    public static final Property topologicalOVERLAP = property("TopologicalOverlap"); 
+
     //Tunneling
     public static final Property alignmentCurveMaxRadius = property("AlignmentCurveMaxRadius");
     public static final Property alignmentCurveRadiusProfile = property("AlignmentCurveRadiusProfile"); 

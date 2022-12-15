@@ -1,4 +1,4 @@
-package rub.inf.bi.extension.jena.sparql.geometry3D;
+package rub.inf.bi.extension.jena.sparql.bspTree3D.topologicalPredicates;
 
 import org.apache.jena.geosparql.implementation.GeometryWrapper;
 import org.apache.jena.sparql.expr.NodeValue;
@@ -17,10 +17,11 @@ public class TopologicalDisjoint extends FunctionBase2 {
         GeometryWrapper geometry2 = GeometryWrapper.extract(v2);
         Geometry geom2 = geometry2.getParsingGeometry();
 
-        if (GeometryOperators3D.disjoint3D(geom1, geom2)) {
-            return NodeValue.TRUE;
-        }
-        return NodeValue.FALSE;
+        // if (GeometryOperators3D.disjoint3D(geom1, geom2)) {
+        //     return NodeValue.TRUE;
+        // }
+        // return NodeValue.FALSE;
+        return geom1.disjoint(geom2)? NodeValue.TRUE:NodeValue.FALSE;
     }
 
 }

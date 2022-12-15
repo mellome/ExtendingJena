@@ -17,9 +17,11 @@ import rub.inf.bi.extension.jena.sparql.geometry3D.TLIntersection3D;
 import rub.inf.bi.extension.jena.sparql.geometry3D.TLIntersection3DGeometry;
 import rub.inf.bi.extension.jena.sparql.geometry3D.TTIntersection3D;
 import rub.inf.bi.extension.jena.sparql.geometry3D.TTIntersection3DGeometry;
-import rub.inf.bi.extension.jena.sparql.geometry3D.TopologicalDisjoint;
-import rub.inf.bi.extension.jena.sparql.geometry3D.TopologicalTouch;
-import rub.inf.bi.extension.jena.sparql.geometry3D.TopologicalWithin;
+import rub.inf.bi.extension.jena.sparql.bspTree3D.topologicalPredicates.TopologicalDisjoint;
+import rub.inf.bi.extension.jena.sparql.bspTree3D.topologicalPredicates.TopologicalOverlap;
+import rub.inf.bi.extension.jena.sparql.bspTree3D.topologicalPredicates.TopologicalTouch;
+import rub.inf.bi.extension.jena.sparql.bspTree3D.topologicalPredicates.TopologicalWithin;
+import rub.inf.bi.extension.jena.sparql.bspTree3D.topologicalPredicates.TopologicalContain;
 import rub.inf.bi.extension.jena.sparql.ifc.PerformStringDecode;
 import rub.inf.bi.extension.jena.sparql.tunneling.AlignmentSegmentHasRadius;
 import rub.inf.bi.extension.jena.sparql.tunneling.AlignmentCurveLength2D;
@@ -48,10 +50,10 @@ public class ExtendedFunctionConfig {
             functionRegistry.put(ExtendedFunctionVocabolary.lpContains3D.getURI(), LPContains3D.class);
             functionRegistry.put(ExtendedFunctionVocabolary.ppContains3D.getURI(), PPContains3D.class);
 
-            // TODO: yifeng's playground
-            functionRegistry.put(ExtendedFunctionVocabolary.topologicalWithin.getURI(), TopologicalWithin.class);
-            functionRegistry.put(ExtendedFunctionVocabolary.topologicalDisjoint.getURI(), TopologicalDisjoint.class);
-            functionRegistry.put(ExtendedFunctionVocabolary.topologicalTouch.getURI(), TopologicalTouch.class);
+            //!====================== yifeng's playground ===========================
+            // functionRegistry.put(ExtendedFunctionVocabolary.topologicalWithin.getURI(), TopologicalWithin.class);
+            // functionRegistry.put(ExtendedFunctionVocabolary.topologicalDisjoint.getURI(), TopologicalDisjoint.class);
+            // functionRegistry.put(ExtendedFunctionVocabolary.topologicalTouch.getURI(), TopologicalTouch.class);
             functionRegistry.put(ExtendedFunctionVocabolary.ppIntersection3DBSP.getURI(), PPIntersection3DBSP.class);
             functionRegistry.put(ExtendedFunctionVocabolary.plIntersection3DBSP.getURI(), PLIntersection3DBSP.class);
 
@@ -61,6 +63,13 @@ public class ExtendedFunctionConfig {
             functionRegistry.put(ExtendedFunctionVocabolary.ttIntersection3DGeometry.getURI(), TTIntersection3DGeometry.class);
             functionRegistry.put(ExtendedFunctionVocabolary.tlIntersection3D.getURI(), TLIntersection3D.class);
             functionRegistry.put(ExtendedFunctionVocabolary.tlIntersection3DGeometry.getURI(), TLIntersection3DGeometry.class);
+            
+            functionRegistry.put(ExtendedFunctionVocabolary.topologicalDISJOINT.getURI(), TopologicalDisjoint.class);
+            functionRegistry.put(ExtendedFunctionVocabolary.topologicalTOUCH.getURI(), TopologicalTouch.class);
+            functionRegistry.put(ExtendedFunctionVocabolary.topologicalCONTAIN.getURI(), TopologicalContain.class);
+            functionRegistry.put(ExtendedFunctionVocabolary.topologicalWITHIN.getURI(), TopologicalWithin.class);
+            functionRegistry.put(ExtendedFunctionVocabolary.topologicalOVERLAP.getURI(), TopologicalOverlap.class);
+            //!====================================================
 
             //Industrie Foundation Classes
             functionRegistry.put(ExtendedFunctionVocabolary.ifc_stringDecode.getURI(), PerformStringDecode.class);
