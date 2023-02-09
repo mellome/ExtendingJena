@@ -35,111 +35,6 @@
   "Outputs": [],
   "Nodes": [
     {
-      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
-      "NodeType": "PythonScriptNode",
-      "Code": "import clr\r\nimport Autodesk.DesignScript.Geometry\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n#create a cuboid with specified lengths\r\ncs = CoordinateSystem.Identity();\r\ncub = Cuboid.ByLengths(cs, 5, 15, 2);\r\n#create several cones\r\np1 = Point.ByCoordinates(0, 0, 10);\r\np2 = Point.ByCoordinates(0, 0, 20);\r\np3 = Point.ByCoordinates(0, 0, 30);\r\ncone1 = Cone.ByPointsRadii(p1, p2, 10, 6);\r\ncone2 = Cone.ByPointsRadii(p2, p3, 6, 0);\r\n#make a cylinder\r\ncylCS = cs.Translate(10, 0, 0);\r\ncyl = Cylinder.ByRadiusHeight(cylCS, 3, 10);\r\n\r\nOUT = cyl",
-      "Engine": "CPython3",
-      "VariableInputPorts": true,
-      "Id": "3a13353466b04f0ba46c3f75e739cfe9",
-      "Inputs": [
-        {
-          "Id": "af0cf0a568184254906a5b996b6ea147",
-          "Name": "IN[0]",
-          "Description": "Input #0",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "44c168f89d9a46c788919a47fae0ee62",
-          "Name": "OUT",
-          "Description": "Result of the python script",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Runs an embedded Python script."
-    },
-    {
-      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
-      "NodeType": "ExtensionNode",
-      "Id": "141f8f3a21ed4f2ca348780d79437e36",
-      "Inputs": [
-        {
-          "Id": "e13215dcd1634cefbb3e89827182861a",
-          "Name": "",
-          "Description": "Node to evaluate.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "4f88c730bfe54b25adcef69b64d2c296",
-          "Name": "",
-          "Description": "Watch contents.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Visualize the output of node."
-    },
-    {
-      "ConcreteType": "Watch3DNodeModels.Watch3D, Watch3DNodeModels",
-      "WatchWidth": 200.0,
-      "WatchHeight": 200.0,
-      "WasExecuted": true,
-      "Camera": {
-        "Name": "627283ad-5c87-4a0f-a08c-f25835f871d0 Preview",
-        "EyeX": -17.0,
-        "EyeY": 24.0,
-        "EyeZ": 50.0,
-        "LookX": 12.0,
-        "LookY": -13.0,
-        "LookZ": -58.0,
-        "UpX": 0.0,
-        "UpY": 1.0,
-        "UpZ": 0.0
-      },
-      "NodeType": "ExtensionNode",
-      "Id": "627283ad5c874a0fa08cf25835f871d0",
-      "Inputs": [
-        {
-          "Id": "03d3b9a237ed400db9091e7bc86ed8d6",
-          "Name": "",
-          "Description": "Incoming geometry objects.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "e9ec456a01834ece94d9b6fdd38b9761",
-          "Name": "",
-          "Description": "Incoming geometry objects.",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Shows a dynamic preview of geometry."
-    },
-    {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
       "FunctionSignature": "Autodesk.DesignScript.Geometry.Cuboid.ByLengths@double,double,double",
@@ -1343,16 +1238,6 @@
   ],
   "Connectors": [
     {
-      "Start": "44c168f89d9a46c788919a47fae0ee62",
-      "End": "e13215dcd1634cefbb3e89827182861a",
-      "Id": "bf9008e2d1ef4ae8bbe5598980ccb375"
-    },
-    {
-      "Start": "4f88c730bfe54b25adcef69b64d2c296",
-      "End": "03d3b9a237ed400db9091e7bc86ed8d6",
-      "Id": "992ecc8315a5430bb6c8636925374829"
-    },
-    {
       "Start": "7f4adcb417d241cba7819932740505ed",
       "End": "835e1863e02e4a8085e5164014ca5b95",
       "Id": "b0d2268293bb49cf844369a829f9940c"
@@ -1572,47 +1457,17 @@
     },
     "Camera": {
       "Name": "Background Preview",
-      "EyeX": 24.363462448120117,
-      "EyeY": 13.299562454223633,
-      "EyeZ": 7.0690097808837891,
-      "LookX": -19.30023193359375,
-      "LookY": -0.7664642333984375,
-      "LookZ": -22.007701873779297,
-      "UpX": -0.017258590087294579,
-      "UpY": 0.99965733289718628,
-      "UpZ": -0.019681293517351151
+      "EyeX": 32.582046508789063,
+      "EyeY": 9.019256591796875,
+      "EyeZ": 14.314676284790039,
+      "LookX": -27.518815994262695,
+      "LookY": 3.5138416290283203,
+      "LookZ": -29.253368377685547,
+      "UpX": 0.059718813747167587,
+      "UpY": 0.99619466066360474,
+      "UpZ": 0.063481315970420837
     },
     "NodeViews": [
-      {
-        "ShowGeometry": false,
-        "Name": "Cylinder Generator",
-        "Id": "3a13353466b04f0ba46c3f75e739cfe9",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -3848.2863880942059,
-        "Y": 1482.3882774465137
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Watch",
-        "Id": "141f8f3a21ed4f2ca348780d79437e36",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -3625.8167899132936,
-        "Y": 1503.6591832256831
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Watch 3D",
-        "Id": "627283ad5c874a0fa08cf25835f871d0",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": -3329.8823597556684,
-        "Y": 1531.3530134830135
-      },
       {
         "ShowGeometry": false,
         "Name": "Cuboid.ByLengths",
@@ -1906,24 +1761,6 @@
     ],
     "Annotations": [
       {
-        "Id": "e659f0d4e10e4ea5977da026c836ce20",
-        "Title": "Complex Geometry Generator",
-        "Nodes": [
-          "3a13353466b04f0ba46c3f75e739cfe9",
-          "141f8f3a21ed4f2ca348780d79437e36",
-          "627283ad5c874a0fa08cf25835f871d0"
-        ],
-        "Left": -3858.2863880942059,
-        "Top": 1443.3882774465137,
-        "Width": 748.4040283385375,
-        "Height": 365.96473603649974,
-        "FontSize": 24.0,
-        "InitialTop": 1482.3882774465137,
-        "InitialHeight": 193.96473603649974,
-        "TextblockHeight": 29.0,
-        "Background": "#FF90EE90"
-      },
-      {
         "Id": "addb5663696543058610c244eff50719",
         "Title": "Cuboid Vertices",
         "Nodes": [
@@ -2054,8 +1891,8 @@
         "Background": "#FFC1D676"
       }
     ],
-    "X": 3394.5005115576123,
-    "Y": -370.46682790673572,
-    "Zoom": 0.89713067313061823
+    "X": 1776.4846976043427,
+    "Y": 349.83582613556672,
+    "Zoom": 0.43378571910079372
   }
 }
