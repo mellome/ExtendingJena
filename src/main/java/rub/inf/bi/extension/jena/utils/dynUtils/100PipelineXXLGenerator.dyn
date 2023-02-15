@@ -1,0 +1,960 @@
+{
+  "Uuid": "8b1e7f7f-7304-4d5e-a570-fd8ce7ff620e",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "100PipelineXXLGenerator",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      },
+      "DesignScript.Builtin.Dictionary": {
+        "Key": "DesignScript.Builtin.Dictionary",
+        "Value": "DesignScriptBuiltin.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Phython-Standard- und DesignScript-Bibliotheken laden\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Die Eingaben für diesen Block werden in Form einer Liste in den IN-Variablen gespeichert.\r\ndataEnteringNode = IN\r\n\r\nnamespaces = dataEnteringNode[0]\r\ninserts = dataEnteringNode[1]\r\n\r\n# open RDF header\r\nrdfStr = \"<rdf:RDF\";\r\n\r\n# handle Namespaces\r\nfor key in namespaces:\r\n    rdfStr += \" xmlns:\" + key + \"='\" + namespaces[key] + \"'\";\r\n\r\nrdfStr += \">\";\r\n\r\n#add inserts\r\n\r\nrdfStr += \"<rdf:Description rdf:about='my:\" + \"RootModel\" + \"'>\";\r\n\r\nfor insert in inserts:\r\n    rdfStr += insert;\r\n\r\nrdfStr += \"</rdf:Description>\"\r\n\r\n# close RDF header\r\nrdfStr += \"</rdf:RDF>\"\r\n\r\n# Weisen Sie Ihre Ausgabe der OUT-Variablen zu.\r\nOUT = rdfStr",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "e00054a13da24212ab4540997633798f",
+      "Inputs": [
+        {
+          "Id": "4662dbdc67f64d9eaa25bb84b6cf3169",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1bf83e6357a44ed88c6b44b3703edca8",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f4c68ed56fdd401c858255578208df3b",
+          "Name": "OUT",
+          "Description": "Ergebnis des Python-Skripts",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\";\nowl=\"http://www.w3.org/2002/07/owl#\";\nogc=\"http://www.opengis.net/\";\nmy=\"https://www.inf.bi.ruhr-uni-bochum.de/jena/#\";\ngml=\"http://www.opengis.net/ont/gml#\";\ngeo=\"http://www.opengis.net/ont/geosparql#\";\ngeof=\"http://www.opengis.net/def/function/geosparql/\";\nrdfs=\"http://www.w3.org/2000/01/rdf-schema#\";\nuom=\"http://www.opengis.net/def/uom/OGC/1.0/\";\nsf=\"http://www.opengis.net/ont/sf#\";\nxsd=\"http://www.w3.org/2001/XMLSchema#\";\ngeor=\"http://www.opengis.net/def/rule/geosparql/\";\n\nnamespaces = {\n\t\"rdf\" : rdf,\n\t\"owl\" : owl,\n\t\"ogc\" : ogc,\n\t\"my\" : my,\n\t\"gml\" : gml,\n\t\"geo\" : geo,\n\t\"geof\": geof,\n\t\"rdfs\": rdfs,\n\t\"uom\": uom,\n\t\"sf\": sf,\n\t\"xsd\": xsd,\n\t\"geor\": geor\n};",
+      "Id": "94e1fb21689642b9b5fa86b874146ae5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f427bc5da01a49c0a7821e5ec52e06f1",
+          "Name": "",
+          "Description": "rdf",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7313842ce31f4c598b2775fb7ec5c209",
+          "Name": "",
+          "Description": "owl",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a2309f1f89a940579245c11a63dda886",
+          "Name": "",
+          "Description": "ogc",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "55939f003a0d408681622652bc9c72b6",
+          "Name": "",
+          "Description": "my",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8fb0ada8f6e14c1686fd70d815909312",
+          "Name": "",
+          "Description": "gml",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0262bdaa335446919b24831071029ab6",
+          "Name": "",
+          "Description": "geo",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7dde2f2b817744f7b3f7e69aebe74b86",
+          "Name": "",
+          "Description": "geof",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ae3aecaf8f184bebb0fa1f1ff9ff061b",
+          "Name": "",
+          "Description": "rdfs",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "67d90835eee54bfcafd407423c3ba801",
+          "Name": "",
+          "Description": "uom",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f6fd2dd556c446079353dc285b1cfb4b",
+          "Name": "",
+          "Description": "sf",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "de208d58adf74b689166e6d7cfca216f",
+          "Name": "",
+          "Description": "xsd",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b030e9096251429399f87b1d258e765b",
+          "Name": "",
+          "Description": "geor",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e9a2d06a98f847af8d75d1e5e75cddce",
+          "Name": "",
+          "Description": "namespaces",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "/**\n* \"F5\": Run the script\n* \"Ctrl + I\": Isolate Selected Geometry\n* \"Ctrl + P\": Drag & Drop\n*\n*\n*\n**/;",
+      "Id": "29d4977ffd5a4fbc99b46521c03c224b",
+      "Inputs": [],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "num_lineString = 10;\nnum_polygon = 30;\nnum_multipolygon = 30;",
+      "Id": "2fc07c798e1b4ebf958f7ff659859e87",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "efd49cf271694761abb21b23ed5e8e90",
+          "Name": "",
+          "Description": "num_lineString",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a64a2e498add48ab9b8670169e56ad6e",
+          "Name": "",
+          "Description": "num_polygon",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dccfeb5aa9fd43f087f937f5db2e148b",
+          "Name": "",
+          "Description": "num_multipolygon",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ngeo_lst = IN[0]\r\nexampleInstanceNamespace = IN[1] # dataEnteringNode[3];\r\ngeoSparqlNamespace = IN[2] # dataEnteringNode[4];\r\n\r\ndef lineString2WKT(geo_data):\r\n    wktLiteral = \"<sf:LineString>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"LINESTRING Z((\";\r\n    \r\n    points =  geo_data\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    #wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:LineString>\";\r\n    return wktLiteral\r\n\"\"\"\r\ndef sphere2WKT(surface_lst):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(\";\r\n    for surface in surface_lst:\r\n        wktLiteral += \"((\";\r\n        try:\r\n            curves = Surface.PerimeterCurves(surface);\r\n        except:\r\n            raise Exception(\"something wrong at geometry import!\")\r\n        startP = None;\r\n        for curve in curves:\r\n            nextP = curve.StartPoint;\r\n            if(startP != None):\r\n                wktLiteral += \", \";\r\n            else:\r\n                startP = nextP;\r\n            wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        #Close the tiangle loop with a repeat of the first Point         \r\n        wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z) + \"))\";\r\n        if(surface != surface_lst[-1]):\r\n            wktLiteral += \", \"\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:MultiPolygon>\";\r\n    return wktLiteral\r\n\"\"\"\r\ndef sphere2WKT(surface_lst):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    # for curves/surfaces\r\n    face_wkt_lst = \"\"\r\n    for vert_lst in surface_lst:\r\n        \r\n        vert_wkt_lst = \"((\"\r\n        for vert in vert_lst:\r\n        \r\n            vert_wkt_lst += str(vert.X) + \" \" +  str(vert.Y) + \" \" +  str(vert.Z);\r\n            if vert != vert_lst[-1]:\r\n                vert_wkt_lst += \", \"\r\n        \r\n        vert_wkt_lst += \", \" + str(vert_lst[0].X) + \" \" +  str(vert_lst[0].Y) + \" \" +  str(vert_lst[0].Z) + \"))\";\r\n        \r\n        face_wkt_lst += vert_wkt_lst\r\n        if vert_lst != surface_lst[-1]:\r\n            face_wkt_lst += \", \"          \r\n            \r\n    wktLiteral += \"MULTIPOLYGON Z(\";\r\n    wktLiteral += face_wkt_lst\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:MultiPolygon>\";\r\n    return wktLiteral\r\n    \r\n    \r\ndef multipolygonInRotation2WKT(face_lst):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    face_wkt_lst = \"\"\r\n    \r\n    for face in face_lst:\r\n        \r\n        vertice_lst = face.Vertices\r\n        org_vert_pt = vertice_lst[0].PointGeometry \r\n        face_wkt = \"((\" + str(org_vert_pt.X) + \" \" +  str(org_vert_pt.Y) + \" \" +  str(org_vert_pt.Z) # start point\r\n    \r\n        for i in range(1, len(vertice_lst)):\r\n            vert_pt = vertice_lst[i].PointGeometry\r\n            face_wkt += \", \" + str(vert_pt.X) + \" \" +  str(vert_pt.Y) + \" \" +  str(vert_pt.Z)       \r\n        face_wkt += \", \" + str(org_vert_pt.X) + \" \" +  str(org_vert_pt.Y) + \" \" +  str(org_vert_pt.Z) + \"))\" # end point\r\n        \r\n        if(face != face_lst[-1]):\r\n            face_wkt += \", \"\r\n        face_wkt_lst += face_wkt        \r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    wktLiteral += face_wkt_lst\r\n    wktLiteral += \")\" \r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\n    \r\ndef multipolygon2WKT(geo_data):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    \"\"\"\r\n    # for curves/surfaces\r\n    wktLiteral += \"MULTIPOLYGON Z(((\";\r\n    try:\r\n        curves = Surface.PerimeterCurves(geometry);\r\n    except:\r\n        raise Exception(\"something wrong at geometry import!\")\r\n    startP = None;\r\n    for curve in curves:\r\n        nextP = curve.StartPoint;\r\n        if(startP != None):\r\n            wktLiteral += \", \";\r\n        else:\r\n            startP = nextP;\r\n        wktLiteral += str(nextP.X) + \" \" +  str(nextP.Y) + \" \" +  str(nextP.Z);\r\n        \r\n    #Close the tiangle loop with a repeat of the first Point\r\n    wktLiteral += \", \" + str(startP.X) + \" \" +  str(startP.Y) + \" \" +  str(startP.Z);\r\n    wktLiteral += \")))\"\r\n    \"\"\"\r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = Solid.Centroid(geo_data)\r\n    offset = geo_data.Length/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"\r\n    \r\n    cuboid_face = bottom_face + \", \" + top_face + \", \" + front_face + \", \" + back_face + \", \" + left_face + \", \" + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral += cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\n    \r\ndef polygon2WKT(geo_data):\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geo_data\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\n#####\r\nres = []\r\nfor geo_obj in geo_lst:\r\n    geo_data = geo_obj[0];\r\n    name = geo_obj[1];\r\n    geometryType = geo_obj[2];\r\n    \r\n    if(geometryType.upper() == \"MULTIPOLYGON_ROTATION\"):\r\n        res.append(multipolygonInRotation2WKT(geo_data))\r\n        continue\r\n    \r\n    if(geometryType.upper() == \"MULTIPOLYGON_SPHERE\"):\r\n        res.append(sphere2WKT(geo_data))    \r\n        continue\r\n     \r\n    if(geometryType.upper() == \"MULTIPOLYGON\"):\r\n        res.append(multipolygon2WKT(geo_data))\r\n        continue\r\n        \r\n    if(geometryType.upper() == \"POLYGON_ROTATION\"):\r\n        res.append(polygon2WKT(geo_data))\r\n        continue\r\n        \r\n    if(geometryType.upper() == \"POLYGON\"):\r\n        res.append(polygon2WKT(geo_data))\r\n        continue\r\n        \r\n    if(geometryType.upper() == \"LINESTRING\"):\r\n        res.append(lineString2WKT(geo_data))\r\n        continue\r\n        \r\n# Assign your output to the OUT variable.\r\nOUT = res",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "09412fe94eab41e68c31fa0307c3b82e",
+      "Inputs": [
+        {
+          "Id": "81de61bb84f64c28b3d884c9f4d6d728",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "39772af1835e467982718d7ae096579e",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "52019d2e5d174dc48b12fdce6846d9c2",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "34aab1073991461ea21aecb8f98aa0f5",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport random\r\nimport pickle\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\nclr.AddReference('MeshToolkit')\r\nfrom Autodesk.Dynamo.MeshToolkit import *\r\n\r\n# Common Geometry Types\r\nPOINT = \"POINT\";\r\nMULTIPOINT = \"MULTIPOINT\";\r\nLINESTRING = \"LINESTRING\";\r\nMULTILINESTRING = \"MULTILINESTRING\";\r\nPOLYGON = \"POLYGON\";\r\nPOLYGON_ROTATION = \"POLYGON_ROTATION\"\r\nMULTIPOLYGON = \"MULTIPOLYGON\"\r\nMULTIPOLYGON_ROTATION = \"MULTIPOLYGON_ROTATION\"\r\nSPHERE = \"MULTIPOLYGON_SPHERE\"\r\nGEOMETRYCOLLECTION = \"GEOMETRYCOLLECTION\";\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nNUM_MULTIPOLYGON = 10\r\nNUM_POLYGON = 10\r\nNUM_LINESTRING = 10\r\nNUM_POINT = 10\r\n\r\n# Input \r\nNUM_POINT = 0\r\nNUM_LINESTRING = IN[0]\r\nNUM_POLYGON = IN[1]\r\nNUM_MULTIPOLYGON = IN[2]\r\nNUM_SPHERE = 0\r\n# output container\r\ngeo_lst = []\r\n\r\ngeo_pt_lst = []\r\ngeo_li_lst = []\r\ngeo_pol_lst = []\r\ngeo_mPol_lst = []\r\ngeo_sph_lst = []\r\n\r\ngeo_combi_lst = []\r\n    \r\n################### Polygon #######################\r\nNUM_TRIANGLE = 1\r\nNUM_RECTANGLE = 1\r\npol_index = 1\r\n\r\nif NUM_POLYGON >= 3:\r\n   # NUM_TRIANGLE = round(NUM_POLYGON/2)\r\n    NUM_TRIANGLE = NUM_POLYGON\r\n    NUM_RECTANGLE = NUM_POLYGON - NUM_TRIANGLE\r\n\r\n# random triangle(s)\r\nfor i in range(0, NUM_TRIANGLE):\r\n    pt_lst = []\r\n    \r\n    x_axis_lst = random.sample(range(-10, 10, 2), 3)\r\n    y_axis_lst = random.sample(range(-10, 10, 2), 3)\r\n    z_axis_lst = random.sample(range(-10, 10, 2), 3)\r\n    \r\n    offset_lst = random.sample(range(-50, 50, 2), 3)\r\n    \r\n    pt_lst = [Point.ByCoordinates(x_axis_lst[0] + offset_lst[0], y_axis_lst[0] + offset_lst[1], z_axis_lst[0] + offset_lst[2]),\r\n              Point.ByCoordinates(x_axis_lst[1] + offset_lst[0], y_axis_lst[1] + offset_lst[1], z_axis_lst[1] + offset_lst[2]), \r\n              Point.ByCoordinates(x_axis_lst[2] + offset_lst[0], y_axis_lst[2] + offset_lst[1], z_axis_lst[2] + offset_lst[2])]\r\n\r\n    geo_data = pt_lst\r\n    geo_name = POLYGON + str(pol_index)\r\n    geo_type = POLYGON\r\n    geometry = Surface.ByPerimeterPoints(pt_lst)\r\n\r\n    geo_obj_pol = (geo_data, geo_name, geo_type, geometry)\r\n    \r\n    geo_pol_lst.append(geo_obj_pol)\r\n    pol_index += 1\r\n\r\n# random rectangle(s)\r\n\"\"\"\r\nfor i in range(0, NUM_RECTANGLE):\r\n    pt_lst = []\r\n    \r\n    x_axis_lst = random.sample(range(-10, 10, 2), 4)\r\n    y_axis_lst = random.sample(range(-10, 10, 2), 4)\r\n    z_axis_lst = random.sample(range(-10, 10, 2), 4)\r\n    \r\n    offset_lst = random.sample(range(-50, 50, 2), 3)\r\n    \r\n    pt_lst = [Point.ByCoordinates(x_axis_lst[0] + offset_lst[0], y_axis_lst[0] + offset_lst[1], z_axis_lst[0] + offset_lst[2]),\r\n              Point.ByCoordinates(x_axis_lst[1] + offset_lst[0], y_axis_lst[1] + offset_lst[1], z_axis_lst[1] + offset_lst[2]), \r\n              Point.ByCoordinates(x_axis_lst[2] + offset_lst[0], y_axis_lst[2] + offset_lst[1], z_axis_lst[2] + offset_lst[2]),\r\n              Point.ByCoordinates(x_axis_lst[3] + offset_lst[0], y_axis_lst[3] + offset_lst[1], z_axis_lst[3] + offset_lst[2])]\r\n\r\n    geo_data = pt_lst\r\n    geo_name = POLYGON + str(pol_index)\r\n    geo_type = POLYGON\r\n    geometry = Surface.ByPerimeterPoints(pt_lst)\r\n    \r\n    geo_obj_pol = (geo_data, geo_name, geo_type, geometry)\r\n\r\n    geo_pol_lst.append(geo_obj_pol)\r\n    pol_index += 1\r\n\"\"\"\r\n###################### Multi-Polygon ##########################\r\nmPol_index = 1\r\n\r\n# random cube(s)\r\nfor i in range(0, NUM_MULTIPOLYGON):\r\n    \"\"\"\r\n    corner pt 1 : (x, y, z)\r\n    corner pt 2 : (x+l, y+l, z+l)\r\n    \"\"\"\r\n    pt_lst = []\r\n    is_rotated = random.randint(0,1)\r\n    x_axis = random.randint(-10, 10)\r\n    y_axis = random.randint(-10, 10)\r\n    z_axis = random.randint(-10, 10)\r\n    l = random.randint(1, 8)\r\n    \r\n    offset_lst = random.sample(range(-50, 50, 2), 3)\r\n    p1 = Point.ByCoordinates(x_axis + offset_lst[0], \r\n                             y_axis + offset_lst[1], \r\n                             z_axis + offset_lst[2])\r\n                             \r\n    p2 = Point.ByCoordinates(x_axis + l + offset_lst[0], \r\n                             y_axis + l + offset_lst[1], \r\n                             z_axis + l + offset_lst[2])\r\n    \r\n    geometry = Cuboid.ByCorners(p1, p2)\r\n    geo_data = geometry\r\n    geo_name = MULTIPOLYGON + str(mPol_index)\r\n    geo_type = MULTIPOLYGON\r\n    \r\n    if is_rotated == 0:\r\n        old_cs = CoordinateSystem.Identity()\r\n        new_cs = CoordinateSystem.Identity()\r\n        new_cs2 = new_cs.Rotate(Point.ByCoordinates(random.randint(-10, 10), random.randint(-10, 10), random.randint(-10, 10)),\r\n                                Vector.ByCoordinates(random.randint(-10, 10), random.randint(-10, 10), random.randint(-10, 10)), \r\n                                random.randint(0, 360))\r\n        geometry = geometry.Transform(old_cs, new_cs2)\r\n        \r\n        geo_data = geometry.Faces\r\n        geo_name = MULTIPOLYGON + str(mPol_index)\r\n        geo_type = MULTIPOLYGON_ROTATION\r\n    \r\n    geo_obj_mPol = (geo_data, geo_name, geo_type, geometry)\r\n    geo_mPol_lst.append(geo_obj_mPol)\r\n    mPol_index += 1\r\n    \r\n    \r\n# random sphere(s)\r\nfor i in range(0, NUM_SPHERE):\r\n    \r\n    x_axis = random.randint(-10, 10)\r\n    y_axis = random.randint(-10, 10)\r\n    z_axis = random.randint(-10, 10)\r\n    offset_lst = random.sample(range(-50, 50, 2), 3)    \r\n    \r\n    centroid_pt = Point.ByCoordinates(x_axis + offset_lst[0], \r\n                                     y_axis + offset_lst[1], \r\n                                     z_axis + offset_lst[2])\r\n    \r\n    rand_radius = random.randint(1, 7)\r\n    \r\n    geometry = Sphere.ByCenterPointRadius(centroid_pt, radius = rand_radius)\r\n\r\n    sphere_mesh = Mesh.ByGeometry(geometry)\r\n    mesh_lst = Mesh.Explode(sphere_mesh)\r\n    mesh_vert_lst = []\r\n    for mesh in mesh_lst:\r\n        mesh_vert_lst.append(Mesh.Vertices(mesh))\r\n    \r\n    # testing\r\n    geo_data = mesh_vert_lst\r\n    #geo_data = \"\"\r\n    geo_name = MULTIPOLYGON + str(mPol_index)\r\n    geo_type = SPHERE\r\n    geo_obj_sph = (geo_data, geo_name, geo_type, geometry)\r\n    geo_sph_lst.append(geo_obj_sph)\r\n    mPol_index += 1\r\n###################### LineString ###########################\r\nli_index = 1\r\n\r\n# random LineString(s)\r\npt_lst= []\r\nfor i in range(0, NUM_LINESTRING): # random number of line strings\r\n\r\n    rand_length = random.randint(1,3) # random length of line strings\r\n    for j in range(0, rand_length):\r\n        x_axis = random.randint(-50, 50)\r\n        y_axis = random.randint(-50, 50)\r\n        z_axis = random.randint(-50, 50)\r\n        l = random.randint(1, 2)\r\n        offset_lst = random.sample(range(-20, 20, 2), 3)\r\n        \r\n        pt_s = Point.ByCoordinates(x_axis + offset_lst[0], \r\n                                 y_axis + offset_lst[1], \r\n                                 z_axis + offset_lst[2])\r\n        pt_e = Point.ByCoordinates(x_axis + l + offset_lst[0], \r\n                                 y_axis + l + offset_lst[1], \r\n                                 z_axis + l + offset_lst[2])\r\n        pt_lst.append(pt_s)\r\n        pt_lst.append(pt_e)\r\n\r\ngeo_data = pt_lst\r\ngeo_name = LINESTRING + str(li_index)\r\ngeo_type = LINESTRING\r\ngeometry = PolyCurve.ByPoints(pt_lst, False)\r\ngeo_obj_li = (geo_data, geo_name, geo_type, geometry)\r\ngeo_li_lst.append(geo_obj_li)\r\nli_index += 1\r\n\r\n#################### Case Study #############################\r\n\r\n# (Multi)polygon <==> (Multi)polygon (incl. rotation)\r\ncase_mp_mp = []\r\n\r\n# (Multi)polygon <==> LingString (incl. rotation)\r\ncase_mp_ls = []\r\n\r\n# (Multi)polygon <==> Sphere (incl. rotation)\r\ncase_mp_sp = []\r\n\r\n# Sphere <==> LingString\r\ncase_sp_ls = []\r\n\r\ngeo_combi_lst = geo_pt_lst + geo_li_lst + geo_pol_lst + geo_mPol_lst + geo_sph_lst\r\n\r\n#with open(\"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\JSON\\\\geo_combi_lst.pickle\", \"w\", encoding='utf-8') as fp:\r\n    #pickle.dump(geo_combi_lst, fp)\r\n\r\n######################### Output ############################\r\nOUT = geo_combi_lst\r\n\r\n",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "ed9a22b47c4f467485b00c23697814cc",
+      "Inputs": [
+        {
+          "Id": "36c4e1b3f3a64684bc754fc3a22c8e73",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "226ae4241c264019afe1994583ee5282",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7e84627f5a234e70b64953072d3421e0",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ca0881434dfa48c0b442878a5d001280",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport io\r\nimport sys\r\nimport clr\r\nimport ctypes\r\nimport xml.etree.ElementTree as ET\r\nsys.path.append(r\"C:\\Users\\yhe\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\")\r\n\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nfrom xml.dom.minidom import parse, parseString\r\n\r\n###################### Body ###########################\r\n\r\ndef rdfParsing2GeoData(str):\r\n    \"\"\" it returns the json file in structure like { \"POLYGON1\" : [...], \r\n                                                     \"POLYGON2\" : [...], \r\n                                                     \"MULTIPOLYGON1\" : [...], ...\r\n                                                    }\r\n    \"\"\"\r\n    #dom = parse(path)\r\n    #tree = ET.ElementTree(ET.fromstring(str))\r\n    geo_dict = {}\r\n    tree = io.StringIO(str)\r\n    dom = parse(tree)\r\n    data = dom.documentElement\r\n    rdf_desc_lst = data.getElementsByTagName(\"rdf:Description\")\r\n    # geo_in_wkt = data.getElementsByTagName(\"geo:asWKT\")\r\n\r\n    for i in range(1, len(rdf_desc_lst)): # first description element (root element) should be removed.\r\n        descr_el = rdf_desc_lst[i]\r\n        geo_name_num = descr_el.attributes._attrs['rdf:about'].nodeValue.split('#')[1]\r\n        geo_wkt_data = \"\"\r\n        try:\r\n            geo_wkt_data = descr_el.childNodes[0].firstChild.data\r\n        except:\r\n            geo_wkt_data = descr_el.childNodes[1].firstChild.data\r\n        geo_algebra_lst = []\r\n\r\n        if ( geo_name_num.find('POINT') != -1 or\r\n            geo_name_num.find('Point') != -1 ):\r\n            \r\n            wkt_data_lst = geo_wkt_data.split(\"(\")[1] # remove title 'POINT'\r\n            vert_str_lst = wkt_data_lst\r\n            vert_str_lst = vert_str_lst.replace( \")\", \"\" ) # remove character ')'\r\n\r\n            pt_algebra_lst = []\r\n            pt_str_lst = vert_str_lst.split(\" \")\r\n\r\n            pt_algebra_lst = [ float(pt_str) for pt_str in pt_str_lst ]\r\n            geo_algebra_lst.append(pt_algebra_lst)\r\n            \r\n        if ( geo_name_num.find('LINESTRING') != -1 or\r\n            geo_name_num.find('Linestring') != -1 or\r\n            geo_name_num.find('LINE') != -1 or\r\n            geo_name_num.find('Line') != -1 ):\r\n\r\n            wkt_data_lst = geo_wkt_data.split(\"((\")[1] # remove title 'LINESTRING'\r\n            vert_str_lst = wkt_data_lst\r\n            vert_str_lst = vert_str_lst.replace( \")\", \"\" ) # remove character ')'\r\n            vert_str_lst = vert_str_lst.split(\", \")\r\n\r\n            line_algebra_lst = []\r\n            for i in range(0, len(vert_str_lst)):\r\n\r\n                pt_str_lst = vert_str_lst[i].split(\" \")\r\n                line_algebra_lst.append([ float(pt_str) for pt_str in pt_str_lst ])\r\n            geo_algebra_lst.append(line_algebra_lst)\r\n\r\n        if ( geo_name_num.find('POLYGON') != -1 or \r\n            geo_name_num.find('Polygon') != -1 ):\r\n\r\n            wkt_data_lst = geo_wkt_data.split(\"((\")[1] # remove title 'POLYGON Z'\r\n            vert_str_lst = wkt_data_lst\r\n            vert_str_lst = vert_str_lst.replace( \")\", \"\" ) # remove character ')'\r\n            vert_str_lst = vert_str_lst.replace( \"(\", \"\" ) # remove character '('\r\n            vert_str_lst = vert_str_lst.split(\", \")\r\n\r\n            face_algebra_lst = []\r\n            for i in range(0, len(vert_str_lst)-1): # last point not included\r\n\r\n                pt_str_lst = vert_str_lst[i].split(\" \")\r\n                face_algebra_lst.append([ float(pt_str) for pt_str in pt_str_lst ])\r\n            geo_algebra_lst.append(face_algebra_lst)\r\n\r\n        if ( geo_name_num.find('MULTIPOLYGON') != -1 or\r\n            geo_name_num.find('Multipolygon') != -1  or\r\n            geo_name_num.find('CUBE') != -1 or\r\n            geo_name_num.find('Cube') != -1 or\r\n            geo_name_num.find('SPHERE') != -1 or\r\n            geo_name_num.find('Sphere') != -1 ):\r\n\r\n            wkt_data_lst = geo_wkt_data.split(\"(((\")[1] # remove title 'MULTIPOLYGON Z'\r\n            face_str_lst = wkt_data_lst.split(\"), \")\r\n\r\n            face_algebra_lst = []\r\n            for face_str in face_str_lst:\r\n                vert_str_lst = face_str.replace( \")\", \"\" ) # remove character ')'\r\n                vert_str_lst = vert_str_lst.replace( \"(\", \"\" ) # remove character '('\r\n                vert_str_lst = vert_str_lst.split(\", \")\r\n\r\n                pt_algebra_lst = []\r\n                for i in range(0, len(vert_str_lst)-1): # last point not included\r\n\r\n                    pt_str_lst = vert_str_lst[i].split(\" \")\r\n                        \r\n                    pt_algebra = [ float(pt_str) for pt_str in pt_str_lst ]\r\n                    pt_algebra_lst.append(pt_algebra)\r\n\r\n                face_algebra_lst.append(pt_algebra_lst)\r\n            geo_algebra_lst = face_algebra_lst\r\n\r\n        if geo_name_num not in geo_dict.keys():\r\n            geo_dict[geo_name_num] = geo_algebra_lst\r\n    return geo_dict\r\n    \r\n######################################################\r\njson_file = {}\r\n\r\n\r\n#dir = \"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\rdf\\\\xxl3DScene.rdf\"\r\njson_file = rdfParsing2GeoData(IN[0])\r\n\r\n######################### Output ##########################\r\nOUT = json_file\r\n\r\n",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "4c22feda790d4b5b8b8fda55feed9131",
+      "Inputs": [
+        {
+          "Id": "7fae4a77a2a24ae085ee38dda554c654",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "da595bf2e0ca46dd869d271df923a8c7",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport json\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n#dir = \"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\JSON\\\\Level1_groundTruth.json\"\r\nwarn_str = '<.json> File or File Path does not exist.'\r\n\r\n\r\njson_file = IN[0]\r\ndir = IN[1]\r\n\r\nres = False\r\ntry: \r\n    with open(dir, 'w') as fp:\r\n        json.dump(json_file, fp, sort_keys=True, indent=4)\r\n    res = True\r\nexcept:\r\n    ctypes.windll.user32.MessageBoxW(0, warn_str, 'Input Exception',1)\r\n    \r\nOUT = res",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "d0a09fa53a934c44a4430e0b38d36f75",
+      "Inputs": [
+        {
+          "Id": "86c708efc0ec406eac260bd4885bfee6",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "76f835142aad45c5a2839b87153952b1",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "620ec18010034876ad1f57ff6df7310a",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "ad5c13cb6a21449493e84c485b44e7cf",
+      "Inputs": [
+        {
+          "Id": "d34e0e6baa5b4bd8b94dafaccc7b2f09",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "39fdf49398e74058bd3fe464e660f234",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n#================= Help Function ====================\r\ndef getGeometry(geo_obj):\r\n    return geo_obj[3]\r\n\r\ndef getGeoType(geo_obj):\r\n    return geo_obj[2]\r\n    \r\ndef getGeoName(geo_obj):\r\n    return geo_obj[1]\r\n#================= Input ====================\r\ngeo_lst = IN[0]\r\n\r\n#================= Body ====================\r\ninter_geo_dict = {} # {inter_geo_name1: \"\", inter_geo_name2: \"\", ...}\r\n\r\n\"\"\"\r\ncomparison algorithnm:\r\n\r\ngeo_obj_1 in lst start from 0 to n-1\r\n    geo_obj_2 in lst start from 1 to n\r\nlst remove geo_obj_1\r\n\"\"\"\r\nfor i in range(0, len(geo_lst)-1):\r\n    geo_obj_1 = geo_lst[i]\r\n    geometry_1 = getGeometry(geo_obj_1)\r\n\r\n    geo_obj_1_has_intersection = False\r\n    for j in range(1, len(geo_lst)):\r\n        geo_obj_2 = geo_lst[j]\r\n        geometry_2 = getGeometry(geo_obj_2)\r\n        \r\n        if getGeoName(geo_obj_1) != getGeoName(geo_obj_2):\r\n            temp_bool = False\r\n            try:\r\n                temp_bool = Geometry.DoesIntersect(geometry_1, geometry_2)\r\n            except Exception as err:\r\n                print(f\"Unexpected {err=}, {type(err)=}\")\r\n            if temp_bool:\r\n                geo_obj_1_has_intersection = True\r\n                inter_geo_dict[getGeoName(geo_obj_2)] = getGeoType(geo_obj_2)\r\n                \r\n    if geo_obj_1_has_intersection:\r\n        inter_geo_dict[getGeoName(geo_obj_1)] = getGeoType(geo_obj_1)    \r\n#================= Output ====================\r\nif inter_geo_dict is None:\r\n    inter_geo_dict = {}\r\n    \r\nOUT = inter_geo_dict\r\n",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "bfa3cba0d6c74e99a496b203e8e183fa",
+      "Inputs": [
+        {
+          "Id": "befb1089d76c4eb3b89c74b63871eb99",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "265f16de018341409ee0204a1bf220e5",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport json\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\ndir = \"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\JSON\\\\groundTruth.json\"\r\n\r\njson_file = IN[0]\r\n\r\nres = True\r\nif json_file is None:\r\n    json_file = {}\r\n\r\ntry: \r\n    with open(dir, 'w') as fp:\r\n        json.dump(json_file, fp, sort_keys=True, indent=4)\r\nexcept:\r\n    res = False\r\n    \r\nOUT = res",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "4335cc2b2ca54165853a787ea2a4054a",
+      "Inputs": [
+        {
+          "Id": "993355c2b8564e7b9f7af5f6846e90df",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8de2ec128924421ebff879fd30fc7b21",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.IO.FileSystem.WriteText@string,string",
+      "Id": "83fd206245ba449286d14efaa9d569e3",
+      "Inputs": [
+        {
+          "Id": "40154a34a08f430ea933f5614dfca374",
+          "Name": "filePath",
+          "Description": "Path to write to\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ee9424ed28e34f6c8a270b93e46adfae",
+          "Name": "text",
+          "Description": "Text content\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2ff336f807bb49b9947a8ca22af4d1f3",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Write the text content to a file specified by the path\n\nFileSystem.WriteText (filePath: string, text: string): void"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\3DScenario.rdf",
+      "InputValue": "..\\..\\..\\..\\..\\..\\..\\..\\resources\\rdf\\3DScenario.rdf",
+      "NodeType": "ExtensionNode",
+      "Id": "816efb74f1fe40ae86ff95e7e92e975b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ff7d98f6c7404ae0b661680be57fe987",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its filename"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "9b42a917a1b24f7abeded63667f1cc12",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d84db0965e8c43bfa78bc40fab2ddc05",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\JSON\\Level2_groundTruth.json",
+      "InputValue": "..\\..\\..\\..\\..\\..\\..\\..\\resources\\JSON\\Level2_groundTruth.json",
+      "NodeType": "ExtensionNode",
+      "Id": "90f351aea7a2490fa59435bc0ef94688",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "45ae055bdf6d4330bf17d51e78b265bb",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system to get its filename"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nimport json\r\nimport os\r\nimport random\r\nimport pickle\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('DSCoreNodes')\r\nfrom DSCore import *\r\nclr.AddReference('GeometryColor')\r\nfrom Modifiers import GeometryColor\r\nclr.AddReference('MeshToolkit')\r\nfrom Autodesk.Dynamo.MeshToolkit import *\r\n\r\n############## Random Geometry Generator ###############\r\n\r\ndef random_geo_generator(factor):\r\n    NUM_POINT = 0\r\n    NUM_MULTIPOLYGON = 10 + factor*2\r\n    NUM_POLYGON = 10 + factor*3\r\n    NUM_LINESTRING = 10 + factor*4\r\n    NUM_POINT = 10\r\n    NUM_SPHERE = 0\r\n    \r\n    # output container\r\n    geo_lst = []\r\n    \r\n    geo_pt_lst = []\r\n    geo_li_lst = []\r\n    geo_pol_lst = []\r\n    geo_mPol_lst = []\r\n    geo_sph_lst = []\r\n    \r\n    geo_combi_lst = []\r\n    \r\n    ################### Polygon #######################\r\n    # random triangle(s)\r\n    for i in range(0, NUM_POLYGON):\r\n        pt_lst = []\r\n        \r\n        x_axis_lst = random.sample(range(-10, 10, 2), 3)\r\n        y_axis_lst = random.sample(range(-10, 10, 2), 3)\r\n        z_axis_lst = random.sample(range(-10, 10, 2), 3)\r\n        \r\n        offset_lst = random.sample(range(-50, 50, 2), 3)\r\n        \r\n        pt_lst = [Point.ByCoordinates(x_axis_lst[0] + offset_lst[0], y_axis_lst[0] + offset_lst[1], z_axis_lst[0] + offset_lst[2]),\r\n                  Point.ByCoordinates(x_axis_lst[1] + offset_lst[0], y_axis_lst[1] + offset_lst[1], z_axis_lst[1] + offset_lst[2]), \r\n                  Point.ByCoordinates(x_axis_lst[2] + offset_lst[0], y_axis_lst[2] + offset_lst[1], z_axis_lst[2] + offset_lst[2])]\r\n    \r\n        geo_data = pt_lst\r\n        geo_name = POLYGON + str(i+1)\r\n        geo_type = POLYGON\r\n        geometry = Surface.ByPerimeterPoints(pt_lst)\r\n    \r\n        geo_obj_pol = (geo_data, geo_name, geo_type, geometry)\r\n        \r\n        geo_pol_lst.append(geo_obj_pol)\r\n        pol_index += 1\r\n    \r\n    ###################### Multi-Polygon ##########################\r\n    # random cube(s)\r\n    for i in range(0, NUM_MULTIPOLYGON):\r\n        \"\"\"\r\n        corner pt 1 : (x, y, z)\r\n        corner pt 2 : (x+l, y+l, z+l)\r\n        \"\"\"\r\n        pt_lst = []\r\n        is_rotated = random.randint(0,1)\r\n        x_axis = random.randint(-10, 10)\r\n        y_axis = random.randint(-10, 10)\r\n        z_axis = random.randint(-10, 10)\r\n        l = random.randint(1, 8)\r\n        \r\n        offset_lst = random.sample(range(-50, 50, 2), 3)\r\n        p1 = Point.ByCoordinates(x_axis + offset_lst[0], \r\n                                 y_axis + offset_lst[1], \r\n                                 z_axis + offset_lst[2])\r\n                                 \r\n        p2 = Point.ByCoordinates(x_axis + l + offset_lst[0], \r\n                                 y_axis + l + offset_lst[1], \r\n                                 z_axis + l + offset_lst[2])\r\n        \r\n        geometry = Cuboid.ByCorners(p1, p2)\r\n        geo_data = geometry\r\n        geo_name = MULTIPOLYGON + str(i+1)\r\n        geo_type = MULTIPOLYGON\r\n        \r\n        if is_rotated == 0:\r\n            old_cs = CoordinateSystem.Identity()\r\n            new_cs = CoordinateSystem.Identity()\r\n            new_cs2 = new_cs.Rotate(Point.ByCoordinates(random.randint(-10, 10), random.randint(-10, 10), random.randint(-10, 10)),\r\n                                    Vector.ByCoordinates(random.randint(-10, 10), random.randint(-10, 10), random.randint(-10, 10)), \r\n                                    random.randint(0, 360))\r\n            geometry = geometry.Transform(old_cs, new_cs2)\r\n            \r\n            geo_data = geometry.Faces\r\n            geo_name = MULTIPOLYGON + str(mPol_index)\r\n            geo_type = MULTIPOLYGON_ROTATION\r\n        \r\n        geo_obj_mPol = (geo_data, geo_name, geo_type, geometry)\r\n        geo_mPol_lst.append(geo_obj_mPol)\r\n        mPol_index += 1\r\n    \r\n    ###################### LineString ###########################\r\n    \r\n    # random LineString(s)\r\n    pt_lst= []\r\n    for i in range(0, NUM_LINESTRING): # random number of line strings\r\n    \r\n        rand_length = random.randint(1,3) # random length of line strings\r\n        for j in range(0, rand_length):\r\n            x_axis = random.randint(-50, 50)\r\n            y_axis = random.randint(-50, 50)\r\n            z_axis = random.randint(-50, 50)\r\n            l = random.randint(1, 2)\r\n            offset_lst = random.sample(range(-20, 20, 2), 3)\r\n            \r\n            pt_s = Point.ByCoordinates(x_axis + offset_lst[0], \r\n                                     y_axis + offset_lst[1], \r\n                                     z_axis + offset_lst[2])\r\n            pt_e = Point.ByCoordinates(x_axis + l + offset_lst[0], \r\n                                     y_axis + l + offset_lst[1], \r\n                                     z_axis + l + offset_lst[2])\r\n            pt_lst.append(pt_s)\r\n            pt_lst.append(pt_e)\r\n    \r\n    geo_data = pt_lst\r\n    geo_name = LINESTRING + str(i+1)\r\n    geo_type = LINESTRING\r\n    geometry = PolyCurve.ByPoints(pt_lst, False)\r\n    geo_obj_li = (geo_data, geo_name, geo_type, geometry)\r\n    geo_li_lst.append(geo_obj_li)\r\n    li_index += 1\r\n    \r\n    #################### Case Study #############################\r\n    \r\n    # (Multi)polygon <==> (Multi)polygon (incl. rotation)\r\n    case_mp_mp = []\r\n    \r\n    # (Multi)polygon <==> LingString (incl. rotation)\r\n    case_mp_ls = []\r\n    \r\n    # (Multi)polygon <==> Sphere (incl. rotation)\r\n    case_mp_sp = []\r\n    \r\n    # Sphere <==> LingString\r\n    case_sp_ls = []\r\n    \r\n    geo_combi_lst = geo_pt_lst + geo_li_lst + geo_pol_lst + geo_mPol_lst + geo_sph_lst\r\n    return geo_combi_lst\r\n\r\n#################### WKT Converter #############################\r\ndef lineString2WKT(geo_data):\r\n    wktLiteral = \"<sf:LineString>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"LINESTRING Z((\";\r\n    \r\n    points =  geo_data\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    #wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:LineString>\";\r\n    return wktLiteral\r\n\r\ndef sphere2WKT(surface_lst):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    # for curves/surfaces\r\n    face_wkt_lst = \"\"\r\n    for vert_lst in surface_lst:\r\n        \r\n        vert_wkt_lst = \"((\"\r\n        for vert in vert_lst:\r\n        \r\n            vert_wkt_lst += str(vert.X) + \" \" +  str(vert.Y) + \" \" +  str(vert.Z);\r\n            if vert != vert_lst[-1]:\r\n                vert_wkt_lst += \", \"\r\n        \r\n        vert_wkt_lst += \", \" + str(vert_lst[0].X) + \" \" +  str(vert_lst[0].Y) + \" \" +  str(vert_lst[0].Z) + \"))\";\r\n        \r\n        face_wkt_lst += vert_wkt_lst\r\n        if vert_lst != surface_lst[-1]:\r\n            face_wkt_lst += \", \"          \r\n            \r\n    wktLiteral += \"MULTIPOLYGON Z(\";\r\n    wktLiteral += face_wkt_lst\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:MultiPolygon>\";\r\n    return wktLiteral\r\n    \r\n    \r\ndef multipolygonInRotation2WKT(face_lst):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    face_wkt_lst = \"\"\r\n    \r\n    for face in face_lst:\r\n        \r\n        vertice_lst = face.Vertices\r\n        org_vert_pt = vertice_lst[0].PointGeometry \r\n        face_wkt = \"((\" + str(org_vert_pt.X) + \" \" +  str(org_vert_pt.Y) + \" \" +  str(org_vert_pt.Z) # start point\r\n    \r\n        for i in range(1, len(vertice_lst)):\r\n            vert_pt = vertice_lst[i].PointGeometry\r\n            face_wkt += \", \" + str(vert_pt.X) + \" \" +  str(vert_pt.Y) + \" \" +  str(vert_pt.Z)       \r\n        face_wkt += \", \" + str(org_vert_pt.X) + \" \" +  str(org_vert_pt.Y) + \" \" +  str(org_vert_pt.Z) + \"))\" # end point\r\n        \r\n        if(face != face_lst[-1]):\r\n            face_wkt += \", \"\r\n        face_wkt_lst += face_wkt        \r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    wktLiteral += face_wkt_lst\r\n    wktLiteral += \")\" \r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\n    \r\ndef multipolygon2WKT(geo_data):\r\n    wktLiteral = \"<sf:MultiPolygon>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    \r\n    # for cuboids with geometry = [centroid, length]\r\n    centroid = Solid.Centroid(geo_data)\r\n    offset = geo_data.Length/2\r\n    c_X = centroid.X\r\n    c_Y = centroid.Y\r\n    c_Z = centroid.Z\r\n\r\n    # idea: determine the coordinates of bottom- and top faces\r\n    \r\n    # p1 -- p2\r\n    # |  c   |\r\n    # p3 -- p4           \r\n    # bottom-face\r\n    bottom_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    bottom_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    bottom_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    bottom_face = \"((\" + bottom_p1 + \", \" + bottom_p2 + \", \" + bottom_p3 + \", \" + bottom_p4 +  \", \" + bottom_p1 + \"))\"\r\n    # top-face\r\n    top_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    top_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    top_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    top_face = \"((\" + top_p1 + \", \" + top_p2 + \", \" + top_p3 + \", \" + top_p4 +  \", \" + top_p1 + \"))\"\r\n    # front-face\r\n    front_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    front_p2 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    front_p3 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    front_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    front_face = \"((\" + front_p1 + \", \" + front_p2 + \", \" + front_p3 + \", \" + front_p4 + \", \" + front_p1 + \"))\"\r\n    # back-face             \r\n    back_p1 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    back_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset) \r\n    back_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset) \r\n    back_p4 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    back_face = \"((\" + back_p1 + \", \" + back_p2 + \", \" + back_p3 + \", \" + back_p4 + \", \" + back_p1 + \"))\"\r\n    # left-face\r\n    left_p1 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p2 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z-offset)\r\n    left_p3 = str(c_X+offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_p4 = str(c_X-offset) + \" \" + str(c_Y-offset) + \" \" + str(c_Z+offset)\r\n    left_face = \"((\" + left_p1 + \", \" + left_p2 + \", \" + left_p3 + \", \" + left_p4 + \", \" + left_p1 + \"))\"            \r\n    # right-face\r\n    right_p1 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p2 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z-offset)\r\n    right_p3 = str(c_X+offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_p4 = str(c_X-offset) + \" \" + str(c_Y+offset) + \" \" + str(c_Z+offset)\r\n    right_face = \"((\" + right_p1 + \", \" + right_p2 + \", \" + right_p3 + \", \" + right_p4 + \", \" + right_p1 + \"))\"\r\n    \r\n    cuboid_face = bottom_face + \", \" + top_face + \", \" + front_face + \", \" + back_face + \", \" + left_face + \", \" + right_face\r\n    \r\n    wktLiteral += \"MULTIPOLYGON Z(\"\r\n    try:\r\n        wktLiteral += cuboid_face\r\n    except e:\r\n        return e\r\n    print(cuboid_face)\r\n    wktLiteral += \")\"\r\n    wktLiteral += \"</geo:asWKT>\"\r\n    wktLiteral += \"</rdf:Description>\"\r\n    wktLiteral += \"</sf:MultiPolygon>\"\r\n    return wktLiteral\r\n    \r\n    \r\ndef polygon2WKT(geo_data):\r\n    wktLiteral = \"<sf:POLYGON>\";\r\n    wktLiteral += \"<rdf:Description rdf:about='\" + exampleInstanceNamespace + str(name) + \"'>\";\r\n    wktLiteral += \"<geo:asWKT rdf:datatype='\" + geoSparqlNamespace + \"wktLiteral'>\";\r\n    wktLiteral += \"POLYGON Z((\";\r\n    \r\n    points =  geo_data\r\n    originP = points[0];\r\n    \r\n    wktLiteral += str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z) # start point\r\n    for i in range(1, len(points)):\r\n        wktLiteral += \", \" + str(points[i].X) + \" \" +  str(points[i].Y) + \" \" +  str(points[i].Z);       \r\n    wktLiteral += \", \" + str(originP.X) + \" \" +  str(originP.Y) + \" \" +  str(originP.Z); # end point\r\n    wktLiteral += \"))\"\r\n    \r\n    wktLiteral += \"</geo:asWKT>\";\r\n    wktLiteral += \"</rdf:Description>\";\r\n    wktLiteral += \"</sf:POLYGON>\";\r\n    return wktLiteral\r\n\r\n#####\r\ndef wkt_Converter(geometry_lst):\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n    geo_lst = geometry_lst\r\n    exampleInstanceNamespace = \"http://www.opengis.net/ont/geosparql#\"\r\n    geoSparqlNamespace = \"https://www.inf.bi.ruhr-uni-bochum.de/jena/#\"\r\n    \r\n    res = []\r\n    for geo_obj in geo_lst:\r\n        geo_data = geo_obj[0];\r\n        name = geo_obj[1];\r\n        geometryType = geo_obj[2];\r\n        \r\n        if(geometryType.upper() == \"MULTIPOLYGON_ROTATION\"):\r\n            res.append(multipolygonInRotation2WKT(geo_data))\r\n            continue\r\n        \r\n        if(geometryType.upper() == \"MULTIPOLYGON_SPHERE\"):\r\n            res.append(sphere2WKT(geo_data))    \r\n            continue\r\n         \r\n        if(geometryType.upper() == \"MULTIPOLYGON\"):\r\n            res.append(multipolygon2WKT(geo_data))\r\n            continue\r\n            \r\n        if(geometryType.upper() == \"POLYGON_ROTATION\"):\r\n            res.append(polygon2WKT(geo_data))\r\n            continue\r\n            \r\n        if(geometryType.upper() == \"POLYGON\"):\r\n            res.append(polygon2WKT(geo_data))\r\n            continue\r\n            \r\n        if(geometryType.upper() == \"LINESTRING\"):\r\n            res.append(lineString2WKT(geo_data))\r\n            continue\r\n    return res\r\n\r\n############## RDF Wrapper ###############\r\ndef RDF_Wrapper(WKT_res):\r\n    namespaces = {\r\n                \t\"rdf\" : rdf,\r\n                \t\"owl\" : owl,\r\n                \t\"ogc\" : ogc,\r\n                \t\"my\" : my,\r\n                \t\"gml\" : gml,\r\n                \t\"geo\" : geo,\r\n                \t\"geof\": geof,\r\n                \t\"rdfs\": rdfs,\r\n                \t\"uom\": uom,\r\n                \t\"sf\": sf,\r\n                \t\"xsd\": xsd,\r\n                \t\"geor\": geor\r\n                }\r\n    inserts = WKT_res\r\n    \r\n    # open RDF header\r\n    rdfStr = \"<rdf:RDF\";\r\n    \r\n    # handle Namespaces\r\n    for key in namespaces:\r\n        rdfStr += \" xmlns:\" + key + \"='\" + namespaces[key] + \"'\";\r\n    \r\n    rdfStr += \">\";\r\n    \r\n    #add inserts\r\n    \r\n    rdfStr += \"<rdf:Description rdf:about='my:\" + \"RootModel\" + \"'>\";\r\n    \r\n    for insert in inserts:\r\n        rdfStr += insert;\r\n    \r\n    rdfStr += \"</rdf:Description>\"\r\n    \r\n    # close RDF header\r\n    rdfStr += \"</rdf:RDF>\"\r\n    \r\n    # Weisen Sie Ihre Ausgabe der OUT-Variablen zu.\r\n    return rdfStr\r\n\r\n############## Ground Truth Generator ###############\r\ndef getGeometry(geo_obj):\r\n    return geo_obj[3]\r\n\r\ndef getGeoType(geo_obj):\r\n    return geo_obj[2]\r\n    \r\ndef getGeoName(geo_obj):\r\n    return geo_obj[1]\r\n    \r\ndef ground_truth_generator(geometry_lst):\r\n    geo_lst = geometry_lst\r\n    inter_geo_dict = {}\r\n    for i in range(0, len(geo_lst)-1):\r\n        geo_obj_1 = geo_lst[i]\r\n        geometry_1 = getGeometry(geo_obj_1)\r\n    \r\n        geo_obj_1_has_intersection = False\r\n        for j in range(1, len(geo_lst)):\r\n            geo_obj_2 = geo_lst[j]\r\n            geometry_2 = getGeometry(geo_obj_2)\r\n            \r\n            if getGeoName(geo_obj_1) != getGeoName(geo_obj_2):\r\n                temp_bool = False\r\n                try:\r\n                    temp_bool = Geometry.DoesIntersect(geometry_1, geometry_2)\r\n                except Exception as err:\r\n                    print(f\"Unexpected {err=}, {type(err)=}\")\r\n                if temp_bool:\r\n                    geo_obj_1_has_intersection = True\r\n                    inter_geo_dict[getGeoName(geo_obj_2)] = getGeoType(geo_obj_2)\r\n                    \r\n        if geo_obj_1_has_intersection:\r\n            inter_geo_dict[getGeoName(geo_obj_1)] = getGeoType(geo_obj_1)    \r\n    #================= Output ====================\r\n    if inter_geo_dict is None:\r\n        inter_geo_dict = {}\r\n    return inter_geo_dict\r\n    \r\n############## RDF 2 JSON ###############\r\ndef rdfParsing2GeoData(str):\r\n    \"\"\" it returns the json file in structure like { \"POLYGON1\" : [...], \r\n                                                     \"POLYGON2\" : [...], \r\n                                                     \"MULTIPOLYGON1\" : [...], ...\r\n                                                    }\r\n    \"\"\"\r\n    #dom = parse(path)\r\n    #tree = ET.ElementTree(ET.fromstring(str))\r\n    geo_dict = {}\r\n    tree = io.StringIO(str)\r\n    dom = parse(tree)\r\n    data = dom.documentElement\r\n    rdf_desc_lst = data.getElementsByTagName(\"rdf:Description\")\r\n    # geo_in_wkt = data.getElementsByTagName(\"geo:asWKT\")\r\n\r\n    for i in range(1, len(rdf_desc_lst)): # first description element (root element) should be removed.\r\n        descr_el = rdf_desc_lst[i]\r\n        geo_name_num = descr_el.attributes._attrs['rdf:about'].nodeValue.split('#')[1]\r\n        geo_wkt_data = \"\"\r\n        try:\r\n            geo_wkt_data = descr_el.childNodes[0].firstChild.data\r\n        except:\r\n            geo_wkt_data = descr_el.childNodes[1].firstChild.data\r\n        geo_algebra_lst = []\r\n\r\n        if ( geo_name_num.find('POINT') != -1 or\r\n            geo_name_num.find('Point') != -1 ):\r\n            \r\n            wkt_data_lst = geo_wkt_data.split(\"(\")[1] # remove title 'POINT'\r\n            vert_str_lst = wkt_data_lst\r\n            vert_str_lst = vert_str_lst.replace( \")\", \"\" ) # remove character ')'\r\n\r\n            pt_algebra_lst = []\r\n            pt_str_lst = vert_str_lst.split(\" \")\r\n\r\n            pt_algebra_lst = [ float(pt_str) for pt_str in pt_str_lst ]\r\n            geo_algebra_lst.append(pt_algebra_lst)\r\n            \r\n        if ( geo_name_num.find('LINESTRING') != -1 or\r\n            geo_name_num.find('Linestring') != -1 or\r\n            geo_name_num.find('LINE') != -1 or\r\n            geo_name_num.find('Line') != -1 ):\r\n\r\n            wkt_data_lst = geo_wkt_data.split(\"((\")[1] # remove title 'LINESTRING'\r\n            vert_str_lst = wkt_data_lst\r\n            vert_str_lst = vert_str_lst.replace( \")\", \"\" ) # remove character ')'\r\n            vert_str_lst = vert_str_lst.split(\", \")\r\n\r\n            line_algebra_lst = []\r\n            for i in range(0, len(vert_str_lst)):\r\n\r\n                pt_str_lst = vert_str_lst[i].split(\" \")\r\n                line_algebra_lst.append([ float(pt_str) for pt_str in pt_str_lst ])\r\n            geo_algebra_lst.append(line_algebra_lst)\r\n\r\n        if ( geo_name_num.find('POLYGON') != -1 or \r\n            geo_name_num.find('Polygon') != -1 ):\r\n\r\n            wkt_data_lst = geo_wkt_data.split(\"((\")[1] # remove title 'POLYGON Z'\r\n            vert_str_lst = wkt_data_lst\r\n            vert_str_lst = vert_str_lst.replace( \")\", \"\" ) # remove character ')'\r\n            vert_str_lst = vert_str_lst.replace( \"(\", \"\" ) # remove character '('\r\n            vert_str_lst = vert_str_lst.split(\", \")\r\n\r\n            face_algebra_lst = []\r\n            for i in range(0, len(vert_str_lst)-1): # last point not included\r\n\r\n                pt_str_lst = vert_str_lst[i].split(\" \")\r\n                face_algebra_lst.append([ float(pt_str) for pt_str in pt_str_lst ])\r\n            geo_algebra_lst.append(face_algebra_lst)\r\n\r\n        if ( geo_name_num.find('MULTIPOLYGON') != -1 or\r\n            geo_name_num.find('Multipolygon') != -1  or\r\n            geo_name_num.find('CUBE') != -1 or\r\n            geo_name_num.find('Cube') != -1 or\r\n            geo_name_num.find('SPHERE') != -1 or\r\n            geo_name_num.find('Sphere') != -1 ):\r\n\r\n            wkt_data_lst = geo_wkt_data.split(\"(((\")[1] # remove title 'MULTIPOLYGON Z'\r\n            face_str_lst = wkt_data_lst.split(\"), \")\r\n\r\n            face_algebra_lst = []\r\n            for face_str in face_str_lst:\r\n                vert_str_lst = face_str.replace( \")\", \"\" ) # remove character ')'\r\n                vert_str_lst = vert_str_lst.replace( \"(\", \"\" ) # remove character '('\r\n                vert_str_lst = vert_str_lst.split(\", \")\r\n\r\n                pt_algebra_lst = []\r\n                for i in range(0, len(vert_str_lst)-1): # last point not included\r\n\r\n                    pt_str_lst = vert_str_lst[i].split(\" \")\r\n                        \r\n                    pt_algebra = [ float(pt_str) for pt_str in pt_str_lst ]\r\n                    pt_algebra_lst.append(pt_algebra)\r\n\r\n                face_algebra_lst.append(pt_algebra_lst)\r\n            geo_algebra_lst = face_algebra_lst\r\n\r\n        if geo_name_num not in geo_dict.keys():\r\n            geo_dict[geo_name_num] = geo_algebra_lst\r\n    return geo_dict\r\n    \r\n######################################################\r\n############## RDF File Configuration ###############\r\nrdf_case_study_file_path = \"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\rdf\\\\case_study\\\\\"\r\nrdf_file_name = \"RDFcaseStudy.rdf\"\r\nrdf_file_index = \"\"\r\nrdf_file_contents = \"\"\r\n\r\n############## JSON File Configuration ###############\r\njson_case_study_file_path = \"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\JSON\\\\case_study\\\\\"\r\njson_ground_truth_file_path = \"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\JSON\\\\ground_truth\\\\\"\r\njson_file_name = \"JSONcaseStudy.json\"\r\njson_file_index = \"\"\r\njson_file_contents = {\"test\":\"\"}\r\n\r\n########## JSON Export #############\r\ndef JSON_export(json_file_path, json_file_name, json_file_index, json_file_contents):\r\n    \r\n    tmp_json_file_name = json_file_index + json_file_name\r\n    tmp_json_file_path = json_file_path + tmp_json_file_name\r\n    try:\r\n        with open(tmp_json_file_path, \"x\") as f:\r\n            json.dump(json_file_contents, f, sort_keys=True, indent=4)\r\n            #f.write(json_file_contents)\r\n    except FileExistsError:\r\n        print(f\"File '{json_file_path}' already exists.\")\r\n\r\n########## RDF Export #############\r\ndef rdf_export(rdf_file_path, rdf_file_name, rdf_file_index, rdf_file_contents):\r\n\r\n    tmp_rdf_file_name = rdf_file_index + rdf_file_name\r\n    tmp_rdf_file_path = rdf_file_path + tmp_rdf_file_name\r\n    try:\r\n        with open(tmp_rdf_file_path, \"x\") as f:\r\n            f.write(rdf_file_contents)\r\n    except FileExistsError:\r\n        print(f\"File '{rdf_file_path}' already exists.\")\r\n        \r\n        \r\n############## Contents (RDF, JSON) Generation ###############\r\nfor i in range(1, 10):\r\n    # create geometries randomly\r\n    tmp_geo_lst = random_geo_generator(i)\r\n    # create ground truth values and store it locally\r\n    inter_geo_dict = ground_truth_generator(tmp_geo_lst)\r\n    JSON_export(json_ground_truth_file_path, \"groundTruth.json\", str(i), inter_geo_dict)\r\n    # convert geos to WKT\r\n    wkt_res = wkt_Converter(tmp_geo_lst)\r\n    # wrapp WKT with RDF labels\r\n    rdf_contents = RDF_Wrapper(wkt_res)\r\n    # store RDF file locally\r\n    rdf_export(rdf_case_study_file_path, \"caseStudy.rdf\", str(i), rdf_contents)\r\n    # convert RDF file to JSON file and store it locally\r\n    rdf_2_json_contents = rdfParsing2GeoData(rdf_contents)\r\n    JSON_export(json_case_study_file_path, \"caseStudy.json\", str(i), rdf_2_json_contents)\r\n    \r\n\"\"\"    \r\n# RDF for-loops\r\nfor i in range(1, 10):\r\n    rdf_file_contents += str(i)\r\n    index = str(i)\r\n    rdf_export(rdf_file_path, rdf_file_name, index, rdf_file_contents)\r\n# JSON for-loops\r\nfor j in range(1, 10):\r\n    json_file_contents[\"test\"]=str(j)\r\n    index = str(j)\r\n    JSON_export(json_file_path, json_file_name, index, json_file_contents)\r\n\"\"\"\r\n#====================================\r\nOUT = 0",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "5ad1e0be0db343cea7b289ad8c16dd41",
+      "Inputs": [
+        {
+          "Id": "8253e7dd634c4782917d2199dbcfc958",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "73b90d81249046348126aa229caffb89",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "55939f003a0d408681622652bc9c72b6",
+      "End": "39772af1835e467982718d7ae096579e",
+      "Id": "3e663a36f23348cc9feca9cefff9208d"
+    },
+    {
+      "Start": "0262bdaa335446919b24831071029ab6",
+      "End": "52019d2e5d174dc48b12fdce6846d9c2",
+      "Id": "face3269eeaa443e84ad324942c0c913"
+    },
+    {
+      "Start": "e9a2d06a98f847af8d75d1e5e75cddce",
+      "End": "4662dbdc67f64d9eaa25bb84b6cf3169",
+      "Id": "a9e306de17cb4f5293d201edc3a532fd"
+    },
+    {
+      "Start": "efd49cf271694761abb21b23ed5e8e90",
+      "End": "36c4e1b3f3a64684bc754fc3a22c8e73",
+      "Id": "0e82d41ead924577816b92f48770be70"
+    },
+    {
+      "Start": "a64a2e498add48ab9b8670169e56ad6e",
+      "End": "226ae4241c264019afe1994583ee5282",
+      "Id": "ff1cc2efa0b141b095dacff17dd0a8eb"
+    },
+    {
+      "Start": "dccfeb5aa9fd43f087f937f5db2e148b",
+      "End": "7e84627f5a234e70b64953072d3421e0",
+      "Id": "916eb85132ef471ab19606b8a91fd0eb"
+    },
+    {
+      "Start": "34aab1073991461ea21aecb8f98aa0f5",
+      "End": "1bf83e6357a44ed88c6b44b3703edca8",
+      "Id": "a8d478b9cf7f4922b69aed04d323fd25"
+    },
+    {
+      "Start": "ca0881434dfa48c0b442878a5d001280",
+      "End": "81de61bb84f64c28b3d884c9f4d6d728",
+      "Id": "3abcd1748c404ebaba5c6e65a8b51f67"
+    },
+    {
+      "Start": "ca0881434dfa48c0b442878a5d001280",
+      "End": "befb1089d76c4eb3b89c74b63871eb99",
+      "Id": "50efcd22d59b45e199631215589a94d5"
+    },
+    {
+      "Start": "da595bf2e0ca46dd869d271df923a8c7",
+      "End": "86c708efc0ec406eac260bd4885bfee6",
+      "Id": "b28abc6a84d94726b175cabc0a71e6c9"
+    },
+    {
+      "Start": "620ec18010034876ad1f57ff6df7310a",
+      "End": "d34e0e6baa5b4bd8b94dafaccc7b2f09",
+      "Id": "f960af1b7379425ba9b7278ffab54266"
+    },
+    {
+      "Start": "265f16de018341409ee0204a1bf220e5",
+      "End": "993355c2b8564e7b9f7af5f6846e90df",
+      "Id": "3346e67bdd9d4228af420ec1a4d37792"
+    },
+    {
+      "Start": "ff7d98f6c7404ae0b661680be57fe987",
+      "End": "40154a34a08f430ea933f5614dfca374",
+      "Id": "a8e1e8e66dc2463bb4007b3fa09952dd"
+    },
+    {
+      "Start": "45ae055bdf6d4330bf17d51e78b265bb",
+      "End": "76f835142aad45c5a2839b87153952b1",
+      "Id": "2c47a75803f24e2ca351721cd9004260"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.8.0.2471",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 80.490097045898438,
+      "EyeY": 83.677108764648438,
+      "EyeZ": -58.966255187988281,
+      "LookX": -94.137496948242188,
+      "LookY": -77.791458129882813,
+      "LookZ": 71.739814758300781,
+      "UpX": -0.307539165019989,
+      "UpY": 0.92381244897842407,
+      "UpZ": 0.22801388800144196
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "RDF Wrapper",
+        "Id": "e00054a13da24212ab4540997633798f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 909.20827549432659,
+        "Y": -181.42731338978706
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RDF Prefixes",
+        "Id": "94e1fb21689642b9b5fa86b874146ae5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 25.842759506234188,
+        "Y": -436.453919871361
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Notes",
+        "Id": "29d4977ffd5a4fbc99b46521c03c224b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1784.7091113556889,
+        "Y": -1141.9231695788849
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number of Standard Geometry",
+        "Id": "2fc07c798e1b4ebf958f7ff659859e87",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 22.325006018542354,
+        "Y": 116.73345419821027
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "WKT Converter",
+        "Id": "09412fe94eab41e68c31fa0307c3b82e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 735.23869997797613,
+        "Y": -30.823278715898482
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Random Geometry Generator",
+        "Id": "ed9a22b47c4f467485b00c23697814cc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 374.58804441229631,
+        "Y": 118.7847335073829
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Str-RDF-JSON Converter",
+        "Id": "4c22feda790d4b5b8b8fda55feed9131",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1179.8708524318006,
+        "Y": -27.047557174644112
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JSON Writer",
+        "Id": "d0a09fa53a934c44a4430e0b38d36f75",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1493.1522713238526,
+        "Y": -29.308281151167876
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JSON Viewer",
+        "Id": "ad5c13cb6a21449493e84c485b44e7cf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1719.0978432265395,
+        "Y": -29.709789872403803
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "GroundTruth Generator",
+        "Id": "bfa3cba0d6c74e99a496b203e8e183fa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 735.72084629775338,
+        "Y": 167.20165649659924
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "JSON Writer",
+        "Id": "4335cc2b2ca54165853a787ea2a4054a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 969.85700076975434,
+        "Y": 169.33067212802308
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "FileSystem.WriteText",
+        "Id": "83fd206245ba449286d14efaa9d569e3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1485.2452783745182,
+        "Y": -346.10859219411975
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "816efb74f1fe40ae86ff95e7e92e975b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1202.1242841943565,
+        "Y": -345.89973240452252
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "On/Off",
+        "Id": "9b42a917a1b24f7abeded63667f1cc12",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 160.91975889262517,
+        "Y": 395.26371354814705
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "90f351aea7a2490fa59435bc0ef94688",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1181.5701733633407,
+        "Y": 82.845008685959669
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "5ad1e0be0db343cea7b289ad8c16dd41",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 469.09157160976025,
+        "Y": 403.36507400137953
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "04072cb4669049209b52fd1ac4d025a5",
+        "Title": "Geometric Data Generation",
+        "Nodes": [
+          "e00054a13da24212ab4540997633798f",
+          "94e1fb21689642b9b5fa86b874146ae5",
+          "09412fe94eab41e68c31fa0307c3b82e",
+          "2fc07c798e1b4ebf958f7ff659859e87",
+          "ed9a22b47c4f467485b00c23697814cc",
+          "bfa3cba0d6c74e99a496b203e8e183fa",
+          "4335cc2b2ca54165853a787ea2a4054a"
+        ],
+        "Left": 12.325006018542354,
+        "Top": -489.453919871361,
+        "Width": 1099.0319947512121,
+        "Height": 764.238653378744,
+        "FontSize": 36.0,
+        "InitialTop": -436.453919871361,
+        "InitialHeight": 750.784591999384,
+        "TextblockHeight": 43.0,
+        "Background": "#FFFFAA45"
+      },
+      {
+        "Id": "5c0afc45a1c048e1a54d2a4955e0da61",
+        "Title": "RDF Export",
+        "Nodes": [
+          "816efb74f1fe40ae86ff95e7e92e975b",
+          "83fd206245ba449286d14efaa9d569e3"
+        ],
+        "Left": 1192.1242841943565,
+        "Top": -399.10859219411975,
+        "Width": 493.62099418016169,
+        "Height": 172.0,
+        "FontSize": 36.0,
+        "InitialTop": -346.10859219411975,
+        "InitialHeight": 145.20885978959723,
+        "TextblockHeight": 43.0,
+        "Background": "#FFFFAA45"
+      },
+      {
+        "Id": "60fcf7938c2c4457a5198c89700a1cf2",
+        "Title": "RDF-to-JSON Export",
+        "Nodes": [
+          "4c22feda790d4b5b8b8fda55feed9131",
+          "d0a09fa53a934c44a4430e0b38d36f75",
+          "ad5c13cb6a21449493e84c485b44e7cf",
+          "90f351aea7a2490fa59435bc0ef94688"
+        ],
+        "Left": 1169.8708524318006,
+        "Top": -68.7097898724038,
+        "Width": 693.72699079473887,
+        "Height": 246.05479855836347,
+        "FontSize": 24.0,
+        "InitialTop": -29.709789872403803,
+        "InitialHeight": 257.55479855836347,
+        "TextblockHeight": 29.0,
+        "Background": "#FFFFA07A"
+      }
+    ],
+    "X": 34.496546692869515,
+    "Y": 228.17611917722218,
+    "Zoom": 0.66199378460459846
+  }
+}

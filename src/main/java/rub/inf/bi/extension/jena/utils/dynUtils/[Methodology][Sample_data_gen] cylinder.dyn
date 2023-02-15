@@ -1,0 +1,619 @@
+{
+  "Uuid": "4fe220d3-8a20-4259-a332-e6375db54ca1",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "[Methodology][Sample_data_gen] cylinder",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "CoordinateSystem": {
+        "Key": "Autodesk.DesignScript.Geometry.CoordinateSystem",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Cylinder": {
+        "Key": "Autodesk.DesignScript.Geometry.Cylinder",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "cylinder_1_st_pt=Point.ByCoordinates(0,0,0);\ncylinder_1_ed_pt=Point.ByCoordinates(0,0,5);\ncylinder_2_st_pt=Point.ByCoordinates(9,0,0);\ncylinder_2_ed_pt=Point.ByCoordinates(9,0,5);\ncylinder_1_radius=2;\ncylinder_2_radius=4;",
+      "Id": "41dcd18dadd94b87a833175f894e6877",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1b31583c228346f496a222439cf87f85",
+          "Name": "",
+          "Description": "cylinder_1_st_pt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f66ab214305f4c1cb0dedfa2e89177cd",
+          "Name": "",
+          "Description": "cylinder_1_ed_pt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e5ec343315f744bd9887ca7469068120",
+          "Name": "",
+          "Description": "cylinder_2_st_pt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "71d094599bd74ac696b340da36514604",
+          "Name": "",
+          "Description": "cylinder_2_ed_pt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "82cd1eb8e8594b3eb0976bf6b245c4c3",
+          "Name": "",
+          "Description": "cylinder_1_radius",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "77407d9a85124ae7b764ad62ad2e2242",
+          "Name": "",
+          "Description": "cylinder_2_radius",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Cylinder.ByPointsRadius@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Point,double",
+      "Id": "fe5b9160bca94ebe9b8b6b22d0e9cf4d",
+      "Inputs": [
+        {
+          "Id": "3227d03ecf414edca8450c680773e7db",
+          "Name": "startPoint",
+          "Description": "Point\nDefault value : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "187af2167f94495ebb209e05165a42b8",
+          "Name": "endPoint",
+          "Description": "Point\nDefault value : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 1)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ef5d5a0683554fb8adba2b1a753bfc67",
+          "Name": "radius",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5a8194453aca40368107c4d51166f3de",
+          "Name": "Cylinder",
+          "Description": "Cylinder",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Construct a Solid Cylinder given the bottom and top center point of the Cylinder.\n\nCylinder.ByPointsRadius (startPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), endPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 1), radius: double = 1): Cylinder"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Cylinder.ByPointsRadius@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Point,double",
+      "Id": "88fbbc5c7fec47049f9a56b3db8d3307",
+      "Inputs": [
+        {
+          "Id": "e967240e75934b6494f84f1e51fbb0f8",
+          "Name": "startPoint",
+          "Description": "Point\nDefault value : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "80c8497dac4842c3b6ada3c20f794027",
+          "Name": "endPoint",
+          "Description": "Point\nDefault value : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 1)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7cec54b58a554870ad0aadece47afb9c",
+          "Name": "radius",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "115841a08905442391e416f3a972136a",
+          "Name": "Cylinder",
+          "Description": "Cylinder",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Construct a Solid Cylinder given the bottom and top center point of the Cylinder.\n\nCylinder.ByPointsRadius (startPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), endPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 1), radius: double = 1): Cylinder"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "cylinder_1_st_pt=Point.ByCoordinates(0,12,0);\ncylinder_1_ed_pt=Point.ByCoordinates(0,12,5);\ncylinder_2_st_pt=Point.ByCoordinates(0,12,0);\ncylinder_2_ed_pt=Point.ByCoordinates(0,12,5);\ncylinder_1_radius=2;\ncylinder_2_radius=4;",
+      "Id": "1bc84250b6884569aea46ff1311e1d3e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a2e1b8587f9c41e389801667ccde665a",
+          "Name": "",
+          "Description": "cylinder_1_st_pt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ba2f33a2f5884700a220e14afccf35b8",
+          "Name": "",
+          "Description": "cylinder_1_ed_pt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e33ad24a864c4521b2cfbc62808e7b8a",
+          "Name": "",
+          "Description": "cylinder_2_st_pt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c5fe15e76e984094a15ac8e04fd6a97e",
+          "Name": "",
+          "Description": "cylinder_2_ed_pt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dd3f100ec6d1483ba30240abdfe4d2b8",
+          "Name": "",
+          "Description": "cylinder_1_radius",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c609ef53f43348bdbb0dc8290b2848e3",
+          "Name": "",
+          "Description": "cylinder_2_radius",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Cylinder.ByPointsRadius@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Point,double",
+      "Id": "a8d8ae7def6146648c6f146d22186456",
+      "Inputs": [
+        {
+          "Id": "e2a51151295443dbb6b4542a57cb9ac8",
+          "Name": "startPoint",
+          "Description": "Point\nDefault value : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7b343fcb6b404e6696848e808f7a3f7b",
+          "Name": "endPoint",
+          "Description": "Point\nDefault value : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 1)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4e3fa15249ba42ec90a308f53f8bc238",
+          "Name": "radius",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5d8f2aba95d344b49d0d126f28c1d0b6",
+          "Name": "Cylinder",
+          "Description": "Cylinder",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Construct a Solid Cylinder given the bottom and top center point of the Cylinder.\n\nCylinder.ByPointsRadius (startPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), endPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 1), radius: double = 1): Cylinder"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Cylinder.ByPointsRadius@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Point,double",
+      "Id": "7bce5eb426c340bba30baa73c4f25b68",
+      "Inputs": [
+        {
+          "Id": "f1664a5c127d4551b1eb012e204d9232",
+          "Name": "startPoint",
+          "Description": "Point\nDefault value : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "18383c4c87d64477af15d8f3ea5099dd",
+          "Name": "endPoint",
+          "Description": "Point\nDefault value : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 1)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2fc261c4dfc349a5b99c262058479ecd",
+          "Name": "radius",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7de51c22c3c1471fa820aae86f0a5f77",
+          "Name": "Cylinder",
+          "Description": "Cylinder",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Construct a Solid Cylinder given the bottom and top center point of the Cylinder.\n\nCylinder.ByPointsRadius (startPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), endPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 1), radius: double = 1): Cylinder"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.Difference@Autodesk.DesignScript.Geometry.Solid",
+      "Id": "f961e761adcd4eafb78ffc5acbc38140",
+      "Inputs": [
+        {
+          "Id": "08b7a7fdb28e4302bb596e0950a9b13e",
+          "Name": "solid",
+          "Description": "Autodesk.DesignScript.Geometry.Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9fbac9815916431a8830dee0bc4cfa21",
+          "Name": "other",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "177504db8643473ebacdfd4c49fb6efd",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The boolean difference of this Solid with another\n\nSolid.Difference (other: Solid): Solid"
+    },
+    {
+      "ConcreteType": "Watch3DNodeModels.Watch3D, Watch3DNodeModels",
+      "WatchWidth": 225.5,
+      "WatchHeight": 163.5,
+      "WasExecuted": true,
+      "Camera": {
+        "Name": "4a484d1f-de83-43e5-9ce8-e80d39c8362f Preview",
+        "EyeX": -14.462265014648438,
+        "EyeY": 18.685234069824219,
+        "EyeZ": -3.7633585929870605,
+        "LookX": 9.4622650146484375,
+        "LookY": -7.6852340698242188,
+        "LookZ": -4.2366414070129395,
+        "UpX": 0.37369036674499512,
+        "UpY": 0.9123380184173584,
+        "UpZ": -0.16731671988964081
+      },
+      "NodeType": "ExtensionNode",
+      "Id": "4a484d1fde8343e59ce8e80d39c8362f",
+      "Inputs": [
+        {
+          "Id": "39451f58635749288152a0e7c6903a66",
+          "Name": "",
+          "Description": "Incoming geometry objects.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fa6ae23092bf45deb5496c92e461b7a9",
+          "Name": "",
+          "Description": "Incoming geometry objects.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Shows a dynamic preview of geometry."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "1b31583c228346f496a222439cf87f85",
+      "End": "3227d03ecf414edca8450c680773e7db",
+      "Id": "ce53e0e2a5584f6eb1904f57cacd24a1"
+    },
+    {
+      "Start": "f66ab214305f4c1cb0dedfa2e89177cd",
+      "End": "187af2167f94495ebb209e05165a42b8",
+      "Id": "dba615f01a3243bb8d4f821b74d934b0"
+    },
+    {
+      "Start": "e5ec343315f744bd9887ca7469068120",
+      "End": "e967240e75934b6494f84f1e51fbb0f8",
+      "Id": "2942caf6b13e44368870793ad8ae95b1"
+    },
+    {
+      "Start": "71d094599bd74ac696b340da36514604",
+      "End": "80c8497dac4842c3b6ada3c20f794027",
+      "Id": "2808a06efef0476bbf29e8409ddc719a"
+    },
+    {
+      "Start": "82cd1eb8e8594b3eb0976bf6b245c4c3",
+      "End": "ef5d5a0683554fb8adba2b1a753bfc67",
+      "Id": "e03be2d71c724f2fb82df64c368decb1"
+    },
+    {
+      "Start": "77407d9a85124ae7b764ad62ad2e2242",
+      "End": "7cec54b58a554870ad0aadece47afb9c",
+      "Id": "59dcc6b40e874e8694380d2b45a229e5"
+    },
+    {
+      "Start": "a2e1b8587f9c41e389801667ccde665a",
+      "End": "e2a51151295443dbb6b4542a57cb9ac8",
+      "Id": "c61c896d36f641128576b986cf1d60a4"
+    },
+    {
+      "Start": "ba2f33a2f5884700a220e14afccf35b8",
+      "End": "7b343fcb6b404e6696848e808f7a3f7b",
+      "Id": "24b5e29f18254030b98ca0af3f708b19"
+    },
+    {
+      "Start": "e33ad24a864c4521b2cfbc62808e7b8a",
+      "End": "f1664a5c127d4551b1eb012e204d9232",
+      "Id": "c803bbb719594a5280c2801d93695f8e"
+    },
+    {
+      "Start": "c5fe15e76e984094a15ac8e04fd6a97e",
+      "End": "18383c4c87d64477af15d8f3ea5099dd",
+      "Id": "42e24aa8cc254097a58f942ba5434b12"
+    },
+    {
+      "Start": "dd3f100ec6d1483ba30240abdfe4d2b8",
+      "End": "4e3fa15249ba42ec90a308f53f8bc238",
+      "Id": "f39657f906b547e18db787803d86ad7b"
+    },
+    {
+      "Start": "c609ef53f43348bdbb0dc8290b2848e3",
+      "End": "2fc261c4dfc349a5b99c262058479ecd",
+      "Id": "f4e178bbd19c4a909f7558725f5cd3fa"
+    },
+    {
+      "Start": "5d8f2aba95d344b49d0d126f28c1d0b6",
+      "End": "9fbac9815916431a8830dee0bc4cfa21",
+      "Id": "eac089261f2f4e90b7b98953fa886f13"
+    },
+    {
+      "Start": "7de51c22c3c1471fa820aae86f0a5f77",
+      "End": "08b7a7fdb28e4302bb596e0950a9b13e",
+      "Id": "c72390ef80ba4f3ab703b4af11a15922"
+    },
+    {
+      "Start": "177504db8643473ebacdfd4c49fb6efd",
+      "End": "39451f58635749288152a0e7c6903a66",
+      "Id": "34e796d8679d4c7e87d4dd77eb99d09e"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.8.0.2471",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -8.83720874786377,
+      "EyeY": 20.17164421081543,
+      "EyeZ": 13.883027076721191,
+      "LookX": 12.583013534545898,
+      "LookY": -12.850399017333984,
+      "LookZ": -19.60801887512207,
+      "UpX": 0.15339250862598419,
+      "UpY": 0.95881962776184082,
+      "UpZ": -0.23903053998947144
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "41dcd18dadd94b87a833175f894e6877",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 11.5,
+        "Y": 234.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Cylinder.ByPointsRadius",
+        "Id": "fe5b9160bca94ebe9b8b6b22d0e9cf4d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 558.5,
+        "Y": 159.25
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Cylinder.ByPointsRadius",
+        "Id": "88fbbc5c7fec47049f9a56b3db8d3307",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 558.0,
+        "Y": 350.25
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "1bc84250b6884569aea46ff1311e1d3e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -2.2899563230396893,
+        "Y": 605.60301566805038
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Cylinder.ByPointsRadius",
+        "Id": "a8d8ae7def6146648c6f146d22186456",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 558.06626068688672,
+        "Y": 561.20630166909518
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Cylinder.ByPointsRadius",
+        "Id": "7bce5eb426c340bba30baa73c4f25b68",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 561.52653557345991,
+        "Y": 744.18813582643543
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Solid.Difference",
+        "Id": "f961e761adcd4eafb78ffc5acbc38140",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 903.79765108024048,
+        "Y": 625.3294574735221
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch 3D",
+        "Id": "4a484d1fde8343e59ce8e80d39c8362f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 873.91100352613853,
+        "Y": 949.84440241261518
+      }
+    ],
+    "Annotations": [],
+    "X": -415.74192843482365,
+    "Y": -73.357299026655824,
+    "Zoom": 0.98264231136796543
+  }
+}
