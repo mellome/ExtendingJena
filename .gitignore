@@ -1,3 +1,7 @@
 target/
 *.class
 *.pyc
+src/main/resources/rdf/case_study/*
+src/main/resources/rdf/query_result/*
+src/main/resources/rdf/running_time.txt
+src/main/resources/rdf/query_result.xml

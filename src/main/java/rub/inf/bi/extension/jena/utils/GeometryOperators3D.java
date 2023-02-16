@@ -124,7 +124,7 @@ public class GeometryOperators3D {
 				List<Vector3D> interT1 = intersection3DLP(l, rectangleA);
 				List<Vector3D> interT2 = intersection3DLP(l, rectangleB);
 				
-				if (interT1.size() > 0 && interT2.size() > 0) { // the commen intersection line must be instersected with the given geometries!!!
+				if (interT1.size() > 0 && interT2.size() > 0) { // the common intersection line must be instersected with the given geometries!!!
 					for(Vector3D ipA : interT1){
 						if (pointInPolygon(ipA, rectangleB)){ // if(contains3D(rectangleB, ipA))
 							intersectionPoints.add(ipA);
@@ -162,7 +162,9 @@ public class GeometryOperators3D {
 	
 				Line target = new Line(tempA, tempB, GeometryOperators3D.TOLERANCE); // first two edages
 				Vector3D interSectionPoint = source.intersection(target);
-	
+				
+				// if two polygons are intersected then the intersection line of their planes 
+				// must have intersection points with these two poloygons.
 				if (interSectionPoint != null) {
 					if (contains3D(tempA, tempB, interSectionPoint)) {
 						intersectionPoints.add(interSectionPoint);
