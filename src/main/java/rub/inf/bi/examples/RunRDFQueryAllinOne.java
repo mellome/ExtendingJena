@@ -1,5 +1,6 @@
 package rub.inf.bi.examples;
 
+import java.util.Collections;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -178,6 +179,7 @@ public class RunRDFQueryAllinOne {
 
         File folder = new File(rdfCaseStudyPath);
         File[] listOfFiles = folder.listFiles();
+        Arrays.sort(listOfFiles, (f1, f2) -> f1.getName().compareTo(f2.getName()));
 
         // erase the content of existing txt file
         try {
