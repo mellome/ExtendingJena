@@ -63,16 +63,16 @@ public class RunRDFQueryAllinOne {
     private static final String TEST_EQUAL = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Topological Predicates3D Tests\\Test_EQUAL.ttl";
    
     // Directories for WIN11
-    // private static String ontologiePath ="C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\xxl3DScene.rdf"; // "example", "3DScenario"
-    // private static String originalQueryPath = TEST_OVERLAP;
-    // private static String queryResultPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml";
+    private static String rdfCaseStudyPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\case_study\\";
+    private static String originalQueryPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test5_CheckIntersection3DBSP.ttl";
+    private static String queryResultPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\query_result\\";
+    private static String runningTimePath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\running_time.txt";
 
-    // Directories for MAC
-    private static String ontologiePath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/";
-    private static String rdfCaseStudyPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/case_study/";
-    private static String originalQueryPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/sparql/Geometry3D Tests/Test5_CheckIntersection3DBSP.ttl";
-    private static String queryResultPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/query_result/";
-    private static String runningTimePath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/running_time.txt";
+    // For Mac
+    // private static String rdfCaseStudyPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/case_study/";
+    // private static String originalQueryPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/sparql/Geometry3D Tests/Test5_CheckIntersection3DBSP.ttl";
+    // private static String queryResultPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/query_result/";
+    // private static String runningTimePath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/running_time.txt";
 
     private static void stringToDom(String xmlString, String pathName) throws SAXException, ParserConfigurationException, IOException {
         // Parse the given input
