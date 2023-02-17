@@ -1,0 +1,141 @@
+{
+  "Uuid": "8b1e7f7f-7304-4d5e-a570-fd8ce7ff620e",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "AccuracyAllinOne",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      },
+      "DesignScript.Builtin.Dictionary": {
+        "Key": "DesignScript.Builtin.Dictionary",
+        "Value": "DesignScriptBuiltin.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport os\r\nimport sys\r\nimport clr\r\nimport ctypes\r\nimport json\r\nimport xml.etree.ElementTree as ET\r\nsys.path.append(r\"C:\\Users\\yhe\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\")\r\n\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nfrom xml.dom.minidom import parse, parseString\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\ndataEnteringNode = IN\r\n\r\n############ XML Import and Parsing ######################\r\nwarn_str = '(XML) File or File Path does not exist.'\r\nres = ''\r\n\r\ndef xmlParsing2Uri(path):\r\n    \"\"\" it returns the list in structure like [[uri1, uri2],...,[uri1, uri2]]\"\"\"\r\n    dom = parse(path)\r\n    data = dom.documentElement\r\n    resList = data.getElementsByTagName('result')\r\n    \r\n    res_lst = []\r\n    for res in resList: # handle the <result>...</result>\r\n        ur_lst = []\r\n        for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n            for ur in bi.getElementsByTagName('uri'):\r\n                ur_lst.append(ur.childNodes[0].nodeValue)\r\n        res_lst.append(ur_lst)\r\n        ur_lst = []\r\n    return res_lst\r\n\r\ndef xml2GeometryString(path):\r\n    \"\"\" it returns the list in structure like [[Geomety1, Geomety2],...,[Geomety1, Geomety2]]\"\"\"\r\n    dom = parse(path)\r\n    data = dom.documentElement\r\n    resList = data.getElementsByTagName('result')\r\n    seperator = '#'\r\n\r\n    res_lst = []\r\n    for res in resList: # handle the <result>...</result>\r\n        ur_lst = []\r\n        for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n            for ur in bi.getElementsByTagName('uri'):\r\n                uri_str = ur.childNodes[0].nodeValue\r\n                geo_index = uri_str.find(seperator) \r\n                geo_str = uri_str[geo_index+1:]\r\n                ur_lst.append(geo_str)\r\n        res_lst.append(ur_lst)\r\n        ur_lst = []\r\n    return res_lst\r\n\r\ndef xml2GeoInDynamo(path):\r\n    #with open(r'C:\\Users\\nobita_yhe\\Workspace\\ExtendingJena\\src\\main\\resources\\rdf\\query_result.xml', 'r', encoding='utf-8') as file:\r\n    with open(path, 'r', encoding='utf-8') as file:\r\n        xml_data = file.read()\r\n        dom = parseString(xml_data)\r\n        #dom = parse(xml_data)\r\n        data = dom.documentElement\r\n        resList = data.getElementsByTagName('result')\r\n        seperator = '#'\r\n        \r\n        res_lst = []\r\n        for res in resList: # handle the <result>...</result>\r\n            ur_lst = []\r\n            for bi in res.getElementsByTagName('binding'): # handle the <binding>...</binding>\r\n                for ur in bi.getElementsByTagName('uri'):\r\n                    uri_str = ur.childNodes[0].nodeValue\r\n                    geo_index = uri_str.find(seperator) \r\n                    geo_str = uri_str[geo_index+1:]\r\n                    ur_lst.append(geo_str)\r\n            res_lst.append(ur_lst)\r\n            ur_lst = []\r\n    return res_lst\r\n    \r\ndef flatten(inp_lst):\r\n# Core: \r\n#\t\t1. traverse the input list \r\n#\t\t2. concatenate each two adjacent elements \r\n#\t\t3. store the concatenation into the output list\r\n#\t\t4. remove the non-list element out of the input list\r\n    out_lst = []\r\n    while True:\r\n        if inp_lst == []:\r\n            break\r\n        for ind, val in enumerate(inp_lst):\r\n            if type(val) == list:\r\n                inp_lst = val + inp_lst[ind+1:]\r\n                break\r\n            else:\r\n                out_lst.append(val)\r\n                inp_lst.pop(ind)\r\n                break\r\n    \r\n    res_dict = {}\r\n    for res in out_lst:\r\n        res_dict[res] = res\r\n    return res_dict\r\n   \r\n############ JSON Import and Parsing #####################\r\ndef GroundTruthImport(dir):\r\n    warn_str = '<GroundTruth> error occurs while json file was opening.'\r\n    data = {}\r\n    try:\r\n        with open(dir, 'r', encoding='utf-8') as fp:\r\n            data = json.load(fp)\r\n    except:\r\n        ctypes.windll.user32.MessageBoxW(0, dir, 'Input Exception',1)\r\n    return data\r\n    \r\n############ Accuracy Calculation #####################\r\ndef JSON_export(json_file_path, json_file_name, json_file_index, json_file_contents):\r\n    \r\n    tmp_json_file_name = json_file_index + json_file_name\r\n    tmp_json_file_path = json_file_path + tmp_json_file_name\r\n    try:\r\n        with open(tmp_json_file_path, \"w\") as f:\r\n            json.dump(json_file_contents, f, sort_keys=True, indent=4)\r\n    except FileExistsError:\r\n        print(f\"File '{json_file_path}' already exists.\")\r\n        \r\n######################################################\r\nquery_result_file_path = \"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\rdf\\\\query_result\\\\\"\r\njson_ground_truth_file_path = \"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\JSON\\\\ground_truth\\\\\"\r\njson_accuracy_file_path = \"C:\\\\Users\\\\yhe\\\\Documents\\\\Developer\\\\Repo\\\\ExtendingJena\\\\src\\\\main\\\\resources\\\\JSON\\\\accuracy\\\\\"\r\n\r\nres_files = []\r\ngroundTruth_files = []\r\n\r\nfor res_filename in os.listdir(query_result_file_path):\r\n    if res_filename.endswith('.xml'):\r\n        res_files.append(os.path.join(query_result_file_path, res_filename))\r\n        \r\nfor gt_filename in os.listdir(json_ground_truth_file_path):\r\n    if gt_filename.endswith('.json'):\r\n        groundTruth_files.append(os.path.join(json_ground_truth_file_path, gt_filename))\r\n\r\naccuracy_dict={}\r\nfor res_file, gt_file in zip(res_files, groundTruth_files):\r\n    # XML file import and parsing\r\n    query_res = xml2GeoInDynamo(res_file)\r\n    res_dict = flatten(query_res)\r\n    \r\n    # GroundTruth import and parsing\r\n    ground_truth_dict = GroundTruthImport(gt_file)\r\n    \r\n    res = \"\"\r\n    last_slash = res_file.rfind(\"\\\\\")\r\n    last_pt = res_file.rfind(\".\")\r\n    file_name = res_file[last_slash+1:last_pt]\r\n    if len(res_dict)>0 and len(ground_truth_dict)>0:\r\n        count = 0\r\n        for res_key in res_dict.keys():\r\n            if res_key in ground_truth_dict.keys():\r\n                count += 1\r\n        ac = count/len(ground_truth_dict)\r\n        accuracy_dict[file_name]=ac\r\n    else:\r\n        accuracy_dict[file_name]=\"NaN\"\r\n        \r\n    JSON_export(json_accuracy_file_path, file_name+\".json\", \"\", accuracy_dict)\r\n        \r\n# Assign your output to the OUT variable.\r\nOUT = accuracy_dict\r\n",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "b0f1f1e2d1fd46d5bc43329277e3d356",
+      "Inputs": [
+        {
+          "Id": "fdf325d387c24d969bfb5f1ff1b6be02",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "098e73b69bbb44e7a31a680286b640c4",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "8fa18540af31448b9f86374ac69730b7",
+      "Inputs": [
+        {
+          "Id": "a892c0d93028423ab72a2da009f745d9",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1783c52b8e5c4b85b39f37652e47bb53",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "098e73b69bbb44e7a31a680286b640c4",
+      "End": "a892c0d93028423ab72a2da009f745d9",
+      "Id": "f52b97a49eb24ecc9e8ede007186a82d"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.8.0.2471",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -104.64375305175781,
+      "EyeY": 9.9030904769897461,
+      "EyeZ": -24.430368423461914,
+      "LookX": 99.643753051757813,
+      "LookY": -10.948225975036621,
+      "LookZ": 26.814599990844727,
+      "UpX": -0.080936707556247711,
+      "UpY": 0.99656844139099121,
+      "UpZ": -0.01733887568116188
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "b0f1f1e2d1fd46d5bc43329277e3d356",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1706.5500550947104,
+        "Y": 1868.1947932566629
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "8fa18540af31448b9f86374ac69730b7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1530.5590486255417,
+        "Y": 1873.3830420665522
+      }
+    ],
+    "Annotations": [],
+    "X": 2112.6145657808815,
+    "Y": -1176.9586400428393,
+    "Zoom": 0.80655903147546848
+  }
+}
