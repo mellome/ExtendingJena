@@ -64,11 +64,17 @@ public class RunRDFQueryAllinOne {
     private static final String TEST_EQUAL = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Topological Predicates3D Tests\\Test_EQUAL.ttl";
    
     // Directories for WIN11
+    private static String testingUseRDFPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\case_study\\3caseStudy.rdf";
+
     private static String rdfCaseStudyPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\case_study\\";
     private static String originalQueryPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test5_CheckIntersection3DBSP.ttl";
+    private static String queryIntersectionPointsPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\sparql\\Geometry3D Tests\\Test5_CheckIntersection3DBSPGeometry.ttl";   
     private static String queryResultPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\query_result\\";
     private static String runningTimePath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\running_time.txt";
 
+    private static String rdf2CaseStudyNoIntersectionPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\case_study_2\\2nd_CaseStudy_Solids_No_Intersection.rdf";
+    private static String rdf2CaseStudyHasIntersectionPath = "C:\\Users\\yhe\\Documents\\Developer\\Repo\\ExtendingJena\\src\\main\\resources\\rdf\\case_study_2\\2nd_CaseStudy_Solids_Has_Intersection.rdf";
+    
     // For Mac
     // private static String rdfCaseStudyPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/rdf/case_study/";
     // private static String originalQueryPath = "/Users/yhe/Developer/Repo/ExtendingJena/src/main/resources/sparql/Geometry3D Tests/Test5_CheckIntersection3DBSP.ttl";
@@ -145,7 +151,7 @@ public class RunRDFQueryAllinOne {
 		System.out.println("===========================================");
     }
 
-    public static void main(String[] args) {
+    private static void runFirstCase(String firstCaseStudyPath, String queryOntology){
         // ================================ Running Start =====================================
         long startTime = System.nanoTime();
 
@@ -176,8 +182,7 @@ public class RunRDFQueryAllinOne {
         ExtendedFunctionConfig.setup();
         // =====================================================================
         // queryRDF(namespaceManager,  originalQueryPath, ontologiePath);
-
-        File folder = new File(rdfCaseStudyPath);
+        File folder = new File(firstCaseStudyPath);
         File[] listOfFiles = folder.listFiles();
         Arrays.sort(listOfFiles, (f1, f2) -> f1.getName().compareTo(f2.getName()));
 
@@ -194,16 +199,16 @@ public class RunRDFQueryAllinOne {
         for (File file : listOfFiles) {
             if (file.isFile()) {
                 // System.out.println(file.getPath());
-                queryRDF(namespaceManager,  file.getPath(), originalQueryPath, file.getName());
+                queryRDF(namespaceManager,  file.getPath(), queryOntology, file.getName());
             
                 // ================================ Running Stop =====================================
                 long endTime   = System.nanoTime();
                 long elapsedTime = (endTime - startTime) / 1000000; // ns to ms
-                System.out.println("Program running time: " + elapsedTime + " ns");
+                System.out.println("Program running time: " + elapsedTime + " ms");
                 // Write the running time to a file
                 try {
                     FileWriter writer = new FileWriter( runningTimePath, true);
-                    String content = file.getName() + ": <" + elapsedTime + "> ns" + System.lineSeparator();
+                    String content = file.getName() + ": <" + elapsedTime + "> ms" + System.lineSeparator();
                     writer.write(content);
                     writer.close();
                 } catch (IOException e) {
@@ -212,6 +217,76 @@ public class RunRDFQueryAllinOne {
             } 
         }
         // =====================================================================
+    }
 
+    private static void runSecondCase(String secondCaseStudyPath, String queryOntology){
+        // ================================ Running Start =====================================
+        long startTime = System.nanoTime();
+
+        // ================================ Init =====================================
+        //Definition of all namespaces in use
+		HashMap<String, String> prefixes = new HashMap<String, String>();
+		prefixes.put("ifc", "http://standards.buildingsmart.org/IFC/DEV/IFC2x3/TC1/OWL#");
+		prefixes.put("geo", "http://www.opengis.net/ont/geosparql#"); //REQUIRD
+		prefixes.put("geof", "http://www.opengis.net/def/function/geosparql/"); //REQUIRD
+		prefixes.put("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#"); //REQUIRD
+		prefixes.put("rdfs", "http://www.w3.org/2000/01/rdf-schema#"); //REQUIRD
+		prefixes.put("list", "https://w3id.org/list#"); //REQUIRD
+		prefixes.put("owl", "http://www.w3.org/2002/07/owl#"); //REQUIRD
+		prefixes.put("my", "https://www.inf.bi.ruhr-uni-bochum.de/jena/#"); //REQUIRD
+		prefixes.put("ogc", "http://www.opengis.net/");
+		prefixes.put("geor", "http://www.opengis.net/def/rule/geosparql/");
+		prefixes.put("sf", "http://www.opengis.net/ont/sf#");
+		prefixes.put("gml", "http://www.opengis.net/ont/gml#");
+		prefixes.put("xsd", "http://www.w3.org/2001/XMLSchema#");
+		prefixes.put("uom", "http://www.opengis.net/def/uom/OGC/1.0/");
+		prefixes.put("spatial", "http://jena.apache.org/spatial#");
+		prefixes.put("spatialF", "http://jena.apache.org/function/spatial#");
+		prefixes.put("express", "https://w3id.org/express#");
+        NamespaceManager.initialize(prefixes);
+        NamespaceManager namespaceManager = NamespaceManager.getInstance();
+        
+        GeoSPARQLConfig.setup(IndexOption.MEMORY);
+        ExtendedFunctionConfig.setup();
+        // =====================================================================
+        // queryRDF(namespaceManager,  originalQueryPath, ontologiePath);
+        File file = new File(secondCaseStudyPath);
+
+        // erase the content of existing txt file
+        try {
+            FileWriter writer = new FileWriter(runningTimePath, false);
+            writer.write("");
+            writer.close();
+            System.out.println("File content erased successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (file.isFile()) {
+            // System.out.println(file.getPath());
+            queryRDF(namespaceManager,  file.getPath(), queryOntology, file.getName());
+        
+            // ================================ Running Stop =====================================
+            long endTime   = System.nanoTime();
+            long elapsedTime = (endTime - startTime) / 1000000; // ns to ms
+            System.out.println("Program running time: " + elapsedTime + " ms");
+            // Write the running time to a file
+            try {
+                FileWriter writer = new FileWriter( runningTimePath, true);
+                String content = file.getName() + ": <" + elapsedTime + "> ms" + System.lineSeparator();
+                writer.write(content);
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        // =====================================================================
+    }
+
+    public static void main(String[] args) {
+        // runFirstCase(rdfCaseStudyPath, queryIntersectionPointsPath);
+        // runSecondCase(rdf2CaseStudyHasIntersectionPath, queryIntersectionPointsPath);
+        // runSecondCase(rdf2CaseStudyNoIntersectionPath, queryIntersectionPointsPath);
+        runSecondCase(testingUseRDFPath, queryIntersectionPointsPath);
     }
 }

@@ -22,7 +22,7 @@ import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 
 public class GeometryOperators3D {
-
+	// original value is 0.1
 	public static final double TOLERANCE = 0.1;
 
 	public static boolean contains3D(Plane plane, Vector3D point) {

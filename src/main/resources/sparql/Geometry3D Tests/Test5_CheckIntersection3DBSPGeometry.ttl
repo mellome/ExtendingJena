@@ -1,0 +1,7 @@
+SELECT my:ppIntersection3DBSPGeometry(?GeometryA, ?GeometryB)
+WHERE { 
+	?GeometryA geo:asWKT ?aWKT .
+	?GeometryB geo:asWKT ?bWKT .
+
+	FILTER (my:ppIntersection3DBSP(?aWKT, ?bWKT) && !sameTerm(?aWKT, ?bWKT))
+}

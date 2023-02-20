@@ -1,0 +1,11 @@
+SELECT ?GeometryA ?GeometryB
+WHERE { 
+	?GeometryA geo:asWKT ?aWKT .
+	?GeometryB geo:asWKT ?bWKT .
+
+	FILTER ((my:PPIntersection3D(?aWKT, ?bWKT)
+		|| my:PLIntersection3D(?aWKT, ?bWKT)
+		|| my:TLIntersection3D(?aWKT, ?bWKT)
+		|| my:TTIntersection3D(?aWKT, ?bWKT))
+	&& !sameTerm(?aWKT, ?bWKT))
+}

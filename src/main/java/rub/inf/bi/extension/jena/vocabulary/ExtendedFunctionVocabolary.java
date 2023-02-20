@@ -28,7 +28,7 @@ public class ExtendedFunctionVocabolary {
     public static final Property lpContains3D = property("LPContains3D"); //Line contains Point
     public static final Property ppContains3D = property("LPContains3D"); //Plane contains Point
     
-    // TODO: yifeng's playground
+    //!====================== yifeng's playground ===========================
     public static final Property topologicalWithin = property("TopologicalWithin"); // All geometries in 3D
     public static final Property topologicalDisjoint = property("TopologicalDisjoint"); // All geometries in 3D
     public static final Property topologicalTouch = property("TopologicalTouch"); // All geometries in 3D
@@ -46,6 +46,9 @@ public class ExtendedFunctionVocabolary {
     public static final Property topologicalCONTAIN = property("TopologicalContain"); 
     public static final Property topologicalWITHIN = property("TopologicalWithin"); 
     public static final Property topologicalOVERLAP = property("TopologicalOverlap"); 
+
+    public static final Property ppIntersection3DBSPGeometry = property("PPIntersection3DBSPGeometry"); //Geometry of Plane and plane
+    //!====================================================
 
     //Tunneling
     public static final Property alignmentCurveMaxRadius = property("AlignmentCurveMaxRadius");

@@ -493,6 +493,28 @@ public class BSPTree implements Serializable{
 
         return left || right;
     }
+    
+    /**
+     ** This is the naive version of detecting intersection point algorithm.
+     * 
+     * @param BSPTree t1
+     * @param BSPTree t2
+     * @return
+     */
+    public List<Vector3D> collisionPointDetect(BSPTree t1, BSPTree t2){
+        // in POST-ORDER
+        if( t1 == null || t2 == null ){ // 
+            return new ArrayList<Vector3D>();
+        }
+        List<Vector3D> leftPoints = collisionPointDetect(t1, t2.frontTree); // left
+        List<Vector3D> rightPoints = collisionPointDetect(t1, t2.backTree); // right
+        List<Vector3D> nodePoints = traverseIntersectionWithPoints(t1, t2.divider); // mid
+
+        nodePoints.addAll(leftPoints);
+        nodePoints.addAll(rightPoints);
+
+        return nodePoints;
+    }
 
     /**
      * Standard intersection discriminator
@@ -517,6 +539,28 @@ public class BSPTree implements Serializable{
         boolean left = traverseIntersection(t.frontTree, p); // left
         boolean right = traverseIntersection(t.backTree, p); // right
         return left || right;
+    }
+
+    /**
+     * Determine intersection points/areas
+     * ! in POST-ORDER
+     * @param BSPTree t
+     * @param Polygon p
+     * @return
+     */
+    private List<Vector3D> traverseIntersectionWithPoints(BSPTree t, Polygon p){
+        if( t == null || p == null){ 
+            return new ArrayList<Vector3D>();
+        }
+
+        List<Vector3D> leftList = traverseIntersectionWithPoints(t.frontTree, p); // left
+        List<Vector3D> rightList = traverseIntersectionWithPoints(t.backTree, p); // right
+        leftList.addAll(rightList);
+
+        List<Vector3D> intersectedPoints = new ArrayList<>(GeometryOperators3D.intersectionRR3D(t.divider, p));
+        intersectedPoints.addAll(leftList);
+        intersectedPoints.addAll(rightList);
+        return intersectedPoints;
     }
 
     /**

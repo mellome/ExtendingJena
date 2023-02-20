@@ -5,6 +5,7 @@ import org.apache.jena.sparql.function.FunctionRegistry;
 
 import rub.inf.bi.extension.jena.sparql.bspTree3D.PLIntersection3DBSP;
 import rub.inf.bi.extension.jena.sparql.bspTree3D.PPIntersection3DBSP;
+import rub.inf.bi.extension.jena.sparql.bspTree3D.PPIntersection3DBSPGeometry;
 import rub.inf.bi.extension.jena.sparql.geometry3D.LLIntersection3D;
 import rub.inf.bi.extension.jena.sparql.geometry3D.LLIntersection3DGeometry;
 import rub.inf.bi.extension.jena.sparql.geometry3D.LPContains3D;
@@ -69,6 +70,8 @@ public class ExtendedFunctionConfig {
             functionRegistry.put(ExtendedFunctionVocabolary.topologicalCONTAIN.getURI(), TopologicalContain.class);
             functionRegistry.put(ExtendedFunctionVocabolary.topologicalWITHIN.getURI(), TopologicalWithin.class);
             functionRegistry.put(ExtendedFunctionVocabolary.topologicalOVERLAP.getURI(), TopologicalOverlap.class);
+
+            functionRegistry.put(ExtendedFunctionVocabolary.ppIntersection3DBSPGeometry.getURI(), PPIntersection3DBSPGeometry.class);
             //!====================================================
 
             //Industrie Foundation Classes

@@ -61,12 +61,10 @@ public class PPIntersection3D extends FunctionBase2 {
 	    	}
 
 	    	Line l = GeometryOperators3D.intersection3D(planeA, planeB);
-		    System.out.println(l);
+		    // System.out.println(l);
 	    	if(l != null) {
 		      	return NodeValue.TRUE;
     		}
-	    	
-	    	
 	    }
 	    return NodeValue.FALSE;
 		
